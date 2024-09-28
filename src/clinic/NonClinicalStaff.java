@@ -23,6 +23,10 @@ public class NonClinicalStaff implements Staff {
    */
   public NonClinicalStaff(String firstName, String lastName, EducationLevel educationLevel, 
       CprLevel cprLevel) {
+    if (firstName == null || lastName == null || educationLevel == null || cprLevel == null) {
+      throw new IllegalArgumentException("The names, education level and cprLevel for "
+        + "non clinical staff cannot be left null.");
+    }
     this.firstName = firstName;
     this.lastName = lastName;
     this.educationLevel = educationLevel;
