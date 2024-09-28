@@ -1,6 +1,7 @@
 package clinic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class to represent a single patient within the clinic.
@@ -11,7 +12,7 @@ public class Patient {
   private String firstName;
   private String lastName;
   private String dateOfBirth;
-  private List<ClincalStaff> allocated;
+  private List<ClinicalStaff> allocated;
   
   
   /**
@@ -19,12 +20,12 @@ public class Patient {
    * 
    * @param firstName The patient's first name.
    * @param lastName The patient's last name.
-   * @param dateofBirth The patient's date of birth.
+   * @param dateOfBirth The patient's date of birth.
    */
   public Patient(String firstName, String lastName, String dateOfBirth) {
-	  this.firstName = firstName;
-	  this.lastName = lastName;
-	  this.dateOfBirth = dateOfBirth;
-	  this.allocated = new ArrayList<>();
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dateOfBirth = dateOfBirth;
+    this.allocated = new ArrayList<>();
   }
 }
