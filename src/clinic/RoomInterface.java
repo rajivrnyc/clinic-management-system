@@ -34,4 +34,11 @@ public interface RoomInterface {
    * @param patient A patient that was staying within the clinic.
    */
   void removePatient(Patient patient);
+  
+  /**
+   * Checks self to see if it is a waiting room.
+   * 
+   * @return a boolean stating whether or not itself is a waiting room.
+   */
+  boolean isWaitingRoom();
 }

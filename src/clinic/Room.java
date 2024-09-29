@@ -76,6 +76,14 @@ public class Room implements RoomInterface {
   }
   
   @Override
+  public boolean isWaitingRoom() {
+    if (this.typeRoom == RoomType.WAITING) {
+      return true;
+    }
+    return false;
+  }
+  
+  @Override
   public void removePatient(Patient patient) {
     if (patient == null) {
       throw new IllegalArgumentException("Patient was not in this room.");
