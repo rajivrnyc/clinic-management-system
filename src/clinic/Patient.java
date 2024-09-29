@@ -80,16 +80,16 @@ public class Patient implements PatientInterface{
   public void deactivate() {
     this.isActive = false;
     allocated.clear();
-    this.roomNumber = 1;
+    this.roomNumber = 0;
   }
   
   @Override
   public void removeClinicalStaffMember(ClinicalStaff member) {
-	  if (member == null) {
-		  throw new IllegalArgumentException("This Clinical Staff Member is invalid or"
-		  		+ "does not exist.");
-	  }
-	  this.allocated.remove(member);
+    if (member == null) {
+      throw new IllegalArgumentException("This Clinical Staff Member is invalid or"
+       + "does not exist.");
+    }
+    this.allocated.remove(member);
   }
   
   /**
