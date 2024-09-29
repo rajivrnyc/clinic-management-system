@@ -76,7 +76,7 @@ public class Patient implements PatientInterface{
     return this.approval;
   }
   
-  private void deactivate() {
+  public void deactivate() {
     this.isActive = false;
     allocated.clear();
   }
