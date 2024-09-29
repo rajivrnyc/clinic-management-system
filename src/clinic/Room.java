@@ -7,7 +7,7 @@ import java.util.List;
  * Rooms have bottom-left and top-right coordinates, a type and a name.
  */
 
-public class Room {
+public class Room implements RoomInterface {
   private int x1;
   private int x2;
   private int y1;
@@ -58,6 +58,21 @@ public class Room {
       roomNameTextBuild.append(splitRoom[i]);
     }
     return roomNameTextBuild.toString();
+  }
+  
+  @Override
+  public RoomType getRoomType() {
+    return this.typeRoom;
+  }
+  
+  @Override
+  public String getRoomName() {
+    return this.roomName;
+  }
+  
+  @Override
+  public void placePatient(Patient patient) {
+    this.residents.add(patient);
   }
   
   /**
