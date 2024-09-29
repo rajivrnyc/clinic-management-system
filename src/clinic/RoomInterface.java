@@ -41,4 +41,11 @@ public interface RoomInterface {
    * @return a boolean stating whether or not itself is a waiting room.
    */
   boolean isWaitingRoom();
+  
+  /**
+   * Checks if the room is occupied by another patient.
+   * 
+   * @return a boolean stating whether or not itself is occupied.
+   */
+  boolean isOccupied();
 }

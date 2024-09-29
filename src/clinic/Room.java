@@ -90,6 +90,14 @@ public class Room implements RoomInterface {
     }
     this.residents.remove(patient);
   }
+  
+  @Override
+  public boolean isOccupied() {
+    if (!this.residents.isEmpty()) {
+      return true;
+    }
+    return false;
+  }
 
   
   /**
