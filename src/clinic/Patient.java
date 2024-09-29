@@ -8,7 +8,7 @@ import java.util.List;
  * Each patient has a first name, last name, date of birth, and 
  * can have a list of staff members assigned to their care.
  */
-public class Patient {
+public class Patient implements PatientInterface{
 
   private int roomNumber;
   private String firstName;
@@ -38,6 +38,26 @@ public class Patient {
     this.lastName = lastName;
     this.dateOfBirth = dateOfBirth;
     this.allocated = new ArrayList<>();
+  }
+  
+  @Override
+  public int getRoomNumber() {
+    return this.roomNumber;
+  }
+  
+  @Override
+  public String getFirstName() {
+    return this.firstName;
+  }
+  
+  @Override
+  public String getLastName() {
+    return this.lastName;
+  }
+  
+  @Override
+  public String getDateOfBirth() {
+    return this.dateOfBirth;
   }
   
   /**
