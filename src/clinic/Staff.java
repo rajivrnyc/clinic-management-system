@@ -6,6 +6,13 @@ package clinic;
  * Each staff member has a first name, a last name and an education level.
  */
 public interface Staff {
+
+  /**
+   * Gets the job title of a staff member.
+   * 
+   * @return the staff member's job title.
+   */
+  String getJobTitle();
   
   /**
    * Gets the first name of a staff member.
