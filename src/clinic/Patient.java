@@ -15,6 +15,7 @@ public class Patient implements PatientInterface{
   private String lastName;
   private String dateOfBirth;
   private List<ClinicalStaff> allocated;
+  private boolean approval;
   
   
   /**
@@ -37,6 +38,7 @@ public class Patient implements PatientInterface{
     this.firstName = firstName;
     this.lastName = lastName;
     this.dateOfBirth = dateOfBirth;
+    this.approval = false;
     this.allocated = new ArrayList<>();
   }
   
@@ -58,6 +60,16 @@ public class Patient implements PatientInterface{
   @Override
   public String getDateOfBirth() {
     return this.dateOfBirth;
+  }
+  
+  @Override
+  public void setApproval(boolean approvalStatus) {
+    this.approval = approvalStatus;
+  }
+  
+  @Override
+  public boolean getApproval() {
+    return this.approval;
   }
   
   /**

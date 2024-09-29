@@ -34,4 +34,18 @@ public interface PatientInterface {
    */
   String getDateOfBirth();
   
+  /**
+   * Sets the approval status of a patient.
+   * 
+   * @param approvalStatus The approval status as determined by a clinical staff member.
+   */
+  void setApproval(boolean approvalStatus);
+  
+  /**
+   * Gets the approval status for discharge of the patient.
+   * 
+   * @return a boolean that states whether or not the patient is approved for discharge.
+   */
+  boolean getApproval();
+  
 }
