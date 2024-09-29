@@ -156,6 +156,17 @@ public class Clinic implements ClinicInterface {
     
   }
   
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (Room room : rooms) {
+      sb.append(room.getRoomName()).append(":\n");
+     
+      List<Patient> patients = room.getResidents();
+    }
+    return sb.toString();
+  }
+  
   /*
    * Helper method for the read loop for Room.
    */  
