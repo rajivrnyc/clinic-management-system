@@ -37,9 +37,11 @@ public interface ClinicInterface {
   
   
   /**
-   * Adds a new patient to the Clinic.
-   * 
-   * @param patient An object that represents a new patient in the clinic.
-   */
-  void addNewPatient(Patient patient);
+ *  Adds a new patient to the Clinic.
+ *  
+ * @param firstName The first name of the new patient.
+ * @param lastName The last name of the new patient
+ * @param dateOfBirth The date of birth of the new patient.
+ */
+  void addNewPatient(String firstName, String lastName, String dateOfBirth);
 }
