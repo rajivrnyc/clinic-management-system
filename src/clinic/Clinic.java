@@ -163,6 +163,25 @@ public class Clinic implements ClinicInterface {
       sb.append(room.getRoomName()).append(":\n");
      
       List<Patient> patients = room.getResidents();
+      if (patients.isEmpty()) {
+        sb.append(" - This room is empty");
+      } else {
+        for (Patient patient : patients) {
+          sb.append("  -").append(patient.getFirstName()).append(" ")
+         .append(patient.getLastName()).append("\n");
+
+          sb.append("   - Clinical Staff: ");
+          if (patient.getAllocated().isEmpty()) {
+            sb.append("None");
+          } else {
+            for (ClinicalStaff member : patient.getAllocated()) {
+              sb.append(member.getFirstName()).append(" ").append(member.getLastName())
+                .append(", ");
+            }
+            sb.setLength(sb.length() - 2);
+          }
+        }
+      }
     }
     return sb.toString();
   }
