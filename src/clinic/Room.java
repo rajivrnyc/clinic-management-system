@@ -40,4 +40,37 @@ public class Room {
     this.typeRoom = roomType;
     this.roomName = roomName;
   }
+  
+  /*
+   * Helper Method for building the room name string.
+   */
+  private static String pullRoomName(String[] splitRoom) {
+    StringBuilder roomNameTextBuild = new StringBuilder();
+    for (int i = 5; i < splitRoom.length; i++) {
+      if (i > 5) {
+        roomNameTextBuild.append(" ");
+      }
+      roomNameTextBuild.append(splitRoom[i]);
+    }
+    return roomNameTextBuild.toString();
+  }
+  
+  /**
+   * Method used to interpret the Room portion of a text file passed in
+   * to the model.
+   * 
+   * @param roomText A line of text describing a room object.
+   * @return a Room object by interpreting a text block that defines a room
+   */
+  public static Room textRoom(String roomText) {
+    String[] splitRoom = roomText.split(" ");
+      
+    int tempx1 = Integer.parseInt(splitRoom[0]);
+    int tempy1 = Integer.parseInt(splitRoom[1]);
+    int tempx2 = Integer.parseInt(splitRoom[2]);
+    int tempy2 = Integer.parseInt(splitRoom[3]);
+    RoomType tempRoomType = RoomType.valueOf(splitRoom[4].toUpperCase());
+    String roomNameText = pullRoomName(splitRoom);
+    return new Room(tempx1, tempy1, tempx2, tempy2, tempRoomType, roomNameText);
+  }
 }
