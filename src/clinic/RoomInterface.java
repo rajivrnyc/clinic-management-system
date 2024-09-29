@@ -1,5 +1,8 @@
 package clinic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents a room within the clinic.
  */
@@ -48,4 +51,11 @@ public interface RoomInterface {
    * @return a boolean stating whether or not itself is occupied.
    */
   boolean isOccupied();
+  
+  /**
+   * Gets the list of residents of a certain room.
+   * 
+   * @return A list of residents of a certain room.
+   */
+  List<Patient> getResidents();
 }

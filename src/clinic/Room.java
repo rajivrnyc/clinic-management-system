@@ -100,6 +100,11 @@ public class Room implements RoomInterface {
   }
   
   @Override
+  public List<Patient> getResidents() {
+    return this.residents;
+  }
+  
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("Room Name: ").append(roomName).append("\nRoom Type: ").append(typeRoom)
