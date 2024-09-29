@@ -98,6 +98,34 @@ public class Room implements RoomInterface {
     }
     return false;
   }
+  
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Room Name: ").append(roomName).append("\nRoom Type: ").append(typeRoom)
+    .append("\nPatient Details: ");
+    
+    if (residents.isEmpty()) {
+      sb.append("\nNone");
+    } else {
+      for (Patient patient : residents) {
+        sb.append("\n").append(patient.getFirstName()).append(" ")
+        .append(patient.getLastName()).append(", Room Number: ").append(patient.getRoomNumber())
+        .append(", Clinical Staff Allocated: ");
+        
+        if (patient.getAllocated().isEmpty()) {
+          sb.append("None");
+        } else {
+          for (ClinicalStaff cstaff : patient.getAllocated()) {
+            sb.append(cstaff.getFirstName()).append(" ").append(cstaff.getLastName())
+            .append(", ");
+          }
+          sb.setLength(sb.length() - 2);
+        }
+      }
+    }
+    return sb.toString();
+  } 
 
   
   /**
