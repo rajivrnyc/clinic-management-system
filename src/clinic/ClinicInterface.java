@@ -63,6 +63,7 @@ public interface ClinicInterface {
    * 
    * @param roomNumber The room number of the room
    * @return a room object associated with that room number.
+   * @throws IllegalArgumentException if the room number is invalid.
    */
   Room getRoomFromNumber(int roomNumber);
   
@@ -72,7 +73,6 @@ public interface ClinicInterface {
    * 
    * @param patient A patient who should be approved for discharge.
    * @throws IllegalArgumentException if patient parameter is null.
-   * @throws IllegalArgumentException if room number is invalid.
    */
   void sendHome(Patient patient);
 }
