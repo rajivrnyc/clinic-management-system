@@ -147,6 +147,15 @@ public class Clinic implements ClinicInterface {
     patient.setRoomNumber(roomNumFromRoom(room));
   }
   
+  @Override
+  public void assignStaff(Patient patient, ClinicalStaff member) {
+    if (patient == null || member == null) {
+      throw new IllegalArgumentException("Patient or ClinicalStaff objects cannot be null.");
+    }
+    patient.getAllocated().add(member);
+    
+  }
+  
   /*
    * Helper method for the read loop for Room.
    */  

@@ -89,6 +89,17 @@ public interface ClinicInterface {
    * 
    * @param patient A person to be assigned to a room attending the clinic.
    * @param room   A room that the patient will reside in.
+   * @throws IllegalArgumentException if either input is null.
+   * @throws IllegalStateException if the room the patient is trying to enter is full.
    */
   void assignPatient(Patient patient, Room room);
+  
+  /**
+   * Method to assign a clinical staff member to a patient.
+   * 
+   * @param patient A person who will be assigned a clinical staff member in the clinic.
+   * @param member A clinical staff member who will be assigned to a patient.
+   * @throws IllegalArgumentException if 
+   */
+  void assignStaff(Patient patient, ClinicalStaff member);
 }
