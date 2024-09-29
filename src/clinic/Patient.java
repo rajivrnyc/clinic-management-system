@@ -16,6 +16,7 @@ public class Patient implements PatientInterface{
   private String dateOfBirth;
   private List<ClinicalStaff> allocated;
   private boolean approval;
+  private boolean isActive;
   
   
   /**
@@ -40,6 +41,7 @@ public class Patient implements PatientInterface{
     this.dateOfBirth = dateOfBirth;
     this.approval = false;
     this.allocated = new ArrayList<>();
+    this.isActive = true;
   }
   
   @Override
@@ -64,9 +66,9 @@ public class Patient implements PatientInterface{
   
   @Override
   public void setApproval(ClinicalStaff member, boolean approvalStatus) {
-	if(member instanceof ClinicalStaff) {
-    this.approval = approvalStatus;
-	}
+    if (member instanceof ClinicalStaff) {
+      this.approval = approvalStatus;
+    }
   }
   
   @Override
