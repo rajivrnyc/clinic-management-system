@@ -26,10 +26,28 @@ public class Patient {
    * 
    */
   public Patient(int roomNumber, String firstName, String lastName, String dateOfBirth) {
+    if (firstName == null || lastName == null || dateOfBirth == null) {
+      throw new IllegalArgumentException("First name, last name and date of birth cannot be null.");
+    }
     this.roomNumber = roomNumber;
     this.firstName = firstName;
     this.lastName = lastName;
     this.dateOfBirth = dateOfBirth;
     this.allocated = new ArrayList<>();
+  }
+  
+  /**
+   * Method used to interpret the Patient portion of a text file passed in
+   * to the model.
+   * @param patientText A text block with information describing a patient in the clinic.
+   * @return A patient object based on the information inputed into the method.
+   */
+  public static Patient textPatient(String patientText) {
+    String[] splitPatient = patientText.split(" ");
+    int tempRoomNumber = Integer.parseInt(splitPatient[0]);
+    String tempFirstName = splitPatient[1];
+    String tempLastName = splitPatient[2];
+    String tempDateOfBirth = splitPatient[3];
+    return new Patient(tempRoomNumber, tempFirstName, tempLastName, tempDateOfBirth);
   }
 }
