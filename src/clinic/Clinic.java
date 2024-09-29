@@ -101,6 +101,10 @@ public class Clinic implements ClinicInterface {
       patient.deactivate();
     }
     Room tempRoom = getRoomFromNumber(patient.getRoomNumber());
+    if (tempRoom == null) {
+      throw new IllegalArgumentException("This patient has an invalid room number.");
+    }
+    tempRoom.removePatient(patient);
   }
   
   
