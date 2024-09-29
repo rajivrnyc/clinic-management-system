@@ -1,9 +1,12 @@
 package clinic;
 
+import java.util.ArrayList;
+import java.util.List; 
 /**
  * A class to represent the behavior of a room within the clinic.
  * Rooms have bottom-left and top-right coordinates, a type and a name.
  */
+
 public class Room {
   private int x1;
   private int x2;
@@ -11,6 +14,7 @@ public class Room {
   private int y2;
   private RoomType typeRoom;
   private String roomName;
+  private List<Patient> residents;
   
   /**
    * Constructor for a room with bottom-left and top-right coordinates, a type
@@ -39,6 +43,7 @@ public class Room {
     this.y2 = y2;
     this.typeRoom = roomType;
     this.roomName = roomName;
+    this.residents = new ArrayList<>();
   }
   
   /*
