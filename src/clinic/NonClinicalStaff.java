@@ -30,12 +30,14 @@ public class NonClinicalStaff implements Staff {
       throw new IllegalArgumentException("The names, education level and cprLevel for "
         + "non clinical staff cannot be left null.");
     }
+
     this.jobTitle = jobTitle;
     this.firstName = firstName;
     this.lastName = lastName;
     this.educationLevel = educationLevel;
     this.cprLevel = cprLevel;
   }
+  
   
   @Override
   public String getJobTitle() {
