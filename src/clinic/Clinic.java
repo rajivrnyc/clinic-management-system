@@ -102,12 +102,27 @@ public class Clinic implements ClinicInterface {
     }
     if (patient.getApproval()) {
       patient.deactivate();
+    
+      Room tempRoom = getRoomFromNumber(patient.getRoomNumber());
+      if (tempRoom == null) {
+        throw new IllegalArgumentException("This patient has an invalid room.");
+      }
+      tempRoom.removePatient(patient);
     }
-    Room tempRoom = getRoomFromNumber(patient.getRoomNumber());
-    if (tempRoom == null) {
-      throw new IllegalArgumentException("This patient has an invalid room.");
+  }
+  
+  @Override
+  public void deactivateClinicalStaffClinic(ClinicalStaff member) {
+    if (member == null) {
+      throw new IllegalArgumentException("This ClinicalStaff object is invalid.");
     }
-    tempRoom.removePatient(patient);
+    if (employees.remove(member) == true) {
+      member.deactivate();
+    }
+    for (Patient patient : patients) {
+      patient.removeClinicalStaffMember(member);
+    }
+    
   }
   
   

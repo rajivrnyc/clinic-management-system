@@ -75,4 +75,12 @@ public interface ClinicInterface {
    * @throws IllegalArgumentException if patient parameter is null.
    */
   void sendHome(Patient patient);
+  
+  /**
+   * Deactivates a clinical staff member and removes any patient assignments.
+   *  
+   * @param member a clinical staff member at the clinic.
+   * @throws IllegalArgumentException if the member parameter is null.
+   */
+  void deactivateClinicalStaffClinic(ClinicalStaff member);
 }
