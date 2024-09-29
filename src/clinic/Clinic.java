@@ -97,6 +97,9 @@ public class Clinic implements ClinicInterface {
   
   @Override
   public void sendHome(Patient patient) {
+    if (patient == null) {
+      throw new IllegalArgumentException("This patient object is invalid.");
+    }
     if (patient.getApproval()) {
       patient.deactivate();
     }

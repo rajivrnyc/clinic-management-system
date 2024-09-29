@@ -71,6 +71,8 @@ public interface ClinicInterface {
    * If a patient is approved for discharge, they are sent home.
    * 
    * @param patient A patient who should be approved for discharge.
+   * @throws IllegalArgumentException if patient parameter is null.
+   * @throws IllegalArgumentException if room number is invalid.
    */
   void sendHome(Patient patient);
 }
