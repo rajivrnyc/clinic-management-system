@@ -75,6 +75,15 @@ public class Room implements RoomInterface {
     this.residents.add(patient);
   }
   
+  @Override
+  public void removePatient(Patient patient) {
+    if (patient == null) {
+      throw new IllegalArgumentException("Patient was not in this room.");
+    }
+    this.residents.remove(patient);
+  }
+
+  
   /**
    * Method used to interpret the Room portion of a text file passed in
    * to the model.

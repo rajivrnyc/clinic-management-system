@@ -26,4 +26,12 @@ public interface RoomInterface {
    * @param patient A patient that is staying within the clinic.
    */
   void placePatient(Patient patient);
+  
+  
+  /**
+   * Removes a patient from a room.
+   * 
+   * @param patient A patient that was staying within the clinic.
+   */
+  void removePatient(Patient patient);
 }
