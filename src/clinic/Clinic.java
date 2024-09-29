@@ -87,6 +87,22 @@ public class Clinic implements ClinicInterface {
     employees.add(newcStaff);
   }
   
+  @Override
+  public Room getRoomFromNumber(int roomNumber) {
+    if (roomNumber < 1 || roomNumber > rooms.size()) {
+      throw new IllegalArgumentException("Invalid room number. This room does not exist.");
+    }
+    return rooms.get(roomNumber - 1);
+  }
+  
+  @Override
+  public void sendHome(Patient patient) {
+    if (patient.getApproval()) {
+      patient.deactivate();
+    }
+    Room tempRoom = getRoomFromNumber(patient.getRoomNumber());
+  }
+  
   
   
   /**

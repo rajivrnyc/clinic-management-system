@@ -57,4 +57,20 @@ public interface ClinicInterface {
    */
   void addNewClinicalStaff(String jobTitle, String firstName, String lastName, EducationLevel 
       educationLevel, String npiLevel);
+  
+  /**
+   * Finds a room object based on the room number.
+   * 
+   * @param roomNumber The room number of the room
+   * @return a room object associated with that room number.
+   */
+  Room getRoomFromNumber(int roomNumber);
+  
+  
+  /**
+   * If a patient is approved for discharge, they are sent home.
+   * 
+   * @param patient A patient who should be approved for discharge.
+   */
+  void sendHome(Patient patient);
 }
