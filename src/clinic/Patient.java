@@ -76,9 +76,11 @@ public class Patient implements PatientInterface{
     return this.approval;
   }
   
+  @Override
   public void deactivate() {
     this.isActive = false;
     allocated.clear();
+    this.roomNumber = 1;
   }
   
   /**
