@@ -11,7 +11,7 @@ import java.util.List;
  * Clinics have a name, a number of rooms, a number of staff working there
  * and a number of patients that are being served at any given time.
  */
-public class Clinic {
+public class Clinic implements ClinicInterface {
   private String clinicName;
   private int numRooms;
   private int numStaff;
@@ -50,6 +50,31 @@ public class Clinic {
     this.rooms = new ArrayList<>();
     this.employees = new ArrayList<>();
     this.patients = new ArrayList<>();
+  }
+  
+  @Override
+  public String getClinicName() {
+    return this.clinicName;
+  }
+  
+  @Override
+  public int getNumRooms() {
+    return this.numRooms;
+  }
+  
+  @Override
+  public int getNumPatients() {
+    return this.numPatients;
+  }
+  
+  @Override
+  public int getNumStaff() {
+    return this.numStaff;
+  }
+  
+  @Override
+  public void addNewPatient(Patient patient) {
+    patients.add(patient);
   }
   
   /**
