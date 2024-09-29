@@ -101,7 +101,7 @@ public class Room implements RoomInterface {
   
   @Override
   public List<Patient> getResidents() {
-    return this.residents;
+    return new ArrayList<>(this.residents);
   }
   
   @Override
