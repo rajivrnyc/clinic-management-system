@@ -26,6 +26,9 @@ public class Patient {
    * 
    */
   public Patient(int roomNumber, String firstName, String lastName, String dateOfBirth) {
+    if (roomNumber < 0) {
+      throw new IllegalArgumentException("The patient's room number cannot be less than 0.");
+    }
     if (firstName == null || lastName == null || dateOfBirth == null) {
       throw new IllegalArgumentException("First name, last name and date of birth cannot be null.");
     }
