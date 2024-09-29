@@ -157,7 +157,7 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public String toString() {
+  public String seatingChart() {
     StringBuilder sb = new StringBuilder();
     for (Room room : rooms) {
       sb.append(room.getRoomName()).append(":\n");

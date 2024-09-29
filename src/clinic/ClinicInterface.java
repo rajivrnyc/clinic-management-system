@@ -102,4 +102,11 @@ public interface ClinicInterface {
    * @throws IllegalArgumentException if 
    */
   void assignStaff(Patient patient, ClinicalStaff member);
+  
+  /**
+   * Makes a seating chart of every room in the clinic.
+   * 
+   * @return Makes a seating chart as a text output of every room in the clinic.
+   */
+  String seatingChart();
 }
