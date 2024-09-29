@@ -9,6 +9,7 @@ import java.util.List;
  * can have a list of staff members assigned to their care.
  */
 public class Patient {
+
   private int roomNumber;
   private String firstName;
   private String lastName;
