@@ -38,8 +38,9 @@ public interface PatientInterface {
    * Sets the approval status of a patient.
    * 
    * @param approvalStatus The approval status as determined by a clinical staff member.
+   * @param member A clinical staff member is required to set the approval status of a patient.
    */
-  void setApproval(boolean approvalStatus);
+  void setApproval(ClinicalStaff member, boolean approvalStatus);
   
   /**
    * Gets the approval status for discharge of the patient.
