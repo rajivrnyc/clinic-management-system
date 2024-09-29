@@ -76,6 +76,7 @@ public class Clinic implements ClinicInterface {
   public void addNewPatient(String firstName, String lastName, String dateOfBirth) {
     int waitingRoomNum = rooms.indexOf(primaryWaitingRoom) + 1;
     Patient newPatient = new Patient(waitingRoomNum, firstName, lastName, dateOfBirth);
+    primaryWaitingRoom.placePatient(newPatient);
   }
   
   /**
