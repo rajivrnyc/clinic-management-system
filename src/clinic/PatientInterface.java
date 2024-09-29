@@ -1,5 +1,9 @@
 package clinic;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * Represents a patient within the clinic.
  */
@@ -61,6 +65,13 @@ public interface PatientInterface {
    * deactivates a patient by removing assigned staff members and setting status to inactive.
    */
   void deactivate();
+  
+  /**
+   * Gets the list of allocated clinical staff members to a certain patient.
+   * 
+   * @return A list of clinical staff members assigned to a certain patient.
+   */
+  List<ClinicalStaff> getAllocated();
   
   /**
    * removes a clinical staff member from allocated clinical staff members that are
