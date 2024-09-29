@@ -36,20 +36,17 @@ public class ClinicalStaff implements Staff {
 
   @Override
   public String getFirstName() {
-    // TODO Auto-generated method stub
-    return null;
+    return this.firstName;
   }
 
   @Override
   public String getLastName() {
-    // TODO Auto-generated method stub
-    return null;
+    return this.lastName;
   }
 
   @Override
   public EducationLevel getEducationLevel() {
-    // TODO Auto-generated method stub
-    return null;
+    return this.educationLevel;
   }
 
 }
