@@ -83,4 +83,12 @@ public interface ClinicInterface {
    * @throws IllegalArgumentException if the member parameter is null.
    */
   void deactivateClinicalStaffClinic(ClinicalStaff member);
+  
+  /**
+   * Method to assign a patient to a room.
+   * 
+   * @param patient A person to be assigned to a room attending the clinic.
+   * @param room   A room that the patient will reside in.
+   */
+  void assignPatient(Patient patient, Room room);
 }

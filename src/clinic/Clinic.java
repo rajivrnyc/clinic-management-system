@@ -122,10 +122,73 @@ public class Clinic implements ClinicInterface {
     for (Patient patient : patients) {
       patient.removeClinicalStaffMember(member);
     }
-    
   }
   
+  private int roomNumFromRoom(Room room) {
+    int roomI = rooms.indexOf(room) + 1;
+    return roomI;
+  }
   
+  @Override
+  public void assignPatient(Patient patient, Room room) {
+    if (patient == null || room == null) {
+      throw new IllegalArgumentException("Invalid patient or room object.");
+    }
+    Room current = getRoomFromNumber(patient.getRoomNumber());
+    if (current != null) {
+      current.removePatient(patient);
+    }
+    
+    if (!room.isWaitingRoom() && !room.isOccupied()) {
+      throw new IllegalStateException("The room the patient is "
+      + "trying to occupy is alreaday occupied.");
+    }
+    room.placePatient(patient);
+    patient.setRoomNumber(roomNumFromRoom(room));
+  }
+  
+  /*
+   * Helper method for the read loop for Room.
+   */  
+  private static List<Room> readRoom(BufferedReader br, int numRooms) throws IOException {
+    List<Room> tempRooms = new ArrayList<>();
+    String textWaitingRoom = br.readLine();
+    Room textPrimaryWaitingRoom = Room.textRoom(textWaitingRoom);
+    tempRooms.add(textPrimaryWaitingRoom);
+    for (int i = 1; i < numRooms; i++) {
+      String textRoomInfo = br.readLine();
+      Room tempRoom = Room.textRoom(textRoomInfo);
+      tempRooms.add(tempRoom);
+    }
+    return tempRooms;
+  }
+  
+  /*
+   * Helper method for the read loop for Staff.
+   */
+  private static List<Staff> readStaff(BufferedReader br, int textNumStaff) throws IOException {
+    List<Staff> textStaffs = new ArrayList<>();
+    for (int i = 0; i < textNumStaff; i++) {
+      String textStaffInfo = br.readLine();
+      Staff tempStaff = StaffFactoryHelper.constructStaff(textStaffInfo);
+      textStaffs.add(tempStaff);
+    }
+    return textStaffs;
+  }
+  
+  /*
+   * Helper method for the read loop for Patient.
+   */
+  private static List<Patient> readPatients(BufferedReader br, 
+       int textNumPatients) throws IOException {
+    List<Patient> textPatients = new ArrayList<>();
+    for (int i = 0; i < textNumPatients; i++) {
+      String textPatientInfo = br.readLine();
+      Patient tempPatient = Patient.textPatient(textPatientInfo);
+      textPatients.add(tempPatient);
+    }
+    return textPatients;
+  }
   
   /**
    * Method to create a Clinic object from a text file.
@@ -138,33 +201,17 @@ public class Clinic implements ClinicInterface {
   public static Clinic readFile(String fileName) throws IOException {
     try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
       final String  textClinicName = br.readLine();
+      
       int textNumRooms = Integer.parseInt(br.readLine());
-
-      List<Room> textRooms = new ArrayList<>(); 
-      String textWaitingRoom = br.readLine();
-      Room textPrimaryWaitingRoom = Room.textRoom(textWaitingRoom);
-      textRooms.add(textPrimaryWaitingRoom);
-      for (int i = 1; i < textNumRooms; i++) {
-        String textRoomInfo = br.readLine();
-        Room tempRoom = Room.textRoom(textRoomInfo);
-        textRooms.add(tempRoom);
-      }
+      List<Room> textRooms = readRoom(br, textNumRooms);
+      Room textPrimaryWaitingRoom = textRooms.get(0);
 
       int textNumStaff = Integer.parseInt(br.readLine());
-      List<Staff> textStaffs = new ArrayList<>();
-      for (int i = 0; i < textNumStaff; i++) {
-        String textStaffInfo = br.readLine();
-        Staff tempStaff = StaffFactoryHelper.constructStaff(textStaffInfo);
-        textStaffs.add(tempStaff);
-      }
+      List<Staff> textStaffs = readStaff(br, textNumStaff);
 
       int textNumPatients = Integer.parseInt(br.readLine());
-      List<Patient> textPatients = new ArrayList<>();
-      for (int i = 0; i < textNumPatients; i++) {
-        String textPatientInfo = br.readLine();
-        Patient tempPatient = Patient.textPatient(textPatientInfo);
-        textPatients.add(tempPatient);
-      }
+      List<Patient> textPatients = readPatients(br, textNumPatients);
+      
 
       Clinic textClinic = new Clinic(textClinicName, textNumRooms, textNumStaff,
           textNumPatients, textPrimaryWaitingRoom);
