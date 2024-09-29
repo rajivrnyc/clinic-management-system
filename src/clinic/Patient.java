@@ -83,6 +83,15 @@ public class Patient implements PatientInterface{
     this.roomNumber = 1;
   }
   
+  @Override
+  public void removeClinicalStaffMember(ClinicalStaff member) {
+	  if (member == null) {
+		  throw new IllegalArgumentException("This Clinical Staff Member is invalid or"
+		  		+ "does not exist.");
+	  }
+	  this.allocated.remove(member);
+  }
+  
   /**
    * Method used to interpret the Patient portion of a text file passed in
    * to the model.

@@ -54,4 +54,13 @@ public interface PatientInterface {
    */
   void deactivate();
   
+  /**
+   * removes a clinical staff member from allocated clinical staff members that are
+   * caring for this patient object.
+   * 
+   * @param member is a clinical staff member at the clinic.
+   * @throws IllegalArgumentException when member is invalid or does not exist.
+   */
+  void removeClinicalStaffMember(ClinicalStaff member);
+  
 }

@@ -10,7 +10,8 @@ public class ClinicalStaff implements Staff {
   private String lastName;
   private EducationLevel educationLevel;
   private String npiLevel;
-	
+  private boolean isActive;
+
   /**
    * A constructor for the ClinicalStaff class that represents a clinical staff member.
    * 
@@ -35,6 +36,7 @@ public class ClinicalStaff implements Staff {
     this.lastName = lastName;
     this.educationLevel = educationLevel;
     this.npiLevel = npiLevel;
+    this.isActive = true;
   }
   
   @Override
@@ -55,6 +57,13 @@ public class ClinicalStaff implements Staff {
   @Override
   public EducationLevel getEducationLevel() {
     return this.educationLevel;
+  }
+  
+  /**
+   * Method to deactivate a clinical staff member.
+   */
+  public void deactivate() {
+    this.isActive = false;
   }
 
 }
