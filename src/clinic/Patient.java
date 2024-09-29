@@ -65,6 +65,11 @@ public class Patient implements PatientInterface{
   }
   
   @Override
+  public void setRoomNumber(int roomNum) {
+    this.roomNumber = roomNum;
+  }
+  
+  @Override
   public void setApproval(ClinicalStaff member, boolean approvalStatus) {
     if (member instanceof ClinicalStaff) {
       this.approval = approvalStatus;
@@ -80,7 +85,7 @@ public class Patient implements PatientInterface{
   public void deactivate() {
     this.isActive = false;
     allocated.clear();
-    this.roomNumber = 0;
+    this.roomNumber = 1;
   }
   
   @Override

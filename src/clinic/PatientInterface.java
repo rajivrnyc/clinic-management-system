@@ -43,6 +43,14 @@ public interface PatientInterface {
   void setApproval(ClinicalStaff member, boolean approvalStatus);
   
   /**
+   * Sets the room number that a patient is assigned to.
+   * This is how we will handle changing of rooms.
+   * 
+   * @param roomNum a number that represents the room number the patient is currently in.
+   */
+  void setRoomNumber(int roomNum);
+  
+  /**
    * Gets the approval status for discharge of the patient.
    * 
    * @return a boolean that states whether or not the patient is approved for discharge.
