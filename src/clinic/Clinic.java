@@ -79,6 +79,16 @@ public class Clinic implements ClinicInterface {
     primaryWaitingRoom.placePatient(newPatient);
   }
   
+  @Override
+  public void addNewClinicalStaff(String jobTitle, String firstName, String lastName, 
+      EducationLevel educationLevel, String npiLevel) {
+    ClinicalStaff newcStaff = new ClinicalStaff(jobTitle, firstName, lastName, 
+        educationLevel, npiLevel);
+    employees.add(newcStaff);
+  }
+  
+  
+  
   /**
    * Method to create a Clinic object from a text file.
    * 

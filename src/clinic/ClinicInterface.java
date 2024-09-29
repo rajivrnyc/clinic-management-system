@@ -44,4 +44,17 @@ public interface ClinicInterface {
  * @param dateOfBirth The date of birth of the new patient.
  */
   void addNewPatient(String firstName, String lastName, String dateOfBirth);
+  
+  
+  /**
+   * Registers a new clinical staff member as an employee for the clinic.
+   * 
+   * @param jobTitle The job title for the clinical staff member.
+   * @param firstName The first name of the clinical staff member.
+   * @param lastName The last name of the clinical staff member.
+   * @param educationLevel The education level of the clinical staff member.
+   * @param npiLevel The NPI level of the clinical staff member.
+   */
+  void addNewClinicalStaff(String jobTitle, String firstName, String lastName, EducationLevel 
+      educationLevel, String npiLevel);
 }
