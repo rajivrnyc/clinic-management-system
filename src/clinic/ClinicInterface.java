@@ -1,8 +1,11 @@
 package clinic;
 
+import java.util.ArrayList;
+import java.util.List; 
 /**
  * Creates a model of a Clinic.
  */
+
 public interface ClinicInterface {
 
 
@@ -34,6 +37,26 @@ public interface ClinicInterface {
    * @return an integer that tells the number of patients in the clinic.
    */
   int getNumPatients();
+  
+  /**
+   * Gets a copy of the ArrayList rooms and returns it.
+   * @return a copy of ArrayList rooms.
+   */
+  List<Room> getRooms();
+  
+  /**
+   * Gets a copy of the ArrayList employees and returns it.
+   * @return a copy of ArrayList employees.
+   */
+  List<Staff> getEmployees();
+  
+  
+  
+  /**
+   * Gets a copy of the ArrayList patients and returns it.
+   * @return a copy of ArrayList patients.
+   */
+  List<Patient> getPatients();
   
   
   /**

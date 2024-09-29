@@ -73,6 +73,21 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
+  public List<Room> getRooms() {
+    return new ArrayList<>(this.rooms);
+  }
+  
+  @Override
+  public List<Staff> getEmployees() {
+    return new ArrayList<>(this.employees);
+  }
+  
+  @Override
+  public List<Patient> getPatients() {
+    return new ArrayList<>(this.patients);
+  }
+  
+  @Override
   public void addNewPatient(String firstName, String lastName, String dateOfBirth) {
     int waitingRoomNum = rooms.indexOf(primaryWaitingRoom) + 1;
     Patient newPatient = new Patient(waitingRoomNum, firstName, lastName, dateOfBirth);
@@ -162,8 +177,8 @@ public class Clinic implements ClinicInterface {
     for (Room room : rooms) {
       sb.append(room.getRoomName()).append(":\n");
      
-      List<Patient> patients = room.getResidents();
-      if (patients.isEmpty()) {
+      List<Patient> patientslocal = room.getResidents();
+      if (patientslocal.isEmpty()) {
         sb.append(" - This room is empty");
       } else {
         for (Patient patient : patients) {
