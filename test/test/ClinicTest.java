@@ -36,5 +36,52 @@ public class ClinicTest {
   public void testClinic() {
     assertEquals(clinic, new Clinic("Local Clinic", 5, 10, 20, primaryWaitingRoom));
   }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void nullNameClinicTest() {
+    new Clinic(null, 5, 10, 20, primaryWaitingRoom);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void negNumRoomsClinicTest() {
+    new Clinic("Local Clinic", -5, 10, 20, primaryWaitingRoom);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void negNumStaffClinicTest() {
+    new Clinic("Local Clinic", 5, -10, 20, primaryWaitingRoom);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void negNumPatientsClinicTest() {
+    new Clinic("Local Clinic", 5, 10, -20, primaryWaitingRoom);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void nullWaitingRoomClinicTest() {
+    new Clinic("Local Clinic", 5, 10, -20, null);
+  }
+  
+  @Test
+  public void testGetClinicName() {
+    assertEquals("Local Clinic", clinic.getClinicName());
+  }
+  
+  @Test
+  public void testGetNumRooms() {
+    assertEquals(5, clinic.getNumRooms());
+  }
+  
+  @Test
+  public void testGetNumPatients() {
+    assertEquals(20, clinic.getNumPatients());
+  }
+  
+  @Test
+  public void testGetNumStaff() {
+    assertEquals(10, clinic.getNumStaff());
+  }
+  
+  
 
 }

@@ -40,8 +40,9 @@ public class Clinic implements ClinicInterface {
         + "cannot have a negative number of patients or staff.");
     }
     
-    if (clinicName == null) {
-      throw new IllegalArgumentException("A clinic must have a name.");
+    if (clinicName == null || primaryWaitingRoom == null) {
+      throw new IllegalArgumentException("A clinic must have a "
+    + "name and primary waiting room must exist.");
     }
     this.clinicName = clinicName;
     this.numRooms = numRooms;
