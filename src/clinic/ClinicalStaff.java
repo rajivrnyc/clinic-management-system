@@ -23,7 +23,8 @@ public class ClinicalStaff implements Staff {
    */
   public ClinicalStaff(String jobTitle, String firstName, String lastName, EducationLevel 
       educationLevel, String npiLevel) {
-    if (firstName == null || lastName == null || educationLevel == null || npiLevel == null) {
+    if (jobTitle == null || firstName == null 
+        || lastName == null || educationLevel == null || npiLevel == null) {
       throw new IllegalArgumentException("Invalid input. First name, last "
         + "name and education level cannot be null.");
     }
