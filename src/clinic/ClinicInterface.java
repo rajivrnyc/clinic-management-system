@@ -65,6 +65,7 @@ public interface ClinicInterface {
  * @param firstName The first name of the new patient.
  * @param lastName The last name of the new patient
  * @param dateOfBirth The date of birth of the new patient.
+ * @throws IllegalArgumentException When any input is null.
  */
   void addNewPatient(String firstName, String lastName, String dateOfBirth);
   
@@ -77,6 +78,7 @@ public interface ClinicInterface {
    * @param lastName The last name of the clinical staff member.
    * @param educationLevel The education level of the clinical staff member.
    * @param npiLevel The NPI level of the clinical staff member.
+   * @throws IllegalArguementException when any input is null.
    */
   void addNewClinicalStaff(String jobTitle, String firstName, String lastName, EducationLevel 
       educationLevel, String npiLevel);

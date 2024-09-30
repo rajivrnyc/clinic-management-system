@@ -89,6 +89,9 @@ public class Clinic implements ClinicInterface {
   
   @Override
   public void addNewPatient(String firstName, String lastName, String dateOfBirth) {
+    if (firstName == null || lastName == null || dateOfBirth == null) {
+      throw new IllegalArgumentException("Inputs cannot be null");
+    }
     int waitingRoomNum = rooms.indexOf(primaryWaitingRoom) + 1;
     Patient newPatient = new Patient(waitingRoomNum, firstName, lastName, dateOfBirth);
     primaryWaitingRoom.placePatient(newPatient);
@@ -97,6 +100,10 @@ public class Clinic implements ClinicInterface {
   @Override
   public void addNewClinicalStaff(String jobTitle, String firstName, String lastName, 
       EducationLevel educationLevel, String npiLevel) {
+    if (jobTitle == null || firstName == null || lastName == null 
+            || educationLevel == null || npiLevel == null) {
+      throw new IllegalArgumentException("Inputs cannot be null");
+    }
     ClinicalStaff newcStaff = new ClinicalStaff(jobTitle, firstName, lastName, 
         educationLevel, npiLevel);
     employees.add(newcStaff);
