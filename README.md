@@ -20,9 +20,9 @@ Give a general overview of the problem and how your program solve the problem
 
 The current features of my program include:
 
--Reading a text file into the model.
--Registering a new patient into the model. If the patients do not have a room yet they are placed in the waiting room.
--Registering a new clinical staff member
+- Reading a text file into the model.
+- Registering a new patient into the model. If the patients do not have a room yet they are placed in the waiting room.
+- Registering a new clinical staff member
 
 ### How to Run
 
