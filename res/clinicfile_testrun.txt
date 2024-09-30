@@ -1,0 +1,73 @@
+Input:
+res/clinicfile.txt
+
+Output:
+Loaded File.
+Clinic Name: Cybernetic Implant Clinic
+Number of Rooms: 5
+Number of Staff: 6
+Number of Patients: 7
+
+Requirement 1: Adding a New Patient
+Patient was added
+New Number of Patients: 8
+
+Requirement 2: Adding a New Clinical Staff Member
+Clinical Staff Member was add
+New Number of Clinical Staff Members: 7
+
+Requirement 3: Sending Someone Home
+Sally Johnson has been sent home.
+Current Number of Patients: 7
+
+Requirement 4: Deactivate a Clinical Staff Member
+A clinical staff member has been deactivated.
+Current Number of Staff: 6
+
+Requirement 5: Assign a person to a room
+Sally's Current Room Number: 1
+Sally has been moved to Inside Waiting Room
+Sally's New Room Number: 3
+
+Requirement 6: Assign a Clinical Staff Member to a patient.
+Succesfully assigned Sally a new staff member.
+Sally's assigned staff: Benny Bruise
+
+Requirement 7: Print information about a specific room as a String
+Printing info about the room Sally is in:
+Room Name: Inside Waiting Room
+Room Type: waiting
+Patient Details: 
+Clive Cardiac, Room Number: 3, Clinical Staff Allocated: None
+Sally Johnson, Room Number: 3, Clinical Staff Allocated: Benny Bruise
+
+Requirement 8: Display a seating chart
+Front Waiting Room:
+  -Aandi Acute
+   - Clinical Staff: None
+  -Doug Derm
+   - Clinical Staff: None
+  -Greg Gastric
+   - Clinical Staff: None
+Front Waiting Room:
+  -Aandi Acute
+   - Clinical Staff: None
+  -Doug Derm
+   - Clinical Staff: None
+  -Greg Gastric
+   - Clinical Staff: None
+Triage:
+  -Beth Bunion
+   - Clinical Staff: None
+Inside Waiting Room:
+  -Clive Cardiac
+   - Clinical Staff: None
+  -Sally Johnson
+   - Clinical Staff: Benny Bruise
+Exam_1:
+  -Elise Enzyme
+   - Clinical Staff: None
+Surgical:
+  -Fatima Follicle
+   - Clinical Staff: None
+
