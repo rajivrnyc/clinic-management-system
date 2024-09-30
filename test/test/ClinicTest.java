@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import clinic.Clinic;
 import clinic.ClinicInterface;
 import clinic.ClinicalStaff;
@@ -81,6 +83,32 @@ public class ClinicTest {
   public void testGetNumStaff() {
     assertEquals(10, clinic.getNumStaff());
   }
+  
+  @Test
+  public void testAddNewPatient() {
+    clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
+    List<Patient> patients = clinic.getPatients();
+    Patient newPatient = patients.get(0);
+    assertEquals("Sally", newPatient.getFirstName());
+    assertEquals("Johnson", newPatient.getLastName());
+    assertEquals("01/02/1990", newPatient.getDateOfBirth());
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void nullFirstNameNewPatientTest() {
+    clinic.addNewPatient(null, "Johnson", "01/02/1990");
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void nullLastNameNewPatientTest() {
+    clinic.addNewPatient("Sally", null, "01/02/1990");
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void nullDobNameNewPatientTest() {
+    clinic.addNewPatient("Sally", "Johnson", null);
+  }
+  
   
   
 

@@ -97,6 +97,8 @@ public class Clinic implements ClinicInterface {
     int waitingRoomNum = rooms.indexOf(primaryWaitingRoom) + 1;
     Patient newPatient = new Patient(waitingRoomNum, firstName, lastName, dateOfBirth);
     primaryWaitingRoom.placePatient(newPatient);
+    this.patients.add(newPatient);
+    this.numPatients += 1;
   }
   
   @Override
@@ -109,6 +111,7 @@ public class Clinic implements ClinicInterface {
     ClinicalStaff newcStaff = new ClinicalStaff(jobTitle, firstName, lastName, 
         educationLevel, npiLevel);
     employees.add(newcStaff);
+    this.numStaff += 1;
   }
   
   @Override
