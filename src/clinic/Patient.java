@@ -99,7 +99,7 @@ public class Patient implements PatientInterface{
   
   @Override
   public List<ClinicalStaff> getAllocated() {
-    return this.allocated;
+    return new ArrayList<>(this.getAllocated());
   }
   
   /**
