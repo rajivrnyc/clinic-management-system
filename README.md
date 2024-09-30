@@ -18,9 +18,10 @@ Give a general overview of the problem and how your program solve the problem
 
 ### List of Features
 
-List all features that are present in your program.
-
-
+The current features of my program include:
+-Reading a text file into the model.
+-Registering a new patient into the model. If the patients do not have a room yet they are placed in the waiting room.
+-Registering a new clinical staff member
 
 ### How to Run
 
@@ -49,13 +50,15 @@ Document what changes you have made from earlier designs. Why did you make those
 ### Assumptions
 
 List any assumptions that you made during program development and implementations. Be sure that these do not conflict with the requirements of the project.
-
+- I assumed that the lowest number a room can be assigned is 1 and that it is not posible for a room to have a negative number assigned to it.
 
 
 ### Limitations
 
 What limitations exist in your program. This should include any requirements that were *not* implemented or were not working correctly (including something that might work some of the time).
-
+- Currently I do not have functionality to add a new room to the clinic.
+- I do not have any methods that might describe the beahvior of non clinical staff members.
+- I do not have room number as an attribute of the Room object itself.
 
 
 ### Citations
