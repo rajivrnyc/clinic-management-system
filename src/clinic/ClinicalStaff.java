@@ -29,7 +29,7 @@ public class ClinicalStaff implements Staff {
         + "name and education level cannot be null.");
     }
     
-    if (!npiLevel.matches("\\d{10")) {
+    if (!npiLevel.matches("\\d{10}")) {
       throw new IllegalArgumentException("NPI levels cannot be negative and must have 10 digits.");
     }
     this.jobTitle = jobTitle;
