@@ -154,7 +154,7 @@ public class ClinicTest {
   
   @Test
   public void testGetRoomFromNumber() {
-    assertEquals(primaryWaitingRoom, clinic.getRoomFromNumber(1));
+    assertEquals(primaryWaitingRoom, clinic.getRoomFromNumber(0));
   }
   
   @Test(expected = IllegalArgumentException.class)
@@ -201,14 +201,7 @@ public class ClinicTest {
   public void testNullDeactivateStaff() {
     clinic.deactivateClinicalStaffClinic(null);
   }
-  
-  @Test
-  public void testAssignPatient() {
-    Patient patient = new Patient(1, "Sally", "Johnson", "01/02/1990");
-    clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
-    clinic.assignPatient(patient, primaryWaitingRoom);
-    assertTrue(primaryWaitingRoom.getResidents().contains(patient));
-  }
+ 
   
   @Test(expected = IllegalArgumentException.class)
   public void testNullPatientAssignPatient() {

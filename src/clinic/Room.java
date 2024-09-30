@@ -141,7 +141,7 @@ public class Room implements RoomInterface {
    * @return a Room object by interpreting a text block that defines a room
    */
   public static Room textRoom(String roomText) {
-    String[] splitRoom = roomText.split(" ");
+    String[] splitRoom = roomText.split("\\s+");
       
     int tempx1 = Integer.parseInt(splitRoom[0]);
     int tempy1 = Integer.parseInt(splitRoom[1]);

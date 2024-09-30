@@ -17,7 +17,7 @@ public class Clinic implements ClinicInterface {
   private int numRooms;
   private int numStaff;
   private int numPatients;
-  private final Room primaryWaitingRoom;
+  private  Room primaryWaitingRoom;
   private List<Room> rooms;
   private List<Staff> employees;
   private List<Patient> patients;
@@ -117,10 +117,10 @@ public class Clinic implements ClinicInterface {
   
   @Override
   public Room getRoomFromNumber(int roomNumber) {
-    if (roomNumber < 1 || roomNumber > rooms.size()) {
+    if (roomNumber < 0 || roomNumber > rooms.size()) {
       throw new IllegalArgumentException("Invalid room number. This room does not exist.");
     }
-    return rooms.get(roomNumber - 1);
+    return rooms.get(roomNumber);
   }
   
   @Override
@@ -136,7 +136,7 @@ public class Clinic implements ClinicInterface {
     if (patient.getApproval()) {
       patient.deactivate();
     
-      Room tempRoom = getRoomFromNumber(patient.getRoomNumber());
+      Room tempRoom = getRoomFromNumber(patient.getRoomNumber() - 1);
       if (tempRoom == null) {
         throw new IllegalArgumentException("This patient has an invalid room.");
       }
@@ -156,10 +156,11 @@ public class Clinic implements ClinicInterface {
     for (Patient patient : patients) {
       patient.removeClinicalStaffMember(member);
     }
+    this.numStaff--;
   }
   
   private int roomNumFromRoom(Room room) {
-    int roomI = rooms.indexOf(room) + 1;
+    int roomI = rooms.indexOf(room);
     return roomI;
   }
   
@@ -170,12 +171,14 @@ public class Clinic implements ClinicInterface {
     }
     Room current = getRoomFromNumber(patient.getRoomNumber());
     if (current != null) {
-      current.removePatient(patient);
+      if (!current.isWaitingRoom()) {
+        current.removePatient(patient);
+      }
     }
     
-    if (!room.isWaitingRoom() && !room.isOccupied()) {
+    if (!room.isWaitingRoom() && room.isOccupied()) {
       throw new IllegalStateException("The room the patient is "
-      + "trying to occupy is alreaday occupied.");
+      + "trying to occupy is already occupied.");
     }
     room.placePatient(patient);
     patient.setRoomNumber(roomNumFromRoom(room));
@@ -200,19 +203,20 @@ public class Clinic implements ClinicInterface {
       if (patientslocal.isEmpty()) {
         sb.append(" - This room is empty");
       } else {
-        for (Patient patient : patients) {
+        for (Patient patient : patientslocal) {
           sb.append("  -").append(patient.getFirstName()).append(" ")
          .append(patient.getLastName()).append("\n");
 
           sb.append("   - Clinical Staff: ");
           if (patient.getAllocated().isEmpty()) {
-            sb.append("None");
+            sb.append("None\n");
           } else {
             for (ClinicalStaff member : patient.getAllocated()) {
               sb.append(member.getFirstName()).append(" ").append(member.getLastName())
                 .append(", ");
             }
             sb.setLength(sb.length() - 2);
+            sb.append("\n");
           }
         }
       }
@@ -244,44 +248,41 @@ public class Clinic implements ClinicInterface {
   /*
    * Helper method for the read loop for Room.
    */  
-  private static List<Room> readRoom(BufferedReader br, int numRooms) throws IOException {
-    List<Room> tempRooms = new ArrayList<>();
-    String textWaitingRoom = br.readLine();
-    Room textPrimaryWaitingRoom = Room.textRoom(textWaitingRoom);
-    tempRooms.add(textPrimaryWaitingRoom);
-    for (int i = 1; i < numRooms; i++) {
-      String textRoomInfo = br.readLine();
-      Room tempRoom = Room.textRoom(textRoomInfo);
-      tempRooms.add(tempRoom);
+  private static void readRoom(BufferedReader br, int numRooms, 
+        List<Room> roomList) throws IOException {
+    for (int i = 0; i < numRooms; i++) {
+      String roomText = br.readLine();
+      Room room = Room.textRoom(roomText);
+      roomList.add(room);
     }
-    return tempRooms;
+
   }
   
   /*
    * Helper method for the read loop for Staff.
    */
-  private static List<Staff> readStaff(BufferedReader br, int textNumStaff) throws IOException {
-    List<Staff> textStaffs = new ArrayList<>();
+  private static void readStaff(BufferedReader br, int textNumStaff, 
+        Clinic clinic) throws IOException {
     for (int i = 0; i < textNumStaff; i++) {
-      String textStaffInfo = br.readLine();
-      Staff tempStaff = StaffFactoryHelper.constructStaff(textStaffInfo);
-      textStaffs.add(tempStaff);
+      String staffText = br.readLine();
+      Staff staff = StaffFactoryHelper.constructStaff(staffText);
+      clinic.employees.add(staff);
     }
-    return textStaffs;
   }
   
   /*
    * Helper method for the read loop for Patient.
    */
-  private static List<Patient> readPatients(BufferedReader br, 
-       int textNumPatients) throws IOException {
-    List<Patient> textPatients = new ArrayList<>();
+  private static void readPatients(BufferedReader br, 
+       int textNumPatients, Clinic clinic) throws IOException {
     for (int i = 0; i < textNumPatients; i++) {
-      String textPatientInfo = br.readLine();
-      Patient tempPatient = Patient.textPatient(textPatientInfo);
-      textPatients.add(tempPatient);
+      String patientText = br.readLine();
+      Patient patient = Patient.textPatient(patientText);
+      int roomNum = patient.getRoomNumber();
+      Room assignedRoom = clinic.getRoomFromNumber(roomNum);
+      assignedRoom.placePatient(patient);
+      clinic.patients.add(patient);
     }
-    return textPatients;
   }
   
   /**
@@ -297,21 +298,20 @@ public class Clinic implements ClinicInterface {
       final String  textClinicName = br.readLine();
       
       int textNumRooms = Integer.parseInt(br.readLine());
-      List<Room> textRooms = readRoom(br, textNumRooms);
-      Room textPrimaryWaitingRoom = textRooms.get(0);
+      List<Room> tempRooms = new ArrayList<>();
+      readRoom(br, textNumRooms, tempRooms);
 
-      int textNumStaff = Integer.parseInt(br.readLine());
-      List<Staff> textStaffs = readStaff(br, textNumStaff);
-
-      int textNumPatients = Integer.parseInt(br.readLine());
-      List<Patient> textPatients = readPatients(br, textNumPatients);
+      Room textPrimaryWaitingRoom = tempRooms.get(0);
+      Clinic textClinic = new Clinic(textClinicName, textNumRooms, 0, 0, textPrimaryWaitingRoom);
+      textClinic.rooms.addAll(tempRooms);
       
-
-      Clinic textClinic = new Clinic(textClinicName, textNumRooms, textNumStaff,
-          textNumPatients, textPrimaryWaitingRoom);
-      textClinic.rooms = textRooms;
-      textClinic.employees = textStaffs;
-      textClinic.patients = textPatients;
+      int textNumStaff = Integer.parseInt(br.readLine());
+      readStaff(br, textNumStaff, textClinic);
+      
+      int textNumPatients = Integer.parseInt(br.readLine());
+      readPatients(br, textNumPatients, textClinic);
+      textClinic.numStaff = textNumStaff;
+      textClinic.numPatients = textNumPatients;
 
       return textClinic;
     } catch (NumberFormatException  e) {

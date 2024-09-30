@@ -120,7 +120,7 @@ public class Patient implements PatientInterface{
    * @return A patient object based on the information inputed into the method.
    */
   public static Patient textPatient(String patientText) {
-    String[] splitPatient = patientText.split(" ");
+    String[] splitPatient = patientText.split("\\s+");
     int tempRoomNumber = Integer.parseInt(splitPatient[0]);
     String tempFirstName = splitPatient[1];
     String tempLastName = splitPatient[2];

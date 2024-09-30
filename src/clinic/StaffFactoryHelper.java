@@ -14,7 +14,7 @@ public class StaffFactoryHelper {
    * @return returns a Staff object of either clinical staff or non clinical staff.
    */
   public static Staff constructStaff(String staffText) {
-    String[] staffSplit = staffText.split(" ");
+    String[] staffSplit = staffText.split("\\s+");
     String jobTitle = staffSplit[0];
     String firstName = staffSplit[1];
     String lastName = staffSplit[2];
