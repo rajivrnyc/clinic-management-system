@@ -39,7 +39,7 @@ Provide instructions on how to use the functionality in your program. If it is i
 ### Example Runs
 
 List any example runs that you have in res/ directory and provide a description of what each example represents or does. Make sure that your example runs are provided as *plain text files*.
-- I have an example run testing a clinic file where I inputted a text file which was then read into my driver class.
+- I have an example run testing a clinic file where I inputted a text file which was then read into my driver class. The goal of this class was to test each of the main requirements for milestone 1.
 - Each requirement is subtitled and demonstrated with important and relevant attributes demonstrating how and why each method of mine succesffuly executed in accordance with the requirements.
 - The final requirements show that the structure of my model is sound as it accurately displays the location of each member of the clinic in their respective rooms alongside their assigned clinical staff members.
 
