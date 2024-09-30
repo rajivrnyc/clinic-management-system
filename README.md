@@ -13,7 +13,8 @@ This repo represents the coursework for CS 5010!
 ### About/Overview
 
 Give a general overview of the problem and how your program solve the problem
-
+- The goal is to create a model of a Clinic with different rooms, patients, and staff members and implement the functionality that involves registering and maintaining info on patients and employees while ensuring that there are not conflicts with rooms or patient to staff assignments.
+- My program solves this problem by conducting all the functions of the clinic through the main Clinic class itself while calling on Room, Patient and Staff classes to access unique attributes and functions of these classes.
 
 
 ### List of Features
