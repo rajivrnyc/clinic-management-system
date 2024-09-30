@@ -27,7 +27,11 @@ The current features of my program include:
 ### How to Run
 
 Describe how to run your program from the JAR file. Describe what arguments are needed (if any) and what they mean.
-
+- To run my program from a .jar file first make sure the .jar file is downloaded alongside clinicfile.txt
+- Open a command prompt
+- Change diretory to where the jar file is located.
+- Use the command "java -jar Milestone1.jar clinicfile.txt" where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
+- The only argument needed to accomplish this is clinicfile.txt which the jar reads and processes.
 
 
 ### How to Use the Program
