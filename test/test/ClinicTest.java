@@ -31,5 +31,10 @@ public class ClinicTest {
     primaryWaitingRoom = new Room(0, 0, 20, 20, RoomType.WAITING, "Primary Waiting Room");
     clinic = new Clinic("Local Clinic", 5, 10, 20, primaryWaitingRoom);
   }
+  
+  @Test
+  public void testClinic() {
+    assertEquals(clinic, new Clinic("Local Clinic", 5, 10, 20, primaryWaitingRoom));
+  }
 
 }

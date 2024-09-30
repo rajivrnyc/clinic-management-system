@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader; 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List; 
+import java.util.List;
+import java.util.Objects; 
 
 /**
  * A class to represent the workings of a clinic.
@@ -206,6 +207,27 @@ public class Clinic implements ClinicInterface {
       }
     }
     return sb.toString();
+  }
+  
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    Clinic clinic = (Clinic) obj;
+    return (numRooms == clinic.numRooms 
+        && numStaff == clinic.numStaff 
+        && numPatients == clinic.numPatients 
+        && clinicName.equals(clinic.clinicName) 
+        && primaryWaitingRoom.equals(clinic.primaryWaitingRoom));
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hash(clinicName, numRooms, numStaff, numPatients, primaryWaitingRoom);
   }
   
   /*
