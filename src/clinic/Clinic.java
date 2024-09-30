@@ -52,6 +52,7 @@ public class Clinic implements ClinicInterface {
     this.rooms = new ArrayList<>();
     this.employees = new ArrayList<>();
     this.patients = new ArrayList<>();
+    this.rooms.add(primaryWaitingRoom);
   }
   
   @Override
@@ -123,10 +124,15 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public void sendHome(Patient patient) {
+  public void sendHome(Patient patient, ClinicalStaff member) {
     if (patient == null) {
       throw new IllegalArgumentException("This patient object is invalid.");
     }
+    
+    if (member == null) {
+      throw new IllegalArgumentException("This clinical staff member is invalid.");
+    }
+    patient.setApproval(member, true);
     if (patient.getApproval()) {
       patient.deactivate();
     
@@ -135,6 +141,7 @@ public class Clinic implements ClinicInterface {
         throw new IllegalArgumentException("This patient has an invalid room.");
       }
       tempRoom.removePatient(patient);
+      this.numPatients--;
     }
   }
   

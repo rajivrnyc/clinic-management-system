@@ -60,6 +60,13 @@ public interface PatientInterface {
    * @return a boolean that states whether or not the patient is approved for discharge.
    */
   boolean getApproval();
+  
+  /**
+   * Finds the person who approved the patient's discharge.
+   * 
+   * @return the Clinical Staff member who approved the patient's discharge.
+   */
+  ClinicalStaff getApprovedBy();
 
   /**
    * deactivates a patient by removing assigned staff members and setting status to inactive.

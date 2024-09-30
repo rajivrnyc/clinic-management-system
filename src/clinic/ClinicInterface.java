@@ -97,9 +97,10 @@ public interface ClinicInterface {
    * If a patient is approved for discharge, they are sent home.
    * 
    * @param patient A patient who should be approved for discharge.
+   * @param member A clinical staff member who approves the patient's discharge.
    * @throws IllegalArgumentException if patient parameter is null.
    */
-  void sendHome(Patient patient);
+  void sendHome(Patient patient, ClinicalStaff member);
   
   /**
    * Deactivates a clinical staff member and removes any patient assignments.

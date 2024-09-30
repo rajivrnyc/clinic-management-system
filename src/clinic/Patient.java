@@ -17,6 +17,7 @@ public class Patient implements PatientInterface{
   private List<ClinicalStaff> allocated;
   private boolean approval;
   private boolean isActive;
+  private ClinicalStaff approvedBy;
   
   
   /**
@@ -73,7 +74,17 @@ public class Patient implements PatientInterface{
   public void setApproval(ClinicalStaff member, boolean approvalStatus) {
     if (member instanceof ClinicalStaff) {
       this.approval = approvalStatus;
+      if (approvalStatus) {
+        this.approvedBy = member;
+      } else {
+        this.approvedBy = null;
+      }
     }
+  }
+  
+  @Override
+  public ClinicalStaff getApprovedBy() {
+    return approvedBy;
   }
   
   @Override
@@ -99,7 +110,7 @@ public class Patient implements PatientInterface{
   
   @Override
   public List<ClinicalStaff> getAllocated() {
-    return new ArrayList<>(this.getAllocated());
+    return this.allocated;
   }
   
   /**
