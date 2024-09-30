@@ -38,13 +38,19 @@ Provide instructions on how to use the functionality in your program. If it is i
 ### Example Runs
 
 List any example runs that you have in res/ directory and provide a description of what each example represents or does. Make sure that your example runs are provided as *plain text files*.
-
+- I have an example run testing a clinic file where I inputted a text file which was then read into my driver class.
+- Each requirement is subtitled and demonstrated with important and relevant attributes demonstrating how and why each method of mine succesffuly executed in accordance with the requirements.
+- The final requirements show that the structure of my model is sound as it accurately displays the location of each member of the clinic in their respective rooms alongside their assigned clinical staff members.
 
 
 ### Design/Model Changes
 
 Document what changes you have made from earlier designs. Why did you make those changes? Keep an on-going list using some form of versioning so it is clear when these changes occurred.
-
+v1
+- To start with I created an interface called Staff which is inherited by Non Clinical Staff and Clinical Staff along with enumerations for EducationLevel, CprLevel and RoomType.
+- I made a classes for clinical staff, non clinical staff, patient, room and clinic. Along with these I have basic attributes and methods for each of these classes.
+v1.1
+-
 
 
 ### Assumptions
