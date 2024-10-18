@@ -128,7 +128,15 @@ public class Room implements RoomInterface {
           }
           sb.setLength(sb.length() - 2);
         }
-        sb.append("\nVisit Info: ");
+        VisitRecord mostRecent = patient.getMostRecentVisit();
+        if (mostRecent != null) {
+          sb.append("\nMost Recent Visit: ");
+          sb.append("Visit Date: ").append(mostRecent.getDate())
+          .append(", Chief Complaint: ").append(mostRecent.getChiefComplaint())
+          .append(", Temperature: ").append(mostRecent.getTemperature());
+        } else {
+          sb.append("\nPatient has no Visit Records");
+        }
         
       }
     }
