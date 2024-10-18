@@ -218,9 +218,14 @@ public class Clinic implements ClinicInterface {
             sb.setLength(sb.length() - 2);
             sb.append("\n");
           }
+          VisitRecord recentVisit = patient.getMostRecentVisit();
+          if (recentVisit != null) {
+            sb.append("     - Most Recent Visit: ")
+              .append(recentVisit.toString()).append("\n");
+          }
         }
       }
-      sb.append("\n-------------------------\n");
+      sb.append("-------------------------\n");
     }
     return sb.toString();
   }

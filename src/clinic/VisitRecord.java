@@ -49,7 +49,7 @@ public class VisitRecord implements Record {
   
   @Override
   public String toString() {
-    DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
     StringBuilder sb = new StringBuilder();
     
     sb.append("").append(dateArrival.format(dtFormat)).append(", Complaint: ").append(complaint)
