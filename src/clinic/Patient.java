@@ -43,6 +43,7 @@ public class Patient implements PatientInterface {
     this.dateOfBirth = dateOfBirth;
     this.approval = false;
     this.allocated = new ArrayList<>();
+    this.visitInfo = new ArrayList<>();
     this.isActive = true;
   }
   
