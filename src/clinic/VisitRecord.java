@@ -27,7 +27,7 @@ public class VisitRecord implements Record {
       throw new IllegalArgumentException("Patient cannot have a null arrival or complaint.");
     }
     
-    this.dateArrival = dateArrival;
+    this.dateArrival = LocalDateTime.now();
     this.complaint = complaint;
     this.temperature = Math.round(temperature * 10.0) / 10.0;
   }
