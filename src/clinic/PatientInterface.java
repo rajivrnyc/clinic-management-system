@@ -80,6 +80,12 @@ public interface PatientInterface {
    */
   List<ClinicalStaff> getAllocated();
   
+  void addRecord(String complaint, double temperature) {
+	  if (complaint == null) {
+        throw new IllegalArgumentException("complaint cannot bbe null");
+	  }
+  }
+  
   /**
    * removes a clinical staff member from allocated clinical staff members that are
    * caring for this patient object.

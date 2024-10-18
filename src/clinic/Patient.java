@@ -115,6 +115,8 @@ public class Patient implements PatientInterface {
     return this.allocated;
   }
   
+  
+  
   /**
    * Method used to interpret the Patient portion of a text file passed in
    * to the model.
