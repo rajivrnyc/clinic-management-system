@@ -128,6 +128,8 @@ public class Room implements RoomInterface {
           }
           sb.setLength(sb.length() - 2);
         }
+        sb.append("\nVisit Info: ");
+        
       }
     }
     return sb.toString();
