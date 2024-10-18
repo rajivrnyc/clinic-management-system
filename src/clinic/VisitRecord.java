@@ -28,7 +28,7 @@ public class VisitRecord implements Record {
     
     this.dateArrival = dateArrival;
     this.complaint = complaint;
-    this.temperature = temperature;
+    this.temperature = Math.round(temperature * 10.0) / 10.0;
   }
 
   @Override
@@ -43,7 +43,7 @@ public class VisitRecord implements Record {
 
   @Override
   public double getBodyTemperature() {
-    return Math.round(temperature * 10.0) / 10.0;
+    return temperature;
   }
 
 }
