@@ -120,6 +120,18 @@ public class Patient implements PatientInterface {
     if (complaint == null) {
       throw new IllegalArgumentException("Complaint cannot be null");
     }
+    
+    Record newRecord = new VisitRecord(complaint, temperature);
+    this.visitInfo.add(newRecord);
+  }
+  
+  @Override
+  public VisitRecord getMostRecentVisit() {
+    if (visitInfo.isEmpty()) {
+      return null;
+    }
+    Record recentRecord = visitInfo.get(visitInfo.size() - 1);
+    return (VisitRecord) recentRecord;
   }
   
   /**
