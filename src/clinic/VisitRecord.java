@@ -42,7 +42,7 @@ public class VisitRecord implements Record {
   }
 
   @Override
-  public double getBodyTemperature() {
+  public double getTemperature() {
     return temperature;
   }
   

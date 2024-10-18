@@ -28,5 +28,5 @@ public interface Record {
    * 
    * @return a patient's body temperature.
    */
-  double getBodyTemperature();
+  double getTemperature();
 }
