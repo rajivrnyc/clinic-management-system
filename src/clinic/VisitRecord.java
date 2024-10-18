@@ -8,6 +8,18 @@ import java.time.LocalDateTime;
  * and their body temperature.
  */
 public class VisitRecord implements Record {
+  private final LocalDateTime dateArrival;
+  private final String complaint;
+  private final double tempeprature;
+  
+  public VisitRecord(LocalDateTime dateArrival, String complaint, double temperature) {
+   
+    	
+    }
+    this.dateArrival = dateArrival;
+    this.complaint = complaint;
+    this.temp = temp;
+  }
 
   @Override
   public LocalDateTime getDate() {
