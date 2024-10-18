@@ -97,4 +97,12 @@ public interface PatientInterface {
    */
   void removeClinicalStaffMember(ClinicalStaff member);
   
+  /**
+   * Method to return the visit record on the patient's
+   * most recent visit to the clinic.
+   * 
+   * @return returns the patient's most recent visit record
+   */
+  VisitRecord mostRecentVisit();
+  
 }
