@@ -13,49 +13,79 @@ This repo represents the coursework for CS 5010!
 ### About/Overview
 
 Give a general overview of the problem and how your program solve the problem
-
-
+- The goal is to create a model of a Clinic with different rooms, patients, and staff members and implement the functionality that involves registering and maintaining info on patients and employees while ensuring that there are not conflicts with rooms or patient to staff assignments.
+- My program solves this problem by conducting all the functions of the clinic through the main Clinic class itself while calling on Room, Patient and Staff classes to access unique attributes and functions of these classes.
 
 ### List of Features
 
-List all features that are present in your program.
+The current features of my program include:
 
-
+- Reading a text file into the model.
+- Registering a new patient into the model. If the patients do not have a room yet they are placed in the waiting room
+- Registering a new clinical staff member
+- Sending a patient home while retaining their information within the Clinic system. Ensuring that their departure is confirmed by a ClinicalStaff member
+- The ability to deactiate a clinical staff member
+- Assigning a patient to a room which removes them from the room they were previously assigned to. This also allows for waiting rooms to accomodate more than one person per room.
+- Assign as many clinical staff members to any patient as needed.
+- Return a String based visual representation of a room, its residents and the clinical staff members assigned to those residents.
+- Display a seating  chart which concisely displays each room and each person in their respective rooms.
+- The ability to find a room based on a given room number.
 
 ### How to Run
 
 Describe how to run your program from the JAR file. Describe what arguments are needed (if any) and what they mean.
-
+- To run my program from a .jar file first make sure the .jar file is downloaded alongside clinicfile.txt
+- Open a command prompt
+- Change diretory to where the jar file is located.
+- Use the command "java -jar Milestone1.jar clinicfile.txt" where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
+- The only argument needed to accomplish this is clinicfile.txt which the jar reads and processes.
 
 
 ### How to Use the Program
 
 Provide instructions on how to use the functionality in your program. If it is interactive, describe how to interact with your program. Pay particular attention to the parts that are not part of the example runs that you provide.
-
+- If the user passes in a clinic text file they will be able to witness the execution of the features listed above within the context of the clinic file that they pass in to the jar file.
+- The model has not yet implemented interactivity. 
 
 
 ### Example Runs
 
 List any example runs that you have in res/ directory and provide a description of what each example represents or does. Make sure that your example runs are provided as *plain text files*.
-
+- I have an example run testing a clinic file where I inputted a text file which was then read into my driver class. The goal of this class was to test each of the main requirements for Milestone 1.
+- Each requirement is subtitled and demonstrated with important and relevant attributes demonstrating how and why each method of mine succesffuly executed in accordance with the requirements.
+- The final requirements show that the structure of my model is sound as it accurately displays the location of each member of the clinic in their respective rooms alongside their assigned clinical staff members.
 
 
 ### Design/Model Changes
 
 Document what changes you have made from earlier designs. Why did you make those changes? Keep an on-going list using some form of versioning so it is clear when these changes occurred.
-
+v1
+- To start with I created an interface called Staff which is inherited by Non Clinical Staff and Clinical Staff along with enumerations for EducationLevel, CprLevel and RoomType.
+- I made a classes for clinical staff, non clinical staff, patient, room and clinic. Along with these, I have basic attributes and basic methods for each of these classes.
+v1.1
+- Added more methods to the classes. The structure of my model seems to operate mainly from Clinic and calls methods stored within the other classes to carry out the major clinic functions of the model.
+- Started adding functions like addANewPatient() to Clinic as well as send home. With this I need to add isActive flags on Patient and Staff entities so that their information can be retained within the model.
+v1.3
+- Added the readFile() method to the Clinic class. This is a large method that uses 3 helper methods each with functions for reading each patient, room and staff file into the model as well as adding to the newly created ArrayList to store these objects in a location where its easy for Clinic to carry out its other duties such as manipulating the activity of patients and staff members within the clinic.
+v1.4
+- Added ArrayList of ClinicalStaff objects to patient and ArrayList of Patient objects to room. Room needs to maintain a list of everyone who stays within the room and leaves the room when they are moved to accomodate for when a room can evenutally hold more than 1 person at a time. In addition WaitingRooms must store mutliple Patient objects as they are capable of keeping multiple patients.
+- I kept a list of allocated staff members for a Patient because they can have multiple clinical staff members assigned to them. Deactivation of a Staff member would simply mean removing them from that list and deactivation of a Patient would mean emptying the list entirely.
 
 
 ### Assumptions
 
 List any assumptions that you made during program development and implementations. Be sure that these do not conflict with the requirements of the project.
-
+- I assumed that the lowest number a room can be assigned is 1 and that it is not posible for a room to have a negative room number assigned to it.
+- If a staff member is deactivated I assume that none of their attributes change with the deactivation such as jobTitle or NPI level/CprLevel.
+- As of right now I assume that there is no maximum capacity for the clinic or a limit to how many clinical staff members can be assigned to a patient.
 
 
 ### Limitations
 
 What limitations exist in your program. This should include any requirements that were *not* implemented or were not working correctly (including something that might work some of the time).
-
+- Currently I do not have functionality to add a new room to the clinic.
+- I do not have any methods that might describe the beahvior of non clinical staff members.
+- I do not have room number as an attribute of the Room object itself.
 
 
 ### Citations
