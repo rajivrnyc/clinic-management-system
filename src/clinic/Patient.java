@@ -15,6 +15,7 @@ public class Patient implements PatientInterface {
   private String lastName;
   private String dateOfBirth;
   private List<ClinicalStaff> allocated;
+  private List<Record> visitInfo;
   private boolean approval;
   private boolean isActive;
   private ClinicalStaff approvedBy;
