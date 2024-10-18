@@ -1,7 +1,8 @@
 package clinic;
 
 import java.util.ArrayList;
-import java.util.List; 
+import java.util.List;
+
 /**
  * A class to represent the behavior of a room within the clinic.
  * Rooms have bottom-left and top-right coordinates, a type and a name.
