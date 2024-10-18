@@ -1,6 +1,7 @@
 package clinic;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Record of a patient upon their most recent
@@ -44,6 +45,17 @@ public class VisitRecord implements Record {
   @Override
   public double getBodyTemperature() {
     return temperature;
+  }
+  
+  @Override
+  public String toString() {
+    DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    StringBuilder sb = new StringBuilder();
+    
+    sb.append("").append(dateArrival.format(dtFormat)).append(", Complaint: ").append(complaint)
+    .append(", Temperature: ").append(temperature).append(" °C");
+    
+    return sb.toString();
   }
 
 }
