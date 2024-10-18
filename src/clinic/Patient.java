@@ -115,7 +115,12 @@ public class Patient implements PatientInterface {
     return this.allocated;
   }
   
-  
+  @Override
+  public void addRecord(String complaint, double temperature) {
+    if (complaint == null) {
+      throw new IllegalArgumentException("Complaint cannot be null");
+    }
+  }
   
   /**
    * Method used to interpret the Patient portion of a text file passed in
