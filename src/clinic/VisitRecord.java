@@ -32,8 +32,9 @@ public class VisitRecord implements Record {
   }
 
   @Override
-  public LocalDateTime getDate() {
-    return dateArrival;
+  public String getDate() {
+    DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    return dateArrival.format(dtFormat);
   }
 
   @Override

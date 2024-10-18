@@ -72,7 +72,8 @@ public class ClinicDriver {
     System.out.println("Requirement 7: Print information about a specific room as a String");
     Room infoR = clinic.getRoomFromNumber(sally.getRoomNumber());
     Room infoS = clinic.getRoomFromNumber(1);
-    System.out.println("Printing info about the room Sally is in:");
+    sally.addRecord("Headache", 39);
+    System.out.println("Printing info about the room Sally is in:\n");
     System.out.println(infoR.toString());
     System.out.println();
     System.out.println("Requirement 8: Display a seating chart");

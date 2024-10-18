@@ -130,12 +130,12 @@ public class Room implements RoomInterface {
         }
         VisitRecord mostRecent = patient.getMostRecentVisit();
         if (mostRecent != null) {
-          sb.append("\nMost Recent Visit: ");
-          sb.append("Visit Date: ").append(mostRecent.getDate())
-          .append(", Chief Complaint: ").append(mostRecent.getChiefComplaint())
-          .append(", Temperature: ").append(mostRecent.getTemperature());
+          sb.append("\n   Most Recent Visit: ");
+          sb.append("\n   Visit Date: ").append(mostRecent.getDate())
+          .append("\n   Chief Complaint: ").append(mostRecent.getChiefComplaint())
+          .append("\n   Temperature: ").append(mostRecent.getTemperature()).append("°C");
         } else {
-          sb.append("\nPatient has no Visit Records");
+          sb.append("\n   Patient has no Visit Records");
         }
         
       }

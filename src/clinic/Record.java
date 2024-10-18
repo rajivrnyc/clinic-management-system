@@ -10,9 +10,9 @@ public interface Record {
   /**
   * A method used to get the patient's admission date into the hospital.
   * 
-   * @return a time representing the patient's admission to the clinic.
+   * @return a String representing the patient's admission to the clinic.
   */
-  LocalDateTime getDate();
+  String getDate();
   
   /**
    * Returns a string about the patients complaint upon coming to the hospital.
