@@ -23,7 +23,7 @@ public interface Record {
   
   
   /**
-   * Gets the patient's body temperature at time of reading in degrees Celcius.
+   * Gets the patient's body temperature at time of reading in degrees Celsius.
    * The temperature is displayed to one decimal place of precision.
    * 
    * @return a patient's body temperature.
