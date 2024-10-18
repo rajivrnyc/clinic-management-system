@@ -18,12 +18,11 @@ public class VisitRecord implements Record {
    * arrival to the clinic, complaint is the patient's chief complaint to the clinic,
    * and temperature is the patient's body temperature in Celsius rounded to 1 decimal.
    * 
-   * @param dateArrival the patient's arrival date and time to the clinic.
    * @param complaint the patient's chief complaint upon coming to the clinic.
    * @param temperature the patient's temperature in Celsius upon coming to the clinic.
    */
-  public VisitRecord(LocalDateTime dateArrival, String complaint, double temperature) {
-    if (dateArrival == null || complaint == null) {
+  public VisitRecord(String complaint, double temperature) {
+    if (complaint == null) {
       throw new IllegalArgumentException("Patient cannot have a null arrival or complaint.");
     }
     
