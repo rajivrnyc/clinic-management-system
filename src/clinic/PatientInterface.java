@@ -103,6 +103,6 @@ public interface PatientInterface {
    * 
    * @return returns the patient's most recent visit record
    */
-  VisitRecord mostRecentVisit();
+  VisitRecord getMostRecentVisit();
   
 }
