@@ -33,7 +33,7 @@ public class VisitRecord implements Record {
 
   @Override
   public String getDate() {
-    DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
     return dateArrival.format(dtFormat);
   }
 

@@ -220,6 +220,7 @@ public class Clinic implements ClinicInterface {
           }
         }
       }
+      sb.append("\n-------------------------\n");
     }
     return sb.toString();
   }
