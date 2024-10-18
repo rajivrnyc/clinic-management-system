@@ -115,6 +115,7 @@ public class Room implements RoomInterface {
       sb.append("\nNone");
     } else {
       for (Patient patient : residents) {
+        sb.append("\n---------------------------------------");
         sb.append("\n").append(patient.getFirstName()).append(" ")
         .append(patient.getLastName()).append(", Room Number: ").append(patient.getRoomNumber())
         .append(", Clinical Staff Allocated: ");
@@ -130,9 +131,8 @@ public class Room implements RoomInterface {
         }
         VisitRecord mostRecent = patient.getMostRecentVisit();
         if (mostRecent != null) {
-          sb.append("\n   Most Recent Visit: ");
           
-          sb.append("\n     Chief Complaint: ").append(mostRecent.getChiefComplaint());
+          sb.append("\n   Chief Complaint: ").append(mostRecent.getChiefComplaint());
           
         } else {
           sb.append("\n   Patient has no Visit Records");
@@ -140,6 +140,7 @@ public class Room implements RoomInterface {
         
       }
     }
+    sb.append("\n---------------------------------------");
     return sb.toString();
   } 
 
