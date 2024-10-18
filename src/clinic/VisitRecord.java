@@ -33,17 +33,17 @@ public class VisitRecord implements Record {
 
   @Override
   public LocalDateTime getDate() {
-    return null;
+    return dateArrival;
   }
 
   @Override
   public String getChiefComplaint() {
-    return null;
+    return complaint;
   }
 
   @Override
   public double getBodyTemperature() {
-    return 0;
+    return Math.round(temperature * 10.0) / 10.0;
   }
 
 }
