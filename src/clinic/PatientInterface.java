@@ -81,9 +81,10 @@ public interface PatientInterface {
   List<ClinicalStaff> getAllocated();
   
   /**
+   * Method to add a new visit to the patient's list of visits.
    * 
-   * @param complaint
-   * @param temperature
+   * @param complaint The patient's chief complaint as a string.
+   * @param temperature The patient's temperature reading in Celsius.
    */
   void addRecord(String complaint, double temperature);
 
