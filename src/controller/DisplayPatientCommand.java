@@ -1,6 +1,7 @@
 package controller;
 
 import clinic.Clinic;
+import clinic.ClinicInterface;
 import clinic.ClinicalStaff;
 import clinic.ClinicalStaffInterface;
 import clinic.EducationLevel;
@@ -13,9 +14,9 @@ import java.util.Scanner;
  * Executes displaying of a patient object.
  */
 public class DisplayPatientCommand implements ClinicCommand {
-
+	
   @Override
-  public void execute(Clinic model, Scanner scanner) throws IOException {
+  public void execute(ClinicInterface model, Scanner scanner) throws IOException {
     model.addNewPatient("Sally", "Johnson", "01/02/1990");
     PatientInterface sallyJ = model.getPatients().get(model.getPatients().size() - 1);
     model.addNewClinicalStaff("Doctor", "John", "Smith", EducationLevel.MASTERS, "0123456789");
