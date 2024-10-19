@@ -42,7 +42,7 @@ public interface ClinicInterface {
    * Gets a copy of the ArrayList rooms and returns it.
    * @return a copy of ArrayList rooms.
    */
-  List<Room> getRooms();
+  List<RoomInterface> getRooms();
   
   /**
    * Gets a copy of the ArrayList employees and returns it.
@@ -56,7 +56,7 @@ public interface ClinicInterface {
    * Gets a copy of the ArrayList patients and returns it.
    * @return a copy of ArrayList patients.
    */
-  List<Patient> getPatients();
+  List<PatientInterface> getPatients();
   
   
   /**
@@ -90,7 +90,7 @@ public interface ClinicInterface {
    * @return a room object associated with that room number.
    * @throws IllegalArgumentException if the room number is invalid.
    */
-  Room getRoomFromNumber(int roomNumber);
+  RoomInterface getRoomFromNumber(int roomNumber);
   
   
   /**
@@ -100,7 +100,7 @@ public interface ClinicInterface {
    * @param member A clinical staff member who approves the patient's discharge.
    * @throws IllegalArgumentException if patient parameter is null.
    */
-  void sendHome(Patient patient, ClinicalStaff member);
+  void sendHome(PatientInterface patient, ClinicalStaffInterface member);
   
   /**
    * Deactivates a clinical staff member and removes any patient assignments.
@@ -108,7 +108,7 @@ public interface ClinicInterface {
    * @param member a clinical staff member at the clinic.
    * @throws IllegalArgumentException if the member parameter is null.
    */
-  void deactivateClinicalStaffClinic(ClinicalStaff member);
+  void deactivateClinicalStaffClinic(ClinicalStaffInterface member);
   
   /**
    * Method to assign a patient to a room.
@@ -118,7 +118,7 @@ public interface ClinicInterface {
    * @throws IllegalArgumentException if either input is null.
    * @throws IllegalStateException if the room the patient is trying to enter is full.
    */
-  void assignPatient(Patient patient, Room room);
+  void assignPatient(PatientInterface patient, RoomInterface room);
   
   /**
    * Method to assign a clinical staff member to a patient.
@@ -127,7 +127,7 @@ public interface ClinicInterface {
    * @param member A clinical staff member who will be assigned to a patient.
    * @throws IllegalArgumentException if 
    */
-  void assignStaff(Patient patient, ClinicalStaff member);
+  void assignStaff(PatientInterface patient, ClinicalStaffInterface member);
   
   /**
    * Makes a seating chart of every room in the clinic.

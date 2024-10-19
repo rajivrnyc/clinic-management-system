@@ -17,10 +17,10 @@ public class Clinic implements ClinicInterface {
   private int numRooms;
   private int numStaff;
   private int numPatients;
-  private  Room primaryWaitingRoom;
-  private List<Room> rooms;
+  private  RoomInterface primaryWaitingRoom;
+  private List<RoomInterface> rooms;
   private List<Staff> employees;
-  private List<Patient> patients;
+  private List<PatientInterface> patients;
   
   
   /**
@@ -34,7 +34,7 @@ public class Clinic implements ClinicInterface {
    * @param primaryWaitingRoom The primary waiting room at the clinic.
    */
   public Clinic(String clinicName, int numRooms, int numStaff, 
-        int numPatients, Room primaryWaitingRoom) {
+        int numPatients, RoomInterface primaryWaitingRoom) {
     if (numRooms < 1 || numStaff < 0 || numPatients < 0) {
       throw new IllegalArgumentException("A clinic must have at least one room and "
         + "cannot have a negative number of patients or staff.");
@@ -76,7 +76,7 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public List<Room> getRooms() {
+  public List<RoomInterface> getRooms() {
     return new ArrayList<>(this.rooms);
   }
   
@@ -86,7 +86,7 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public List<Patient> getPatients() {
+  public List<PatientInterface> getPatients() {
     return new ArrayList<>(this.patients);
   }
   
@@ -116,7 +116,7 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public Room getRoomFromNumber(int roomNumber) {
+  public RoomInterface getRoomFromNumber(int roomNumber) {
     if (roomNumber < 0 || roomNumber > rooms.size()) {
       throw new IllegalArgumentException("Invalid room number. This room does not exist.");
     }
@@ -124,7 +124,7 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public void sendHome(Patient patient, ClinicalStaff member) {
+  public void sendHome(PatientInterface patient, ClinicalStaffInterface member) {
     if (patient == null) {
       throw new IllegalArgumentException("This patient object is invalid.");
     }
@@ -136,7 +136,7 @@ public class Clinic implements ClinicInterface {
     if (patient.getApproval()) {
       patient.deactivate();
     
-      Room tempRoom = getRoomFromNumber(patient.getRoomNumber() - 1);
+      RoomInterface tempRoom = getRoomFromNumber(patient.getRoomNumber() - 1);
       if (tempRoom == null) {
         throw new IllegalArgumentException("This patient has an invalid room.");
       }
@@ -146,30 +146,30 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public void deactivateClinicalStaffClinic(ClinicalStaff member) {
+  public void deactivateClinicalStaffClinic(ClinicalStaffInterface member) {
     if (member == null) {
       throw new IllegalArgumentException("This ClinicalStaff object is invalid.");
     }
     if (employees.remove(member) == true) {
       member.deactivate();
     }
-    for (Patient patient : patients) {
+    for (PatientInterface patient : patients) {
       patient.removeClinicalStaffMember(member);
     }
     this.numStaff--;
   }
   
-  private int roomNumFromRoom(Room room) {
+  private int roomNumFromRoom(RoomInterface room) {
     int roomI = rooms.indexOf(room);
     return roomI;
   }
   
   @Override
-  public void assignPatient(Patient patient, Room room) {
+  public void assignPatient(PatientInterface patient, RoomInterface room) {
     if (patient == null || room == null) {
       throw new IllegalArgumentException("Invalid patient or room object.");
     }
-    Room current = getRoomFromNumber(patient.getRoomNumber());
+    RoomInterface current = getRoomFromNumber(patient.getRoomNumber());
     if (current != null) {
       if (!current.isWaitingRoom()) {
         current.removePatient(patient);
@@ -185,7 +185,7 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public void assignStaff(Patient patient, ClinicalStaff member) {
+  public void assignStaff(PatientInterface patient, ClinicalStaffInterface member) {
     if (patient == null || member == null) {
       throw new IllegalArgumentException("Patient or ClinicalStaff objects cannot be null.");
     }
@@ -196,14 +196,14 @@ public class Clinic implements ClinicInterface {
   @Override
   public String seatingChart() {
     StringBuilder sb = new StringBuilder();
-    for (Room room : rooms) {
+    for (RoomInterface room : rooms) {
       sb.append(room.getRoomName()).append(":\n");
      
-      List<Patient> patientslocal = room.getResidents();
+      List<PatientInterface> patientslocal = room.getResidents();
       if (patientslocal.isEmpty()) {
         sb.append(" - This room is empty");
       } else {
-        for (Patient patient : patientslocal) {
+        for (PatientInterface patient : patientslocal) {
           sb.append("  -").append(patient.getFirstName()).append(" ")
          .append(patient.getLastName()).append("\n");
 
@@ -211,14 +211,14 @@ public class Clinic implements ClinicInterface {
           if (patient.getAllocated().isEmpty()) {
             sb.append("None\n");
           } else {
-            for (ClinicalStaff member : patient.getAllocated()) {
+            for (ClinicalStaffInterface member : patient.getAllocated()) {
               sb.append(member.getFirstName()).append(" ").append(member.getLastName())
                 .append(", ");
             }
             sb.setLength(sb.length() - 2);
             sb.append("\n");
           }
-          VisitRecord recentVisit = patient.getMostRecentVisit();
+          Record recentVisit = patient.getMostRecentVisit();
           if (recentVisit != null) {
             sb.append("     - Most Recent Visit: ")
               .append(recentVisit.toString()).append("\n");
@@ -255,7 +255,7 @@ public class Clinic implements ClinicInterface {
    * Helper method for the read loop for Room.
    */  
   private static void readRoom(BufferedReader br, int numRooms, 
-        List<Room> roomList) throws IOException {
+        List<RoomInterface> roomList) throws IOException {
     for (int i = 0; i < numRooms; i++) {
       String roomText = br.readLine();
       Room room = Room.textRoom(roomText);
@@ -285,7 +285,7 @@ public class Clinic implements ClinicInterface {
       String patientText = br.readLine();
       Patient patient = Patient.textPatient(patientText);
       int roomNum = patient.getRoomNumber();
-      Room assignedRoom = clinic.getRoomFromNumber(roomNum);
+      RoomInterface assignedRoom = clinic.getRoomFromNumber(roomNum);
       assignedRoom.placePatient(patient);
       clinic.patients.add(patient);
     }
@@ -304,10 +304,10 @@ public class Clinic implements ClinicInterface {
       final String  textClinicName = br.readLine();
       
       int textNumRooms = Integer.parseInt(br.readLine());
-      List<Room> tempRooms = new ArrayList<>();
+      List<RoomInterface> tempRooms = new ArrayList<>();
       readRoom(br, textNumRooms, tempRooms);
 
-      Room textPrimaryWaitingRoom = tempRooms.get(0);
+      RoomInterface textPrimaryWaitingRoom = tempRooms.get(0);
       Clinic textClinic = new Clinic(textClinicName, textNumRooms, 0, 0, textPrimaryWaitingRoom);
       textClinic.rooms.addAll(tempRooms);
       

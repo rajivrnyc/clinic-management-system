@@ -11,6 +11,7 @@ public class NonClinicalStaff implements Staff {
   private String lastName;
   private EducationLevel educationLevel;
   private CprLevel cprLevel;
+  private boolean isActive;
   
   
   /**
@@ -37,6 +38,7 @@ public class NonClinicalStaff implements Staff {
     this.lastName = lastName;
     this.educationLevel = educationLevel;
     this.cprLevel = cprLevel;
+    this.isActive = true;
   }
   
   
@@ -59,5 +61,9 @@ public class NonClinicalStaff implements Staff {
   public EducationLevel getEducationLevel() {
     return this.educationLevel;
   }
-
+  
+  @Override
+  public void deactivate() {
+    this.isActive = false;
+  }
 }

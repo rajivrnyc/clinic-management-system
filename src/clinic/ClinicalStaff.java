@@ -4,7 +4,7 @@ package clinic;
  * Class that represents a clinical staff member that is working for the clinic.
  * This class inherits the staff class.
  */
-public class ClinicalStaff implements Staff {
+public class ClinicalStaff implements ClinicalStaffInterface {
   private String jobTitle;
   private String firstName;
   private String lastName;
@@ -60,9 +60,7 @@ public class ClinicalStaff implements Staff {
     return this.educationLevel;
   }
   
-  /**
-   * Method to deactivate a clinical staff member.
-   */
+  @Override
   public void deactivate() {
     this.isActive = false;
   }

@@ -44,7 +44,7 @@ public interface PatientInterface {
    * @param approvalStatus The approval status as determined by a clinical staff member.
    * @param member A clinical staff member is required to set the approval status of a patient.
    */
-  void setApproval(ClinicalStaff member, boolean approvalStatus);
+  void setApproval(ClinicalStaffInterface member, boolean approvalStatus);
   
   /**
    * Sets the room number that a patient is assigned to.
@@ -66,7 +66,7 @@ public interface PatientInterface {
    * 
    * @return the Clinical Staff member who approved the patient's discharge.
    */
-  ClinicalStaff getApprovedBy();
+  ClinicalStaffInterface getApprovedBy();
 
   /**
    * deactivates a patient by removing assigned staff members and setting status to inactive.
@@ -78,7 +78,7 @@ public interface PatientInterface {
    * 
    * @return A list of clinical staff members assigned to a certain patient.
    */
-  List<ClinicalStaff> getAllocated();
+  List<ClinicalStaffInterface> getAllocated();
   
   /**
    * Method to add a new visit to the patient's list of visits.
@@ -95,7 +95,7 @@ public interface PatientInterface {
    * @param member is a clinical staff member at the clinic.
    * @throws IllegalArgumentException when member is invalid or does not exist.
    */
-  void removeClinicalStaffMember(ClinicalStaff member);
+  void removeClinicalStaffMember(ClinicalStaffInterface member);
   
   /**
    * Method to return the visit record on the patient's
@@ -103,6 +103,6 @@ public interface PatientInterface {
    * 
    * @return returns the patient's most recent visit record
    */
-  VisitRecord getMostRecentVisit();
+  Record getMostRecentVisit();
   
 }

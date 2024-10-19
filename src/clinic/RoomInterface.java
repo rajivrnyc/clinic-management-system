@@ -28,7 +28,7 @@ public interface RoomInterface {
    * 
    * @param patient A patient that is staying within the clinic.
    */
-  void placePatient(Patient patient);
+  void placePatient(PatientInterface patient);
   
   
   /**
@@ -36,7 +36,7 @@ public interface RoomInterface {
    * 
    * @param patient A patient that was staying within the clinic.
    */
-  void removePatient(Patient patient);
+  void removePatient(PatientInterface patient);
   
   /**
    * Checks self to see if it is a waiting room.
@@ -57,5 +57,5 @@ public interface RoomInterface {
    * 
    * @return A list of residents of a certain room.
    */
-  List<Patient> getResidents();
+  List<PatientInterface> getResidents();
 }

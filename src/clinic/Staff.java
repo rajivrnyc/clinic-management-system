@@ -34,5 +34,10 @@ public interface Staff {
    * @return the education level of the staff member.
    */
   EducationLevel getEducationLevel();
+  
+  /**
+   * Method to deactivate a clinical staff member.
+   */
+  void deactivate();
 
 }

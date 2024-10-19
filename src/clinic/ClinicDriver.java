@@ -43,7 +43,7 @@ public class ClinicDriver {
     System.out.println("New Number of Clinical Staff Members: " + clinic.getNumStaff());
     System.out.println();
     System.out.println("Requirement 3: Sending Someone Home");
-    Patient sally = clinic.getPatients().get(clinic.getPatients().size() - 1);
+    PatientInterface sally = clinic.getPatients().get(clinic.getPatients().size() - 1);
     clinic.assignStaff(sally, john);
     clinic.sendHome(sally, john);
     System.out.println(sally.getFirstName() + " " + sally.getLastName() + " has been sent home.");
@@ -55,7 +55,7 @@ public class ClinicDriver {
     System.out.println("Current Number of Staff: " + clinic.getNumStaff());
     System.out.println();
     System.out.println("Requirement 5: Assign a person to a room");
-    Room roomAssignment = clinic.getRooms().get(3);
+    RoomInterface roomAssignment = clinic.getRooms().get(3);
     System.out.println("Sally's Current Room Number: " + sally.getRoomNumber());
     clinic.assignPatient(sally, roomAssignment);
     System.out.println("Sally has been moved to " + roomAssignment.getRoomName());
@@ -70,8 +70,8 @@ public class ClinicDriver {
          + " " + sally.getAllocated().get(0).getLastName());
     System.out.println();
     System.out.println("Requirement 7: Print information about a specific room as a String");
-    Room infoR = clinic.getRoomFromNumber(sally.getRoomNumber());
-    Room infoS = clinic.getRoomFromNumber(1);
+    RoomInterface infoR = clinic.getRoomFromNumber(sally.getRoomNumber());
+    RoomInterface infoS = clinic.getRoomFromNumber(1);
     sally.addRecord("Headache", 39);
     System.out.println("Printing info about the room Sally is in:\n");
     System.out.println(infoR.toString());

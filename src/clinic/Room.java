@@ -15,7 +15,7 @@ public class Room implements RoomInterface {
   private int y2;
   private RoomType typeRoom;
   private String roomName;
-  private List<Patient> residents;
+  private List<PatientInterface> residents;
   
   /**
    * Constructor for a room with bottom-left and top-right coordinates, a type
@@ -72,7 +72,7 @@ public class Room implements RoomInterface {
   }
   
   @Override
-  public void placePatient(Patient patient) {
+  public void placePatient(PatientInterface patient) {
     this.residents.add(patient);
   }
   
@@ -85,7 +85,7 @@ public class Room implements RoomInterface {
   }
   
   @Override
-  public void removePatient(Patient patient) {
+  public void removePatient(PatientInterface patient) {
     if (patient == null) {
       throw new IllegalArgumentException("Patient was not in this room.");
     }
@@ -101,7 +101,7 @@ public class Room implements RoomInterface {
   }
   
   @Override
-  public List<Patient> getResidents() {
+  public List<PatientInterface> getResidents() {
     return new ArrayList<>(this.residents);
   }
   
@@ -114,7 +114,7 @@ public class Room implements RoomInterface {
     if (residents.isEmpty()) {
       sb.append("\nNone");
     } else {
-      for (Patient patient : residents) {
+      for (PatientInterface patient : residents) {
         sb.append("\n---------------------------------------");
         sb.append("\n").append(patient.getFirstName()).append(" ")
         .append(patient.getLastName()).append(", Room Number: ").append(patient.getRoomNumber())
@@ -123,13 +123,13 @@ public class Room implements RoomInterface {
         if (patient.getAllocated().isEmpty()) {
           sb.append("None");
         } else {
-          for (ClinicalStaff cstaff : patient.getAllocated()) {
+          for (ClinicalStaffInterface cstaff : patient.getAllocated()) {
             sb.append(cstaff.getFirstName()).append(" ").append(cstaff.getLastName())
             .append(", ");
           }
           sb.setLength(sb.length() - 2);
         }
-        VisitRecord mostRecent = patient.getMostRecentVisit();
+        Record mostRecent = patient.getMostRecentVisit();
         if (mostRecent != null) {
           
           sb.append("\n   Chief Complaint: ").append(mostRecent.getChiefComplaint());

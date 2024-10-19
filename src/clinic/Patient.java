@@ -14,11 +14,11 @@ public class Patient implements PatientInterface {
   private String firstName;
   private String lastName;
   private String dateOfBirth;
-  private List<ClinicalStaff> allocated;
+  private List<ClinicalStaffInterface> allocated;
   private List<Record> visitInfo;
   private boolean approval;
   private boolean isActive;
-  private ClinicalStaff approvedBy;
+  private ClinicalStaffInterface approvedBy;
   
   
   /**
@@ -73,8 +73,8 @@ public class Patient implements PatientInterface {
   }
   
   @Override
-  public void setApproval(ClinicalStaff member, boolean approvalStatus) {
-    if (member instanceof ClinicalStaff) {
+  public void setApproval(ClinicalStaffInterface member, boolean approvalStatus) {
+    if (member instanceof ClinicalStaffInterface) {
       this.approval = approvalStatus;
       if (approvalStatus) {
         this.approvedBy = member;
@@ -85,7 +85,7 @@ public class Patient implements PatientInterface {
   }
   
   @Override
-  public ClinicalStaff getApprovedBy() {
+  public ClinicalStaffInterface getApprovedBy() {
     return approvedBy;
   }
   
@@ -102,7 +102,7 @@ public class Patient implements PatientInterface {
   }
   
   @Override
-  public void removeClinicalStaffMember(ClinicalStaff member) {
+  public void removeClinicalStaffMember(ClinicalStaffInterface member) {
     if (member == null) {
       throw new IllegalArgumentException("This Clinical Staff Member is invalid or"
        + "does not exist.");
@@ -111,7 +111,7 @@ public class Patient implements PatientInterface {
   }
   
   @Override
-  public List<ClinicalStaff> getAllocated() {
+  public List<ClinicalStaffInterface> getAllocated() {
     return this.allocated;
   }
   
@@ -126,7 +126,7 @@ public class Patient implements PatientInterface {
   }
   
   @Override
-  public VisitRecord getMostRecentVisit() {
+  public Record getMostRecentVisit() {
     if (visitInfo.isEmpty()) {
       return null;
     }
@@ -144,7 +144,7 @@ public class Patient implements PatientInterface {
     if (allocated.isEmpty()) {
       sb.append("None");
     } else {
-      for (ClinicalStaff staff : allocated) {
+      for (ClinicalStaffInterface staff : allocated) {
         sb.append(staff.getFirstName()).append(" ").append(staff.getLastName()).append(", ");
       }
       sb.setLength(sb.length() - 2);
