@@ -7,10 +7,12 @@ import static org.junit.Assert.assertTrue;
 import clinic.Clinic;
 import clinic.ClinicInterface;
 import clinic.ClinicalStaff;
+import clinic.ClinicalStaffInterface;
 import clinic.CprLevel;
 import clinic.EducationLevel;
 import clinic.NonClinicalStaff;
 import clinic.Patient;
+import clinic.PatientInterface;
 import clinic.Room;
 import clinic.RoomInterface;
 import clinic.RoomType;
@@ -24,10 +26,10 @@ import org.junit.Test;
  * JUnit Test Class for all classes within clinic package.
  */
 public class ClinicTest {
-  private Clinic clinic;
-  private Room examRoom;
-  private Room primaryWaitingRoom;
-  private Patient sally;
+  private ClinicInterface clinic;
+  private RoomInterface examRoom;
+  private RoomInterface primaryWaitingRoom;
+  private PatientInterface sally;
   
   /**
    * Sets up testing Environment before conduction tests.
@@ -94,8 +96,8 @@ public class ClinicTest {
   @Test
   public void testAddNewPatient() {
     clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
-    List<Patient> patients = clinic.getPatients();
-    Patient newPatient = patients.get(0);
+    List<PatientInterface> patients = clinic.getPatients();
+    PatientInterface newPatient = patients.get(0);
     assertEquals("Sally", newPatient.getFirstName());
     assertEquals("Johnson", newPatient.getLastName());
     assertEquals("01/02/1990", newPatient.getDateOfBirth());
@@ -210,20 +212,20 @@ public class ClinicTest {
   
   @Test(expected = IllegalArgumentException.class)
   public void testNullRoomAssignPatient() {
-    Patient patient = new Patient(1, "Sally", "Johnson", "01/02/1990");
+    PatientInterface patient = new Patient(1, "Sally", "Johnson", "01/02/1990");
     clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
     clinic.assignPatient(patient, null);
   }
   
   @Test
   public void testAssignStaff() {
-    ClinicalStaff john = new ClinicalStaff("Doctor",
+    ClinicalStaffInterface john = new ClinicalStaff("Doctor",
         "John", "Smith", EducationLevel.DOCTORAL, "1000000000");
     
     clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
-    Patient patient = clinic.getPatients().get(0);
+    PatientInterface patient = clinic.getPatients().get(0);
     clinic.assignStaff(patient, john);
-    List<ClinicalStaff> allPatient = patient.getAllocated();
+    List<ClinicalStaffInterface> allPatient = patient.getAllocated();
     assertTrue(allPatient.contains(john));
   }
   
@@ -233,7 +235,7 @@ public class ClinicTest {
         "John", "Smith", EducationLevel.DOCTORAL, "1000000000");
     
     clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
-    Patient patient = clinic.getPatients().get(0);
+    PatientInterface patient = clinic.getPatients().get(0);
     clinic.assignStaff(null, john);
   }
   
@@ -243,7 +245,7 @@ public class ClinicTest {
         "John", "Smith", EducationLevel.DOCTORAL, "1000000000");
     
     clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
-    Patient patient = clinic.getPatients().get(0);
+    PatientInterface patient = clinic.getPatients().get(0);
     clinic.assignStaff(patient, null);
   }
   
@@ -280,9 +282,9 @@ public class ClinicTest {
 
   @Test
   public void testPlacePatient() {
-    Patient patient = new Patient(1, "Sally", "Johnson", "01/02/1990");
+    PatientInterface patient = new Patient(1, "Sally", "Johnson", "01/02/1990");
     primaryWaitingRoom.placePatient(patient);
-    List<Patient> temp = primaryWaitingRoom.getResidents();
+    List<PatientInterface> temp = primaryWaitingRoom.getResidents();
     assertTrue(temp.contains(patient));
   }
   
@@ -297,7 +299,7 @@ public class ClinicTest {
     Patient patient = new Patient(1, "Sally", "Johnson", "01/02/1990");
     primaryWaitingRoom.placePatient(patient);
     primaryWaitingRoom.removePatient(patient);
-    List<Patient> temp = primaryWaitingRoom.getResidents();
+    List<PatientInterface> temp = primaryWaitingRoom.getResidents();
     assertFalse(temp.contains(patient));
   }
   
@@ -389,7 +391,7 @@ public class ClinicTest {
         "John", "Smith", EducationLevel.DOCTORAL, "1000000000");
     sally.getAllocated().add(john);
     sally.removeClinicalStaffMember(john);
-    List<ClinicalStaff> temp = sally.getAllocated();
+    List<ClinicalStaffInterface> temp = sally.getAllocated();
     assertFalse(temp.contains(john));
   }
   

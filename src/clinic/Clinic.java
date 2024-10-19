@@ -299,8 +299,8 @@ public class Clinic implements ClinicInterface {
    * @throws IOException If an error occurs during file reading such as 
    *         an invalid file, a nonexistent file etc.
    */
-  public static Clinic readFile(String fileName) throws IOException {
-    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+  public static Clinic readFile(FileReader fileName) throws IOException {
+    try (BufferedReader br = new BufferedReader(fileName)) {
       final String  textClinicName = br.readLine();
       
       int textNumRooms = Integer.parseInt(br.readLine());

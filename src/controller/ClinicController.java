@@ -1,8 +1,15 @@
-package clinic;
+package controller;
 
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
+
+import clinic.Clinic;
+import clinic.ClinicalStaff;
+import clinic.EducationLevel;
+import clinic.Patient;
+import clinic.PatientInterface;
+import clinic.Staff;
 
 /**
  * The ClinicController class acts as an intermediary between the 
@@ -71,10 +78,10 @@ public class ClinicController {
   
   private void displayPatient(Clinic model, Scanner scan) throws IOException {
     model.addNewPatient("Sally", "Johnson", "01/02/1990");
-    Patient sallyJ = model.getPatients().get(model.getPatients().size() - 1);
+    PatientInterface sallyJ = model.getPatients().get(model.getPatients().size() - 1);
     model.addNewClinicalStaff("Doctor", "John", "Smith", EducationLevel.MASTERS, "0123456789");
     model.addNewClinicalStaff("Nurse", "Steve", "Wilson", EducationLevel.MASTERS, "0123456789");
-    model.assignStaff(sally, john);
+    
   }
  
 }
