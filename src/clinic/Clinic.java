@@ -109,7 +109,7 @@ public class Clinic implements ClinicInterface {
             || educationLevel == null || npiLevel == null) {
       throw new IllegalArgumentException("Inputs cannot be null");
     }
-    Staff newcStaff = new ClinicalStaff(jobTitle, firstName, lastName, 
+    ClinicalStaffInterface newcStaff = new ClinicalStaff(jobTitle, firstName, lastName, 
         educationLevel, npiLevel);
     employees.add(newcStaff);
     this.numStaff += 1;
