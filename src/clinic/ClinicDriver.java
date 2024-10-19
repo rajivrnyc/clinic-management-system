@@ -78,6 +78,9 @@ public class ClinicDriver {
     System.out.println();
     System.out.println("Requirement 8: Display a seating chart");
     System.out.println(clinic.seatingChart());
+    System.out.println();
+    System.out.println("Sally Info:");
+    System.out.println(sally);
     
     
   }

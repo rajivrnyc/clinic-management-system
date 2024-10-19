@@ -134,6 +134,14 @@ public class Patient implements PatientInterface {
     return (VisitRecord) recentRecord;
   }
   
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("PatientName: ").append(this.getFirstName()).append(this.getLastName());
+    
+    return sb.toString();
+  }
+  
   /**
    * Method used to interpret the Patient portion of a text file passed in
    * to the model.
