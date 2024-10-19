@@ -137,7 +137,8 @@ public class Patient implements PatientInterface {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("PatientName: ").append(this.getFirstName()).append(this.getLastName());
+    sb.append("Patient Name: ").append(this.getFirstName()).append(" ").append(this.getLastName());
+    sb.append("\nDate of Birth: ").append(dateOfBirth);
     
     return sb.toString();
   }
