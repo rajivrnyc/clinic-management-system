@@ -1,10 +1,8 @@
 package controller;
 
-
-
-
-
 import clinic.Clinic;
+import clinic.ClinicalStaff;
+import clinic.ClinicalStaffInterface;
 import clinic.EducationLevel;
 import clinic.PatientInterface;
 import controller.ClinicCommand;
@@ -22,7 +20,11 @@ public class DisplayPatientCommand implements ClinicCommand {
     PatientInterface sallyJ = model.getPatients().get(model.getPatients().size() - 1);
     model.addNewClinicalStaff("Doctor", "John", "Smith", EducationLevel.MASTERS, "0123456789");
     model.addNewClinicalStaff("Nurse", "Steve", "Wilson", EducationLevel.MASTERS, "0123456789");
-    model.assignStaff(sallyJ, model.getEmployees().get(0));
+    ClinicalStaffInterface john = (ClinicalStaffInterface) model.getEmployees().get(0);
+    ClinicalStaffInterface steve = (ClinicalStaffInterface) model.getEmployees().get(1);
+    model.assignStaff(sallyJ, john);
+    model.assignStaff(sallyJ, steve);
+    System.out.println(sallyJ);
   }
 
 }
