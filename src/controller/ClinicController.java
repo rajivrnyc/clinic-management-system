@@ -61,12 +61,12 @@ public class ClinicController {
       }
     
     
-    try {
-      ClinicCommand cmd = cmdFunction.apply(scan);
-      cmd.execute(model, scan);
-    } catch (IOException e) {
-    	System.out.println("Error: " + e.getMessage());
-    }
+      try {
+        ClinicCommand cmd = cmdFunction.apply(scan);
+        cmd.execute(model, scan);
+      } catch (IOException e) {
+        System.out.println("Error: Unable to load clinic file");
+      }
     }
   }
 }
