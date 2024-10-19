@@ -1,15 +1,14 @@
 package controller;
 
+import clinic.Clinic;
+import clinic.ClinicInterface;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.function.Function;
 
-import clinic.Clinic;
-import clinic.ClinicalStaff;
-import clinic.EducationLevel;
-import clinic.Patient;
-import clinic.PatientInterface;
-import clinic.Staff;
 
 /**
  * The ClinicController class acts as an intermediary between the 
@@ -21,16 +20,21 @@ import clinic.Staff;
 public class ClinicController {
   private final Readable in;
   private final Appendable out;
-  private Patient sally;
-  private Staff john;
-  private Staff steve;
+  private final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
   
+  /**
+   * Controller used to access and demonstrate the function of the clinic model.
+   * Readable is user input and out is the output by the controller. 
+   * 
+   * @param in input for the controller
+   * @param out output for the controller
+   */
   public ClinicController(Readable in, Appendable out) {
     this.in = Objects.requireNonNull(in, "Input cannot be null.");
     this.out = Objects.requireNonNull(out, "Output cannot be null.");
-    sally = new Patient(1, "Sally", "Johnson", "01/02/1990");
-    john = new ClinicalStaff("Doctor", "John", "Smith", EducationLevel.MASTERS, "0123456789");
-    steve = new ClinicalStaff("Nurse", "Steve", "Wilson", EducationLevel.MASTERS, "0123456789");
+    this.knownCommands = new HashMap<>();
+    
+    knownCommands.put(1, s -> new DisplayPatientCommand());
   }
   
   /**
@@ -38,7 +42,7 @@ public class ClinicController {
    * 
    * @param model the model to use with the controller.
    */
-  public void go(Clinic model) {
+  public void go(ClinicInterface model) {
     
     Objects.requireNonNull(model, "Clinic model cannot be null.");
     Scanner scan = new Scanner(this.in);
@@ -47,41 +51,22 @@ public class ClinicController {
     while (check) {
       String command = scan.next();
       
-      switch(command) {
-      case "1":
-        displayPatient(model, scan);
-        break;
-      case "2":
-        displayRoom(model, scan);
-      case "3":
-        displayAllRooms(model, scan);
-      case "4":
-        registerNewPatient(model);
-      case "5":
-        registerNewClinStaff(model);
-      case "6":
-        registerExistingPatient(model);
-      case "7":
-        sendPatientHome(model);
-      case "8":
-        assignToRoom(model);
-      case "9":
-        assignStaffToPatient(model);
-      case "q":
+      if ("q".equalsIgnoreCase(command)) {
         scan.close();
-    	  return;
-      default:
+        return;
+      }
+      Function<Scanner, ClinicCommand> cmdFunction = knownCommands.getOrDefault(command, null);
+      if (cmdFunction == null) {
         throw new UnsupportedOperationException(command + " not suppported");
       }
+    
+    
+    try {
+      ClinicCommand cmd = cmdFunction.apply(scan);
+      cmd.execute(model, scan);
+    } catch (IOException e) {
+    	System.out.println("Error: " + e.getMessage());
+    }
     }
   }
-  
-  private void displayPatient(Clinic model, Scanner scan) throws IOException {
-    model.addNewPatient("Sally", "Johnson", "01/02/1990");
-    PatientInterface sallyJ = model.getPatients().get(model.getPatients().size() - 1);
-    model.addNewClinicalStaff("Doctor", "John", "Smith", EducationLevel.MASTERS, "0123456789");
-    model.addNewClinicalStaff("Nurse", "Steve", "Wilson", EducationLevel.MASTERS, "0123456789");
-    
-  }
- 
 }

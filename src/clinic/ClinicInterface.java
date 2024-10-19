@@ -127,7 +127,7 @@ public interface ClinicInterface {
    * @param member A clinical staff member who will be assigned to a patient.
    * @throws IllegalArgumentException if 
    */
-  void assignStaff(PatientInterface patient, ClinicalStaffInterface member);
+  void assignStaff(PatientInterface patient, Staff member);
   
   /**
    * Makes a seating chart of every room in the clinic.

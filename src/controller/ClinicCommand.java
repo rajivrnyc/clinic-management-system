@@ -1,9 +1,11 @@
 package controller;
 
+import clinic.Clinic;
+import clinic.ClinicInterface;
 import java.io.IOException;
 import java.util.Scanner;
 
-import clinic.Clinic;
+
 
 /**
  * Represents different commands that can be executed within the clinic.
@@ -19,5 +21,5 @@ public interface ClinicCommand {
    * @param scanner the scanner providing user input for running the command
    * @throws IOException when there is an I/O error caused by running this command
    */
-  void execute(Clinic model, Scanner scanner) throws IOException;
+  void execute(ClinicInterface model, Scanner scanner) throws IOException;
 }
