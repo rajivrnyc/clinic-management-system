@@ -139,6 +139,29 @@ public class Patient implements PatientInterface {
     StringBuilder sb = new StringBuilder();
     sb.append("Patient Name: ").append(this.getFirstName()).append(" ").append(this.getLastName());
     sb.append("\nDate of Birth: ").append(dateOfBirth);
+    sb.append("\nRoom Number: ").append(this.getRoomNumber());
+    sb.append("\nAssigned Staff: ");
+    if (allocated.isEmpty()) {
+      sb.append("None");
+    } else {
+      for (ClinicalStaff staff : allocated) {
+        sb.append(staff.getFirstName()).append(" ").append(staff.getLastName()).append(", ");
+      }
+      sb.setLength(sb.length() - 2);
+    }
+    
+    sb.append("\nVisit Info: ");
+    if (visitInfo.isEmpty()) {
+      sb.append("Patient has no visit records.");
+    } else {
+      for (Record records : visitInfo) {
+        VisitRecord visit = (VisitRecord) records;
+        sb.append("\n  Chief Complaint: ").append(visit.getChiefComplaint());
+        sb.append("\n  Temperature: ").append(visit.getTemperature()).append(" °C");
+        sb.append("\n  Visit Date: ").append(visit.getDate());
+        sb.append("\n");
+      }
+    }
     
     return sb.toString();
   }
