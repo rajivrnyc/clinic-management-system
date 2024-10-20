@@ -97,6 +97,7 @@ public class Clinic implements ClinicInterface {
       throw new IllegalArgumentException("Inputs cannot be null");
     }
     int waitingRoomNum = rooms.indexOf(primaryWaitingRoom) + 1;
+    
     Patient newPatient = new Patient(waitingRoomNum, firstName, lastName, dateOfBirth);
     primaryWaitingRoom.placePatient(newPatient);
     this.patients.add(newPatient);
@@ -161,7 +162,7 @@ public class Clinic implements ClinicInterface {
   }
   
   private int roomNumFromRoom(RoomInterface room) {
-    int roomI = rooms.indexOf(room);
+    int roomI = rooms.indexOf(room) + 1;
     return roomI;
   }
   
@@ -171,11 +172,16 @@ public class Clinic implements ClinicInterface {
       throw new IllegalArgumentException("Invalid patient or room object.");
     }
     RoomInterface current = getRoomFromNumber(patient.getRoomNumber());
-    if (current != null) {
-      if (!current.isWaitingRoom()) {
-        current.removePatient(patient);
-      }
+    
+    if (current != null && current.equals(room)) {
+      System.out.println("Patient is already in the target room.");
+      return;
     }
+    
+    if (!current.isWaitingRoom() && current != null) {
+      current.removePatient(patient);
+    }
+    
     
     if (!room.isWaitingRoom() && room.isOccupied()) {
       throw new IllegalStateException("The room the patient is "

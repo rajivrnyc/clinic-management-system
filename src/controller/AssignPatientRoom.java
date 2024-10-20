@@ -21,10 +21,14 @@ public class AssignPatientRoom implements ClinicCommand {
     
     System.out.println();
     System.out.println(room1);
-    PatientInterface sally = new Patient(1, "Sally", "Johnson", "01/02/1990");
     System.out.println();
     System.out.println("Assigning Sally to room 1");
-    model.assignPatient(sally, room1);
+    
+    System.out.println();
+    model.addNewPatient("Sally", "Johnson", "01/02/1990");
+    PatientInterface mostRecentPatient = model.getPatients().get(model.getPatients().size() - 1);
+    
+    model.assignPatient(mostRecentPatient, room1);
     System.out.println(room1);
     
   }
