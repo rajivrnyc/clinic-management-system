@@ -1,7 +1,10 @@
 package clinic;
 
+import controller.ClinicController;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.io.IOException;
+
 
 
 /**
@@ -26,6 +29,11 @@ public class ClinicDriver {
       System.out.println("Number of Staff: " + clinic.getNumStaff());
       System.out.println("Number of Patients: " + clinic.getNumPatients());
       System.out.println();
+      
+      Readable input = new InputStreamReader(System.in);
+      Appendable output = System.out;
+      ClinicController controller = new ClinicController(input, output);
+      
       System.out.println("Requirement 1: Adding a New Patient");
       clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
       System.out.println("Patient was added");
