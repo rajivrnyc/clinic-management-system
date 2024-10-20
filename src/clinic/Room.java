@@ -145,7 +145,7 @@ public class Room implements RoomInterface {
     }
     sb.append("\n---------------------------------------");
     return sb.toString();
-  } 
+  }
 
   
   /**
