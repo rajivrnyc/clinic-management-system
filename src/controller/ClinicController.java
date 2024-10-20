@@ -35,6 +35,7 @@ public class ClinicController {
     this.knownCommands = new HashMap<>();
     
     knownCommands.put(1, s -> new DisplayPatientCommand());
+    knownCommands.put(2, s -> new DisplayRoom());
   }
   
   /**
@@ -52,20 +53,23 @@ public class ClinicController {
       String command = scan.next();
       
       if ("q".equalsIgnoreCase(command)) {
+        System.out.println("Quitting program.");
         scan.close();
         return;
       }
-      Function<Scanner, ClinicCommand> cmdFunction = knownCommands.getOrDefault(command, null);
-      if (cmdFunction == null) {
-        throw new UnsupportedOperationException(command + " not suppported");
-      }
-    
-    
       try {
+        int cmdNumber = Integer.parseInt(command);
+        Function<Scanner, ClinicCommand> cmdFunction = knownCommands.get(cmdNumber);
+        if (cmdFunction == null) {
+          throw new UnsupportedOperationException(command + " not suppported");
+        }      
         ClinicCommand cmd = cmdFunction.apply(scan);
         cmd.execute(model, scan);
+      } catch (NumberFormatException e) {
+        System.out.println("Please enter a number that corresponds with a valid command.");
       } catch (IOException e) {
         System.out.println("Error: Unable to load clinic file");
+      
       }
     }
   }
