@@ -1,6 +1,7 @@
 package controller;
 
 import clinic.ClinicInterface;
+import clinic.ClinicalStaffInterface;
 import clinic.EducationLevel;
 import clinic.PatientInterface;
 import controller.ClinicCommand;
@@ -52,11 +53,11 @@ public class RegisterNewClinStaff implements ClinicCommand {
       try {
         eduLevel = EducationLevel.valueOf(tempEdu.toUpperCase()); 
       } catch (IllegalArgumentException e) {
-        System.out.println("Invalid education level. Pleaes re-enter.");
+        System.out.println("Invalid education level. Please re-enter.");
       }
     }
     
-    while (npiLevel == null) {
+    while (npiLevel.isEmpty()) {
       System.out.println("Enter clinical staff member's NPI level: ");
       npiLevel = scanner.nextLine().trim(); 
       if (npiLevel.isEmpty()) {
@@ -65,25 +66,9 @@ public class RegisterNewClinStaff implements ClinicCommand {
     }
       
     model.addNewClinicalStaff(jobTitle, firstName, lastName, eduLevel, npiLevel);
-    System.out.println("Patient added");
       
-    System.out.println("Enter chief complaint: ");
-    String complaint = scanner.nextLine();
-      
-    System.out.println("Enter body temp in Celsius");
-    double temperature;
-    while (true) {
-      try {
-        temperature = Double.parseDouble(scanner.nextLine());
-        break;
-      } catch (NumberFormatException e) {
-        System.out.println("Please enter a valid temperature reading.");
-      }
-    }
-    PatientInterface patient = model.getPatients().get(model.getPatients().size() - 1);
-      
-    patient.addRecord(complaint, temperature);
-    int roomNum = patient.getRoomNumber();
-    System.out.println(patient);
+    
+    System.out.println();
+    System.out.println(model.getEmployees().get(model.getEmployees().size() - 1));
   }
 }

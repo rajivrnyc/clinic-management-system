@@ -72,8 +72,23 @@ public class ClinicalStaff implements ClinicalStaffInterface {
   }
   
   @Override
+  public String getNpiLevel() {
+    return this.npiLevel;
+  }
+  
+  @Override
   public void deactivate() {
     this.isActive = false;
   }
-
+  
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Job Title: ").append(this.getJobTitle());
+    sb.append("\nClinical Staff Name: ").append(this.getTitle()).append(this.getFirstName())
+     .append(" ").append(this.getLastName());
+    sb.append("\nEducation Level: ").append(this.getEducationLevel());
+    sb.append("\nNPI Level: ").append(this.getNpiLevel());
+    return sb.toString();
+  }
 }

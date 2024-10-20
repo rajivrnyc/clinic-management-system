@@ -38,6 +38,7 @@ public class ClinicController {
     knownCommands.put(2, s -> new DisplayRoom());
     knownCommands.put(3, s -> new DisplaySeatingChart());
     knownCommands.put(4, s -> new RegisterPatientCommand());
+    knownCommands.put(5, s -> new RegisterNewClinStaff());
   }
   
   /**

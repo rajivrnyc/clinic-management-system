@@ -12,5 +12,12 @@ public interface ClinicalStaffInterface extends Staff {
    * @return returns the title of the Clinical staff member.
    */
   String getTitle();
+  
+  /**
+   * Gets the clinical staff member's Npi Level.
+   * 
+   * @return the clinical staff member's Npi level.
+   */
+  String getNpiLevel();
 
 }
