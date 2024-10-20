@@ -1,6 +1,8 @@
 package controller;
 
 import clinic.ClinicInterface;
+import clinic.ClinicalStaffInterface;
+import clinic.PatientInterface;
 import controller.ClinicCommand;
 import java.io.IOException;
 import java.util.Scanner;
@@ -14,7 +16,16 @@ public class SendHomeCommand implements ClinicCommand {
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
     System.out.println(model.getRoomFromNumber(3));
-
+    System.out.println();
+    System.out.println("Clive Cardiac is in Room 3.");
+    System.out.println("Sending Clive Cardiac home...");
+    PatientInterface clive = model.getPatients().get(2);
+    
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) model.getEmployees().get(0);
+    model.sendHome(clive, amy);
+    System.out.println("Clive has been sent home!");
+    System.out.println();
+    System.out.println(model.getRoomFromNumber(3));
   }
 
 }

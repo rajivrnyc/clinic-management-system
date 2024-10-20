@@ -73,6 +73,11 @@ public class Patient implements PatientInterface {
   }
   
   @Override
+  public boolean isActive() {
+    return this.isActive;
+  }
+  
+  @Override
   public void setApproval(ClinicalStaffInterface member, boolean approvalStatus) {
     if (member instanceof ClinicalStaffInterface) {
       this.approval = approvalStatus;

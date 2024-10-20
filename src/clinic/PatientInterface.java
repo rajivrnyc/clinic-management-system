@@ -105,4 +105,10 @@ public interface PatientInterface {
    */
   Record getMostRecentVisit();
   
+  /**
+   * Checks if the patient is active.
+   * @return The patient's status within the clinic.
+   */
+  boolean isActive();
+  
 }

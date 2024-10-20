@@ -115,30 +115,32 @@ public class Room implements RoomInterface {
       sb.append("\nNone");
     } else {
       for (PatientInterface patient : residents) {
-        sb.append("\n---------------------------------------");
-        sb.append("\n").append(patient.getFirstName()).append(" ")
+        if (patient.isActive()) {
+          sb.append("\n---------------------------------------");
+          sb.append("\n").append(patient.getFirstName()).append(" ")
         .append(patient.getLastName()).append(", Room Number: ").append(patient.getRoomNumber())
-        .append(", Clinical Staff Allocated: ");
+          .append(", Clinical Staff Allocated: ");
         
-        if (patient.getAllocated().isEmpty()) {
-          sb.append("None");
-        } else {
-          for (ClinicalStaffInterface cstaff : patient.getAllocated()) {
-            sb.append(cstaff.getTitle()).append(cstaff.getFirstName())
+          if (patient.getAllocated().isEmpty()) {
+            sb.append("None");
+          } else {
+            for (ClinicalStaffInterface cstaff : patient.getAllocated()) {
+              sb.append(cstaff.getTitle()).append(cstaff.getFirstName())
             .append(" ").append(cstaff.getLastName())
-            .append(", ");
+              .append(", ");
+            }
+            sb.setLength(sb.length() - 2);
           }
-          sb.setLength(sb.length() - 2);
-        }
-        Record mostRecent = patient.getMostRecentVisit();
-        if (mostRecent != null) {
+          Record mostRecent = patient.getMostRecentVisit();
+          if (mostRecent != null) {
           
-          sb.append("\n   Chief Complaint: ").append(mostRecent.getChiefComplaint());
+            sb.append("\n   Chief Complaint: ").append(mostRecent.getChiefComplaint());
           
-        } else {
-          sb.append("\n   Patient has no Visit Records");
-        }
+          } else {
+            sb.append("\n   Patient has no Visit Records");
+          }
         
+        }
       }
     }
     sb.append("\n---------------------------------------");
