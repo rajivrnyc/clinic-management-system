@@ -40,6 +40,7 @@ public class ClinicController {
     knownCommands.put(4, s -> new RegisterPatientCommand());
     knownCommands.put(5, s -> new RegisterNewClinStaff());
     knownCommands.put(6, s -> new RegisterExistingPatient());
+    knownCommands.put(7, s -> new SendHomeCommand());
   }
   
   /**
