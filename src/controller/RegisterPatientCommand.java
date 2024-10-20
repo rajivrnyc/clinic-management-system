@@ -16,10 +16,26 @@ public class RegisterPatientCommand implements ClinicCommand {
 
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
-    System.out.println("Enter patient's first name:");
-    String firstName = scanner.nextLine();
-    System.out.println("Enter patient's last name:");
-    String lastName = scanner.nextLine();
+    scanner.nextLine();
+    
+    String firstName = "";
+    String lastName = "";
+    while (firstName.isEmpty()) {
+      System.out.println("Enter patient's first name:");
+      firstName = scanner.nextLine().trim(); 
+      if (firstName.isEmpty()) {
+        System.out.println("First name cannot be empty. Please enter again.");
+      }
+    }
+    
+    while (lastName.isEmpty()) {
+      System.out.println("Enter patient's last name:");
+      lastName = scanner.nextLine().trim(); 
+      if (lastName.isEmpty()) {
+        System.out.println("Last name cannot be empty. Please enter again.");
+      }
+    }
+    
     System.out.println("Enter patient birth date (MM/DD/YYYY):");
     String bthDate = scanner.nextLine();
     
@@ -41,7 +57,9 @@ public class RegisterPatientCommand implements ClinicCommand {
     }
     PatientInterface patient = model.getPatients().get(model.getPatients().size() - 1);
     
-    Record visitRecord = new VisitRecord(complaint, temperature);
+    patient.addRecord(complaint, temperature);
+    int roomNum = patient.getRoomNumber();
+    System.out.println(patient);
   }
 
 }
