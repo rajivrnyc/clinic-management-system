@@ -16,6 +16,7 @@ public class RegisterExistingPatient implements ClinicCommand {
 
   @Override
    public void execute(ClinicInterface model, Scanner scanner) throws IOException {
+    scanner.nextLine();
     System.out.println("Enter patient's first name:");
     String firstName = scanner.nextLine().trim();
     
