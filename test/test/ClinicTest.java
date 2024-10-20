@@ -156,7 +156,7 @@ public class ClinicTest {
   
   @Test
   public void testGetRoomFromNumber() {
-    assertEquals(primaryWaitingRoom, clinic.getRoomFromNumber(0));
+    assertEquals(primaryWaitingRoom, clinic.getRoomFromNumber(1));
   }
   
   @Test(expected = IllegalArgumentException.class)
