@@ -53,6 +53,7 @@ public class Clinic implements ClinicInterface {
     this.employees = new ArrayList<>();
     this.patients = new ArrayList<>();
     this.rooms.add(primaryWaitingRoom);
+    
   }
   
   @Override
@@ -120,7 +121,7 @@ public class Clinic implements ClinicInterface {
     if (roomNumber < 0 || roomNumber > rooms.size()) {
       throw new IllegalArgumentException("Invalid room number. This room does not exist.");
     }
-    return rooms.get(roomNumber);
+    return rooms.get(roomNumber - 1);
   }
   
   @Override
@@ -136,7 +137,7 @@ public class Clinic implements ClinicInterface {
     if (patient.getApproval()) {
       patient.deactivate();
     
-      RoomInterface tempRoom = getRoomFromNumber(patient.getRoomNumber() - 1);
+      RoomInterface tempRoom = getRoomFromNumber(patient.getRoomNumber());
       if (tempRoom == null) {
         throw new IllegalArgumentException("This patient has an invalid room.");
       }
@@ -309,8 +310,14 @@ public class Clinic implements ClinicInterface {
       readRoom(br, textNumRooms, tempRooms);
 
       RoomInterface textPrimaryWaitingRoom = tempRooms.get(0);
+      
       Clinic textClinic = new Clinic(textClinicName, textNumRooms, 0, 0, textPrimaryWaitingRoom);
-      textClinic.rooms.addAll(tempRooms);
+      
+      for (RoomInterface room : tempRooms) {
+        if (!room.equals(textPrimaryWaitingRoom)) {
+          textClinic.rooms.add(room);
+        }
+      }
       
       int textNumStaff = Integer.parseInt(br.readLine());
       readStaff(br, textNumStaff, textClinic);
