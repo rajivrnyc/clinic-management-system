@@ -15,11 +15,21 @@ public class AssignClinicalStaff implements ClinicCommand {
 
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
-    PatientInterface mostRecentPatient = model.getPatients().get(model.getPatients().size() - 1); 
-    ClinicalStaffInterface mostRecentClinStaff = (ClinicalStaffInterface) model
-         .getEmployees().get(model.getEmployees().size() - 1);
-    
+    PatientInterface mostRecentPatient = model.getPatients().get(model.getPatients().size() - 1);
     System.out.println("This is a patient: " + mostRecentPatient);
+    
+    ClinicalStaffInterface mostRecentClinStaff = null;
+    for (int i = model.getEmployees().size() - 1; i >= 0; i--) {
+      if (model.getEmployees().get(i) instanceof ClinicalStaffInterface) {
+        mostRecentClinStaff = (ClinicalStaffInterface) model.getEmployees().get(i);
+        break;
+      }
+    }
+    
+    if (mostRecentClinStaff == null) {
+      throw new IllegalStateException("No clinical staff members available.");
+    }
+    
     System.out.println();
     System.out.println("This is a clinical staff member: " + mostRecentClinStaff);
     System.out.println();
