@@ -23,6 +23,7 @@ public class DisplayPatientCommand implements ClinicCommand {
     model.addNewClinicalStaff("Nurse", "Steve", "Wilson", EducationLevel.MASTERS, "0123456789");
     ClinicalStaffInterface john = (ClinicalStaffInterface) model.getEmployees().get(0);
     ClinicalStaffInterface steve = (ClinicalStaffInterface) model.getEmployees().get(1);
+    sallyJ.addRecord("Headache", 39);
     model.assignStaff(sallyJ, john);
     model.assignStaff(sallyJ, steve);
     System.out.println(sallyJ);
