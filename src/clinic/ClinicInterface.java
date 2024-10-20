@@ -129,6 +129,18 @@ public interface ClinicInterface {
    */
   void assignStaff(PatientInterface patient, Staff member);
   
+  
+  /**
+   * Finds an existing patient in the data base based on
+   * the patient's name.
+   * 
+   * @param firstName The patient's first name
+   * @param lastName the patient's last name
+   * @return the patient object within the clinic's list of 
+   *     patients
+   */
+  PatientInterface findPatient(String firstName, String lastName);
+  
   /**
    * Makes a seating chart of every room in the clinic.
    * 
