@@ -192,7 +192,20 @@ public class Clinic implements ClinicInterface {
     }
     ClinicalStaffInterface clinicalstaff = (ClinicalStaffInterface) member;
     patient.getAllocated().add(clinicalstaff);
-    
+  }
+  
+  @Override
+  public PatientInterface findPatient(String firstName, String lastName) {
+    if (firstName == null || lastName == null) {
+      throw new IllegalArgumentException("Please enter a valid first and last name");
+    }
+    for (PatientInterface patient : patients) {
+      if (patient.getFirstName().equalsIgnoreCase(firstName) 
+          && patient.getLastName().equalsIgnoreCase(lastName)) {
+        return patient;
+      }
+    }
+    return null;
   }
   
   @Override
