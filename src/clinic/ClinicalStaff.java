@@ -44,6 +44,17 @@ public class ClinicalStaff implements ClinicalStaffInterface {
   public String getJobTitle() {
     return this.jobTitle;
   }
+  
+  @Override
+  public String getTitle() {
+    if ("Physician".equalsIgnoreCase(this.jobTitle)) {
+      return "Dr. ";
+    } else if ("Nurse".equalsIgnoreCase(this.jobTitle)) {
+      return "Nurse ";
+    } else {
+      return this.jobTitle;
+    }
+  }
 
   @Override
   public String getFirstName() {

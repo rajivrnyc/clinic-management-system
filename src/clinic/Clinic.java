@@ -214,7 +214,8 @@ public class Clinic implements ClinicInterface {
             sb.append("None\n");
           } else {
             for (ClinicalStaffInterface member : patient.getAllocated()) {
-              sb.append(member.getFirstName()).append(" ").append(member.getLastName())
+              sb.append(member.getTitle()).append(member.getFirstName())
+              .append(" ").append(member.getLastName())
                 .append(", ");
             }
             sb.setLength(sb.length() - 2);

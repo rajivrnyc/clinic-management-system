@@ -124,7 +124,8 @@ public class Room implements RoomInterface {
           sb.append("None");
         } else {
           for (ClinicalStaffInterface cstaff : patient.getAllocated()) {
-            sb.append(cstaff.getFirstName()).append(" ").append(cstaff.getLastName())
+            sb.append(cstaff.getTitle()).append(cstaff.getFirstName())
+            .append(" ").append(cstaff.getLastName())
             .append(", ");
           }
           sb.setLength(sb.length() - 2);
