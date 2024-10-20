@@ -219,25 +219,27 @@ public class Clinic implements ClinicInterface {
         sb.append(" - This room is empty");
       } else {
         for (PatientInterface patient : patientslocal) {
-          sb.append("  -").append(patient.getFirstName()).append(" ")
+          if (patient.isActive()) {
+            sb.append("  -").append(patient.getFirstName()).append(" ")
          .append(patient.getLastName()).append("\n");
 
-          sb.append("   - Clinical Staff: ");
-          if (patient.getAllocated().isEmpty()) {
-            sb.append("None\n");
-          } else {
-            for (ClinicalStaffInterface member : patient.getAllocated()) {
-              sb.append(member.getTitle()).append(member.getFirstName())
+            sb.append("   - Clinical Staff: ");
+            if (patient.getAllocated().isEmpty()) {
+              sb.append("None\n");
+            } else {
+              for (ClinicalStaffInterface member : patient.getAllocated()) {
+                sb.append(member.getTitle()).append(member.getFirstName())
               .append(" ").append(member.getLastName())
                 .append(", ");
+              }
+              sb.setLength(sb.length() - 2);
+              sb.append("\n");
             }
-            sb.setLength(sb.length() - 2);
-            sb.append("\n");
-          }
-          Record recentVisit = patient.getMostRecentVisit();
-          if (recentVisit != null) {
-            sb.append("     - Most Recent Visit: ")
+            Record recentVisit = patient.getMostRecentVisit();
+            if (recentVisit != null) {
+              sb.append("     - Most Recent Visit: ")
               .append(recentVisit.toString()).append("\n");
+            }
           }
         }
       }
