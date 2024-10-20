@@ -25,6 +25,7 @@ public class DisplayRoom implements ClinicCommand {
     ClinicalStaffInterface john = (ClinicalStaffInterface) model.getEmployees().get(0);
     model.assignStaff(sallyJ, john);
     RoomInterface roomTest = model.getRoomFromNumber(2);
+    RoomInterface roomTest1 = model.getRoomFromNumber(1);
     model.assignPatient(sallyJ, roomTest);
     model.assignPatient(joeJ, roomTest);
     System.out.println(roomTest);
