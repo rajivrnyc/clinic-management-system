@@ -740,11 +740,11 @@ public class ClinicTest {
   @Test
   public void testCommand3() {
     StringBuilder out = new StringBuilder();
-    String passIn = "3\nq";
+    String passIn = "3\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("3q", out.toString());
+    assertEquals("3\nq\n", out.toString());
   }
   
   @Test
