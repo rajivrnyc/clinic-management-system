@@ -1,5 +1,7 @@
 package clinic;
 
+import java.util.Objects;
+
 /**
  * Class that represents a clinical staff member that is working for the clinic.
  * This class inherits the staff class.
@@ -79,6 +81,26 @@ public class ClinicalStaff implements ClinicalStaffInterface {
   @Override
   public void deactivate() {
     this.isActive = false;
+  }
+  
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof ClinicalStaff)) {
+      return false;
+    }
+    ClinicalStaff other = (ClinicalStaff) obj;
+    return this.jobTitle.equals(other.jobTitle)
+            && this.firstName.equals(other.firstName)
+            && this.lastName.equals(other.lastName)
+            && this.educationLevel == other.educationLevel
+            && this.npiLevel.equals(other.npiLevel);
+  }
+  
+  public int hashCode() {
+    return Objects.hash(jobTitle, firstName, lastName, educationLevel, npiLevel);
   }
   
   @Override
