@@ -542,7 +542,8 @@ public class ClinicTest {
   @Test
   public void testCreatePatientRecord() {
     PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
-    aandi.addRecord(null, 0);
+    aandi.addRecord("Headache", 33);
+    
   }
   
   

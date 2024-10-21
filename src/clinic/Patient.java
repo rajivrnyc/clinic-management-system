@@ -132,6 +132,11 @@ public class Patient implements PatientInterface {
   }
   
   @Override
+  public List<Record> getVisitRecord(){
+    return new ArrayList<>(this.visitInfo);
+  }
+  
+  @Override
   public Record getMostRecentVisit() {
     if (visitInfo.isEmpty()) {
       return null;

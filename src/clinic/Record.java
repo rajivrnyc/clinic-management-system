@@ -29,4 +29,6 @@ public interface Record {
    * @return a patient's body temperature.
    */
   double getTemperature();
+  
+  List<Record> getVisitRecord();
 }
