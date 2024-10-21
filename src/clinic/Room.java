@@ -2,6 +2,7 @@ package clinic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A class to represent the behavior of a room within the clinic.
@@ -103,6 +104,28 @@ public class Room implements RoomInterface {
   @Override
   public List<PatientInterface> getResidents() {
     return new ArrayList<>(this.residents);
+  }
+  
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof Room)) {
+      return false;
+    }
+    Room other = (Room) obj;
+    return this.x1 == other.x1
+             && this.x2 == other.x2
+             && this.y1 == other.y1
+             && this.y2 == other.y2
+             && this.roomName.equals(other.roomName)
+             && this.typeRoom == other.typeRoom;
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.x1, this.x2, this.y1, this.y2, this.roomName, this.typeRoom);
   }
   
   @Override
