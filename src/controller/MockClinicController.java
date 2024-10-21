@@ -39,7 +39,7 @@ public class MockClinicController {
     this.knownCommands = new HashMap<>();
     
     
-    knownCommands.put(1, s -> new DisplayPatientCommand());
+    knownCommands.put(1, s -> new MockPatientDisplay(sb));
     knownCommands.put(2, s -> new DisplayRoom());
     knownCommands.put(3, s -> new DisplaySeatingChart());
     knownCommands.put(4, s -> new RegisterPatientCommand());
@@ -63,7 +63,7 @@ public class MockClinicController {
     
     while (check) {
       String command = scan.next();
-      sb.append(command);
+      sb.append(command + "\n");
       
       if ("q".equalsIgnoreCase(command)) {
         System.out.println("Quitting program.");

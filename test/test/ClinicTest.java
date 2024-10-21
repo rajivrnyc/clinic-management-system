@@ -718,13 +718,13 @@ public class ClinicTest {
   }
   
   @Test
-    public void testCommand1() {
+    public void testCommand1PatientDisplay() {
     StringBuilder out = new StringBuilder();
-    String passIn = "1\n1\nq";
+    String passIn = "1\n1\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("1q", out.toString());
+    assertEquals("1\n1\nq\n", out.toString());
   }
   
   @Test
@@ -810,11 +810,11 @@ public class ClinicTest {
   @Test
   public void invalidPatient() {
     StringBuilder out = new StringBuilder();
-    String passIn = "1\n12\nq";
+    String passIn = "1\n12\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("1q", out.toString());   
+    assertEquals("1\n12\nq\n", out.toString());   
   }
   
   @Test
