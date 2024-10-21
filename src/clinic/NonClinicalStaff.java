@@ -1,5 +1,7 @@
 package clinic;
 
+import java.util.Objects;
+
 /**
  * A class used to represent staff of the clinic that are 
  * non clinical staff members. This class inherits from the Staff
@@ -60,6 +62,27 @@ public class NonClinicalStaff implements Staff {
   @Override
   public EducationLevel getEducationLevel() {
     return this.educationLevel;
+  }
+  
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof NonClinicalStaff)) {
+      return false;
+    }
+    NonClinicalStaff other = (NonClinicalStaff) obj;
+    return this.jobTitle.equals(other.jobTitle)
+            && this.firstName.equals(other.firstName)
+            && this.lastName.equals(other.lastName)
+           && this.educationLevel == other.educationLevel
+           && this.cprLevel == other.cprLevel;
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hash(jobTitle, firstName, lastName, educationLevel, cprLevel);
   }
   
   @Override
