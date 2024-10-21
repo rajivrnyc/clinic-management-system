@@ -798,43 +798,63 @@ public class ClinicTest {
   }
   
   @Test
-  public void testCommand6() {
+  public void testCommand6ExistingPatient() {
     StringBuilder out = new StringBuilder();
     String passIn = "6\nAandi\nAcute\nHeadache\n32\nq";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("6q", out.toString());
+    assertEquals("6\nAandi\nAcute\nHeadache\n32\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand6NameNotFound() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "6\nAlex\nAcute\nAandi\nAcute\nHeadache\n32\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("6\nAlex\nAcute\nAandi\nAcute\nHeadache\n32\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand6NameQuit() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "6\nq\nq\n";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("6\nq\nq\n", out.toString());
   }
   
   @Test
   public void testCommand7() {
     StringBuilder out = new StringBuilder();
-    String passIn = "7\nq";
+    String passIn = "7\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("7q", out.toString());
+    assertEquals("7\nq\n", out.toString());
   }
   
   @Test
   public void testCommand8() {
     StringBuilder out = new StringBuilder();
-    String passIn = "8\nq";
+    String passIn = "8\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("8q", out.toString());
+    assertEquals("8\nq\n", out.toString());
   }
   
   @Test
   public void testCommand9() {
     StringBuilder out = new StringBuilder();
-    String passIn = "9\nq";
+    String passIn = "9\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("9q", out.toString());
+    assertEquals("9\nq\n", out.toString());
   }
   
   @Test
