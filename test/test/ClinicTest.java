@@ -577,6 +577,128 @@ public class ClinicTest {
     assertEquals(2, aandi.getVisitRecord().size());
   }
   
+  @Test
+  public void testTemperatureWithDecimal() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("Feeling sick", 32.1);
+    assertTrue(!aandi.getVisitRecord().isEmpty());
+  }
   
+  @Test
+  public void testPatientToStringNoRecords() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    assertEquals("Patient Name: Aandi Acute\n"
+        + "Date of Birth: 1/1/1981\n"
+        + "Room Number: 1\n"
+        + "Assigned Staff: None\n"
+        + "Visit Info: Patient has no visit records.", aandi.toString().trim());  
+  }
+  
+  @Test
+  public void testPatientToString() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("Headache", 29.5);
+    assertEquals("Patient Name: Aandi Acute\n"
+            + "Date of Birth: 1/1/1981\n"
+            + "Room Number: 1\n"
+            + "Assigned Staff: None\n"
+            + "Visit Info: \n"
+            + "  Chief Complaint: Headache\n"
+            + "  Temperature: 29.5 °C\n"
+            + "  Visit Date: " + aandi.getMostRecentVisit().getDate(), aandi.toString().trim());
+
+  }
+  
+  @Test
+  public void testMultipleRecordsPatientToString() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("Headache", 29.5);
+    aandi.addRecord("Stomachache", 30.0);
+    assertEquals("Patient Name: Aandi Acute\n"
+            + "Date of Birth: 1/1/1981\n"
+            + "Room Number: 1\n"
+            + "Assigned Staff: None\n"
+            + "Visit Info: \n"
+            + "  Chief Complaint: Headache\n"
+            + "  Temperature: 29.5 °C\n"
+            + "  Visit Date: " + aandi.getMostRecentVisit().getDate() + "\n"
+            + "\n"
+            + "  Chief Complaint: Stomachache\n"
+            + "  Temperature: 30.0 °C\n"
+         + "  Visit Date: " + aandi.getMostRecentVisit().getDate().trim(), aandi.toString().trim());
+  }
+  
+  @Test
+  public void testRoomToString() {
+    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
+    clive.addRecord("Sick", 30);
+    RoomInterface room1 = clinic.getRoomFromNumber(3);
+    String roomDisplay = room1.toString();
+    assertEquals("Room Name: Inside Waiting Room\n"
+        + "Room Type: waiting\n"
+        + "Patient Details: \n"
+        + "---------------------------------------\n"
+        + "Clive Cardiac, Room Number: 3, Clinical Staff Allocated: None\n"
+        + "   Chief Complaint: Sick\n"
+        + "---------------------------------------", roomDisplay);
+  }
+  
+  @Test
+  public void testRoomToStringMultipleRecords() {
+    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
+    clive.addRecord("Sick", 30);
+    clive.addRecord("Hungry", 30);
+    RoomInterface room1 = clinic.getRoomFromNumber(3);
+    String roomDisplay = room1.toString();
+    assertEquals("Room Name: Inside Waiting Room\n"
+        + "Room Type: waiting\n"
+        + "Patient Details: \n"
+        + "---------------------------------------\n"
+        + "Clive Cardiac, Room Number: 3, Clinical Staff Allocated: None\n"
+        + "   Chief Complaint: Hungry\n"
+        + "---------------------------------------", roomDisplay);
+  }
+  
+  @Test
+  public void testRoomToStringNoRecords() {
+    RoomInterface room1 = clinic.getRoomFromNumber(3);
+    String roomDisplay = room1.toString();
+    assertEquals("Room Name: Inside Waiting Room\n"
+        +   "Room Type: waiting\n"
+        + "Patient Details: \n"
+        + "---------------------------------------\n"
+        + "Clive Cardiac, Room Number: 3, Clinical Staff Allocated: None\n"
+        + "   Patient has no Visit Records\n"
+        + "---------------------------------------", roomDisplay);
+  }
+  
+  @Test
+  public void testClinicalStaffToStringDoctor() {
+    ClinicalStaffInterface doctor = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    assertEquals("Job Title: physician\n"
+        + "Clinical Staff Name: Dr. Amy Anguish\n"
+        + "Education Level: doctoral\n"
+        + "NPI Level: 1234567890", doctor.toString());
+  }
+  
+  @Test
+  public void testClinicalStaffToStringNurse() {
+    ClinicalStaffInterface nurse = (ClinicalStaffInterface) clinic.getEmployees().get(2);
+    assertEquals("Job Title: nurse\n"
+        + "Clinical Staff Name: Nurse Camila Crisis\n"
+        + "Education Level: doctoral\n"
+        + "NPI Level: 2224443338", nurse.toString());
+  }
+  
+  @Test
+  public void testClinicalStaffNeither() {
+    clinic.addNewClinicalStaff("Aid", "Allen", "Smith", EducationLevel.DOCTORAL, "1234567890");
+    ClinicalStaffInterface staff = (ClinicalStaffInterface) 
+        clinic.getEmployees().get(clinic.getEmployees().size() - 1);
+    assertEquals("Job Title: Aid\n"
+        + "Clinical Staff Name: Aid Allen Smith\n"
+        + "Education Level: doctoral\n"
+        + "NPI Level: 1234567890", staff.toString());
+  }
   
 }

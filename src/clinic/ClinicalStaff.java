@@ -54,7 +54,7 @@ public class ClinicalStaff implements ClinicalStaffInterface {
     } else if ("Nurse".equalsIgnoreCase(this.jobTitle)) {
       return "Nurse ";
     } else {
-      return this.jobTitle;
+      return this.jobTitle + " ";
     }
   }
 
