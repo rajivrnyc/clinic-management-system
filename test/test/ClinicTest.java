@@ -13,6 +13,7 @@ import clinic.EducationLevel;
 import clinic.NonClinicalStaff;
 import clinic.Patient;
 import clinic.PatientInterface;
+import clinic.Record;
 import clinic.Room;
 import clinic.RoomInterface;
 import clinic.RoomType;
@@ -547,6 +548,15 @@ public class ClinicTest {
     NonClinicalStaff jack = new NonClinicalStaff("Reception", "Jack", 
         "Smith", EducationLevel.DOCTORAL, CprLevel.A);
     assertEquals(EducationLevel.DOCTORAL, jack.getEducationLevel());
+  }
+  
+  @Test
+  public void testGetLastPatientRecord() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("Headache", 33);
+    aandi.addRecord("Stomachache", 33);
+    Record record1 = aandi.getVisitRecord().get(aandi.getVisitRecord().size() - 1);
+    assertEquals(record1, aandi.getMostRecentVisit());
   }
   
   @Test
