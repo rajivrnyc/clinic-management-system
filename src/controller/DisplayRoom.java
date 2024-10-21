@@ -38,7 +38,7 @@ public class DisplayRoom implements ClinicCommand {
         }
         running = false; 
       } catch (NumberFormatException e) {
-        System.out.println("Invalid input. Please enter a valid room number.");
+        System.out.println("Invalid input. Please hit enter, then enter a valid room number.");
       } catch (IllegalArgumentException e) {
         System.out.println(e.getMessage());
       }

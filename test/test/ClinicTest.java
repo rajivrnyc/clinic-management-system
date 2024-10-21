@@ -18,11 +18,16 @@ import clinic.RoomInterface;
 import clinic.RoomType;
 import clinic.Staff;
 import clinic.StaffFactoryHelper;
+import controller.ClinicController;
+import controller.MockClinicController;
+import controller.MockPatientDisplay;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +38,7 @@ public class ClinicTest {
   private ClinicInterface clinic;
   private RoomInterface primaryWaitingRoom;
   private Random random;
+  private ClinicController controller;
   
   /**
    * Sets up testing Environment before conduction tests.
@@ -701,4 +707,123 @@ public class ClinicTest {
         + "NPI Level: 1234567890", staff.toString());
   }
   
+  @Test
+    public void testCommand1() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "1\n1\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("1q", out.toString());
+  }
+  
+  @Test
+  public void testCommand2() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "2\n1\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("2q", out.toString());
+  }
+  
+  @Test
+  public void testCommand3() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "3\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("3q", out.toString());
+  }
+  
+  @Test
+  public void testCommand4() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "4\nSteve\nJohnson\n03/05/2000\nHeadache\n32\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("4q", out.toString());
+  }
+  
+  @Test
+  public void testCommand5() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "5\n\nphysician\nSteve\nJohnson\nmasters\n0123456789\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("5q", out.toString());
+  }
+  
+  @Test
+  public void testCommand6() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "6\nAandi\nAcute\nHeadache\n32\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("6q", out.toString());
+  }
+  
+  @Test
+  public void testCommand7() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "7\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("7q", out.toString());
+  }
+  
+  @Test
+  public void testCommand8() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "8\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("8q", out.toString());
+  }
+  
+  @Test
+  public void testCommand9() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "9\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("9q", out.toString());
+  }
+  
+  @Test
+  public void invalidPatient() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "1\n12\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("1q", out.toString());   
+  }
+  
+  @Test
+  public void invalidRoom() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "2\n12\n3\n3\nq";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("2q", out.toString());   
+  }
+  
+  @Test(expected = UnsupportedOperationException.class)
+  public void testInvalidCommand() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "12";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("1", out.toString());   
+  }
 }
