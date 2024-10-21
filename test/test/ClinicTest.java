@@ -40,6 +40,7 @@ public class ClinicTest {
     primaryWaitingRoom = new Room(0, 0, 20, 20, RoomType.WAITING, "Primary Waiting Room");
     examRoom = new Room(21, 0, 40, 20, RoomType.EXAM, "Exam Room 1");
     clinic = new Clinic("Local Clinic", 5, 10, 20, primaryWaitingRoom);
+    clinic.getRooms().add(primaryWaitingRoom);
     clinic.getRooms().add(examRoom);
   }
   
@@ -216,6 +217,7 @@ public class ClinicTest {
     clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
     clinic.assignPatient(patient, null);
   }
+  
   
   @Test
   public void testAssignStaff() {

@@ -174,8 +174,7 @@ public class Clinic implements ClinicInterface {
     RoomInterface current = getRoomFromNumber(patient.getRoomNumber());
     
     if (current != null && current.equals(room)) {
-      System.out.println("Patient is already in the target room.");
-      return;
+      throw new IllegalArgumentException("Patient is already in the target room.");
     }
     
     if (!current.isWaitingRoom() && current != null) {
