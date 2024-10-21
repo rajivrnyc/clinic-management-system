@@ -23,8 +23,9 @@ public class VisitRecord implements Record {
    * @param temperature the patient's temperature in Celsius upon coming to the clinic.
    */
   public VisitRecord(String complaint, double temperature) {
-    if (complaint == null) {
-      throw new IllegalArgumentException("Patient cannot have a null arrival or complaint.");
+    if (complaint == null || temperature < 0) {
+      throw new IllegalArgumentException("Patient cannot have a "
+          + "or complaint or negative temperature reading.");
     }
     
     this.dateArrival = LocalDateTime.now();

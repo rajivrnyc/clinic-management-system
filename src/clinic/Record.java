@@ -31,10 +31,5 @@ public interface Record {
    */
   double getTemperature();
   
-  
-  /**
-   * Returns a copy of the patient's visit Record.
-   * @return a list of the patient's visit record.
-   */
-  List<Record> getVisitRecord();
+ 
 }

@@ -543,8 +543,19 @@ public class ClinicTest {
   public void testCreatePatientRecord() {
     PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Headache", 33);
-    
-    
+    assertTrue(!aandi.getVisitRecord().isEmpty());
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidPatientRecord() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord(null, 32);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativeTemperature() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("Headache", -21);
   }
   
   
