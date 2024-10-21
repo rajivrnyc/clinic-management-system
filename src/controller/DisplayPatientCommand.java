@@ -16,7 +16,7 @@ import java.util.Scanner;
  * Executes displaying of a patient object.
  */
 public class DisplayPatientCommand implements ClinicCommand {
-	
+
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
     System.out.println("List of Patients:");

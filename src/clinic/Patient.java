@@ -132,7 +132,7 @@ public class Patient implements PatientInterface {
   }
   
   @Override
-  public List<Record> getVisitRecord(){
+  public List<Record> getVisitRecord() {
     return new ArrayList<>(this.visitInfo);
   }
   

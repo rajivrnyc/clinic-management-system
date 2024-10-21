@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class MockRegisterPatient implements ClinicCommand {
   StringBuilder sb;
-	
+
   public MockRegisterPatient(StringBuilder sb) {
     this.sb = sb;
   }
