@@ -195,6 +195,10 @@ public class Clinic implements ClinicInterface {
     if (patient == null || member == null) {
       throw new IllegalArgumentException("Patient or ClinicalStaff objects cannot be null.");
     }
+    if (!member.getStatus()) {
+      throw new IllegalArgumentException("Clinical Staff member must be active "
+           + "to be assigned to a patient.");
+    }
     ClinicalStaffInterface clinicalstaff = member;
     patient.getAllocated().add(clinicalstaff);
   }

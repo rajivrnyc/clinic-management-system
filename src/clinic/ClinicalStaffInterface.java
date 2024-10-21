@@ -19,5 +19,11 @@ public interface ClinicalStaffInterface extends Staff {
    * @return the clinical staff member's Npi level.
    */
   String getNpiLevel();
+  
+  /**
+   * Checks if a Clinical Staff member is active.
+   * @return a boolean that states whether clinical staff member is active or not
+   */
+  boolean getStatus();
 
 }

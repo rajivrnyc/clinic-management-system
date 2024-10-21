@@ -260,6 +260,36 @@ public class ClinicTest {
   }
   
   @Test
+  public void testAssignOneStaffToMultiple() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface beth = clinic.findPatient("Beth", "Bunion");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.assignStaff(beth, amy);
+    clinic.assignStaff(aandi, amy);
+    assertTrue(beth.getAllocated().contains(amy));
+    assertTrue(aandi.getAllocated().contains(amy));  
+  }
+  
+  @Test
+  public void testAssignMultipleStaffToOne() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface benny = (ClinicalStaffInterface) clinic.getEmployees().get(1);
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.assignStaff(aandi, benny);
+    clinic.assignStaff(aandi, amy);
+    assertTrue(aandi.getAllocated().contains(benny));
+    assertTrue(aandi.getAllocated().contains(amy));  
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void assignDeactivated() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    amy.deactivate();
+    clinic.assignStaff(aandi, amy);
+  }
+  
+  @Test
   public void testRoomConstruction() {
     Room r1 = new Room(5, 6, 15, 15, RoomType.EXAM, "ExamRoom1");
     assertEquals("ExamRoom1", r1.getRoomName());
@@ -298,6 +328,7 @@ public class ClinicTest {
     List<PatientInterface> temp = primaryWaitingRoom.getResidents();
     assertTrue(temp.contains(patient));
   }
+  
   
   @Test
   public void testWaitingRoom() {

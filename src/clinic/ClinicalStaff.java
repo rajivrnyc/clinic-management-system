@@ -79,6 +79,11 @@ public class ClinicalStaff implements ClinicalStaffInterface {
   }
   
   @Override
+  public boolean getStatus() {
+    return this.isActive;
+  }
+  
+  @Override
   public void deactivate() {
     this.isActive = false;
   }
