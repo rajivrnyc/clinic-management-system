@@ -30,30 +30,35 @@ The current features of my program include:
 - Return a String based visual representation of a room, its residents and the clinical staff members assigned to those residents.
 - Display a seating  chart which concisely displays each room and each person in their respective rooms.
 - The ability to find a room based on a given room number.
+- Adding a patient visit record to the model
+- Finding a patient within the model by name.
+- Viewing different rooms and areas in the model which reflect patient information including their most recent visit.
+- Displaying patient info.
+- A controller which can perform the tasks listed above in an easy to access menu.
 
 ### How to Run
 
 Describe how to run your program from the JAR file. Describe what arguments are needed (if any) and what they mean.
 - To run my program from a .jar file first make sure the .jar file is downloaded alongside clinicfile.txt
 - Open a command prompt
-- Change diretory to where the jar file is located.
-- Use the command "java -jar Milestone1.jar clinicfile.txt" where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
-- The only argument needed to accomplish this is clinicfile.txt which the jar reads and processes.
+- Change diretory to where the repository is located.
+- Use the command "java -jar res/Milestone2.jar res/clinicfile.txt res/clinic_commands.txt" where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
+- The only arguments needed to accomplish this is clinicfile.txt and clinic_commands.txt which the jar reads and processes.
 
 
 ### How to Use the Program
 
 Provide instructions on how to use the functionality in your program. If it is interactive, describe how to interact with your program. Pay particular attention to the parts that are not part of the example runs that you provide.
-- If the user passes in a clinic text file they will be able to witness the execution of the features listed above within the context of the clinic file that they pass in to the jar file.
-- The model has not yet implemented interactivity. 
+- If the user passes in a clinic text file they will be able to enter user input interactively to work with the clinic model or pass in a text file with a list of appropriate commands to interact with the model.
+- You may quit out of the proram by pressing "q" when prompted for a menu option.
 
 
 ### Example Runs
 
 List any example runs that you have in res/ directory and provide a description of what each example represents or does. Make sure that your example runs are provided as *plain text files*.
-- I have an example run testing a clinic file where I inputted a text file which was then read into my driver class. The goal of this class was to test each of the main requirements for Milestone 1.
-- Each requirement is subtitled and demonstrated with important and relevant attributes demonstrating how and why each method of mine succesffuly executed in accordance with the requirements.
-- The final requirements show that the structure of my model is sound as it accurately displays the location of each member of the clinic in their respective rooms alongside their assigned clinical staff members.
+- I have an example run testing a clinic file where I inputted a text file which was then read into my driver class. The goal of this class was to pass in a clinic file.
+- My test run goes through each command that the controller is capable of operating to demonstrate its function. 
+- My test run shows that my example runs correctly when passed in information and exists the program once completed through a quit command.
 
 
 ### Design/Model Changes
@@ -70,6 +75,16 @@ v1.3
 v1.4
 - Added ArrayList of ClinicalStaff objects to patient and ArrayList of Patient objects to room. Room needs to maintain a list of everyone who stays within the room and leaves the room when they are moved to accomodate for when a room can evenutally hold more than 1 person at a time. In addition WaitingRooms must store mutliple Patient objects as they are capable of keeping multiple patients.
 - I kept a list of allocated staff members for a Patient because they can have multiple clinical staff members assigned to them. Deactivation of a Staff member would simply mean removing them from that list and deactivation of a Patient would mean emptying the list entirely.
+v2.0
+- Added a VisitRecord class and interface which kept track of each of any particular patient's visit to the clinic.
+v2.1
+- Added a method to ClinicalStaff which displayed an appropriate title to correspond with  the staff member's respective job title.
+- Added toString method for patient so that their information as well as visit history could be displayed.
+v2.2
+- Added a findPatient method to the main clinic class which found a patient within the clinic's system by name.
+v2.3
+- Added a controller to the clinic so that the main driver could call commands with ease without having to directly access the file with commands and passed control to the controller.
+- Added a series of commands to the controller which encapsulate many of the major functions of the clinic model.
 
 
 ### Assumptions
@@ -78,6 +93,9 @@ List any assumptions that you made during program development and implementation
 - I assumed that the lowest number a room can be assigned is 1 and that it is not posible for a room to have a negative room number assigned to it.
 - If a staff member is deactivated I assume that none of their attributes change with the deactivation such as jobTitle or NPI level/CprLevel.
 - As of right now I assume that there is no maximum capacity for the clinic or a limit to how many clinical staff members can be assigned to a patient.
+- I assume that a patient's temperature can be anything except negative.
+- I assume that the patient can have any possible chief complaint and still be admitted to the hospital.
+- I assume that there are no restrictions on what constitures a patient or staff member's name other than that they are Strings.
 
 
 ### Limitations
