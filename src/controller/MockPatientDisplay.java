@@ -35,15 +35,19 @@ public class MockPatientDisplay implements ClinicCommand {
       System.out.println((i + 1) + ": " + (patients.get(i)).getFirstName() + " " 
           + (patients.get(i)).getLastName());
     }
-    
+    scanner.nextLine();
     int patientIndex = -1;
     boolean running = true;
     while (running) {
       System.out.println();
       System.out.print("Select patient to display: ");
-      scanner.nextLine();
+      
       try {
         String nextInt = scanner.nextLine();
+        if ("q".equalsIgnoreCase(nextInt)) {
+          System.out.println("Qutting to Menu.");
+          return; 
+        }
         sb.append(nextInt + "\n");
         patientIndex = Integer.parseInt(nextInt) - 1;
         if (patientIndex < 0 || patientIndex >= patients.size()) {
@@ -52,10 +56,10 @@ public class MockPatientDisplay implements ClinicCommand {
         running = false;
       } catch (NumberFormatException e) {
         System.out.println("Invalid input. Please enter a valid patient number.");
-        return;
+        scanner.nextLine();
       } catch (IllegalArgumentException e) {
         System.out.println("Invalid input. Please enter a valid number.");
-        return;
+        scanner.nextLine();
       }
     }
     System.out.println();

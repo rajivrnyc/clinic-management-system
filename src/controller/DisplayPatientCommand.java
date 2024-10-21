@@ -32,23 +32,29 @@ public class DisplayPatientCommand implements ClinicCommand {
     }
     
     int patientIndex = -1;
+    scanner.nextLine();
     boolean running = true;
     while (running) {
       System.out.println();
       System.out.print("Select patient to display: ");
-      scanner.nextLine();
+      
       try {
-        patientIndex = Integer.parseInt(scanner.nextLine()) - 1;
+        String nextInt = scanner.nextLine();
+        if ("q".equalsIgnoreCase(nextInt)) {
+          System.out.println("Qutting to Menu.");
+          return;
+        }
+        patientIndex = Integer.parseInt(nextInt) - 1;
         if (patientIndex < 0 || patientIndex >= patients.size()) {
           throw new IllegalArgumentException("Invalid patient number.");
         }
         running = false;
       } catch (NumberFormatException e) {
         System.out.println("Invalid input. Please enter a valid patient number.");
-        return;
+        scanner.nextLine();
       } catch (IllegalArgumentException e) {
         System.out.println("Invalid input. Please enter a valid number.");
-        return;
+        scanner.nextLine();
       }
     }
     System.out.println();

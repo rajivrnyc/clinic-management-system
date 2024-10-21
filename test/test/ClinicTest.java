@@ -730,11 +730,11 @@ public class ClinicTest {
   @Test
   public void testCommand2() {
     StringBuilder out = new StringBuilder();
-    String passIn = "2\n1\nq";
+    String passIn = "2\n1\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("2q", out.toString());
+    assertEquals("2\n1\nq\n", out.toString());
   }
   
   @Test
@@ -820,11 +820,11 @@ public class ClinicTest {
   @Test
   public void invalidRoom() {
     StringBuilder out = new StringBuilder();
-    String passIn = "2\n12\n3\n3\nq";
+    String passIn = "2\n12\n3\n3\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
-    assertEquals("2q", out.toString());   
+    assertEquals("2\n12\n3\n3\nq\n", out.toString());   
   }
   
   @Test(expected = UnsupportedOperationException.class)

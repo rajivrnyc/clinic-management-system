@@ -57,6 +57,7 @@ public class ClinicController {
     boolean check = true;
     
     while (check) {
+      displayMenu();
       String command = scan.next();
       
       if ("q".equalsIgnoreCase(command)) {
@@ -79,5 +80,22 @@ public class ClinicController {
       
       }
     }
+  }
+  
+  /**
+ * Displays the menu of available commands.
+ */
+  private void displayMenu() {
+    System.out.println("Menu:");
+    System.out.println("1: Display Selected Patient");
+    System.out.println("2: Display Selected Room");
+    System.out.println("3: Display Seating Chart");
+    System.out.println("4: Register New Patient");
+    System.out.println("5: Register New Clinical Staff");
+    System.out.println("6: Register Existing Patient");
+    System.out.println("7: Send Patient Home");
+    System.out.println("8: Assign Patient to Room");
+    System.out.println("9: Assign Clinical Staff");
+    System.out.println("Enter 'q' to quit.");    
   }
 }
