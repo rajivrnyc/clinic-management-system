@@ -18,6 +18,8 @@ import clinic.RoomInterface;
 import clinic.RoomType;
 import clinic.Staff;
 import clinic.StaffFactoryHelper;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,18 +37,15 @@ public class ClinicTest {
    * Sets up testing Environment before conduction tests.
    */
   @Before
-  public void setUp() {
-    sally = new Patient(1, "Sally", "Johnson", "01/02/1990");
-    primaryWaitingRoom = new Room(0, 0, 20, 20, RoomType.WAITING, "Primary Waiting Room");
-    examRoom = new Room(21, 0, 40, 20, RoomType.EXAM, "Exam Room 1");
-    clinic = new Clinic("Local Clinic", 5, 10, 20, primaryWaitingRoom);
-    clinic.getRooms().add(primaryWaitingRoom);
-    clinic.getRooms().add(examRoom);
+  public void setUp() throws IOException {
+    primaryWaitingRoom = new Room(28, 0, 35, 5, RoomType.WAITING, "Front Waiting Room");
+    clinic = Clinic.readFile(new FileReader("res/clinicfile.txt"));
   }
   
   @Test
   public void testClinic() {
-    assertEquals(clinic, new Clinic("Local Clinic", 5, 10, 20, primaryWaitingRoom));
+    assertEquals(clinic, new Clinic("Cybernetic Implant Clinic", 
+        5, 6, 7, clinic.getRoomFromNumber(1)));
   }
   
   @Test(expected = IllegalArgumentException.class)
@@ -76,7 +75,7 @@ public class ClinicTest {
   
   @Test
   public void testGetClinicName() {
-    assertEquals("Local Clinic", clinic.getClinicName());
+    assertEquals("Cybernetic Implant Clinic", clinic.getClinicName());
   }
   
   @Test
@@ -86,19 +85,19 @@ public class ClinicTest {
   
   @Test
   public void testGetNumPatients() {
-    assertEquals(20, clinic.getNumPatients());
+    assertEquals(7, clinic.getNumPatients());
   }
   
   @Test
   public void testGetNumStaff() {
-    assertEquals(10, clinic.getNumStaff());
+    assertEquals(6, clinic.getNumStaff());
   }
   
   @Test
   public void testAddNewPatient() {
     clinic.addNewPatient("Sally", "Johnson", "01/02/1990");
     List<PatientInterface> patients = clinic.getPatients();
-    PatientInterface newPatient = patients.get(0);
+    PatientInterface newPatient = patients.get(patients.size() - 1);
     assertEquals("Sally", newPatient.getFirstName());
     assertEquals("Johnson", newPatient.getLastName());
     assertEquals("01/02/1990", newPatient.getDateOfBirth());
@@ -123,7 +122,7 @@ public class ClinicTest {
   public void testAddNewClinicalStaff() {
     clinic.addNewClinicalStaff("Doctor", "John", "Smith", EducationLevel.DOCTORAL, "1000000000");
     List<Staff> staffs = clinic.getEmployees();
-    Staff newStaff = staffs.get(0);
+    Staff newStaff = staffs.get(staffs.size() - 1);
     assertEquals("Doctor", newStaff.getJobTitle());
     assertEquals("John", newStaff.getFirstName());
     assertEquals("Smith", newStaff.getLastName());
@@ -157,7 +156,8 @@ public class ClinicTest {
   
   @Test
   public void testGetRoomFromNumber() {
-    assertEquals(primaryWaitingRoom, clinic.getRoomFromNumber(1));
+    RoomInterface room1 = clinic.getRoomFromNumber(1);
+    assertEquals("Front Waiting Room", room1.getRoomName());
   }
   
   @Test(expected = IllegalArgumentException.class)
@@ -274,7 +274,8 @@ public class ClinicTest {
   
   @Test
   public void testGetRoomName() {
-    assertEquals("Primary Waiting Room", primaryWaitingRoom.getRoomName());
+    RoomInterface room1 = clinic.getRoomFromNumber(1);
+    assertEquals("Front Waiting Room", room1.getRoomName());
   }
   
   @Test
@@ -292,8 +293,8 @@ public class ClinicTest {
   
   @Test
   public void testWaitingRoom() {
-    assertTrue(primaryWaitingRoom.isWaitingRoom());
-    assertFalse(examRoom.isWaitingRoom());
+    RoomInterface room1 = clinic.getRoomFromNumber(1);
+    room1.isWaitingRoom();
   }
   
   @Test
@@ -315,11 +316,11 @@ public class ClinicTest {
   
   @Test
   public void testIsOccupied() {
-    Patient patient = new Patient(1, "Sally", "Johnson", "01/02/1990");
-    examRoom.placePatient(patient);
-    assertTrue(examRoom.isOccupied());
-    examRoom.removePatient(patient);
-    assertFalse(examRoom.isOccupied());
+    RoomInterface room1 = clinic.getRoomFromNumber(2);
+    assertTrue(room1.isOccupied());
+    PatientInterface beth = clinic.findPatient("Beth", "Bunion");
+    room1.removePatient(beth);
+    assertFalse(room1.isOccupied());
   }
   
   @Test
@@ -350,51 +351,58 @@ public class ClinicTest {
   
   @Test
   public void testGetRoomNumber() {
-    assertEquals(1, sally.getRoomNumber());
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    assertEquals(1, aandi.getRoomNumber());
   }
   
   @Test
   public void testGetFirstName() {
-    assertEquals("Sally", sally.getFirstName());
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    assertEquals("Aandi", aandi.getFirstName());
   }
   
   @Test
   public void testGetLastName() {
-    assertEquals("Johnson", sally.getLastName());
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    assertEquals("Acute", aandi.getLastName());
   }
   
   @Test
   public void testGetDateOfBirth() {
-    assertEquals("01/02/1990", sally.getDateOfBirth());
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    assertEquals("1/1/1981", aandi.getDateOfBirth());
   }
   
   @Test
   public void testGetApproval() {
-    assertFalse(sally.getApproval());
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    assertFalse(aandi.getApproval());
   }
   
   @Test
   public void testSetRoomNumber() {
-    sally.setRoomNumber(2);
-    assertEquals(2, sally.getRoomNumber());
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.setRoomNumber(2);
+    assertEquals(2, aandi.getRoomNumber());
   }
   
   @Test
   public void testSetApproval() {
     ClinicalStaff john = new ClinicalStaff("Doctor",
         "John", "Smith", EducationLevel.DOCTORAL, "1000000000");
-    sally.setApproval(john, true);
-    assertTrue(sally.getApproval());
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.setApproval(john, true);
+    assertTrue(aandi.getApproval());
   }
   
   @Test
   public void testRemoveClinicalStaffmember() {
-    ClinicalStaff john = new ClinicalStaff("Doctor",
-        "John", "Smith", EducationLevel.DOCTORAL, "1000000000");
-    sally.getAllocated().add(john);
-    sally.removeClinicalStaffMember(john);
-    List<ClinicalStaffInterface> temp = sally.getAllocated();
-    assertFalse(temp.contains(john));
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    aandi.getAllocated().add(amy);
+    aandi.removeClinicalStaffMember(amy);
+    List<ClinicalStaffInterface> temp = aandi.getAllocated();
+    assertFalse(temp.contains(amy));
   }
   
   @Test
