@@ -31,7 +31,12 @@ public class ClinicDriver {
       System.out.println("Number of Patients: " + clinic.getNumPatients());
       System.out.println();
 
-      Readable input = new InputStreamReader(System.in); 
+      Readable input;
+      if (args.length > 1) {
+        input = new FileReader(args[1]);
+      } else {
+        input = new InputStreamReader(System.in);
+      }
       Appendable output = System.out; 
       ClinicController controller = new ClinicController(input, output);
       controller.go(clinic);
