@@ -2,6 +2,7 @@ package clinic;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
  * Record of a patient upon their most recent
@@ -45,6 +46,25 @@ public class VisitRecord implements Record {
   @Override
   public double getTemperature() {
     return temperature;
+  }
+  
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof VisitRecord)) {
+      return false;
+    }
+    VisitRecord other = (VisitRecord) obj;
+    return this.dateArrival.isEqual(other.dateArrival)
+        && this.complaint.equals(other.complaint)
+        && Double.compare(this.temperature, other.temperature) == 0;
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hash(dateArrival, complaint, temperature);
   }
   
   @Override
