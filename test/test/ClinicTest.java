@@ -558,6 +558,13 @@ public class ClinicTest {
     aandi.addRecord("Headache", -21);
   }
   
+  @Test
+  public void testZeroTemperature() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("Feeling sick", 0);
+    assertTrue(!aandi.getVisitRecord().isEmpty());
+  }
+  
   
   
 }
