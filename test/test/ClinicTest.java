@@ -569,6 +569,14 @@ public class ClinicTest {
     assertTrue(!aandi.getVisitRecord().isEmpty());
   }
   
+  @Test
+  public void testMultipleVisitRecords() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("Feeling sick", 32);
+    aandi.addRecord("Headache", 31);
+    assertEquals(2, aandi.getVisitRecord().size());
+  }
+  
   
   
 }
