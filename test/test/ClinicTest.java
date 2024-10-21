@@ -29,9 +29,7 @@ import org.junit.Test;
  */
 public class ClinicTest {
   private ClinicInterface clinic;
-  private RoomInterface examRoom;
   private RoomInterface primaryWaitingRoom;
-  private PatientInterface sally;
   
   /**
    * Sets up testing Environment before conduction tests.
@@ -539,6 +537,11 @@ public class ClinicTest {
     NonClinicalStaff jack = new NonClinicalStaff("Reception", "Jack", 
         "Smith", EducationLevel.DOCTORAL, CprLevel.A);
     assertEquals(EducationLevel.DOCTORAL, jack.getEducationLevel());
+  }
+  
+  @Test
+  public void testCreatePatientRecord() {
+    
   }
   
   
