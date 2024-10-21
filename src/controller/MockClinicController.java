@@ -44,7 +44,7 @@ public class MockClinicController {
     knownCommands.put(3, s -> new MockSeatingChart(sb));
     knownCommands.put(4, s -> new MockRegisterPatient(sb));
     knownCommands.put(5, s -> new MockNewClinStaff(sb));
-    knownCommands.put(6, s -> new RegisterExistingPatient());
+    knownCommands.put(6, s -> new MockExistingPatient(sb));
     knownCommands.put(7, s -> new SendHomeCommand());
     knownCommands.put(8, s -> new AssignPatientRoom());
     knownCommands.put(9, s -> new AssignClinicalStaff());

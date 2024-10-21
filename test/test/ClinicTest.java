@@ -778,13 +778,23 @@ public class ClinicTest {
   }
   
   @Test
-  public void testCommand5() {
+  public void testCommand5NewClinStaff() {
     StringBuilder out = new StringBuilder();
     String passIn = "5\n\nphysician\nSteve\nJohnson\nmasters\n0123456789\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
     assertEquals("5\n\nphysician\nSteve\nJohnson\nmasters\n0123456789\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand5NewClinStaffInavlid() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "5\n\nphysician\nSteve\n\nJohnson\nabc\nmasters\n0123456789\nq\n";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out);
+    mockcontroller.go(clinic);
+    assertEquals("5\n\nphysician\nSteve\n\nJohnson\nabc\nmasters\n0123456789\nq\n", out.toString());
   }
   
   @Test
