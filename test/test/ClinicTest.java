@@ -21,6 +21,8 @@ import clinic.StaffFactoryHelper;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,12 +32,14 @@ import org.junit.Test;
 public class ClinicTest {
   private ClinicInterface clinic;
   private RoomInterface primaryWaitingRoom;
+  private Random random;
   
   /**
    * Sets up testing Environment before conduction tests.
    */
   @Before
   public void setUp() throws IOException {
+    random = new Random();
     primaryWaitingRoom = new Room(28, 0, 35, 5, RoomType.WAITING, "Front Waiting Room");
     clinic = Clinic.readFile(new FileReader("res/clinicfile.txt"));
   }
