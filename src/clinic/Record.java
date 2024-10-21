@@ -1,6 +1,7 @@
 package clinic;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Creates a record about a patient's information upon their visit.
@@ -30,5 +31,10 @@ public interface Record {
    */
   double getTemperature();
   
+  
+  /**
+   * Returns a copy of the patient's visit Record.
+   * @return a list of the patient's visit record.
+   */
   List<Record> getVisitRecord();
 }
