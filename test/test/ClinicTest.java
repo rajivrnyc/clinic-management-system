@@ -20,8 +20,7 @@ import clinic.RoomType;
 import clinic.Staff;
 import clinic.StaffFactoryHelper;
 import controller.ClinicController;
-import controller.MockClinicController;
-import controller.MockPatientDisplay;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;

@@ -1,7 +1,8 @@
-package controller;
+package test;
 
 import clinic.Clinic;
 import clinic.ClinicInterface;
+import controller.ClinicCommand;
 
 import java.io.BufferedReader;
 import java.io.IOException;

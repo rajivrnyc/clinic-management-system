@@ -1,4 +1,4 @@
-package controller;
+package test;
 
 import clinic.Clinic;
 import clinic.ClinicInterface;
