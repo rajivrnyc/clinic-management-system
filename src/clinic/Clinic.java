@@ -191,11 +191,11 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public void assignStaff(PatientInterface patient, Staff member) {
+  public void assignStaff(PatientInterface patient, ClinicalStaffInterface member) {
     if (patient == null || member == null) {
       throw new IllegalArgumentException("Patient or ClinicalStaff objects cannot be null.");
     }
-    ClinicalStaffInterface clinicalstaff = (ClinicalStaffInterface) member;
+    ClinicalStaffInterface clinicalstaff = member;
     patient.getAllocated().add(clinicalstaff);
   }
   
