@@ -45,6 +45,7 @@ public class MockPatientDisplay implements ClinicCommand {
       try {
         String nextInt = scanner.nextLine();
         if ("q".equalsIgnoreCase(nextInt)) {
+          sb.append(nextInt + "\n");
           System.out.println("Qutting to Menu.");
           return; 
         }
@@ -57,9 +58,12 @@ public class MockPatientDisplay implements ClinicCommand {
       } catch (NumberFormatException e) {
         System.out.println("Invalid input. Please enter a valid patient number.");
         scanner.nextLine();
+        String error = scanner.nextLine();
+        sb.append(error + "\n");
       } catch (IllegalArgumentException e) {
         System.out.println("Invalid input. Please enter a valid number.");
-        scanner.nextLine();
+        String error = scanner.nextLine();
+        sb.append(error + "\n");
       }
     }
     System.out.println();

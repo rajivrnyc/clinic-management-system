@@ -38,6 +38,11 @@ public class MockDisplayRoom implements ClinicCommand {
       System.out.println();
       try {
         String nextInt = scanner.nextLine();
+        if ("q".equalsIgnoreCase(nextInt)) {
+          sb.append(nextInt + "\n");
+          System.out.println("Qutting to Menu.");
+          return; 
+        }
         sb.append(nextInt + "\n");
         roomIndex = Integer.parseInt(nextInt) - 1;
         if (roomIndex < 0 || roomIndex >= rooms.size()) {
@@ -46,10 +51,12 @@ public class MockDisplayRoom implements ClinicCommand {
         running = false; 
       } catch (NumberFormatException e) {
         System.out.println("Invalid input. Please hit enter, then enter a valid room number.");
-        scanner.nextLine();
+        String error = scanner.nextLine();
+        sb.append(error + "\n");
       } catch (IllegalArgumentException e) {
         System.out.println(e.getMessage());
-        scanner.nextLine();
+        String error = scanner.nextLine();
+        sb.append(error + "\n");
       }
     }
     System.out.println();
