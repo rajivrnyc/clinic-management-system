@@ -21,7 +21,7 @@ public class ClinicDriver {
   public static void main(String[] args) {
     
     try {
-      Clinic clinic = Clinic.readFile(new FileReader("res/clinicfile.txt"));
+      ClinicInterface clinic = Clinic.readFile(new FileReader("res/clinicfile.txt"));
       System.out.println("Loaded File.");
     
     
