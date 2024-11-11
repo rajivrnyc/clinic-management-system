@@ -257,7 +257,7 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     return sb.toString();
   }
   
-  public void listClinWithPatient() {
+  public String listClinWithPatient() {
     StringBuilder output = new StringBuilder();
     for (PatientInterface patient : patients) {
       if (patient.isActive()) {
@@ -274,7 +274,7 @@ public class Clinic implements ClinicStaffAndPatientInfo {
         }
       }
     }
-    System.out.println(output.toString());
+    return output.toString();
   }
   
   @Override
