@@ -21,6 +21,25 @@ public class VisitRecord implements Record {
    * 
    * @param complaint the patient's chief complaint upon coming to the clinic.
    * @param temperature the patient's temperature in Celsius upon coming to the clinic.
+   * @param dateArrival The date the patient arrived to the Clinic.
+   */
+  public VisitRecord(String complaint, double temperature, LocalDateTime dateArrival) {
+    if (complaint == null || temperature < 0) {
+      throw new IllegalArgumentException("Patient cannot have a "
+          + "null complaint or negative temperature reading.");
+    }
+    this.dateArrival = dateArrival;
+    this.complaint = complaint;
+    this.temperature = Math.round(temperature * 10.0) / 10.0;
+  }
+  
+  /**
+   * Creates an instance of a patient's visit record where datearrival is the patient's
+   * arrival to the clinic, complaint is the patient's chief complaint to the clinic,
+   * and temperature is the patient's body temperature in Celsius rounded to 1 decimal.
+   * 
+   * @param complaint the patient's chief complaint upon coming to the clinic.
+   * @param temperature the patient's temperature in Celsius upon coming to the clinic.
    */
   public VisitRecord(String complaint, double temperature) {
     if (complaint == null || temperature < 0) {
