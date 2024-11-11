@@ -16,6 +16,12 @@ public interface ClinicStaffAndPatientInfo extends ClinicInterface {
    */
   String listClinWithPatient();
   
+  /**
+   * A method to deactivate a staff member from the Clinic.
+   * @param member A staff member at the clinic.
+   */
+  void deactivateStaff(Staff member);
+  
   
   /**
    * A method to list patients that have not visited the clinic
