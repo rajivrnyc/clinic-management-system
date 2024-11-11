@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import clinic.Clinic;
 import clinic.ClinicInterface;
+import clinic.ClinicStaffAndPatientInfo;
 import clinic.ClinicalStaff;
 import clinic.ClinicalStaffInterface;
 import clinic.CprLevel;
@@ -34,7 +35,7 @@ import org.junit.Test;
  * JUnit Test Class for all classes within clinic package.
  */
 public class ClinicTest {
-  private ClinicInterface clinic;
+  private ClinicStaffAndPatientInfo clinic;
   private RoomInterface primaryWaitingRoom;
   private Random random;
   private ClinicController controller;
@@ -914,5 +915,15 @@ public class ClinicTest {
     MockClinicController mockcontroller = new MockClinicController(in, out);
     mockcontroller.go(clinic);
     assertEquals("1", out.toString());   
+  }
+  
+  @Test
+  public void listClinWithPatientInfo() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.assignStaff(aandi, amy);
+    String test = clinic.listClinWithPatient();
+    assertEquals("Clinical Staff: Amy Anguish\r\n"
+           + "  Assigned Patient: Aandi Acute", test);
   }
 }
