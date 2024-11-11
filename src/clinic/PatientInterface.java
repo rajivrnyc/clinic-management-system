@@ -1,5 +1,6 @@
 package clinic;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,7 +121,11 @@ public interface PatientInterface {
   
   /**
    * Adds a record of a past visit to the patient's information.
+   * 
+   * @param complaint The main complaint of the patient open visiting the clinic.
+   * @param temperature The temperature of the patient recorded during admission to clinic.
+   * @param date The date the patient arrived to the clinic.
    */
-  void addOldRecord();
+  void addOldRecord(String complaint, double temperature, LocalDateTime date);
   
 }
