@@ -930,5 +930,6 @@ public class ClinicTest {
   @Test
   public void testListPatientNoVisitOneYear() {
     PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("", 0);
   }
 }

@@ -22,6 +22,7 @@ public interface PatientInterface {
      * @return A String representing the first name of the patient.
      */
   String getFirstName();
+  
 
   /**
     * Gets the last name of the patient.
@@ -116,5 +117,10 @@ public interface PatientInterface {
    * @return a list of the patient's visit record.
    */
   List<Record> getVisitRecord();
+  
+  /**
+   * Adds a record of a past visit to the patient's information.
+   */
+  void addOldRecord();
   
 }

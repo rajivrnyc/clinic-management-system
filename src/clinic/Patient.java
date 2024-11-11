@@ -1,5 +1,6 @@
 package clinic;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -129,6 +130,11 @@ public class Patient implements PatientInterface {
     
     Record newRecord = new VisitRecord(complaint, temperature);
     this.visitInfo.add(newRecord);
+  }
+  
+  @Override
+  public void addOldRecord(String complaint, double temperature, LocalDateTime date) {
+    
   }
   
   @Override
