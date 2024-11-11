@@ -25,7 +25,7 @@ public class VisitRecord implements Record {
   public VisitRecord(String complaint, double temperature) {
     if (complaint == null || temperature < 0) {
       throw new IllegalArgumentException("Patient cannot have a "
-          + "or complaint or negative temperature reading.");
+          + "null complaint or negative temperature reading.");
     }
     
     this.dateArrival = LocalDateTime.now();
