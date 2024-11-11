@@ -12,7 +12,7 @@ import java.util.Objects;
  * Clinics have a name, a number of rooms, a number of staff working there
  * and a number of patients that are being served at any given time.
  */
-public class Clinic implements ClinicInterface {
+public class Clinic implements ClinicStaffAndPatientInfo {
   private String clinicName;
   private int numRooms;
   private int numStaff;
