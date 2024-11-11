@@ -32,6 +32,12 @@ public class VisitRecord implements Record {
     this.complaint = complaint;
     this.temperature = Math.round(temperature * 10.0) / 10.0;
   }
+  
+  @Override
+  public LocalDateTime getDateArrival() {
+    LocalDateTime dateClone = dateArrival;
+    return dateClone;
+  }
 
   @Override
   public String getDate() {

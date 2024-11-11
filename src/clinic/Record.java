@@ -15,6 +15,13 @@ public interface Record {
   */
   String getDate();
   
+  
+  /**
+   * Returns the Arrival date and time associated with the record.
+   * @return A local date time associated with this.record.
+   */
+  LocalDateTime getDateArrival();
+  
   /**
    * Returns a string about the patients complaint upon coming to the hospital.
    * 

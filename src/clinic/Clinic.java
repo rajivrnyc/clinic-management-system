@@ -3,6 +3,7 @@ package clinic;
 import java.io.BufferedReader; 
 import java.io.FileReader; 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects; 
@@ -291,8 +292,16 @@ public class Clinic implements ClinicStaffAndPatientInfo {
   
   @Override
   public String listPatientVisitMoreThanYear() {
+    LocalDate today = LocalDate.now();
+    LocalDate oneYearAgo = today.minusDays(365);
     StringBuilder listPatient = new StringBuilder();
-    return listPatient.toString();
+    for (PatientInterface patient : patients) {
+      for (Record record : patient.getVisitRecord()) {
+        if (record.getDate().toLocalDate().isBefore(oneYearAgo)) {
+        	
+        }
+      }
+    }
   }
   
   @Override
