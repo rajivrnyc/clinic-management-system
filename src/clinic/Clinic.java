@@ -263,7 +263,9 @@ public class Clinic implements ClinicInterface {
       if (patient.isActive()) {
         for (ClinicalStaffInterface staff : patient.getAllocated()) {
           output.append("Clinical Staff: ").append(staff.getFirstName())
-          .append(" ");
+          .append(" ").append(staff.getLastName()).append("\n");
+          
+          
         }
       }
     }
