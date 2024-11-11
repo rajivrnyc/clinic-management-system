@@ -257,6 +257,18 @@ public class Clinic implements ClinicInterface {
     return sb.toString();
   }
   
+  public void listClinWithPatient() {
+    StringBuilder output = new StringBuilder();
+    for (PatientInterface patient : patients) {
+      if (patient.isActive()) {
+        for (ClinicalStaffInterface staff : patient.getAllocated()) {
+          output.append("Clinical Staff: ").append(staff.getFirstName())
+          .append(" ");
+        }
+      }
+    }
+  }
+  
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {
