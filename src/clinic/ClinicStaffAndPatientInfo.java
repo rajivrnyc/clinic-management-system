@@ -7,12 +7,22 @@ package clinic;
 public interface ClinicStaffAndPatientInfo extends ClinicInterface {
   
 
-  /*
+  /**
    * A method to list clinical staff members and the patient that are
    * assigned to them.
    * 
    * @return a String that displays Clinical staff members and the 
-   * patients that are assigned to them
+   *     patients that are assigned to them
    */
   String listClinWithPatient();
+  
+  
+  /**
+   * A method to list patients that have not visited the clinic
+   * in over a year.
+   * 
+   * @return A string representation of patients who have not 
+   *     visited the clinic in over a year.
+   */
+  String listPatientVisitMoreThanYear();
 }

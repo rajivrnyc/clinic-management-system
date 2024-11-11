@@ -161,6 +161,17 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     this.numStaff--;
   }
   
+  @Override
+  public void deactivateStaff(Staff member) {
+    if (member == null) {
+      throw new IllegalArgumentException("This Staff object is invalid.");
+    }
+    if (employees.remove(member) == true) {
+      member.deactivate();
+    }
+    this.numStaff--;
+  }
+  
   private int roomNumFromRoom(RoomInterface room) {
     int roomI = rooms.indexOf(room) + 1;
     return roomI;
@@ -276,6 +287,12 @@ public class Clinic implements ClinicStaffAndPatientInfo {
       }
     }
     return output.toString().trim();
+  }
+  
+  @Override
+  public String listPatientVisitMoreThanYear() {
+    StringBuilder listPatient = new StringBuilder();
+    return listPatient.toString();
   }
   
   @Override
