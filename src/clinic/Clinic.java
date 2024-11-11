@@ -274,6 +274,7 @@ public class Clinic implements ClinicInterface {
         }
       }
     }
+    System.out.println(output.toString());
   }
   
   @Override
