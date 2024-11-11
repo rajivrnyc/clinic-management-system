@@ -923,7 +923,7 @@ public class ClinicTest {
     ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
     clinic.assignStaff(aandi, amy);
     String test = clinic.listClinWithPatient();
-    assertEquals("Clinical Staff: Amy Anguish\r\n"
+    assertEquals("Clinical Staff: Amy Anguish\n"
            + "  Assigned Patient: Aandi Acute", test);
   }
 }
