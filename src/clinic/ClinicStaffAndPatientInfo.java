@@ -14,5 +14,5 @@ public interface ClinicStaffAndPatientInfo extends ClinicInterface {
    * @return a String that displays Clinical staff members and the 
    * patients that are assigned to them
    */
-  String listClinicWithPatient();
+  String listClinWithPatient();
 }
