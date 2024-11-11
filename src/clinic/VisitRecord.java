@@ -24,9 +24,9 @@ public class VisitRecord implements Record {
    * @param dateArrival The date the patient arrived to the Clinic.
    */
   public VisitRecord(String complaint, double temperature, LocalDateTime dateArrival) {
-    if (complaint == null || temperature < 0) {
+    if (complaint == null || temperature < 0 || dateArrival == null) {
       throw new IllegalArgumentException("Patient cannot have a "
-          + "null complaint or negative temperature reading.");
+          + "null complaint, null date or negative temperature reading.");
     }
     this.dateArrival = dateArrival;
     this.complaint = complaint;
