@@ -265,7 +265,12 @@ public class Clinic implements ClinicInterface {
           output.append("Clinical Staff: ").append(staff.getFirstName())
           .append(" ").append(staff.getLastName()).append("\n");
           
-          
+          for (PatientInterface assigned : patients) {
+            if (assigned.isActive() && assigned.getAllocated().contains(staff)) {
+              output.append("  Assigned Patient: ").append(assigned.getFirstName())
+              .append(" ").append(assigned.getLastName()).append("\n");
+            }
+          }
         }
       }
     }
