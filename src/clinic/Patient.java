@@ -134,7 +134,11 @@ public class Patient implements PatientInterface {
   
   @Override
   public void addOldRecord(String complaint, double temperature, LocalDateTime date) {
-    
+    if (complaint == null) {
+      throw new IllegalArgumentException("Complaint cannot be null");
+    }    
+    Record newRecord = new VisitRecord(complaint, temperature);
+    this.visitInfo.add(newRecord);
   }
   
   @Override
