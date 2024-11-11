@@ -918,12 +918,17 @@ public class ClinicTest {
   }
   
   @Test
-  public void listClinWithPatientInfo() {
+  public void testListClinWithPatientInfo() {
     PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
     ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
     clinic.assignStaff(aandi, amy);
     String test = clinic.listClinWithPatient();
     assertEquals("Clinical Staff: Amy Anguish\n"
            + "  Assigned Patient: Aandi Acute", test);
+  }
+  
+  @Test
+  public void testListPatientNoVisitOneYear() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
   }
 }
