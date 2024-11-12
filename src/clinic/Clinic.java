@@ -307,7 +307,7 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     if (listPatient.length() == 0) {
       listPatient.append("No patient hasn't visted in more than a year.");
     }
-    return listPatient.toString();
+    return listPatient.toString().trim();
   }
   
   @Override

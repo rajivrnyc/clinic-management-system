@@ -25,6 +25,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -930,6 +931,11 @@ public class ClinicTest {
   @Test
   public void testListPatientNoVisitOneYear() {
     PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
-    aandi.addOldRecord("Headache", 3.0, 2017-03-16);
+    LocalDateTime dateTime = LocalDateTime.parse("2020-11-11T19:09:48.601523100");
+    PatientInterface beth = clinic.findPatient("Beth", "Bunion");
+    LocalDateTime dateTime2 = LocalDateTime.parse("2019-11-11T19:09:48.601523100");
+    aandi.addOldRecord("Headache", 2.0, dateTime);
+    beth.addOldRecord("Stomachache", 10.0, dateTime2);
+    assertEquals("Aandi Acute\nBeth Bunion", clinic.listPatientVisitMoreThanYear());
   }
 }
