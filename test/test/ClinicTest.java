@@ -934,8 +934,11 @@ public class ClinicTest {
     LocalDateTime dateTime = LocalDateTime.parse("2020-11-11T19:09:48.601523100");
     PatientInterface beth = clinic.findPatient("Beth", "Bunion");
     LocalDateTime dateTime2 = LocalDateTime.parse("2019-11-11T19:09:48.601523100");
+    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
     aandi.addOldRecord("Headache", 2.0, dateTime);
     beth.addOldRecord("Stomachache", 10.0, dateTime2);
+    clive.addRecord("Neck Pain", 12.0);
+    
     assertEquals("Aandi Acute\nBeth Bunion", clinic.listPatientVisitMoreThanYear());
   }
 }
