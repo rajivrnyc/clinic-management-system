@@ -162,6 +162,7 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     this.numStaff--;
   }
   
+  
   @Override
   public void deactivateStaff(Staff member) {
     if (member == null) {
