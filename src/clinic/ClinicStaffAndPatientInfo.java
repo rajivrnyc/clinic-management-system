@@ -40,4 +40,13 @@ public interface ClinicStaffAndPatientInfo extends ClinicInterface {
    * @param patient a Patient in the clinic.
    */
   void unassignClinStaff(ClinicalStaffInterface member, PatientInterface patient);
+  
+  /**
+   * A method to list patients who have visited the clinic
+   * at least twice in the past year.
+   * 
+   * @return A string representation of the patients who have
+   *     visited the clinic at least twice in the past year.
+   */
+  String listVisitTwiceOneYear();
 }
