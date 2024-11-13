@@ -322,6 +322,18 @@ public class Clinic implements ClinicStaffAndPatientInfo {
   }
   
   @Override
+  public String listVisitTwiceOneYear() {
+    LocalDate today = LocalDate.now();
+    LocalDate oneYearAgo = today.minusDays(365);
+    StringBuilder visitors = new StringBuilder();
+    for (PatientInterface patient : patients) {
+      for (Record record : patient.getVisitRecord()) {
+        
+      }
+    }
+  }
+  
+  @Override
   public boolean equals(Object obj) {
     if (this == obj) {
       return true;
