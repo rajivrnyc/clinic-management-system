@@ -43,6 +43,7 @@ public class ClinicController {
     knownCommands.put(7, s -> new SendHomeCommand());
     knownCommands.put(8, s -> new AssignPatientRoom());
     knownCommands.put(9, s -> new AssignClinicalStaff());
+    knownCommands.put(10, s -> new ListClinStaffWithPatient());
   }
   
   /**
@@ -96,6 +97,7 @@ public class ClinicController {
     System.out.println("7: Send Patient Home");
     System.out.println("8: Assign Patient to Room");
     System.out.println("9: Assign Clinical Staff");
+    System.out.println("10: List Clinical Staff Members with Patients Assigned");
     System.out.println("Enter 'q' to quit.");    
   }
 }

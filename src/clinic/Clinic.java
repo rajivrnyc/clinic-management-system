@@ -327,7 +327,7 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     LocalDate today = LocalDate.now(); 
     LocalDate oneYearAgo = today.minusDays(365); 
     StringBuilder visitors = new StringBuilder(); 
-    return "treu";
+    return "";
   }
   
   @Override
