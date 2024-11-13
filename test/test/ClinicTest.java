@@ -36,7 +36,7 @@ import org.junit.Test;
  * JUnit Test Class for all classes within clinic package.
  */
 public class ClinicTest {
-  private ClinicInterface clinic;
+  private ClinicStaffAndPatientInfo clinic;
   private RoomInterface primaryWaitingRoom;
   private Random random;
   private ClinicController controller;
@@ -48,7 +48,7 @@ public class ClinicTest {
   public void setUp() throws IOException {
     random = new Random();
     primaryWaitingRoom = new Room(28, 0, 35, 5, RoomType.WAITING, "Front Waiting Room");
-    clinic = Clinic.readFile(new FileReader("res/clinicfile.txt"));
+    clinic = (ClinicStaffAndPatientInfo) Clinic.readFile(new FileReader("res/clinicfile.txt"));
   }
   
   @Test

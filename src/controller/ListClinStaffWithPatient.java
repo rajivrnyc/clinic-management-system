@@ -12,7 +12,7 @@ public class ListClinStaffWithPatient implements ClinicCommand {
 
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
-    System.out.println(model.);
+ //   System.out.println(model.);
   }
 
 }
