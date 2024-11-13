@@ -307,13 +307,12 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     LocalDate oneYearAgo = today.minusDays(365);
     StringBuilder listPatient = new StringBuilder();
     for (PatientInterface patient : patients) {
-      for (Record record : patient.getVisitRecord()) {
-        if (record.getDateArrival().toLocalDate().isBefore(oneYearAgo)) {
+        if (patient.getMostRecentVisit().getDateArrival().toLocalDate().isBefore(oneYearAgo)) {
           listPatient.append(patient.getFirstName()).append(" ").append(patient.getLastName())
           .append("\n");
           break;
         }
-      }
+    
     }
     if (listPatient.length() == 0) {
       listPatient.append("No patient hasn't visted in more than a year.");
