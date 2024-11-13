@@ -307,12 +307,13 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     LocalDate oneYearAgo = today.minusDays(365);
     StringBuilder listPatient = new StringBuilder();
     for (PatientInterface patient : patients) {
-        if (patient.getMostRecentVisit().getDateArrival().toLocalDate().isBefore(oneYearAgo)) {
+      if (!patient.getVisitRecord().isEmpty()) {
+        Record recent = patient.getMostRecentVisit();
+        if (recent.getDateArrival().toLocalDate().isBefore(oneYearAgo)) {
           listPatient.append(patient.getFirstName()).append(" ").append(patient.getLastName())
-          .append("\n");
-          break;
+            .append("\n");
         }
-    
+      }
     }
     if (listPatient.length() == 0) {
       listPatient.append("No patient hasn't visted in more than a year.");
@@ -320,16 +321,13 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     return listPatient.toString().trim();
   }
   
-  @Override
-  public String listVisitTwiceOneYear() {
-    LocalDate today = LocalDate.now();
-    LocalDate oneYearAgo = today.minusDays(365);
-    StringBuilder visitors = new StringBuilder();
-    for (PatientInterface patient : patients) {
-      for (Record record : patient.getVisitRecord()) {
-        
-      }
-    }
+
+  @Override 
+  public String listVisitTwiceOneYear() { 
+    LocalDate today = LocalDate.now(); 
+    LocalDate oneYearAgo = today.minusDays(365); 
+    StringBuilder visitors = new StringBuilder(); 
+    return "treu";
   }
   
   @Override
