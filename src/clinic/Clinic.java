@@ -174,6 +174,16 @@ public class Clinic implements ClinicStaffAndPatientInfo {
     this.numStaff--;
   }
   
+  @Override
+  public void unassignClinStaff(ClinicalStaffInterface member, PatientInterface patient) {
+    if (member == null || patient == null) {
+      throw new IllegalArgumentException("This ClinicalStaff or Patient object is invalid");
+    }
+    patient.removeClinicalStaffMember(member);
+  }
+    
+
+  
   private int roomNumFromRoom(RoomInterface room) {
     int roomI = rooms.indexOf(room) + 1;
     return roomI;

@@ -31,4 +31,13 @@ public interface ClinicStaffAndPatientInfo extends ClinicInterface {
    *     visited the clinic in over a year.
    */
   String listPatientVisitMoreThanYear();
+  
+  /**
+   * A method to unassign a clinical staff member from
+   * a patient.
+   * 
+   * @param member a Clinical Staff member in the clinic
+   * @param patient a Patient in the clinic.
+   */
+  void unassignClinStaff(ClinicalStaffInterface member, PatientInterface patient);
 }
