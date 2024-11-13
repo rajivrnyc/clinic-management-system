@@ -1,6 +1,10 @@
 package clinic;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,9 +22,33 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
   private List<Staff> employees;
   private List<PatientInterface> patients;
 
+  /**
+   * A constructor for the clinic class with a clinic name, a set number of rooms
+   * number of staff and the number of patients at the clinic.
+   * 
+   * @param clinicName The name of the clinic.
+   * @param numRooms The number of rooms in the clinic.
+   * @param numStaff The number of staff working in the clinic.
+   * @param numPatients The number of patients being treated at the clinic.
+   * @param primaryWaitingRoom The primary waiting room at the clinic.
+   */
   public Clinic2(String clinicName, int numRooms, int numStaff, int numPatients, 
         RoomInterface primaryWaitingRoom) {
     super(clinicName, numRooms, numStaff, numPatients, primaryWaitingRoom);
+    
+    if (numRooms < 1 || numStaff < 0 || numPatients < 0) {
+      throw new IllegalArgumentException("A clinic must have at least one room and "
+          + "cannot have a negative number of patients or staff.");
+    }
+      
+    if (clinicName == null || primaryWaitingRoom == null) {
+      throw new IllegalArgumentException("A clinic must have a "
+      + "name and primary waiting room must exist.");
+    }
+    this.rooms = new ArrayList<>();
+    this.employees = new ArrayList<>();
+    this.patients = new ArrayList<>();
+    this.rooms.add(primaryWaitingRoom);
   }
   
   @Override
@@ -90,6 +118,85 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     LocalDate oneYearAgo = today.minusDays(365); 
     StringBuilder visitors = new StringBuilder(); 
     return "";
+  }
+  
+  /*
+   * Helper method for the read loop for Room.
+   */  
+  private static void readRoom(BufferedReader br, int numRooms, 
+        List<RoomInterface> roomList) throws IOException {
+    for (int i = 0; i < numRooms; i++) {
+      String roomText = br.readLine();
+      Room room = Room.textRoom(roomText);
+      roomList.add(room);
+    }
+
+  }
+  
+  /*
+   * Helper method for the read loop for Staff.
+   */
+  private static void readStaff(BufferedReader br, int textNumStaff, 
+        Clinic2 clinic) throws IOException {
+    for (int i = 0; i < textNumStaff; i++) {
+      String staffText = br.readLine();
+      Staff staff = StaffFactoryHelper.constructStaff(staffText);
+      clinic.employees.add(staff);
+    }
+  }
+  
+  /*
+   * Helper method for the read loop for Patient.
+   */
+  private static void readPatients(BufferedReader br, 
+       int textNumPatients, Clinic2 clinic) throws IOException {
+    for (int i = 0; i < textNumPatients; i++) {
+      String patientText = br.readLine();
+      Patient patient = Patient.textPatient(patientText);
+      int roomNum = patient.getRoomNumber();
+      RoomInterface assignedRoom = clinic.getRoomFromNumber(roomNum);
+      assignedRoom.placePatient(patient);
+      clinic.patients.add(patient);
+    }
+  }
+  
+  
+  /**
+   * Method to create a Clinic object from a text file.
+   * 
+   * @param fileName A file that contains information about the clinic.
+   * @return A clinic object with the information contained in the text file.
+   * @throws IOException If an error occurs during file reading such as 
+   *         an invalid file, a nonexistent file etc.
+   */
+  public static Clinic2 readFile(FileReader fileName) throws IOException {
+    try (BufferedReader br = new BufferedReader(fileName)) {
+      final String textClinicName = br.readLine();
+      int textNumRooms = Integer.parseInt(br.readLine());
+      List<RoomInterface> tempRooms = new ArrayList<>();
+      readRoom(br, textNumRooms, tempRooms);
+      RoomInterface textPrimaryWaitingRoom = tempRooms.get(0);
+      Clinic2 textClinic = new Clinic2(textClinicName, textNumRooms, 0, 0, textPrimaryWaitingRoom);
+      for (RoomInterface room : tempRooms) {
+        if (!room.equals(textPrimaryWaitingRoom)) {
+          textClinic.getRooms().add(room);
+        }
+      }
+
+      int textNumStaff = Integer.parseInt(br.readLine());
+      readStaff(br, textNumStaff, textClinic);
+
+      int textNumPatients = Integer.parseInt(br.readLine());
+      readPatients(br, textNumPatients, textClinic);
+      textClinic.numStaff = textNumStaff;
+      textClinic.numPatients = textNumPatients;
+
+      return textClinic;
+    } catch (NumberFormatException e) {
+      throw new IllegalArgumentException("Number format is not valid.", e);
+    } catch (NullPointerException e) {
+      throw new IllegalArgumentException("Insufficient information to complete task.", e);
+    }
   }
 
 }

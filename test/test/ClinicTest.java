@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import clinic.Clinic;
+import clinic.Clinic2;
 import clinic.ClinicInterface;
 import clinic.ClinicStaffAndPatientInfo;
 import clinic.ClinicalStaff;
@@ -48,7 +49,7 @@ public class ClinicTest {
   public void setUp() throws IOException {
     random = new Random();
     primaryWaitingRoom = new Room(28, 0, 35, 5, RoomType.WAITING, "Front Waiting Room");
-    clinic = (ClinicStaffAndPatientInfo) Clinic.readFile(new FileReader("res/clinicfile.txt"));
+    clinic = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
   }
   
   @Test
