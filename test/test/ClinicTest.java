@@ -36,7 +36,7 @@ import org.junit.Test;
  * JUnit Test Class for all classes within clinic package.
  */
 public class ClinicTest {
-  private ClinicStaffAndPatientInfo clinic;
+  private ClinicInterface clinic;
   private RoomInterface primaryWaitingRoom;
   private Random random;
   private ClinicController controller;
