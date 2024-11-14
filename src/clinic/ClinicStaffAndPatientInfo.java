@@ -51,10 +51,4 @@ public interface ClinicStaffAndPatientInfo extends ClinicInterface {
    *     visited the clinic at least twice in the past year.
    */
   String listVisitTwiceOneYear();
-  
-  /**
-   * Gets a copy of the ArrayList ClinicalStaff and returns it.
-   * @return a copy of ArrayList ClinicalStaff.
-   */
-  List<PatientInterface> getClinicalStaff();
 }

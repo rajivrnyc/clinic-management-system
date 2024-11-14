@@ -107,6 +107,7 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     StringBuilder visitors = new StringBuilder(); 
     return "";
   }
+
   
   /*
    * Helper method for the read loop for Room.
