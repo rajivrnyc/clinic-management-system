@@ -13,7 +13,7 @@ public class MoreThanYear implements ClinicCommand {
 
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
-    // TODO Auto-generated method stub
+    
   }
 
 }
