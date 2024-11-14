@@ -14,6 +14,7 @@ public class ListClinStaffWithPatient implements ClinicCommand {
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
     ClinicStaffAndPatientInfo list = (ClinicStaffAndPatientInfo) model;
+    System.out.println("List of Clinical Staff Members with an Assigned Patient:");
     System.out.println(list.listClinWithPatient());
   }
 }

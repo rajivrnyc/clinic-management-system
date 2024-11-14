@@ -47,6 +47,7 @@ public class ClinicController {
     knownCommands.put(10, s -> new ListClinStaffWithPatient());
     knownCommands.put(11, s -> new ClinicMap());
     knownCommands.put(12, s -> new DeactivateSelectedStaff());
+    knownCommands.put(13, s -> new MoreThanYear());
   }
   
   /**
