@@ -1,5 +1,8 @@
 package controller;
 
+import clinic.ClinicControllerInterface;
+import clinic.ClinicInterface;
+import clinic.ClinicStaffAndPatientInfo;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,9 +10,6 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.function.Function;
 
-import clinic.ClinicControllerInterface;
-import clinic.ClinicInterface;
-import clinic.ClinicStaffAndPatientInfo;
 
 /**
  * The ClinicController class acts as an intermediary between the 
@@ -22,6 +22,7 @@ public class ClinicController2 extends ClinicController implements ClinicControl
   private final Readable in;
   private final Appendable out;
   private final Map<Integer, Function<Scanner, ClinicCommand2>> knownCommands;
+  private ClinicStaffAndPatientInfo model;
 
   /**
    * Controller used to access and demonstrate the function of the clinic model.
@@ -29,12 +30,14 @@ public class ClinicController2 extends ClinicController implements ClinicControl
    * 
    * @param in input for the controller
    * @param out output for the controller
+   * @param model the Clinic model that the controller is acting on
    */
-  public ClinicController2(Readable in, Appendable out) {
+  public ClinicController2(Readable in, Appendable out, ClinicStaffAndPatientInfo model) {
     super(in, out);
     this.in = Objects.requireNonNull(in, "Input cannot be null.");
     this.out = Objects.requireNonNull(out, "Output cannot be null.");
     this.knownCommands = new HashMap<>();
+    this.model = model;
     
     knownCommands.put(10, s -> new ListClinStaffWithPatient());
     knownCommands.put(11, s -> new ClinicMap());
@@ -44,7 +47,7 @@ public class ClinicController2 extends ClinicController implements ClinicControl
   }
   
   @Override
-  public void go(ClinicStaffAndPatientInfo model) {
+  public void go() {
     Objects.requireNonNull(model, "Clinic model cannot be null.");
     Scanner scan = new Scanner(this.in);
     boolean check = true;
@@ -74,7 +77,7 @@ public class ClinicController2 extends ClinicController implements ClinicControl
       }
     }
   }
-	  
+
   @Override
   public void displayMenu() {
     super.displayMenu();

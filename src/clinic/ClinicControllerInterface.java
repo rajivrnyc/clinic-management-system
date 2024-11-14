@@ -13,9 +13,9 @@ public interface ClinicControllerInterface {
   /**
    * Method that gives control to the controller.
    * 
-   * @param model the model to use with the controller.
+   * 
    */
-  void go(ClinicInterface model);
+  void go();
   
   
   /**

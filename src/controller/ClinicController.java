@@ -23,6 +23,7 @@ public class ClinicController implements ClinicControllerInterface {
   private final Readable in;
   private final Appendable out;
   private final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
+  private ClinicInterface model;
   
   /**
    * Controller used to access and demonstrate the function of the clinic model.
@@ -49,7 +50,7 @@ public class ClinicController implements ClinicControllerInterface {
   }
   
   @Override
-  public void go(ClinicInterface model) {
+  public void go() {
     
     Objects.requireNonNull(model, "Clinic model cannot be null.");
     Scanner scan = new Scanner(this.in);

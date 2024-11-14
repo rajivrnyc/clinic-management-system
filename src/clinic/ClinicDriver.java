@@ -1,6 +1,8 @@
 package clinic;
 
 import controller.ClinicController;
+import controller.ClinicController2;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,7 +24,7 @@ public class ClinicDriver {
   public static void main(String[] args) {
     
     try {
-      ClinicInterface clinic = Clinic.readFile(new FileReader("res/clinicfile.txt"));
+      Clinic2 clinic = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
       System.out.println("Loaded File.");
     
     
@@ -39,8 +41,8 @@ public class ClinicDriver {
         input = new InputStreamReader(System.in);
       }
       Appendable output = System.out; 
-      ClinicControllerInterface controller = new ClinicController2(input, output);
-      controller.go(clinic);
+      ClinicControllerInterface controller = new ClinicController2(input, output, clinic);
+      controller.go();
     } catch (IOException e) {
       System.out.println("Error: " + e.getMessage());
       return;
