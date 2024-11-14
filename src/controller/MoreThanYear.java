@@ -1,10 +1,10 @@
 package controller;
 
+import clinic.ClinicInterface;
+import clinic.ClinicStaffAndPatientInfo;
 import java.io.IOException;
 import java.util.Scanner;
 
-import clinic.ClinicInterface;
-import clinic.ClinicStaffAndPatientInfo;
 
 /**
  * A controller command to display patients in the clinic that haven't been
