@@ -102,6 +102,9 @@ public class ClinicController {
     System.out.println("8: Assign Patient to Room");
     System.out.println("9: Assign Clinical Staff");
     System.out.println("10: List Clinical Staff Members with Patients Assigned");
+    System.out.println("11: Display Map of Clinic");
+    System.out.println("12: Deactivate a Selected Staff Member");
+    System.out.println("13: Display Patients Who Haven't Visited the Clinic in More Than a Year");
     System.out.println("Enter 'q' to quit.");    
   }
 }
