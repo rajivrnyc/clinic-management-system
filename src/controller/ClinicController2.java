@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import clinic.ClinicControllerInterface;
 import clinic.ClinicInterface;
 import clinic.ClinicStaffAndPatientInfo;
 
@@ -17,10 +18,10 @@ import clinic.ClinicStaffAndPatientInfo;
  * the Clinic's model and will facilitate displaying this information
  * to the user.
  */
-public class ClinicController2 extends ClinicController {
+public class ClinicController2 extends ClinicController implements ClinicControllerInterface {
   private final Readable in;
   private final Appendable out;
-  private final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
+  private final Map<Integer, Function<Scanner, ClinicCommand2>> knownCommands;
 
   /**
    * Controller used to access and demonstrate the function of the clinic model.
@@ -44,7 +45,6 @@ public class ClinicController2 extends ClinicController {
   
   @Override
   public void go(ClinicStaffAndPatientInfo model) {
-	    
     Objects.requireNonNull(model, "Clinic model cannot be null.");
     Scanner scan = new Scanner(this.in);
     boolean check = true;
@@ -60,7 +60,7 @@ public class ClinicController2 extends ClinicController {
       }
       try {
         int cmdNumber = Integer.parseInt(command);
-        Function<Scanner, ClinicCommand2> cmdFunction = knownCommands.get(cmdNumber);
+        Function<Scanner, ClinicCommand2> cmdFunction = this.knownCommands.get(cmdNumber);
         if (cmdFunction == null) {
           throw new UnsupportedOperationException(command + " not suppported");
         }      
@@ -75,10 +75,8 @@ public class ClinicController2 extends ClinicController {
     }
   }
 	  
-  /**
- * Displays the menu of available commands.
- */
-  private void displayMenu() {
+  @Override
+  public void displayMenu() {
     super.displayMenu();
     System.out.println("10: List Clinical Staff Members with Patients Assigned");
     System.out.println("11: Display Map of Clinic");

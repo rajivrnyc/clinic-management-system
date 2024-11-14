@@ -9,12 +9,11 @@ import java.util.Scanner;
 /**
  * Command used to list clinical staff members who have a patient in the clinic.
  */
-public class ListClinStaffWithPatient implements ClinicCommand {
+public class ListClinStaffWithPatient implements ClinicCommand2 {
 
   @Override
-  public void execute(ClinicInterface model, Scanner scanner) throws IOException {
-    ClinicStaffAndPatientInfo list = (ClinicStaffAndPatientInfo) model;
+  public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
     System.out.println("List of Clinical Staff Members with an Assigned Patient:");
-    System.out.println(list.listClinWithPatient());
+    System.out.println(model.listClinWithPatient());
   }
 }
