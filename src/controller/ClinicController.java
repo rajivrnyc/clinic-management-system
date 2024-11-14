@@ -45,6 +45,8 @@ public class ClinicController {
     knownCommands.put(8, s -> new AssignPatientRoom());
     knownCommands.put(9, s -> new AssignClinicalStaff());
     knownCommands.put(10, s -> new ListClinStaffWithPatient());
+    knownCommands.put(11, s -> new ClinicMap());
+    knownCommands.put(12, s -> new DeactivateSelectedStaff());
   }
   
   /**
