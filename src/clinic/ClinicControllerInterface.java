@@ -16,4 +16,10 @@ public interface ClinicControllerInterface {
    * @param model the model to use with the controller.
    */
   void go(ClinicInterface model);
+  
+  
+  /**
+ * Displays the menu of available commands.
+ */
+  void displayMenu();
 }

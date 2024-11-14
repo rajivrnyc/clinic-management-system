@@ -1,6 +1,7 @@
 package controller;
 
 import clinic.Clinic;
+import clinic.ClinicControllerInterface;
 import clinic.ClinicInterface;
 import clinic.ClinicStaffAndPatientInfo;
 import java.io.IOException;
@@ -18,7 +19,7 @@ import java.util.function.Function;
  * the Clinic's model and will facilitate displaying this information
  * to the user.
  */
-public class ClinicController {
+public class ClinicController implements ClinicControllerInterface {
   private final Readable in;
   private final Appendable out;
   private final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
@@ -47,11 +48,7 @@ public class ClinicController {
 
   }
   
-  /**
-   * Method that gives control to the controller.
-   * 
-   * @param model the model to use with the controller.
-   */
+  @Override
   public void go(ClinicInterface model) {
     
     Objects.requireNonNull(model, "Clinic model cannot be null.");
@@ -84,10 +81,8 @@ public class ClinicController {
     }
   }
   
-  /**
- * Displays the menu of available commands.
- */
-  private void displayMenu() {
+  @Override
+  public void displayMenu() {
     System.out.println("Menu:");
     System.out.println("1: Display Selected Patient");
     System.out.println("2: Display Selected Room");
@@ -98,11 +93,6 @@ public class ClinicController {
     System.out.println("7: Send Patient Home");
     System.out.println("8: Assign Patient to Room");
     System.out.println("9: Assign Clinical Staff");
-    System.out.println("10: List Clinical Staff Members with Patients Assigned");
-    System.out.println("11: Display Map of Clinic");
-    System.out.println("12: Deactivate a Selected Staff Member");
-    System.out.println("13: Display Patients Who Haven't Visited the Clinic in More Than a Year");
-    System.out.println("14: Unassign a ClinicalStaff Member from the Clinic");
-    System.out.println("Enter 'q' to quit.");    
+        
   }
 }
