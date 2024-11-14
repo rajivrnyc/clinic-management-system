@@ -39,7 +39,7 @@ public class ClinicDriver {
         input = new InputStreamReader(System.in);
       }
       Appendable output = System.out; 
-      ClinicController controller = new ClinicController(input, output);
+      ClinicControllerInterface controller = new ClinicController2(input, output);
       controller.go(clinic);
     } catch (IOException e) {
       System.out.println("Error: " + e.getMessage());
