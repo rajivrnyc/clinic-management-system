@@ -3,7 +3,6 @@ package controller;
 import clinic.Clinic;
 import clinic.ClinicInterface;
 import clinic.ClinicStaffAndPatientInfo;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
