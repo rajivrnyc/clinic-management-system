@@ -52,7 +52,7 @@ public class ClinicController {
    * 
    * @param model the model to use with the controller.
    */
-  public void go(ClinicStaffAndPatientInfo model) {
+  public void go(ClinicInterface model) {
     
     Objects.requireNonNull(model, "Clinic model cannot be null.");
     Scanner scan = new Scanner(this.in);

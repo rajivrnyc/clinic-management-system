@@ -1,5 +1,6 @@
 package controller;
 
+import clinic.ClinicInterface;
 import clinic.ClinicStaffAndPatientInfo;
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,10 +9,11 @@ import java.util.Scanner;
 /**
  * Command used to list clinical staff members who have a patient in the clinic.
  */
-public class ListClinStaffWithPatient implements ClinicCommand2 {
+public class ListClinStaffWithPatient implements ClinicCommand {
 
   @Override
-  public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
-    System.out.println(model.listClinWithPatient());
+  public void execute(ClinicInterface model, Scanner scanner) throws IOException {
+    ClinicStaffAndPatientInfo list = (ClinicStaffAndPatientInfo) model;
+    System.out.println(list.listClinWithPatient());
   }
 }
