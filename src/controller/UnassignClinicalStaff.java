@@ -12,13 +12,12 @@ import java.util.Scanner;
 /**
  * Controller command to unassign a clinical Staff member from a patient.
  */
-public class UnassignClinicalStaff implements ClinicCommand {
+public class UnassignClinicalStaff implements ClinicCommand2 {
 
   @Override
-  public void execute(ClinicInterface model, Scanner scanner) throws IOException {
-    ClinicStaffAndPatientInfo tempModel = (ClinicStaffAndPatientInfo) model;
+  public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
     System.out.println("Select a Patient:");
-    List<PatientInterface> patients = tempModel.getPatients();
+    List<PatientInterface> patients = model.getPatients();
     
     if (patients.isEmpty()) {
       System.out.println("Patient List is empty");
