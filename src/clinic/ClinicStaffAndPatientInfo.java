@@ -1,5 +1,7 @@
 package clinic;
 
+import java.util.List;
+
 /**
  * An interface to represent additional information about a clinic being
  * displayed as it relates to staff and patient information.
@@ -49,4 +51,10 @@ public interface ClinicStaffAndPatientInfo extends ClinicInterface {
    *     visited the clinic at least twice in the past year.
    */
   String listVisitTwiceOneYear();
+  
+  /**
+   * Gets a copy of the ArrayList ClinicalStaff and returns it.
+   * @return a copy of ArrayList ClinicalStaff.
+   */
+  List<PatientInterface> getClinicalStaff();
 }
