@@ -34,7 +34,7 @@ public class ClinicController {
     this.in = Objects.requireNonNull(in, "Input cannot be null.");
     this.out = Objects.requireNonNull(out, "Output cannot be null.");
     this.knownCommands = new HashMap<>();
-    
+   
     knownCommands.put(1, s -> new DisplayPatientCommand());
     knownCommands.put(2, s -> new DisplayRoom());
     knownCommands.put(3, s -> new DisplaySeatingChart());
