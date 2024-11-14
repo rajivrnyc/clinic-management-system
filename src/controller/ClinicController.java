@@ -48,6 +48,7 @@ public class ClinicController {
     knownCommands.put(11, s -> new ClinicMap());
     knownCommands.put(12, s -> new DeactivateSelectedStaff());
     knownCommands.put(13, s -> new MoreThanYear());
+    knownCommands.put(14, s -> new UnassignClinicalStaff());
   }
   
   /**
@@ -105,6 +106,7 @@ public class ClinicController {
     System.out.println("11: Display Map of Clinic");
     System.out.println("12: Deactivate a Selected Staff Member");
     System.out.println("13: Display Patients Who Haven't Visited the Clinic in More Than a Year");
+    System.out.println("14: Unassign a ClinicalStaff Member from the Clinic");
     System.out.println("Enter 'q' to quit.");    
   }
 }
