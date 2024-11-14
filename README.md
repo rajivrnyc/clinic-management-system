@@ -110,5 +110,8 @@ What limitations exist in your program. This should include any requirements tha
 
 Be sure to cite your sources. A good guideline is if you take more than three lines of code from some source, you must include the information on where it came from. Citations should use proper [IEEE citation guidelines](https://ieee-dataport.org/sites/default/files/analysis/27/IEEE Citation Guidelines.pdf) and should include references (websites, papers, books, or other) for ***any site that you used to research a solution***. For websites, this includes name of website, title of the article, the url, and the date of retrieval**.** Citations should also include a qualitative description of what you used, and what you changed/contributed.
 
+Geeks for Geeks, “java.time.LocalDateTime Class in Java,” geeksforgeeks.org, para. May 26, 2021. [Online]
+Available: https://www.geeksforgeeks.org/java-time-localdatetime-class-in-java/. [Accessed: Oct. 19, 2024]
 
-
+baeldung, “Guide to DateTimeFormatter,” baeldung.com, para. Jan. 8,
+2024. [Online]. Available: https://www.baeldung.com/java-datetimeformatter. [Accessed Oct. 19, 2024]
