@@ -34,21 +34,9 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
    */
   public Clinic2(String clinicName, int numRooms, int numStaff, int numPatients, 
         RoomInterface primaryWaitingRoom) {
+
     super(clinicName, numRooms, numStaff, numPatients, primaryWaitingRoom);
-    
-    if (numRooms < 1 || numStaff < 0 || numPatients < 0) {
-      throw new IllegalArgumentException("A clinic must have at least one room and "
-          + "cannot have a negative number of patients or staff.");
-    }
-      
-    if (clinicName == null || primaryWaitingRoom == null) {
-      throw new IllegalArgumentException("A clinic must have a "
-      + "name and primary waiting room must exist.");
-    }
-    this.rooms = new ArrayList<>();
-    this.employees = new ArrayList<>();
-    this.patients = new ArrayList<>();
-    this.rooms.add(primaryWaitingRoom);
+
   }
   
   @Override

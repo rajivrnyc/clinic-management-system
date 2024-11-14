@@ -11,8 +11,8 @@ import clinic.ClinicInterface;
 public class ListClinStaffWithPatient implements ClinicCommand {
 
   @Override
-  public void execute(ClinicInterface model, Scanner scanner) throws IOException {
- //   System.out.println(model.);
+  public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
+   System.out.println(model.);
   }
 
 }

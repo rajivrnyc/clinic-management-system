@@ -2,6 +2,8 @@ package controller;
 
 import clinic.Clinic;
 import clinic.ClinicInterface;
+import clinic.ClinicStaffAndPatientInfo;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +53,7 @@ public class ClinicController {
    * 
    * @param model the model to use with the controller.
    */
-  public void go(ClinicInterface model) {
+  public void go(ClinicStaffAndPatientInfo model) {
     
     Objects.requireNonNull(model, "Clinic model cannot be null.");
     Scanner scan = new Scanner(this.in);
