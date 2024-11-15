@@ -942,4 +942,20 @@ public class ClinicTest {
     
     assertEquals("Aandi Acute\nBeth Bunion", clinic.listPatientVisitMoreThanYear());
   }
+  
+  @Test
+  public void testVisitTwiceOneYear() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    LocalDateTime dateTime = LocalDateTime.parse("2024-11-11T19:09:48.601523100");
+    PatientInterface beth = clinic.findPatient("Beth", "Bunion");
+    LocalDateTime dateTime2 = LocalDateTime.parse("2020-11-11T19:09:48.601523100");
+    LocalDateTime dateTime3 = LocalDateTime.parse("2024-11-12T19:09:48.601523100");
+    aandi.addOldRecord("Headache", 2.0, dateTime);
+    aandi.addOldRecord("Headache", 2.0, dateTime3);
+    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
+    beth.addOldRecord("Stomachache", 10.0, dateTime2);
+    clive.addRecord("Neck Pain", 12.0);
+    
+    assertEquals("Aandi Acute", clinic.listVisitTwiceOneYear());
+  }
 }

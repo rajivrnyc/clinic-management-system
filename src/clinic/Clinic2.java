@@ -105,7 +105,26 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
 
   @Override 
   public String listVisitTwiceOneYear() {
-    return "";
+    LocalDate today = LocalDate.now();
+    LocalDate oneYearago = today.minusDays(365);
+    StringBuilder listPatient = new StringBuilder();
+    for (PatientInterface patient : patients) {
+      int visitCount = 0;
+      for (Record record : patient.getVisitRecord()) {
+        if (!record.getDateArrival().toLocalDate().isBefore(oneYearago)) {
+          visitCount++;
+        }
+        if (visitCount >= 2) {
+          listPatient.append(patient.getFirstName()).append(" ").append(patient.getLastName())
+          .append("\n");
+          break;
+        }
+      }
+    }
+    if (listPatient.length() == 0) {
+      listPatient.append("No patient has visited 2 or more times in the past year.");
+    }
+    return listPatient.toString().trim();
   }
 
 
