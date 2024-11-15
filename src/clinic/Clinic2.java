@@ -13,14 +13,6 @@ import java.util.List;
  * and a number of patients that are being served at any given time.
  */
 public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
-  private String clinicName;
-  private int numRooms;
-  private int numStaff;
-  private int numPatients;
-  private  RoomInterface primaryWaitingRoom;
-  private List<RoomInterface> rooms;
-  private List<Staff> employees;
-  private List<PatientInterface> patients;
 
   /**
    * A constructor for the clinic class with a clinic name, a set number of rooms
@@ -44,11 +36,6 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
       throw new IllegalArgumentException("A clinic must have a "
       + "name and primary waiting room must exist.");
     }
-    this.clinicName = clinicName;
-    this.numRooms = numRooms;
-    this.numStaff = numStaff;
-    this.numPatients = numPatients;
-    this.primaryWaitingRoom = primaryWaitingRoom;
     this.rooms = new ArrayList<>();
     this.employees = new ArrayList<>();
     this.patients = new ArrayList<>();
@@ -117,53 +104,11 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
   
 
   @Override 
-  public String listVisitTwiceOneYear() { 
-    LocalDate today = LocalDate.now(); 
-    LocalDate oneYearAgo = today.minusDays(365); 
-    StringBuilder visitors = new StringBuilder(); 
+  public String listVisitTwiceOneYear() {
     return "";
   }
 
-  
-  /*
-   * Helper method for the read loop for Room.
-   */  
-  private static void readRoom(BufferedReader br, int numRooms, 
-        List<RoomInterface> roomList) throws IOException {
-    for (int i = 0; i < numRooms; i++) {
-      String roomText = br.readLine();
-      Room room = Room.textRoom(roomText);
-      roomList.add(room);
-    }
 
-  }
-  
-  /*
-   * Helper method for the read loop for Staff.
-   */
-  private static void readStaff(BufferedReader br, int textNumStaff, 
-        Clinic2 clinic) throws IOException {
-    for (int i = 0; i < textNumStaff; i++) {
-      String staffText = br.readLine();
-      Staff staff = StaffFactoryHelper.constructStaff(staffText);
-      clinic.employees.add(staff);
-    }
-  }
-  
-  /*
-   * Helper method for the read loop for Patient.
-   */
-  private static void readPatients(BufferedReader br, 
-       int textNumPatients, Clinic2 clinic) throws IOException {
-    for (int i = 0; i < textNumPatients; i++) {
-      String patientText = br.readLine();
-      Patient patient = Patient.textPatient(patientText);
-      int roomNum = patient.getRoomNumber();
-      RoomInterface assignedRoom = clinic.getRoomFromNumber(roomNum);
-      assignedRoom.placePatient(patient);
-      clinic.patients.add(patient);
-    }
-  }
   
   
   /**
@@ -184,7 +129,7 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
       Clinic2 textClinic = new Clinic2(textClinicName, textNumRooms, 0, 0, textPrimaryWaitingRoom);
       for (RoomInterface room : tempRooms) {
         if (!room.equals(textPrimaryWaitingRoom)) {
-          textClinic.getRooms().add(room);
+          textClinic.rooms.add(room);
         }
       }
 

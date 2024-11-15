@@ -54,7 +54,7 @@ public class ClinicTest {
   
   @Test
   public void testClinic() {
-    assertEquals(clinic, new Clinic("Cybernetic Implant Clinic", 
+    assertEquals(clinic, new Clinic2("Cybernetic Implant Clinic", 
         5, 6, 7, clinic.getRoomFromNumber(1)));
   }
   

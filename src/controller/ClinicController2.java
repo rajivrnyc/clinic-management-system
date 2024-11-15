@@ -18,7 +18,7 @@ import java.util.function.Function;
  * the Clinic's model and will facilitate displaying this information
  * to the user.
  */
-public class ClinicController2 extends ClinicController implements ClinicControllerInterface {
+public class ClinicController2 extends ClinicController {
   private final Readable in;
   private final Appendable out;
   private final Map<Integer, Function<Scanner, ClinicCommand2>> knownCommands;

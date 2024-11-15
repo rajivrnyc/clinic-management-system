@@ -14,14 +14,14 @@ import java.util.Objects;
  * and a number of patients that are being served at any given time.
  */
 public class Clinic implements ClinicInterface {
-  private String clinicName;
-  private int numRooms;
-  private int numStaff;
-  private int numPatients;
-  private  RoomInterface primaryWaitingRoom;
-  private List<RoomInterface> rooms;
-  private List<Staff> employees;
-  private List<PatientInterface> patients;
+  protected String clinicName;
+  protected int numRooms;
+  protected int numStaff;
+  protected int numPatients;
+  protected  RoomInterface primaryWaitingRoom;
+  protected List<RoomInterface> rooms;
+  protected List<Staff> employees;
+  protected List<PatientInterface> patients;
   
   
   /**
@@ -120,6 +120,7 @@ public class Clinic implements ClinicInterface {
   
   @Override
   public RoomInterface getRoomFromNumber(int roomNumber) {
+
     if (roomNumber < 0 || roomNumber > rooms.size()) {
       throw new IllegalArgumentException("Invalid room number. This room does not exist.");
     }
@@ -283,11 +284,11 @@ public class Clinic implements ClinicInterface {
   /*
    * Helper method for the read loop for Room.
    */  
-  private static void readRoom(BufferedReader br, int numRooms, 
+  protected static void readRoom(BufferedReader br, int numRooms, 
         List<RoomInterface> roomList) throws IOException {
     for (int i = 0; i < numRooms; i++) {
       String roomText = br.readLine();
-      Room room = Room.textRoom(roomText);
+      RoomInterface room = Room.textRoom(roomText);
       roomList.add(room);
     }
 
@@ -296,7 +297,7 @@ public class Clinic implements ClinicInterface {
   /*
    * Helper method for the read loop for Staff.
    */
-  private static void readStaff(BufferedReader br, int textNumStaff, 
+  protected static void readStaff(BufferedReader br, int textNumStaff, 
         Clinic clinic) throws IOException {
     for (int i = 0; i < textNumStaff; i++) {
       String staffText = br.readLine();
@@ -308,11 +309,11 @@ public class Clinic implements ClinicInterface {
   /*
    * Helper method for the read loop for Patient.
    */
-  private static void readPatients(BufferedReader br, 
+  protected static void readPatients(BufferedReader br, 
        int textNumPatients, Clinic clinic) throws IOException {
     for (int i = 0; i < textNumPatients; i++) {
       String patientText = br.readLine();
-      Patient patient = Patient.textPatient(patientText);
+      PatientInterface patient = Patient.textPatient(patientText);
       int roomNum = patient.getRoomNumber();
       RoomInterface assignedRoom = clinic.getRoomFromNumber(roomNum);
       assignedRoom.placePatient(patient);
