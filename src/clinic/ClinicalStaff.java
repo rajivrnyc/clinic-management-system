@@ -6,7 +6,7 @@ import java.util.Objects;
  * Class that represents a clinical staff member that is working for the clinic.
  * This class inherits the staff class.
  */
-public class ClinicalStaff implements ClinicalStaffInterface {
+public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface {
   private String jobTitle;
   private String firstName;
   private String lastName;
@@ -43,11 +43,6 @@ public class ClinicalStaff implements ClinicalStaffInterface {
   }
   
   @Override
-  public String getJobTitle() {
-    return this.jobTitle;
-  }
-  
-  @Override
   public String getTitle() {
     if ("Physician".equalsIgnoreCase(this.jobTitle)) {
       return "Dr. ";
@@ -56,21 +51,6 @@ public class ClinicalStaff implements ClinicalStaffInterface {
     } else {
       return this.jobTitle + " ";
     }
-  }
-
-  @Override
-  public String getFirstName() {
-    return this.firstName;
-  }
-
-  @Override
-  public String getLastName() {
-    return this.lastName;
-  }
-
-  @Override
-  public EducationLevel getEducationLevel() {
-    return this.educationLevel;
   }
   
   @Override
@@ -82,11 +62,7 @@ public class ClinicalStaff implements ClinicalStaffInterface {
   public boolean getStatus() {
     return this.isActive;
   }
-  
-  @Override
-  public void deactivate() {
-    this.isActive = false;
-  }
+
   
   @Override
   public boolean equals(Object obj) {

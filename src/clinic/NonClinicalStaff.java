@@ -7,7 +7,7 @@ import java.util.Objects;
  * non clinical staff members. This class inherits from the Staff
  * interface.
  */
-public class NonClinicalStaff implements Staff {
+public class NonClinicalStaff extends StaffClass {
   private String jobTitle;
   private String firstName;
   private String lastName;
@@ -45,26 +45,6 @@ public class NonClinicalStaff implements Staff {
   
   
   @Override
-  public String getJobTitle() {
-    return this.jobTitle;
-  }
-
-  @Override
-  public String getFirstName() {
-    return this.firstName;
-  }
-
-  @Override
-  public String getLastName() {
-    return this.lastName;
-  }
-
-  @Override
-  public EducationLevel getEducationLevel() {
-    return this.educationLevel;
-  }
-  
-  @Override
   public boolean equals(Object obj) {
     if (this == obj) {
       return true;
@@ -85,8 +65,4 @@ public class NonClinicalStaff implements Staff {
     return Objects.hash(jobTitle, firstName, lastName, educationLevel, cprLevel);
   }
   
-  @Override
-  public void deactivate() {
-    this.isActive = false;
-  }
 }
