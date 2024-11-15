@@ -20,10 +20,10 @@ import java.util.function.Function;
  * to the user.
  */
 public class ClinicController implements ClinicControllerInterface {
-  private final Readable in;
-  private final Appendable out;
-  private final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
-  private ClinicInterface model;
+  protected final Readable in;
+  protected final Appendable out;
+  protected final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
+  protected ClinicInterface model;
   
   /**
    * Controller used to access and demonstrate the function of the clinic model.
@@ -31,11 +31,13 @@ public class ClinicController implements ClinicControllerInterface {
    * 
    * @param in input for the controller
    * @param out output for the controller
+   * @param model the Clinic model that the controller is acting on
    */
-  public ClinicController(Readable in, Appendable out) {
+  public ClinicController(Readable in, Appendable out, ClinicInterface model) {
     this.in = Objects.requireNonNull(in, "Input cannot be null.");
     this.out = Objects.requireNonNull(out, "Output cannot be null.");
     this.knownCommands = new HashMap<>();
+    this.model = model;
    
     knownCommands.put(1, s -> new DisplayPatientCommand());
     knownCommands.put(2, s -> new DisplayRoom());

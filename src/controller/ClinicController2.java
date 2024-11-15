@@ -19,10 +19,8 @@ import java.util.function.Function;
  * to the user.
  */
 public class ClinicController2 extends ClinicController {
-  private final Readable in;
-  private final Appendable out;
+  protected ClinicStaffAndPatientInfo model;  
   private final Map<Integer, Function<Scanner, ClinicCommand2>> knownCommands;
-  private ClinicStaffAndPatientInfo model;
 
   /**
    * Controller used to access and demonstrate the function of the clinic model.
@@ -33,11 +31,9 @@ public class ClinicController2 extends ClinicController {
    * @param model the Clinic model that the controller is acting on
    */
   public ClinicController2(Readable in, Appendable out, ClinicStaffAndPatientInfo model) {
-    super(in, out);
-    this.in = Objects.requireNonNull(in, "Input cannot be null.");
-    this.out = Objects.requireNonNull(out, "Output cannot be null.");
-    this.knownCommands = new HashMap<>();
+    super(in, out, model);
     this.model = model;
+    this.knownCommands = new HashMap<>();
     
     knownCommands.put(10, s -> new ListClinStaffWithPatient());
     knownCommands.put(11, s -> new ClinicMap());
@@ -64,11 +60,20 @@ public class ClinicController2 extends ClinicController {
       try {
         int cmdNumber = Integer.parseInt(command);
         Function<Scanner, ClinicCommand2> cmdFunction = this.knownCommands.get(cmdNumber);
-        if (cmdFunction == null) {
-          throw new UnsupportedOperationException(command + " not suppported");
-        }      
-        ClinicCommand2 cmd = cmdFunction.apply(scan);
-        cmd.execute(model, scan);
+        if (cmdFunction != null) {
+          ClinicCommand2 cmd2 = cmdFunction.apply(scan);
+          cmd2.execute(model, scan);
+          continue;
+        }
+        Function<Scanner, ClinicCommand> parentCmd = super.knownCommands.get(cmdNumber);
+        if (parentCmd != null) {
+          ClinicCommand cmd = parentCmd.apply(scan);
+          cmd.execute(model, scan);
+        } else {
+          throw new UnsupportedOperationException(command + "not supported");
+        }
+        
+        
       } catch (NumberFormatException e) {
         System.out.println("Please enter a number that corresponds with a valid command.");
       } catch (IOException e) {
