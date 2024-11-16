@@ -201,9 +201,8 @@ public class Clinic implements ClinicInterface {
       throw new IllegalArgumentException("Clinical Staff member must be active "
            + "to be assigned to a patient.");
     }
-    ClinicalStaffInterface2 clinicalstaff = (ClinicalStaffInterface2) member;
+    ClinicalStaffInterface clinicalstaff = (ClinicalStaffInterface) member;
     patient.getAllocated().add(clinicalstaff);
-    clinicalstaff.incrementAssigned();
   }
   
   @Override
