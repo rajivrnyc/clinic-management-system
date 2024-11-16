@@ -13,6 +13,5 @@ public class ClinicMap implements ClinicCommand2 {
 
   @Override
   public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
-    // TODO Auto-generated method stub
   }
 }
