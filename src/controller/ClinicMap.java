@@ -7,9 +7,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 
 
@@ -41,7 +44,7 @@ public class ClinicMap implements ClinicCommand2 {
     int y = 20;
     int roomWidth = 200;
     int roomHeight = 100;
-    int roomSpacing = 20;
+    int space = 20;
     
     for (int i = 0; i < rooms.size(); i++) {
       RoomInterface room = rooms.get(i);
@@ -50,9 +53,27 @@ public class ClinicMap implements ClinicCommand2 {
       g.drawString(roomName, x + 10, y + 10);
       
       g.drawRect(x, y + 20, roomWidth, roomHeight);
+      int textLoc = y + 30;
       
+      for (PatientInterface patient : patients) {
+        if (patient.getRoomNumber() - 1 == i) {
+          StringBuffer sb = new StringBuffer();
+          sb.append(patient.getFirstName()).append(" ").append(patient.getLastName());
+          g.drawString(sb.toString(), x + 10, textLoc);
+          textLoc += 10;
+        }
+      }
       
+      x += roomWidth + space;
+      if (x + roomWidth > width) {
+        x = 20;
+        y += roomHeight + space + 20;
+      }
       
     }
+    
+    File image = new File("res/clinic_map.png");
+    
+    ImageIO.write(map, "png", image);
   }
 }
