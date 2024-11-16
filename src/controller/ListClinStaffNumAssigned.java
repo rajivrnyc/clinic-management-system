@@ -25,9 +25,11 @@ public class ListClinStaffNumAssigned implements ClinicCommand2 {
       if (mem.isClinicalStaff()) {
         ClinicalStaffInterface2 clin = (ClinicalStaffInterface2) mem;
         output.append(clin.getFirstName()).append(" ").append(clin.getLastName())
-        .append(" - ").append(clin.)
+        .append(" - ").append(clin.getNumAssigned());
       }
     }
+    System.out.println(output.toString());
+    System.out.println();
   }
 
 }
