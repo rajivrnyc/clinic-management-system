@@ -52,5 +52,13 @@ public abstract class StaffClass implements Staff {
   public void deactivate() {
     this.isActive = false;
   }
+  
+  /**
+   *  Method to check if the current object is a Clinical Staff object.
+   * @return true or false depending on whether or not the object is clin staff.
+   */
+  public boolean isClinicalStaff() {
+    return false;
+  }
 
 }
