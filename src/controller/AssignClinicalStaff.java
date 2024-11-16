@@ -34,7 +34,13 @@ public class AssignClinicalStaff implements ClinicCommand {
     System.out.println();
     System.out.println("This is a clinical staff member: " + mostRecentClinStaff);
     System.out.println();
-    model.assignStaff(mostRecentPatient, mostRecentClinStaff);
+    try {
+      model.assignStaff(mostRecentPatient, mostRecentClinStaff);
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+      return;
+    }
     System.out.println(mostRecentPatient);
     System.out.println();
   }

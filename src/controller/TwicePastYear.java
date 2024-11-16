@@ -14,6 +14,7 @@ public class TwicePastYear implements ClinicCommand2 {
   public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
     System.out.println();
     System.out.println("List of patients who have visited the clinic twice in the past year:");
+    System.out.println();
     System.out.println(model.listVisitTwiceOneYear());
     System.out.println();
   }

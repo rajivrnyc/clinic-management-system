@@ -91,8 +91,8 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
       if (!patient.getVisitRecord().isEmpty()) {
         Record recent = patient.getMostRecentVisit();
         if (recent.getDateArrival().toLocalDate().isBefore(oneYearAgo)) {
-          listPatient.append(patient.getFirstName()).append(" ").append(patient.getLastName())
-            .append("\n");
+          listPatient.append(patient.toString().trim())
+              .append("\n ------------------------------- \n");
         }
       }
     }
@@ -115,8 +115,8 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
           visitCount++;
         }
         if (visitCount >= 2) {
-          listPatient.append(patient.getFirstName()).append(" ").append(patient.getLastName())
-          .append("\n");
+          listPatient.append(patient.toString().trim())
+              .append("\n ------------------------------- \n");
           break;
         }
       }
