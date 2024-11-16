@@ -38,7 +38,7 @@ public class DeactivateSelectedStaff implements ClinicCommand2 {
     boolean running = true;
     while (running) {
       System.out.println();
-      System.out.print("Select staff member to display: ");
+      System.out.print("Select staff member to deactivate: ");
       
       try {
         String nextInt = scanner.nextLine();
@@ -66,7 +66,7 @@ public class DeactivateSelectedStaff implements ClinicCommand2 {
       model.deactivateClinicalStaffClinic(tempClin);
       System.out.println("Clinical Staff Member deactivated.");
     } else {
-      temp.deactivate();
+      model.deactivateStaff(staff.get(staffIndex));
       System.out.println("Non Clinical Staff Member deactivated.");
     }
     System.out.println();
