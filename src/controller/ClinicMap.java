@@ -51,17 +51,17 @@ public class ClinicMap implements ClinicCommand2 {
       RoomInterface room = rooms.get(i);
       String roomName = room.getRoomName();
       
-      g.drawString(roomName, x + 10, y + 10);
+      g.drawString(roomName, x + 10, y + 20);
       
       g.drawRect(x, y + 20, roomWidth, roomHeight);
-      int textLoc = y + 30;
+      int textLoc = y + 50;
       
       for (PatientInterface patient : patients) {
         if (patient.getRoomNumber() - 1 == i) {
           StringBuffer sb = new StringBuffer();
           sb.append(patient.getFirstName()).append(" ").append(patient.getLastName());
           g.drawString(sb.toString(), x + 10, textLoc);
-          textLoc += 10;
+          textLoc += 20;
         }
       }
       
