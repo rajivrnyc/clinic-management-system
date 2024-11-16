@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-
 import javax.imageio.ImageIO;
 
 
@@ -23,6 +22,8 @@ public class ClinicMap implements ClinicCommand2 {
 
   @Override
   public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
+    System.out.println("Creating map of Clinic");
+    System.out.println();
 
     
     int width = 800;
@@ -75,5 +76,8 @@ public class ClinicMap implements ClinicCommand2 {
     File image = new File("res/clinic_map.png");
     
     ImageIO.write(map, "png", image);
+    
+    System.out.println("Clinic map has been saved in the 'res' folder.");
+    System.out.println();
   }
 }
