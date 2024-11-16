@@ -34,5 +34,19 @@ public class ClinicMap implements ClinicCommand2 {
     
     g.setFont(new Font("Arial", Font.PLAIN, 14));
     g.setColor(Color.black);
+    
+    int x = 20;
+    int y = 20;
+    int roomWidth = 200;
+    int roomHeight = 100;
+    int roomSpacing = 20;
+    
+    for (int i = 0; i < rooms.size(); i ++) {
+      RoomInterface room = rooms.get(i);
+      String roomName = room.getRoomName();
+      
+      
+      
+    }
   }
 }
