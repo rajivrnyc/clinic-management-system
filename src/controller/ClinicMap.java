@@ -4,6 +4,7 @@ import clinic.ClinicStaffAndPatientInfo;
 import clinic.PatientInterface;
 import clinic.RoomInterface;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -30,5 +31,8 @@ public class ClinicMap implements ClinicCommand2 {
     
     g.setColor(Color.white);
     g.fillRect(0, 0, width, height);
+    
+    g.setFont(new Font("Arial", Font.PLAIN, 14));
+    g.setColor(Color.black);
   }
 }
