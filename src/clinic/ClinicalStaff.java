@@ -55,6 +55,11 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface 
   public boolean getStatus() {
     return this.isActive;
   }
+  
+  @Override
+  public boolean isClinicalStaff() {
+    return true;
+  }
 
   
   @Override
