@@ -26,8 +26,8 @@ public class ClinicMap implements ClinicCommand2 {
     System.out.println();
 
     
-    int width = 800;
-    int height = 600;
+    int width = 1200;
+    int height = 800;
     
     BufferedImage map = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
     Graphics g = map.getGraphics();
@@ -51,10 +51,10 @@ public class ClinicMap implements ClinicCommand2 {
       RoomInterface room = rooms.get(i);
       String roomName = room.getRoomName();
       
-      g.drawString(roomName, x + 10, y + 20);
+      g.drawString(roomName, x + 10, y + 13);
       
       g.drawRect(x, y + 20, roomWidth, roomHeight);
-      int textLoc = y + 50;
+      int textLoc = y + 40;
       
       for (PatientInterface patient : patients) {
         if (patient.getRoomNumber() - 1 == i) {
