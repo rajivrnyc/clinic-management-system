@@ -20,8 +20,7 @@ public class ClinicMap implements ClinicCommand2 {
 
   @Override
   public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
-    List<RoomInterface> rooms = model.getRooms();
-    List<PatientInterface> patients = model.getPatients();
+
     
     int width = 800;
     int height = 600;
@@ -35,15 +34,22 @@ public class ClinicMap implements ClinicCommand2 {
     g.setFont(new Font("Arial", Font.PLAIN, 14));
     g.setColor(Color.black);
     
+    List<RoomInterface> rooms = model.getRooms();
+    List<PatientInterface> patients = model.getPatients();
+    
     int x = 20;
     int y = 20;
     int roomWidth = 200;
     int roomHeight = 100;
     int roomSpacing = 20;
     
-    for (int i = 0; i < rooms.size(); i ++) {
+    for (int i = 0; i < rooms.size(); i++) {
       RoomInterface room = rooms.get(i);
       String roomName = room.getRoomName();
+      
+      g.drawString(roomName, x + 10, y + 10);
+      
+      g.drawRect(x, y + 20, roomWidth, roomHeight);
       
       
       
