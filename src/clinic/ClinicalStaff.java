@@ -6,7 +6,7 @@ import java.util.Objects;
  * Class that represents a clinical staff member that is working for the clinic.
  * This class inherits the staff class.
  */
-public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface {
+public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface2 {
   private String npiLevel;
   private int countAssigned;
 
@@ -61,6 +61,11 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface 
   public boolean isClinicalStaff() {
     return true;
   }
+  
+  @Override
+  public void incrementAssigned() {
+    countAssigned++;
+  }
 
   
   @Override
@@ -93,4 +98,6 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface 
     sb.append("\nNPI Level: ").append(this.getNpiLevel());
     return sb.toString();
   }
+
+
 }
