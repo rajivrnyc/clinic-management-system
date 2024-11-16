@@ -27,8 +27,12 @@ public class DisplayPatientCommand implements ClinicCommand {
       return;
     }
     for (int i = 0; i < patients.size(); i++) {
-      System.out.println((i + 1) + ": " + (patients.get(i)).getFirstName() + " " 
-          + (patients.get(i)).getLastName());
+      int index = i + 1;
+      PatientInterface tempPatient = patients.get(i);
+      StringBuilder sb = new StringBuilder();
+      sb.append(index).append(": ").append(tempPatient.getFirstName())
+      .append(" ").append(tempPatient.getLastName());
+      System.out.println(sb.toString());
     }
     
     int patientIndex = -1;

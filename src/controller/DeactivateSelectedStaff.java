@@ -22,6 +22,10 @@ public class DeactivateSelectedStaff implements ClinicCommand2 {
       System.out.println("Staff list is empty");
       return;
     }
+    
+    for (int i = 0; i < staff.size(); i++) {
+      
+    }
   }
 
 }
