@@ -7,12 +7,8 @@ import java.util.Objects;
  * This class inherits the staff class.
  */
 public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface {
-  private String jobTitle;
-  private String firstName;
-  private String lastName;
-  private EducationLevel educationLevel;
   private String npiLevel;
-  private boolean isActive;
+
 
   /**
    * A constructor for the ClinicalStaff class that represents a clinical staff member.
@@ -25,6 +21,7 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface 
    */
   public ClinicalStaff(String jobTitle, String firstName, String lastName, EducationLevel 
       educationLevel, String npiLevel) {
+    super(jobTitle, firstName, lastName, educationLevel);
     if (jobTitle == null || firstName == null 
         || lastName == null || educationLevel == null || npiLevel == null) {
       throw new IllegalArgumentException("Invalid input. First name, last "
@@ -34,12 +31,8 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface 
     if (!npiLevel.matches("\\d{10}")) {
       throw new IllegalArgumentException("NPI levels cannot be negative and must have 10 digits.");
     }
-    this.jobTitle = jobTitle;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.educationLevel = educationLevel;
+    
     this.npiLevel = npiLevel;
-    this.isActive = true;
   }
   
   @Override

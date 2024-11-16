@@ -8,12 +8,7 @@ import java.util.Objects;
  * interface.
  */
 public class NonClinicalStaff extends StaffClass {
-  private String jobTitle;
-  private String firstName;
-  private String lastName;
-  private EducationLevel educationLevel;
   private CprLevel cprLevel;
-  private boolean isActive;
   
   
   /**
@@ -29,18 +24,14 @@ public class NonClinicalStaff extends StaffClass {
   public NonClinicalStaff(String jobTitle, String firstName, 
         String lastName, EducationLevel educationLevel, 
       CprLevel cprLevel) {
+    super(jobTitle, firstName, lastName, educationLevel);
     if (jobTitle == null || firstName == null || lastName == null 
            || educationLevel == null || cprLevel == null) {
       throw new IllegalArgumentException("The names, education level and cprLevel for "
         + "non clinical staff cannot be left null.");
     }
 
-    this.jobTitle = jobTitle;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.educationLevel = educationLevel;
     this.cprLevel = cprLevel;
-    this.isActive = true;
   }
   
   

@@ -4,12 +4,30 @@ package clinic;
  * Abstract class for staff objects in the clinic.
  */
 public abstract class StaffClass implements Staff {
-  private String jobTitle;
-  private String firstName;
-  private String lastName;
-  private EducationLevel educationLevel;
-  private boolean isActive;
+  protected String jobTitle;
+  protected String firstName;
+  protected String lastName;
+  protected EducationLevel educationLevel;
+  protected boolean isActive;
 
+  /**
+   * Constructor for staff objects.
+   * 
+   * @param jobTitle The job title of the Staff member
+   * @param firstName the first name of the Staff member
+   * @param lastName the last name of the staff member
+   * @param educationLevel the education level of the staff member
+   */
+  public StaffClass(String jobTitle, String firstName, String lastName,
+      EducationLevel educationLevel) {
+    this.jobTitle = jobTitle;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.educationLevel = educationLevel;
+    this.isActive = true;
+      
+  }
+  
   @Override
   public String getJobTitle() {
     return this.jobTitle;
