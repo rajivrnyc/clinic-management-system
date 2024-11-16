@@ -47,7 +47,13 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
           System.out.println("Quitting to Menu.");
           return;
         }
-
+        
+        patientIndex = Integer.parseInt(nextInt) - 1;
+        if (patientIndex < 0 || patientIndex >= patients.size()) {
+          throw new IllegalArgumentException("Invalid staff number.");
+        }
+        running = false;
+        
       } catch (NumberFormatException e) {
         System.out.println("Invalid input. Please enter a patient number.");
         scanner.nextLine();
@@ -61,6 +67,7 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
     List<ClinicalStaffInterface> tempStaff = temp.getAllocated();
     if (tempStaff.isEmpty()) {
       System.out.println("This Patient has no assigned staff members");
+      System.out.println();
       return;
     } else {
       for (int i = 0; i < tempStaff.size(); i++) {
@@ -80,7 +87,7 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
         System.out.print("Select staff member to unassign: ");
           
         try {
-          String nextInt = scanner.nextLine();
+          String nextInt = scanner.next();
           if ("q".equalsIgnoreCase(nextInt)) {
             System.out.println("Quitting to Menu.");
             return;

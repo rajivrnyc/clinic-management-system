@@ -8,6 +8,7 @@ import java.util.Objects;
  */
 public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface {
   private String npiLevel;
+  private int countAssigned;
 
 
   /**
