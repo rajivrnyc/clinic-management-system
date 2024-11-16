@@ -2,6 +2,7 @@ package controller;
 
 import clinic.ClinicInterface;
 import clinic.ClinicalStaffInterface;
+import clinic.ClinicalStaffInterface2;
 import clinic.PatientInterface;
 import controller.ClinicCommand;
 import java.io.IOException;
@@ -18,10 +19,10 @@ public class AssignClinicalStaff implements ClinicCommand {
     PatientInterface mostRecentPatient = model.getPatients().get(model.getPatients().size() - 1);
     System.out.println("This is a patient: " + mostRecentPatient);
     
-    ClinicalStaffInterface mostRecentClinStaff = null;
+    ClinicalStaffInterface2 mostRecentClinStaff = null;
     for (int i = model.getEmployees().size() - 1; i >= 0; i--) {
-      if (model.getEmployees().get(i) instanceof ClinicalStaffInterface) {
-        mostRecentClinStaff = (ClinicalStaffInterface) model.getEmployees().get(i);
+      if (model.getEmployees().get(i) instanceof ClinicalStaffInterface2) {
+        mostRecentClinStaff = (ClinicalStaffInterface2) model.getEmployees().get(i);
         break;
       }
     }
@@ -35,5 +36,6 @@ public class AssignClinicalStaff implements ClinicCommand {
     System.out.println();
     model.assignStaff(mostRecentPatient, mostRecentClinStaff);
     System.out.println(mostRecentPatient);
+    System.out.println();
   }
 }
