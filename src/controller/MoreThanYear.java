@@ -14,8 +14,10 @@ public class MoreThanYear implements ClinicCommand2 {
 
   @Override
   public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
+    System.out.println();
     System.out.println("List of patients who haven't visited the clinic in more than a year:");
     System.out.println(model.listPatientVisitMoreThanYear());
+    System.out.println();
   }
 
 }

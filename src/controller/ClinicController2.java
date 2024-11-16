@@ -39,7 +39,8 @@ public class ClinicController2 extends ClinicController {
     knownCommands.put(11, s -> new ClinicMap());
     knownCommands.put(12, s -> new DeactivateSelectedStaff());
     knownCommands.put(13, s -> new MoreThanYear());
-    knownCommands.put(14, s -> new UnassignClinicalStaff());
+    knownCommands.put(14, s -> new TwicePastYear());
+    knownCommands.put(15, s -> new UnassignClinicalStaff());
   }
   
   @Override
