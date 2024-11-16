@@ -80,9 +80,9 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
       }
       
       int staffIndex = -1;
-      scanner.nextLine();
+
       boolean runningStaff = true;
-      while (running) {
+      while (runningStaff) {
         System.out.println();
         System.out.print("Select staff member to unassign: ");
           
@@ -96,7 +96,7 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
           if (staffIndex < 0 || staffIndex >= tempStaff.size()) {
             throw new IllegalArgumentException("Invalid staff number.");
           }
-          running = false;
+          runningStaff = false;
         } catch (NumberFormatException e) {
           System.out.println("Invalid input. Please enter a valid staff number");
           scanner.nextLine();
