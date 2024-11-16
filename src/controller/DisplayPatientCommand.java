@@ -62,6 +62,7 @@ public class DisplayPatientCommand implements ClinicCommand {
       }
     }
     System.out.println();
-    System.out.println(patients.get(patientIndex));  
+    System.out.println(patients.get(patientIndex));
+    System.out.println();
   }
 }
