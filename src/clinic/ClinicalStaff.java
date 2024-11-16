@@ -66,6 +66,11 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface2
   public void incrementAssigned() {
     countAssigned++;
   }
+  
+  @Override
+  public int getNumAssigned() {
+    return countAssigned;
+  }
 
   
   @Override
@@ -98,6 +103,8 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface2
     sb.append("\nNPI Level: ").append(this.getNpiLevel());
     return sb.toString();
   }
+
+
 
 
 }
