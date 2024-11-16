@@ -39,7 +39,7 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
     boolean running = true;
     while (running) {
       System.out.println();
-      System.out.println("Select staff member to deactivate: ");
+      System.out.println("Select patient to unassign from: ");
       
       try {
         String nextInt = scanner.nextLine();
@@ -99,7 +99,10 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
         }
       }
       System.out.println();
-      ClinicalStaffInterface doctor = model.
+      ClinicalStaffInterface doctor = tempStaff.get(staffIndex);
+      model.unassignClinStaff(doctor, temp);
+      System.out.println("Clinical Staff member has been unassinged");
+      System.out.println();
     }
   }
 }
