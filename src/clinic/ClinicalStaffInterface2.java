@@ -13,5 +13,4 @@ public interface ClinicalStaffInterface2 extends ClinicalStaffInterface {
    * that the ClinicalStaff member has ever been assigned to.
    */
   void incrementAssigned();
-	
 }
