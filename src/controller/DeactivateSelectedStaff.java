@@ -38,7 +38,7 @@ public class DeactivateSelectedStaff implements ClinicCommand2 {
     boolean running = true;
     while (running) {
       System.out.println();
-      System.out.print("Select patient to display: ");
+      System.out.print("Select staff member to display: ");
       
       try {
         String nextInt = scanner.nextLine();
