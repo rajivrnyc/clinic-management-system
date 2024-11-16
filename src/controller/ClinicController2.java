@@ -41,6 +41,7 @@ public class ClinicController2 extends ClinicController {
     knownCommands.put(13, s -> new MoreThanYear());
     knownCommands.put(14, s -> new TwicePastYear());
     knownCommands.put(15, s -> new UnassignClinicalStaff());
+    knownCommands.put(16, s -> new ListClinStaffNumAssigned());
   }
   
   @Override
@@ -90,8 +91,10 @@ public class ClinicController2 extends ClinicController {
     System.out.println("10: List Clinical Staff Members with Patients Assigned");
     System.out.println("11: Display Map of Clinic");
     System.out.println("12: Deactivate a Selected Staff Member");
-    System.out.println("13: Display Patients Who Haven't Visited the Clinic in More Than a Year");
-    System.out.println("14: Unassign a ClinicalStaff Member from the Clinic");
+    System.out.println("13: Display Patients Who Haven't Visited the Clinic in More Than a year");
+    System.out.println("14: Display patients who visited the clinic at least twice in the past year");
+    System.out.println("15: Unassign a ClinicalStaff member from the Clinic");
+    System.out.println("16: List ClinicalStaff members and all the number of patients that they have ever been assigned");
     System.out.println("Enter 'q' to quit.");    
   }
 }
