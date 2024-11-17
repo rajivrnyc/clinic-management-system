@@ -94,7 +94,7 @@ public class ClinicController2 extends ClinicController {
     System.out.println("13: Display Patients Who Haven't Visited the Clinic in More Than a year");
     System.out.println("14: Display patients who visited the clinic at "
         + "least twice in the past year");
-    System.out.println("15: Unassign a ClinicalStaff member from the Clinic");
+    System.out.println("15: Unassign a ClinicalStaff member from a Patient");
     System.out.println("16: List ClinicalStaff members and the number of patients that "
         + "they have ever been assigned");
     System.out.println("Enter 'q' to quit.");    

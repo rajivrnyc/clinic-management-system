@@ -1,25 +1,29 @@
-package controller;
+package test;
 
-import clinic.ClinicInterface;
 import clinic.ClinicStaffAndPatientInfo;
 import clinic.ClinicalStaffInterface;
 import clinic.PatientInterface;
+import controller.ClinicCommand2;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 
-
 /**
- * Controller command to unassign a clinical Staff member from a patient.
+ * Mock class for Unassign Clinical Staff command.
  */
-public class UnassignClinicalStaff implements ClinicCommand2 {
-
+public class MockUnassignClinicalStaff implements ClinicCommand2 {
+  StringBuilder sb;
+  
+  public MockUnassignClinicalStaff(StringBuilder sb) {
+    this.sb = sb;
+  }
+  
   @Override
   public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
     System.out.println("List of Patients:");
     List<PatientInterface> patients = model.getPatients();
-    
+   
     if (patients.isEmpty()) {
       System.out.println("Patient List is empty");
       return;
@@ -80,12 +84,11 @@ public class UnassignClinicalStaff implements ClinicCommand2 {
       }
       
       int staffIndex = -1;
-
       boolean runningStaff = true;
       while (runningStaff) {
         System.out.println();
         System.out.print("Select staff member to unassign: ");
-          
+         
         try {
           String nextInt = scanner.next();
           if ("q".equalsIgnoreCase(nextInt)) {
