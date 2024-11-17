@@ -940,7 +940,24 @@ public class ClinicTest {
     beth.addOldRecord("Stomachache", 10.0, dateTime2);
     clive.addRecord("Neck Pain", 12.0);
     
-    assertEquals("Aandi Acute\nBeth Bunion", clinic.listPatientVisitMoreThanYear());
+    assertEquals("Patient Name: Aandi Acute\n"
+             + "Date of Birth: 1/1/1981\n"
+             + "Room Number: 1\n"
+            + "Assigned Staff: None\n"
+            + "Visit Info: \n"
+            + "  Chief Complaint: Headache\n"
+            + "  Temperature: 2.0 °C\n"
+            + "  Visit Date: 11/11/2020 19:09:48\n"
+            + " ------------------------------- \n"
+            + "Patient Name: Beth Bunion\n"
+            + "Date of Birth: 2/2/1982\n"
+            + "Room Number: 2\n"
+            + "Assigned Staff: None\n"
+            + "Visit Info: \n"
+            + "  Chief Complaint: Stomachache\n"
+            + "  Temperature: 10.0 °C\n"
+            + "  Visit Date: 11/11/2019 19:09:48\n"
+            + " -------------------------------", clinic.listPatientVisitMoreThanYear());
   }
   
   @Test
@@ -956,7 +973,18 @@ public class ClinicTest {
     beth.addOldRecord("Stomachache", 10.0, dateTime2);
     clive.addRecord("Neck Pain", 12.0);
     
-    assertEquals("Aandi Acute", clinic.listVisitTwiceOneYear());
+    assertEquals("Patient Name: Aandi Acute\n"
+          + "Date of Birth: 1/1/1981\n"
+          + "Room Number: 1\n"
+          + "Assigned Staff: None\n"
+          + "Visit Info: \n"
+          + "  Chief Complaint: Headache\n"
+          + "  Temperature: 2.0 °C\n"
+          + "  Visit Date: 11/11/2024 19:09:48\n\n"
+          + "  Chief Complaint: Headache\n"
+          + "  Temperature: 2.0 °C\n"
+          + "  Visit Date: 11/12/2024 19:09:48\n"
+          + " -------------------------------", clinic.listVisitTwiceOneYear());
   }
   
   @Test
