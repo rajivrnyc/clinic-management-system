@@ -228,6 +228,18 @@ public class ClinicTest {
     clinic.assignPatient(patient, null);
   }
   
+  @Test
+  public void assignMoveAssign() {
+    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface beth = clinic.findPatient("Beth", "Bunion");
+    RoomInterface pwr = clinic.getRooms().get(0);
+    RoomInterface tri = clinic.getRooms().get(1);
+    clinic.assignPatient(beth, pwr);
+    clinic.assignPatient(aandi, tri);
+    assertTrue(clinic.getRooms().get(1).getResidents().contains(aandi));
+    
+  }
+  
   
   @Test
   public void testAssignStaff() {
