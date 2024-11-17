@@ -139,7 +139,7 @@ public interface ClinicInterface {
    * @return the patient object within the clinic's list of 
    *     patients
    */
-  PatientInterface findPatient(String firstName, String lastName);
+  PatientInterface2 findPatient(String firstName, String lastName);
   
   /**
    * Makes a seating chart of every room in the clinic.

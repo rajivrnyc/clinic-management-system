@@ -2,6 +2,7 @@ package controller;
 
 import clinic.ClinicInterface;
 import clinic.PatientInterface;
+import clinic.PatientInterface2;
 import controller.ClinicCommand;
 import java.io.IOException;
 import java.util.Scanner;
@@ -61,7 +62,8 @@ public class RegisterExistingPatient implements ClinicCommand {
         System.out.println("Please enter a valid temperature");
       }
     }
-    patient.addRecord(complaint, temp);
+    PatientInterface2 patientI = (PatientInterface2) patient;
+    patientI.addRecord(complaint, temp);
     System.out.println(patient);
   }
 }

@@ -65,13 +65,15 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
   public String listClinWithPatient() {
     StringBuilder output = new StringBuilder();
     for (PatientInterface patient : patients) {
-      if (patient.isActive()) {
+      PatientInterface2 patientI = (PatientInterface2) patient;
+      if (patientI.isActive()) {
         for (ClinicalStaffInterface staff : patient.getAllocated()) {
           output.append("Clinical Staff: ").append(staff.getFirstName())
           .append(" ").append(staff.getLastName()).append("\n");
           
           for (PatientInterface assigned : patients) {
-            if (assigned.isActive() && assigned.getAllocated().contains(staff)) {
+            PatientInterface2 assignedI = (PatientInterface2) assigned;
+            if (assignedI.isActive() && assigned.getAllocated().contains(staff)) {
               output.append("  Assigned Patient: ").append(assigned.getFirstName())
               .append(" ").append(assigned.getLastName()).append("\n");
             }
@@ -88,8 +90,9 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     LocalDate oneYearAgo = today.minusDays(365);
     StringBuilder listPatient = new StringBuilder();
     for (PatientInterface patient : patients) {
-      if (!patient.getVisitRecord().isEmpty()) {
-        Record recent = patient.getMostRecentVisit();
+      PatientInterface2 patientI = (PatientInterface2) patient;
+      if (!patientI.getVisitRecord().isEmpty()) {
+        Record recent = patientI.getMostRecentVisit();
         if (recent.getDateArrival().toLocalDate().isBefore(oneYearAgo)) {
           listPatient.append(patient.toString().trim())
               .append("\n ------------------------------- \n");
@@ -109,8 +112,9 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     LocalDate oneYearago = today.minusDays(365);
     StringBuilder listPatient = new StringBuilder();
     for (PatientInterface patient : patients) {
+      PatientInterface2 patientI = (PatientInterface2) patient;
       int visitCount = 0;
-      for (Record record : patient.getVisitRecord()) {
+      for (Record record : patientI.getVisitRecord()) {
         if (!record.getDateArrival().toLocalDate().isBefore(oneYearago)) {
           visitCount++;
         }

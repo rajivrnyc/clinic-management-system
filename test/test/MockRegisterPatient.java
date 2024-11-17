@@ -2,6 +2,7 @@ package test;
 
 import clinic.ClinicInterface;
 import clinic.PatientInterface;
+import clinic.PatientInterface2;
 import clinic.Record;
 import clinic.VisitRecord;
 import controller.ClinicCommand;
@@ -73,7 +74,9 @@ public class MockRegisterPatient implements ClinicCommand {
     }
     PatientInterface patient = model.getPatients().get(model.getPatients().size() - 1);
     
-    patient.addRecord(complaint, temperature);
+    PatientInterface2 patientI = (PatientInterface2) patient;
+    
+    patientI.addRecord(complaint, temperature);
     int roomNum = patient.getRoomNumber();
     System.out.println(patient);
   }

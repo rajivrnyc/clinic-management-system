@@ -138,7 +138,8 @@ public class Room implements RoomInterface {
       sb.append("\nNone");
     } else {
       for (PatientInterface patient : residents) {
-        if (patient.isActive()) {
+        PatientInterface2 patientI = (PatientInterface2) patient;
+        if (patientI.isActive()) {
           sb.append("\n---------------------------------------");
           sb.append("\n").append(patient.getFirstName()).append(" ")
         .append(patient.getLastName()).append(", Room Number: ").append(patient.getRoomNumber())
@@ -154,7 +155,7 @@ public class Room implements RoomInterface {
             }
             sb.setLength(sb.length() - 2);
           }
-          Record mostRecent = patient.getMostRecentVisit();
+          Record mostRecent = patientI.getMostRecentVisit();
           if (mostRecent != null) {
           
             sb.append("\n   Chief Complaint: ").append(mostRecent.getChiefComplaint());

@@ -15,6 +15,7 @@ import clinic.EducationLevel;
 import clinic.NonClinicalStaff;
 import clinic.Patient;
 import clinic.PatientInterface;
+import clinic.PatientInterface2;
 import clinic.Record;
 import clinic.Room;
 import clinic.RoomInterface;
@@ -596,7 +597,7 @@ public class ClinicTest {
   
   @Test
   public void testGetLastPatientRecord() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Headache", 33);
     aandi.addRecord("Stomachache", 33);
     Record record1 = aandi.getVisitRecord().get(aandi.getVisitRecord().size() - 1);
@@ -605,33 +606,33 @@ public class ClinicTest {
   
   @Test
   public void testCreatePatientRecord() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Headache", 33);
     assertTrue(!aandi.getVisitRecord().isEmpty());
   }
   
   @Test(expected = IllegalArgumentException.class)
   public void testInvalidPatientRecord() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord(null, 32);
   }
   
   @Test(expected = IllegalArgumentException.class)
   public void testNegativeTemperature() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Headache", -21);
   }
   
   @Test
   public void testZeroTemperature() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Feeling sick", 0);
     assertTrue(!aandi.getVisitRecord().isEmpty());
   }
   
   @Test
   public void testMultipleVisitRecords() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Feeling sick", 32);
     aandi.addRecord("Headache", 31);
     assertEquals(2, aandi.getVisitRecord().size());
@@ -639,14 +640,14 @@ public class ClinicTest {
   
   @Test
   public void testTemperatureWithDecimal() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Feeling sick", 32.1);
     assertTrue(!aandi.getVisitRecord().isEmpty());
   }
   
   @Test
   public void testPatientToStringNoRecords() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     assertEquals("Patient Name: Aandi Acute\n"
         + "Date of Birth: 1/1/1981\n"
         + "Room Number: 1\n"
@@ -656,7 +657,7 @@ public class ClinicTest {
   
   @Test
   public void testPatientToString() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Headache", 29.5);
     assertEquals("Patient Name: Aandi Acute\n"
             + "Date of Birth: 1/1/1981\n"
@@ -671,7 +672,7 @@ public class ClinicTest {
   
   @Test
   public void testMultipleRecordsPatientToString() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     aandi.addRecord("Headache", 29.5);
     aandi.addRecord("Stomachache", 30.0);
     assertEquals("Patient Name: Aandi Acute\n"
@@ -690,7 +691,7 @@ public class ClinicTest {
   
   @Test
   public void testRoomToString() {
-    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
+    PatientInterface2 clive = clinic.findPatient("Clive", "Cardiac");
     clive.addRecord("Sick", 30);
     RoomInterface room1 = clinic.getRoomFromNumber(3);
     String roomDisplay = room1.toString();
@@ -705,7 +706,7 @@ public class ClinicTest {
   
   @Test
   public void testRoomToStringMultipleRecords() {
-    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
+    PatientInterface2 clive = clinic.findPatient("Clive", "Cardiac");
     clive.addRecord("Sick", 30);
     clive.addRecord("Hungry", 30);
     RoomInterface room1 = clinic.getRoomFromNumber(3);
@@ -933,7 +934,7 @@ public class ClinicTest {
   
   @Test
   public void testListClinWithPatientInfo() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
     clinic.assignStaff(aandi, amy);
     String test = clinic.listClinWithPatient();
@@ -943,11 +944,11 @@ public class ClinicTest {
   
   @Test
   public void testListPatientNoVisitOneYear() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     LocalDateTime dateTime = LocalDateTime.parse("2020-11-11T19:09:48.601523100");
-    PatientInterface beth = clinic.findPatient("Beth", "Bunion");
+    PatientInterface2 beth = clinic.findPatient("Beth", "Bunion");
     LocalDateTime dateTime2 = LocalDateTime.parse("2019-11-11T19:09:48.601523100");
-    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
+    PatientInterface2 clive = clinic.findPatient("Clive", "Cardiac");
     aandi.addOldRecord("Headache", 2.0, dateTime);
     beth.addOldRecord("Stomachache", 10.0, dateTime2);
     clive.addRecord("Neck Pain", 12.0);
@@ -974,14 +975,14 @@ public class ClinicTest {
   
   @Test
   public void testVisitTwiceOneYear() {
-    PatientInterface aandi = clinic.findPatient("Aandi", "Acute");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
     LocalDateTime dateTime = LocalDateTime.parse("2024-11-11T19:09:48.601523100");
-    PatientInterface beth = clinic.findPatient("Beth", "Bunion");
+    PatientInterface2 beth = clinic.findPatient("Beth", "Bunion");
     LocalDateTime dateTime2 = LocalDateTime.parse("2020-11-11T19:09:48.601523100");
     LocalDateTime dateTime3 = LocalDateTime.parse("2024-11-12T19:09:48.601523100");
     aandi.addOldRecord("Headache", 2.0, dateTime);
     aandi.addOldRecord("Headache", 2.0, dateTime3);
-    PatientInterface clive = clinic.findPatient("Clive", "Cardiac");
+    PatientInterface2 clive = clinic.findPatient("Clive", "Cardiac");
     beth.addOldRecord("Stomachache", 10.0, dateTime2);
     clive.addRecord("Neck Pain", 12.0);
     

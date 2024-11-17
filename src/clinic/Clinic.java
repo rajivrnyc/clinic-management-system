@@ -216,14 +216,15 @@ public class Clinic implements ClinicInterface {
   }
   
   @Override
-  public PatientInterface findPatient(String firstName, String lastName) {
+  public PatientInterface2 findPatient(String firstName, String lastName) {
     if (firstName == null || lastName == null) {
       throw new IllegalArgumentException("Please enter a valid first and last name");
     }
     for (PatientInterface patient : patients) {
       if (patient.getFirstName().equalsIgnoreCase(firstName) 
           && patient.getLastName().equalsIgnoreCase(lastName)) {
-        return patient;
+        PatientInterface2 patientI = (PatientInterface2) patient;
+        return patientI;
       }
     }
     return null;
@@ -240,15 +241,16 @@ public class Clinic implements ClinicInterface {
         sb.append(" - This room is empty");
       } else {
         for (PatientInterface patient : patientslocal) {
-          if (patient.isActive()) {
-            sb.append("  -").append(patient.getFirstName()).append(" ")
-         .append(patient.getLastName()).append("\n");
+          PatientInterface2 patientI = (PatientInterface2) patient;
+          if (patientI.isActive()) {
+            sb.append("  -").append(patientI.getFirstName()).append(" ")
+         .append(patientI.getLastName()).append("\n");
 
             sb.append("   - Clinical Staff: ");
-            if (patient.getAllocated().isEmpty()) {
+            if (patientI.getAllocated().isEmpty()) {
               sb.append("None\n");
             } else {
-              for (ClinicalStaffInterface member : patient.getAllocated()) {
+              for (ClinicalStaffInterface member : patientI.getAllocated()) {
                 sb.append(member.getTitle()).append(member.getFirstName())
               .append(" ").append(member.getLastName())
                 .append(", ");
@@ -256,7 +258,7 @@ public class Clinic implements ClinicInterface {
               sb.setLength(sb.length() - 2);
               sb.append("\n");
             }
-            Record recentVisit = patient.getMostRecentVisit();
+            Record recentVisit = patientI.getMostRecentVisit();
             if (recentVisit != null) {
               sb.append("     - Most Recent Visit: ")
               .append(recentVisit.toString()).append("\n");
@@ -323,7 +325,7 @@ public class Clinic implements ClinicInterface {
        int textNumPatients, Clinic clinic) throws IOException {
     for (int i = 0; i < textNumPatients; i++) {
       String patientText = br.readLine();
-      PatientInterface patient = Patient.textPatient(patientText);
+      PatientInterface2 patient = Patient.textPatient(patientText);
       int roomNum = patient.getRoomNumber();
       RoomInterface assignedRoom = clinic.getRoomFromNumber(roomNum);
       assignedRoom.placePatient(patient);
