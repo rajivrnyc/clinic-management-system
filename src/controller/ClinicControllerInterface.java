@@ -1,4 +1,4 @@
-package clinic;
+package controller;
 
 /**
  * The ClinicController Interface represents a

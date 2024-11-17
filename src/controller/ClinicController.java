@@ -1,7 +1,6 @@
 package controller;
 
 import clinic.Clinic;
-import clinic.ClinicControllerInterface;
 import clinic.ClinicInterface;
 import clinic.ClinicStaffAndPatientInfo;
 import java.io.IOException;

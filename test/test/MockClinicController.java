@@ -1,9 +1,10 @@
 package test;
 
 import clinic.Clinic;
-import clinic.ClinicControllerInterface;
 import clinic.ClinicInterface;
 import controller.ClinicCommand;
+import controller.ClinicControllerInterface;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;

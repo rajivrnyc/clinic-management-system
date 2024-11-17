@@ -23,6 +23,7 @@ import clinic.RoomType;
 import clinic.Staff;
 import clinic.StaffFactoryHelper;
 import controller.ClinicController;
+import controller.ClinicControllerInterface;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -1004,6 +1005,16 @@ public class ClinicTest {
   public void testCommand10PatientDisplay() {
     StringBuilder out = new StringBuilder();
     String passIn = "10\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("10\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand11DisplayMap() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "11\nq\n";
     Reader in = new StringReader(passIn);
     MockClinicController2 mockcontroller = new MockClinicController2(in, out, clinic);
     mockcontroller.go();
