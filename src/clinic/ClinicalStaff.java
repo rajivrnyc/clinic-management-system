@@ -78,7 +78,7 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface2
     if (this == obj) {
       return true;
     }
-    if (!(obj instanceof ClinicalStaff)) {
+    if (obj == null || getClass() != obj.getClass()) {
       return false;
     }
     ClinicalStaff other = (ClinicalStaff) obj;
