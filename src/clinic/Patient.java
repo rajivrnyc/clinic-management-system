@@ -81,14 +81,13 @@ public class Patient implements PatientInterface2 {
   
   @Override
   public void setApproval(ClinicalStaffInterface member, boolean approvalStatus) {
-    if (member instanceof ClinicalStaffInterface) {
-      this.approval = approvalStatus;
-      if (approvalStatus) {
-        this.approvedBy = member;
-      } else {
-        this.approvedBy = null;
-      }
+    this.approval = approvalStatus;
+    if (approvalStatus) {
+      this.approvedBy = member;
+    } else {
+      this.approvedBy = null;
     }
+    
   }
   
   @Override
