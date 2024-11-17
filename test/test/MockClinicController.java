@@ -54,10 +54,7 @@ public class MockClinicController implements ClinicControllerInterface {
     knownCommands.put(9, s -> new MockAssignClinStaff(sb));
   }
   
-  /**
-   * Method that gives control to the controller.
-   * 
-   */
+  @Override
   public void go() {
     
     Objects.requireNonNull(model, "Clinic model cannot be null.");
