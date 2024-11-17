@@ -1003,10 +1003,10 @@ public class ClinicTest {
   @Test
   public void testCommand10PatientDisplay() {
     StringBuilder out = new StringBuilder();
-    String passIn = "1\n1\nq\n";
+    String passIn = "10\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    MockClinicController2 mockcontroller = new MockClinicController2(in, out, clinic);
     mockcontroller.go();
-    assertEquals("1\n1\nq\n", out.toString());
+    assertEquals("10\nq\n", out.toString());
   }
 }
