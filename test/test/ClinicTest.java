@@ -958,4 +958,14 @@ public class ClinicTest {
     
     assertEquals("Aandi Acute", clinic.listVisitTwiceOneYear());
   }
+  
+  @Test
+  public void testCommand10PatientDisplay() {
+  StringBuilder out = new StringBuilder();
+  String passIn = "1\n1\nq\n";
+  Reader in = new StringReader(passIn);
+  MockClinicController mockcontroller = new MockClinicController2(in, out);
+  mockcontroller.go(clinic);
+  assertEquals("1\n1\nq\n", out.toString());
+}
 }

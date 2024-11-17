@@ -1,6 +1,7 @@
 package test;
 
 import clinic.Clinic;
+import clinic.ClinicControllerInterface;
 import clinic.ClinicInterface;
 import controller.ClinicCommand;
 import java.io.BufferedReader;
@@ -19,10 +20,11 @@ import java.util.function.Function;
  * the Clinic's model and will facilitate displaying this information
  * to the user.
  */
-public class MockClinicController {
-  private final Readable in;
-  private final StringBuilder sb;
-  private final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
+public class MockClinicController implements ClinicControllerInterface {
+  protected final Readable in;
+  protected final StringBuilder sb;
+  protected final Map<Integer, Function<Scanner, ClinicCommand>> knownCommands;
+  protected ClinicInterface model;
   
   /**
    * Controller used to access and demonstrate the function of the clinic model.
@@ -31,12 +33,13 @@ public class MockClinicController {
    * @param in input for the controller
    * @param sb output for the controller
    */
-  public MockClinicController(Readable in, StringBuilder sb) {
+  public MockClinicController(Readable in, StringBuilder sb, ClinicInterface model) {
     
     
     this.in = Objects.requireNonNull(in, "Input cannot be null.");
     this.sb = Objects.requireNonNull(sb, "Output cannot be null.");
     this.knownCommands = new HashMap<>();
+    this.model = model;
     
     
     knownCommands.put(1, s -> new MockPatientDisplay(sb));
@@ -55,7 +58,7 @@ public class MockClinicController {
    * 
    * @param model the model to use with the controller.
    */
-  public void go(ClinicInterface model) {
+  public void go() {
     
     Objects.requireNonNull(model, "Clinic model cannot be null.");
     Scanner scan = new Scanner(this.in);
@@ -85,5 +88,20 @@ public class MockClinicController {
       
       }
     }
+  }
+
+  @Override
+  public void displayMenu() {
+    System.out.println("Menu:");
+    System.out.println("1: Display Selected Patient");
+    System.out.println("2: Display Selected Room");
+    System.out.println("3: Display Seating Chart");
+    System.out.println("4: Register New Patient");
+    System.out.println("5: Register New Clinical Staff");
+    System.out.println("6: Register Existing Patient");
+    System.out.println("7: Send Patient Home");
+    System.out.println("8: Assign Patient to Room");
+    System.out.println("9: Assign Clinical Staff");
+        
   }
 }
