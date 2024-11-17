@@ -17,7 +17,7 @@ public class AssignClinicalStaff implements ClinicCommand {
   @Override
   public void execute(ClinicInterface model, Scanner scanner) throws IOException {
     PatientInterface mostRecentPatient = model.getPatients().get(model.getPatients().size() - 1);
-    System.out.println("This is a patient: " + mostRecentPatient);
+    System.out.println("This is a patient: \n" + mostRecentPatient);
     
     ClinicalStaffInterface2 mostRecentClinStaff = null;
     for (int i = model.getEmployees().size() - 1; i >= 0; i--) {
@@ -32,7 +32,7 @@ public class AssignClinicalStaff implements ClinicCommand {
     }
     
     System.out.println();
-    System.out.println("This is a clinical staff member: " + mostRecentClinStaff);
+    System.out.println("This is a clinical staff member: \n" + mostRecentClinStaff);
     System.out.println();
     try {
       model.assignStaff(mostRecentPatient, mostRecentClinStaff);
