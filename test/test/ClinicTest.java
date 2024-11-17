@@ -1052,6 +1052,26 @@ public class ClinicTest {
   }
   
   @Test
+  public void testCommand12DeactivateSelectedOutOfBounds() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "12\n8\n\nq\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("12\n8\n\nq\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand12DeactivateSelectedWrongNumberFormat() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "12\nfour\n\nq\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("12\nfour\n\nq\nq\n", out.toString());
+  }
+  
+  @Test
   public void testCommand13DisplayPatientsMoreThanYear() {
     StringBuilder out = new StringBuilder();
     String passIn = "13\nq\n";
@@ -1072,12 +1092,58 @@ public class ClinicTest {
   }
   
   @Test
-  public void testCommand15UnassignClinicalStaffFromPatient() {
+  public void testCommand15UnassignClinicalStaffFromPatientNoAssigned() {
     StringBuilder out = new StringBuilder();
-    String passIn = "15\nq\n";
+    String passIn = "15\n1\nq\n";
     Reader in = new StringReader(passIn);
     ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
     mockcontroller.go();
-    assertEquals("15\nq\n", out.toString());
+    assertEquals("15\n1\nq\n", out.toString());
   }
+  
+  @Test
+  public void testCommand15UnassignClinicalStaffFromPatientQuitEarly() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "15\nq\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("15\nq\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand15UnassignClinicalStaffFromPatientSuccessfully() {
+    StringBuilder out = new StringBuilder();
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface amy  = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.assignStaff(aandi, amy);
+    String passIn = "15\n1\n1\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("15\n1\n1\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand15UnassignClinicalStaffFromPatientInvalidNumber() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "15\n8\n\nq\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("15\n8\n\nq\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand15UnassignClinicalStaffFromPatientInvalidNumberFormat() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "15\nFour\n\nq\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("15\nFour\n\nq\nq\n", out.toString());
+  }
+  
+  @Test
+  public void testCommand16
 }
