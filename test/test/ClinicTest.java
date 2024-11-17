@@ -754,8 +754,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "1\n1\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("1\n1\nq\n", out.toString());
   }
   
@@ -764,8 +764,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "2\n1\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("2\n1\nq\n", out.toString());
   }
   
@@ -774,8 +774,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "3\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("3\nq\n", out.toString());
   }
   
@@ -784,8 +784,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "4\nSteve\nJohnson\n03/05/2000\nHeadache\n32\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("4\nSteve\nJohnson\n03/05/2000\nHeadache\n32\nq\n", out.toString());
   }
   
@@ -794,8 +794,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "4\n\nSteve\nJohnson\n03/05/2000\nHeadache\n32\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("4\n\nSteve\nJohnson\n03/05/2000\nHeadache\n32\nq\n", out.toString());
   }
   
@@ -804,8 +804,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "4\n\nSteve\nJohnson\n03/05/2000\nHeadache\n32\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("4\n\nSteve\nJohnson\n03/05/2000\nHeadache\n32\nq\n", out.toString());
   }
   
@@ -814,8 +814,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "5\n\nphysician\nSteve\nJohnson\nmasters\n0123456789\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("5\n\nphysician\nSteve\nJohnson\nmasters\n0123456789\nq\n", out.toString());
   }
   
@@ -824,8 +824,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "5\n\nphysician\nSteve\n\nJohnson\nabc\nmasters\n0123456789\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("5\n\nphysician\nSteve\n\nJohnson\nabc\nmasters\n0123456789\nq\n", out.toString());
   }
   
@@ -834,8 +834,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "6\nAandi\nAcute\nHeadache\n32\nq";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("6\nAandi\nAcute\nHeadache\n32\nq\n", out.toString());
   }
   
@@ -844,8 +844,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "6\nAlex\nAcute\nAandi\nAcute\nHeadache\n32\nq";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("6\nAlex\nAcute\nAandi\nAcute\nHeadache\n32\nq\n", out.toString());
   }
   
@@ -854,8 +854,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "6\nq\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("6\nq\nq\n", out.toString());
   }
   
@@ -864,8 +864,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "7\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("7\nq\n", out.toString());
   }
   
@@ -874,8 +874,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "8\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("8\nq\n", out.toString());
   }
   
@@ -884,8 +884,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "9\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("9\nq\n", out.toString());
   }
   
@@ -894,8 +894,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "1\n12\n\nq\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("1\n12\n\nq\nq\n", out.toString());   
   }
   
@@ -904,8 +904,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "2\n12\n3\n3\nq\n";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("2\n12\n3\n3\nq\n", out.toString());   
   }
   
@@ -914,8 +914,8 @@ public class ClinicTest {
     StringBuilder out = new StringBuilder();
     String passIn = "12";
     Reader in = new StringReader(passIn);
-    MockClinicController mockcontroller = new MockClinicController(in, out);
-    mockcontroller.go(clinic);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
     assertEquals("1", out.toString());   
   }
   
@@ -961,11 +961,11 @@ public class ClinicTest {
   
   @Test
   public void testCommand10PatientDisplay() {
-  StringBuilder out = new StringBuilder();
-  String passIn = "1\n1\nq\n";
-  Reader in = new StringReader(passIn);
-  MockClinicController mockcontroller = new MockClinicController2(in, out);
-  mockcontroller.go(clinic);
-  assertEquals("1\n1\nq\n", out.toString());
-}
+    StringBuilder out = new StringBuilder();
+    String passIn = "1\n1\nq\n";
+    Reader in = new StringReader(passIn);
+    MockClinicController mockcontroller = new MockClinicController(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("1\n1\nq\n", out.toString());
+  }
 }

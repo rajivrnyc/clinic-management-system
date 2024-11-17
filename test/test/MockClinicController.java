@@ -32,6 +32,7 @@ public class MockClinicController implements ClinicControllerInterface {
    * 
    * @param in input for the controller
    * @param sb output for the controller
+   * @param model the clinic passed to the controller.
    */
   public MockClinicController(Readable in, StringBuilder sb, ClinicInterface model) {
     
@@ -56,7 +57,6 @@ public class MockClinicController implements ClinicControllerInterface {
   /**
    * Method that gives control to the controller.
    * 
-   * @param model the model to use with the controller.
    */
   public void go() {
     
