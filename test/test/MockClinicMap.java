@@ -7,16 +7,15 @@ import java.util.Scanner;
 
 
 /**
- * Mock command class to test ListClinWithPatient.
+ * Command class to mock clinic map command.
  */
-public class MockListClinWithPatient implements ClinicCommand2 {
+public class MockClinicMap implements ClinicCommand2 {
   StringBuilder sb;
-
-
-  public MockListClinWithPatient(StringBuilder sb) {
+  
+  public MockClinicMap(StringBuilder sb) {
     this.sb = sb;
   }
-
+  
   @Override
   public void execute(ClinicStaffAndPatientInfo model, Scanner scanner) throws IOException {
   }

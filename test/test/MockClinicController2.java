@@ -34,13 +34,13 @@ public class MockClinicController2 extends MockClinicController {
     this.model = model;
     
     
-    knownCommands.put(10, s -> new MockListClinWithPatient());
-    knownCommands.put(11, s -> new MockClinicMap());
-    knownCommands.put(12, s -> new MockDeactivateSelected());
-    knownCommands.put(13, s -> new MockMoreThanYear());
-    knownCommands.put(14, s -> new MockTwicePastYear());
-    knownCommands.put(15, s -> new MockUnassignClinicalStaff());
-    knownCommands.put(16, s -> new MockListClinNumAssigned());
+    knownCommands.put(10, s -> new MockListClinWithPatient(sb));
+    knownCommands.put(11, s -> new MockClinicMap(sb));
+    knownCommands.put(12, s -> new MockDeactivateSelected(sb));
+    knownCommands.put(13, s -> new MockMoreThanYear(sb));
+    knownCommands.put(14, s -> new MockTwicePastYear(sb));
+    knownCommands.put(15, s -> new MockUnassignClinicalStaff(sb));
+    knownCommands.put(16, s -> new MockListClinNumAssigned(sb));
    }
   
   @Override
