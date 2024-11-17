@@ -61,5 +61,6 @@ public class MockDisplayRoom implements ClinicCommand {
     }
     System.out.println();
     System.out.println(rooms.get(roomIndex).toString());
+    System.out.println();
   }
 }
