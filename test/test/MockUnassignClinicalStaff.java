@@ -48,10 +48,11 @@ public class MockUnassignClinicalStaff implements ClinicCommand2 {
       try {
         String nextInt = scanner.nextLine();
         if ("q".equalsIgnoreCase(nextInt)) {
+          sb.append(nextInt + "\n");
           System.out.println("Quitting to Menu.");
           return;
         }
-        
+        sb.append(nextInt + "\n");
         patientIndex = Integer.parseInt(nextInt) - 1;
         if (patientIndex < 0 || patientIndex >= patients.size()) {
           throw new IllegalArgumentException("Invalid staff number.");
@@ -60,10 +61,12 @@ public class MockUnassignClinicalStaff implements ClinicCommand2 {
         
       } catch (NumberFormatException e) {
         System.out.println("Invalid input. Please enter a patient number.");
-        scanner.nextLine();
+        String error = scanner.nextLine();
+        sb.append(error + "\n");
       } catch (IllegalArgumentException e) {
         System.out.println("Invalid input. Please enter a valid number.");
-        scanner.nextLine();
+        String error = scanner.nextLine();
+        sb.append(error + "\n");
       }
     }
     System.out.println();
@@ -92,9 +95,11 @@ public class MockUnassignClinicalStaff implements ClinicCommand2 {
         try {
           String nextInt = scanner.next();
           if ("q".equalsIgnoreCase(nextInt)) {
+            sb.append(nextInt + "\n");
             System.out.println("Quitting to Menu.");
             return;
           }
+          sb.append(nextInt + "\n");
           staffIndex = Integer.parseInt(nextInt) - 1;
           if (staffIndex < 0 || staffIndex >= tempStaff.size()) {
             throw new IllegalArgumentException("Invalid staff number.");
@@ -102,10 +107,12 @@ public class MockUnassignClinicalStaff implements ClinicCommand2 {
           runningStaff = false;
         } catch (NumberFormatException e) {
           System.out.println("Invalid input. Please enter a valid staff number");
-          scanner.nextLine();
+          String error = scanner.nextLine();
+          sb.append(error + "\n");
         } catch (IllegalArgumentException e) {
           System.out.println("Invalid input. Please enter a valid number.");
-          scanner.nextLine();
+          String error = scanner.nextLine();
+          sb.append(error + "\n");
         }
       }
       System.out.println();
