@@ -933,6 +933,36 @@ public class ClinicTest {
     assertEquals("1", out.toString());   
   }
   
+  @Test(expected = IllegalArgumentException.class)
+  public void testDeactivateStaffNullArgument() {
+    Staff member = null;
+    clinic.deactivateStaff(member);
+  }
+  
+  @Test
+  public void testDeactivateStaff() {
+    Staff member = clinic.getEmployees().get(5);
+    clinic.deactivateStaff(member);
+    assertFalse(clinic.getEmployees().contains(member));
+    assertEquals(5, clinic.getNumStaff());
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void testUnassignClinStaffNullArgument() {
+    PatientInterface2 aandi = null;
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.unassignClinStaff(amy, aandi);
+  }
+  
+  @Test
+  public void testUnassignClinStaff() {
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.assignStaff(aandi, amy);
+    clinic.unassignClinStaff(amy, aandi);
+    assertFalse(aandi.getAllocated().contains(amy));
+  }
+  
   @Test
   public void testListClinWithPatientInfo() {
     PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
@@ -1145,5 +1175,12 @@ public class ClinicTest {
   }
   
   @Test
-  public void testCommand16
+  public void testCommand16ListClinAndAssignedPatients() {
+    StringBuilder out = new StringBuilder();
+    String passIn = "16\nq\n";
+    Reader in = new StringReader(passIn);
+    ClinicControllerInterface mockcontroller = new MockClinicController2(in, out, clinic);
+    mockcontroller.go();
+    assertEquals("16\nq\n", out.toString());
+  }
 }
