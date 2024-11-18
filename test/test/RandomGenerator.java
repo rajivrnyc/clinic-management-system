@@ -10,11 +10,18 @@ public class RandomGenerator {
   private final int[] mockValues;
   private int mockIndex = 0;
 
+  /**
+   * No argument constructor for random generator.
+   */
   public RandomGenerator() {
     this.random = new Random();
     this.mockValues = null;
   }
 
+  /**
+   * Var arg constructor for generator.
+   * @param values a series of random values 
+   */
   public RandomGenerator(int... values) {
     this.random = new Random();
     this.mockValues = values;

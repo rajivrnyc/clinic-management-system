@@ -14,6 +14,10 @@ import java.util.Scanner;
 public class MockNewClinStaff implements ClinicCommand {
   private final StringBuilder sb;
   
+  /**
+   * A mock constructor to record user input for this command.
+   * @param sb A StringBuilder where user input is stored.
+   */
   public MockNewClinStaff(StringBuilder sb) {
     this.sb = sb;
   }

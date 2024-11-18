@@ -13,6 +13,10 @@ import java.util.Scanner;
 public class MockListClinNumAssigned implements ClinicCommand2 {
   StringBuilder sb;
   
+  /**
+   * A mock constructor to record user input for this command.
+   * @param sb A StringBuilder where user input is stored.
+   */
   public MockListClinNumAssigned(StringBuilder sb) {
     this.sb = sb;
   }

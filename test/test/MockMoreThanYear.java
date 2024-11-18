@@ -11,6 +11,10 @@ import java.util.Scanner;
 public class MockMoreThanYear implements ClinicCommand2 {
   StringBuilder sb;
   
+  /**
+   * A mock constructor to record user input for this command.
+   * @param sb A StringBuilder where user input is stored.
+   */
   public MockMoreThanYear(StringBuilder sb) {
     this.sb = sb;
   }
