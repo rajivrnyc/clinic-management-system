@@ -48,7 +48,7 @@ public class ClinicDriver {
       System.out.println("Error: " + e.getMessage());
       return;
     }
-    
+   
   }
 
 }
