@@ -89,6 +89,7 @@ public class ClinicalStaff extends StaffClass implements ClinicalStaffInterface2
             && this.npiLevel.equals(other.npiLevel);
   }
   
+  @Override
   public int hashCode() {
     return Objects.hash(jobTitle, firstName, lastName, educationLevel, npiLevel);
   }

@@ -41,7 +41,7 @@ public class MockClinicController2 extends MockClinicController {
     knownCommands.put(14, s -> new MockTwicePastYear(sb));
     knownCommands.put(15, s -> new MockUnassignClinicalStaff(sb));
     knownCommands.put(16, s -> new MockListClinNumAssigned(sb));
-   }
+  }
   
   @Override
   public void go() {

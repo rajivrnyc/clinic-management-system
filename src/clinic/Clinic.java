@@ -293,7 +293,7 @@ public class Clinic implements ClinicInterface {
     return Objects.hash(clinicName, numRooms, numStaff, numPatients, primaryWaitingRoom);
   }
   
-  /*
+  /**
    * Helper method for the read loop for Room.
    */  
   protected static void readRoom(BufferedReader br, int numRooms, 
@@ -306,7 +306,7 @@ public class Clinic implements ClinicInterface {
 
   }
   
-  /*
+  /**
    * Helper method for the read loop for Staff.
    */
   protected static void readStaff(BufferedReader br, int textNumStaff, 
@@ -318,7 +318,7 @@ public class Clinic implements ClinicInterface {
     }
   }
   
-  /*
+  /**
    * Helper method for the read loop for Patient.
    */
   protected static void readPatients(BufferedReader br, 

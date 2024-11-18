@@ -3,7 +3,6 @@ package clinic;
 import controller.ClinicController;
 import controller.ClinicController2;
 import controller.ClinicControllerInterface;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
