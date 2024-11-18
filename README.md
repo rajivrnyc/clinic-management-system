@@ -34,6 +34,13 @@ The current features of my program include:
 - Finding a patient within the model by name.
 - Viewing different rooms and areas in the model which reflect patient information including their most recent visit.
 - Displaying patient info.
+- Listing ClinicalStaff members with Patients that are assigned to them.
+- Generating a map of the clinic which is stored in 'res' once called with its respective command.
+- Deactivating a selected staff member.
+- Display Patients Who Haven't Visited the Clinic in More Than a year.
+- Display patients who visited teh clinic at least twice in the past year.
+- Unassign a ClinicalStaff member from a patient
+- List clinicalstaff members and the number of patients that they have ever been assigned.
 - A controller which can perform the tasks listed above in an easy to access menu.
 
 ### How to Run
@@ -42,14 +49,16 @@ Describe how to run your program from the JAR file. Describe what arguments are 
 - To run my program from a .jar file first make sure the .jar file is downloaded alongside clinicfile.txt
 - Open a command prompt
 - Change diretory to where the repository is located.
-- Use the command "java -jar res/Milestone2.jar res/clinicfile.txt res/clinic_commands.txt" where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
-- The only arguments needed to accomplish this is clinicfile.txt and clinic_commands.txt which the jar reads and processes.
+- Use the command "java -jar res/Milestone3.jar res/clinicfile.txt res/clinic_commandsMS3.txt" where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
+- The only arguments needed to accomplish this is clinicfile.txt and clinic_commandsMS3.txt which the jar reads and processes.
 
 
 ### How to Use the Program
 
 Provide instructions on how to use the functionality in your program. If it is interactive, describe how to interact with your program. Pay particular attention to the parts that are not part of the example runs that you provide.
 - If the user passes in a clinic text file they will be able to enter user input interactively to work with the clinic model or pass in a text file with a list of appropriate commands to interact with the model.
+- The console will prompt the user with possible commands and request necessary input from the user in order to accomplish the numbered tasks on the menu.
+- The user may quit to the menu after having selected a command with "q" at any time if they wish to do so.
 - You may quit out of the proram by pressing "q" when prompted for a menu option.
 
 
@@ -59,6 +68,7 @@ List any example runs that you have in res/ directory and provide a description 
 - I have an example run testing a clinic file where I inputted a text file which was then read into my driver class. The goal of this class was to pass in a clinic file.
 - My test run goes through each command that the controller is capable of operating to demonstrate its function. 
 - My test run shows that my example runs correctly when passed in information and exists the program once completed through a quit command.
+- My test run now shows this functionality with newly implemented commands to the controller. 
 
 
 ### Design/Model Changes
@@ -85,6 +95,20 @@ v2.2
 v2.3
 - Added a controller to the clinic so that the main driver could call commands with ease without having to directly access the file with commands and passed control to the controller.
 - Added a series of commands to the controller which encapsulate many of the major functions of the clinic model.
+v3.0
+- Added a new controller which inherits from the old controller to display an additional series of commands to interact with the clinic.
+v3.1
+- Added a new ClinicClass with a new interface to implement new features to the clinic to facilitate the new controller commands that are being implemented.
+- Implemented deactivation of any kind of staff member.
+- Lets the user unassign a selected staff member from a patient.
+v3.2
+- Added commands to list staff Clinical staff members who have any patients assigned to them along with information about the patients that are assigned to them.
+- Implemented a command to show patients whose last visit was more than a year ago.
+- Implemented a command to show patients who visited the clinic two times or more times in the past year.
+v3.3
+- Added a command to generate a visual representation of clinic map as a buffered image.
+v3.4
+- Added a command to list clinical staff members along with the number of patients that they have ever been assigned.
 
 
 ### Assumptions
@@ -95,7 +119,8 @@ List any assumptions that you made during program development and implementation
 - As of right now I assume that there is no maximum capacity for the clinic or a limit to how many clinical staff members can be assigned to a patient.
 - I assume that a patient's temperature can be anything except negative.
 - I assume that the patient can have any possible chief complaint and still be admitted to the hospital.
-- I assume that there are no restrictions on what constitures a patient or staff member's name other than that they are Strings.
+- I assume that there are no restrictions on what constitutes a patient or staff member's name other than that they are Strings.
+- I assume that a waiting room can have an unlimited number of people at any given time.
 
 
 ### Limitations
@@ -104,6 +129,7 @@ What limitations exist in your program. This should include any requirements tha
 - Currently I do not have functionality to add a new room to the clinic.
 - I do not have any methods that might describe the beahvior of non clinical staff members.
 - I do not have room number as an attribute of the Room object itself.
+- If there are to many patients in a respective waiting room my map will not cleanly reflect this do to the limitations provided by the size of my output and the font size of the text.
 
 
 ### Citations
