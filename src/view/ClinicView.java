@@ -10,6 +10,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import clinic.ClinicStaffAndPatientInfo;
+import controller.ClinicControllerInterface;
+
 
 
 
@@ -18,6 +21,8 @@ import javax.swing.SwingConstants;
  */
 public class ClinicView extends JFrame implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
+  private ClinicStaffAndPatientInfo model;
+  private ClinicControllerInterface controller;
   private final JTextArea displayArea;
   private final JLabel title;
   private final JButton quitButton;
@@ -25,8 +30,12 @@ public class ClinicView extends JFrame implements ClinicViewInterface {
   
   /**
    * Sets up the view for the clinic.
+   * 
+   * @param model the model for the clinic
+   * @param controller the controller that manages the clinic's operations
    */
-  public ClinicView() {
+  public ClinicView(ClinicStaffAndPatientInfo model, ClinicControllerInterface controller) {
+
     super("Clinic");
     this.setSize(800, 600);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,6 +54,9 @@ public class ClinicView extends JFrame implements ClinicViewInterface {
     buttons.add(buttonAction);
     buttons.add(quitButton);
     this.add(buttons);
+    
+    model = this.model;
+    controller = this.controller;
   }
   
   @Override
