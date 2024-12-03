@@ -60,7 +60,7 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     }
     patient.removeClinicalStaffMember(member);
   }
-  
+ 
   @Override
   public String listClinWithPatient() {
     StringBuilder output = new StringBuilder();
