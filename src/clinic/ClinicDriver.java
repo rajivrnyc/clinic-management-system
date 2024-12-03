@@ -3,10 +3,13 @@ package clinic;
 import controller.ClinicController;
 import controller.ClinicController2;
 import controller.ClinicControllerInterface;
+import view.AboutPage;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDateTime;
+import javax.swing.JFrame;
 
 
 
@@ -27,12 +30,20 @@ public class ClinicDriver {
       Clinic2 clinic = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
       System.out.println("Loaded File.");
     
-    
       System.out.println("Clinic Name: " + clinic.getClinicName());
       System.out.println("Number of Rooms: " + clinic.getNumRooms());
       System.out.println("Number of Staff: " + clinic.getNumStaff());
       System.out.println("Number of Patients: " + clinic.getNumPatients());
       System.out.println();
+      
+      JFrame frame  = new JFrame("Clinic Mangagement System - About");
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+      AboutPage about = new AboutPage();
+      frame.add(about);
+      frame.pack();
+      frame.setVisible(true);
+      
 
       Readable input;
       if (args.length > 1) {

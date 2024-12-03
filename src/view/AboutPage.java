@@ -13,11 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-
-
-
-
-
 /**
  * Implementation of the displayed view for the clinic management system.
  */
@@ -25,12 +20,10 @@ public class AboutPage extends JFrame implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Sets up the view for the clinic.
+   * Sets up the about page for the clinic.
    * 
-   * @param model the model for the clinic
-   * @param controller the controller that manages the clinic's operations
    */
-  public AboutPage(ClinicStaffAndPatientInfo model, ClinicControllerInterface controller) {
+  public AboutPage() {
 
     super("About Clinic");
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
