@@ -3,6 +3,7 @@ package view;
 import clinic.ClinicStaffAndPatientInfo;
 import controller.ClinicControllerInterface;
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,13 +22,7 @@ import javax.swing.SwingConstants;
  * Implementation of the displayed view for the clinic management system.
  */
 public class AboutPage extends JFrame implements ClinicViewInterface {
-  private static final long serialVersionUID = 1L;
-  private ClinicStaffAndPatientInfo model;
-  private ClinicControllerInterface controller;
-  private final JTextArea displayArea;
-  private final JLabel title;
-  private final JButton quitButton;
-  private final JButton buttonAction;
+  private final JLabel message;
   
   /**
    * Sets up the view for the clinic.
@@ -38,26 +33,14 @@ public class AboutPage extends JFrame implements ClinicViewInterface {
   public AboutPage(ClinicStaffAndPatientInfo model, ClinicControllerInterface controller) {
 
     super("About Clinic");
-    this.setSize(800, 600);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setSize(800, 600);
     
-    this.title = new JLabel("Clinic", SwingConstants.CENTER);
-    this.add(title);
+    this.setLayout(new BorderLayout());
     
-    this.displayArea = new JTextArea();
-    this.displayArea.setEditable(false);
-    JScrollPane scrollPane = new JScrollPane(displayArea);
-    this.add(scrollPane, BorderLayout.CENTER);
-    
-    JPanel buttons = new JPanel();
-    this.quitButton = new JButton("Exit");
-    this.buttonAction = new JButton("Run Command");
-    buttons.add(buttonAction);
-    buttons.add(quitButton);
-    this.add(buttons);
-    
-    model = this.model;
-    controller = this.controller;
+    JLabel header = new JLabel("Welcome to the Clinic Management System", JLabel.CENTER);
+    header.setFont(new Font("Calibri", Font.BOLD, 20));
+    this.add(header, BorderLayout.NORTH);
   }
   
   @Override
