@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 /**
  * Implementation of the displayed view for the clinic management system.
  */
-public class AboutPage extends JFrame implements ClinicViewInterface {
+public class AboutPage extends JPanel implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
 
   /**
@@ -24,10 +24,6 @@ public class AboutPage extends JFrame implements ClinicViewInterface {
    * 
    */
   public AboutPage() {
-
-    super("About Clinic");
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setSize(800, 600);
     
     this.setLayout(new BorderLayout());
     

@@ -3,16 +3,13 @@ package clinic;
 import controller.ClinicController;
 import controller.ClinicController2;
 import controller.ClinicControllerInterface;
-import view.AboutPage;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import javax.swing.JFrame;
-
-
-
+import javax.swing.JOptionPane;
+import view.AboutPage;
 
 /**
  * A Driver class to test the functionality of the Clinic model.
@@ -40,9 +37,12 @@ public class ClinicDriver {
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
       AboutPage about = new AboutPage();
-      frame.add(about);
+      frame.getContentPane().add(about);
       frame.pack();
       frame.setVisible(true);
+      
+      JOptionPane.showMessageDialog(frame, "Click OK to proceed.");
+      frame.dispose();
       
 
       Readable input;
