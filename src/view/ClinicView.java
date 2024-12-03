@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
  * Implementation of the displayed view for the clinic management system.
  */
 public class ClinicView extends JFrame implements ClinicViewInterface {
+  private static final long serialVersionUID = 1L;
   private final JTextArea displayArea;
   private final JLabel title;
   private final JButton quitButton;
