@@ -1,5 +1,7 @@
 package view;
 
+import clinic.ClinicStaffAndPatientInfo;
+import controller.ClinicControllerInterface;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -10,8 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import clinic.ClinicStaffAndPatientInfo;
-import controller.ClinicControllerInterface;
+
 
 
 

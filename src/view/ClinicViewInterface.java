@@ -47,6 +47,10 @@ public interface ClinicViewInterface {
    * Closes the view and resets.
    */
   void exit();
+  
+  /**
+   * Displays the main content of
+   */
 
 
 }
