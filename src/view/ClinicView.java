@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
 /**
  * Implementation of the displayed view for the clinic management system.
  */
-public class ClinicView extends JFrame implements ClinicViewInterface {
+public class AboutPage extends JFrame implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
   private ClinicStaffAndPatientInfo model;
   private ClinicControllerInterface controller;
@@ -35,9 +35,9 @@ public class ClinicView extends JFrame implements ClinicViewInterface {
    * @param model the model for the clinic
    * @param controller the controller that manages the clinic's operations
    */
-  public ClinicView(ClinicStaffAndPatientInfo model, ClinicControllerInterface controller) {
+  public AboutPage(ClinicStaffAndPatientInfo model, ClinicControllerInterface controller) {
 
-    super("Clinic");
+    super("About Clinic");
     this.setSize(800, 600);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
@@ -66,13 +66,8 @@ public class ClinicView extends JFrame implements ClinicViewInterface {
   }
 
   @Override
-  public void addCommandListener(ActionListener listener) {
+  public void addActionListener(ActionListener listener) {
     this.buttonAction.addActionListener(listener);
-  }
-
-  @Override
-  public void addQuitListener(ActionListener listener) {
-    this.quitButton.addActionListener(listener);
   }
 
   @Override
@@ -83,12 +78,6 @@ public class ClinicView extends JFrame implements ClinicViewInterface {
   @Override
   public void clear() {
     this.displayArea.setText("");
-  }
-
-  @Override
-  public void exit() {
-    this.dispose();
-
   }
 
 }
