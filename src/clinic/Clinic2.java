@@ -83,7 +83,7 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     }
     return output.toString().trim();
   }
-  
+ 
   @Override
   public String listPatientVisitMoreThanYear() {
     LocalDate today = LocalDate.now();
