@@ -18,15 +18,7 @@ public interface ClinicViewInterface {
    * 
    * @param listener the action listener
    */
-  void addCommandListener(ActionListener listener);
-  
-  
-  /**
-   *  An action to quit the program.
-   * 
-   * @param listener a listener for the quit button
-   */
-  void addQuitListener(ActionListener listener);
+  void addActionListener(ActionListener listener);
   
   
   /**
@@ -41,16 +33,6 @@ public interface ClinicViewInterface {
    * Clears the view of displayed messages.
    */
   void clear();
-  
-  
-  /**
-   * Closes the view and resets.
-   */
-  void exit();
-  
-  /**
-   * Displays the main content of
-   */
 
 
 }
