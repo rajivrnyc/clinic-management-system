@@ -104,7 +104,7 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     }
     return listPatient.toString().trim();
   }
-  
+ 
 
   @Override 
   public String listVisitTwiceOneYear() {
