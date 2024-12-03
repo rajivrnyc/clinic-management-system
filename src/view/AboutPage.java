@@ -22,8 +22,8 @@ import javax.swing.SwingConstants;
  * Implementation of the displayed view for the clinic management system.
  */
 public class AboutPage extends JFrame implements ClinicViewInterface {
-  private final JLabel message;
-  
+  private static final long serialVersionUID = 1L;
+
   /**
    * Sets up the view for the clinic.
    * 
@@ -41,6 +41,14 @@ public class AboutPage extends JFrame implements ClinicViewInterface {
     JLabel header = new JLabel("Welcome to the Clinic Management System", JLabel.CENTER);
     header.setFont(new Font("Calibri", Font.BOLD, 20));
     this.add(header, BorderLayout.NORTH);
+    
+    StringBuilder sb = new StringBuilder();
+    sb.append("Created by: Rajiv Ragavan");
+    JTextArea info = new JTextArea(sb.toString());
+    info.setEditable(false);
+    info.setWrapStyleWord(true);
+    info.setFont(new Font("Calibri", Font.PLAIN, 14));
+    this.add(info, BorderLayout.CENTER);
   }
   
   @Override
@@ -50,17 +58,14 @@ public class AboutPage extends JFrame implements ClinicViewInterface {
 
   @Override
   public void addActionListener(ActionListener listener) {
-    this.buttonAction.addActionListener(listener);
   }
 
   @Override
   public void showMessage(String message) {
-    this.displayArea.append(message);
   }
 
   @Override
   public void clear() {
-    this.displayArea.setText("");
   }
 
 }
