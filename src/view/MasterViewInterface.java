@@ -13,10 +13,5 @@ public interface MasterViewInterface {
    * @param newPanel the panel being switched to
    */
   void switchPanel(JPanel newPanel);
-  
-  /**
-   *  Make the view visible to start the clinic system.
-   */
-  void makeVisible();
 
 }

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,24 +19,24 @@ public class MasterView extends JFrame implements MasterViewInterface {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setSize(800, 600);
     
-    ClinicViewInterface aboutPage = new AboutPage();
+    JPanel aboutPage = new AboutPage();
     
     this.setLayout(new BorderLayout());
     
     this.add(aboutPage, BorderLayout.CENTER);
     currentPanel = aboutPage;
+    
+    aboutPage.setVisible(true);
   }
   
   @Override
   public void switchPanel(JPanel newPanel) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void makeVisible() {
-    // TODO Auto-generated method stub
-
+    if (currentPanel != null) {
+      currentPanel.setVisible(false);
+    }
+    this.add(newPanel, BorderLayout.CENTER);
+    newPanel.setVisible(true);
+    currentPanel = newPanel;
   }
 
 }
