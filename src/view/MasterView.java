@@ -3,6 +3,9 @@ package view;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 /**
@@ -12,6 +15,11 @@ public class MasterView extends JFrame implements MasterViewInterface {
 
   private static final long serialVersionUID = 1L;
   private JPanel currentPanel;
+  private JMenuBar menuBar;
+  private JMenu fileMenu;
+  private JMenuItem loadMenuItem;
+  private JMenuItem clearMenuItem;
+  private JMenuItem quitMenuItem;
   
   /**
    * Constructor for the master view frame.
@@ -19,7 +27,14 @@ public class MasterView extends JFrame implements MasterViewInterface {
   public MasterView() {
     this.setTitle("Clinic Management System");
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setSize(800, 600);
+    this.setSize(1920, 1080);
+    
+    menuBar = new JMenuBar();
+    fileMenu = new JMenu("File");
+    
+    loadMenuItem = new JMenuItem("Load Clinic Data");
+    clearMenuItem = new JMenuItem("Clear All Records");
+    quitMenuItem = new JMenuItem("Quit");
     
     JPanel aboutPage = new AboutPage();
     

@@ -5,8 +5,10 @@ import controller.ClinicControllerInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,14 +32,17 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
     
     this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     
-    JPanel subPanel = new JPanel();
-    subPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-    
+    this.add(Box.createVerticalStrut(400));
     JLabel header = new JLabel("Welcome to the Clinic Management System", JLabel.CENTER);
-    header.setFont(new Font("Calibri", Font.BOLD, 30));
+    header.setFont(new Font("Calibri", Font.BOLD, 40));
     header.setForeground(Color.BLUE);
-    subPanel.add(header);
-    this.add(subPanel);
+    header.setAlignmentX(Component.CENTER_ALIGNMENT);
+    header.setAlignmentY(Component.CENTER_ALIGNMENT);
+    this.add(header);
+    
+    this.add(Box.createVerticalStrut(20));
+    
+    
     
     StringBuilder sb = new StringBuilder();
     sb.append("Created by: Rajiv Ragavan");
@@ -45,8 +50,10 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
     info.setBackground(getBackground());
     info.setEditable(false);
     info.setWrapStyleWord(true);
-    info.setFont(new Font("Calibri", Font.BOLD, 20));
+    info.setLineWrap(false);
+    info.setFont(new Font("Calibri", Font.BOLD, 22));
     info.setAlignmentX(Component.CENTER_ALIGNMENT);
+    info.setMaximumSize(new Dimension(240, 60));
     this.add(info);
   }
   
