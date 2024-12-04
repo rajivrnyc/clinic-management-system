@@ -36,6 +36,15 @@ public class MasterView extends JFrame implements MasterViewInterface {
     clearMenuItem = new JMenuItem("Clear All Records");
     quitMenuItem = new JMenuItem("Quit");
     
+    fileMenu.add(loadMenuItem);
+    fileMenu.add(clearMenuItem);
+    fileMenu.addSeparator();
+    fileMenu.add(quitMenuItem);
+    
+    menuBar.add(fileMenu);
+    
+    this.setJMenuBar(menuBar);
+    
     JPanel aboutPage = new AboutPage();
     
     this.setLayout(new BorderLayout());
