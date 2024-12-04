@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import view.AboutPage;
+import view.MasterView;
+import view.MasterViewInterface;
 
 /**
  * A Driver class to test the functionality of the Clinic model.
@@ -33,17 +35,8 @@ public class ClinicDriver {
       System.out.println("Number of Patients: " + clinic.getNumPatients());
       System.out.println();
       
-      JFrame frame  = new JFrame("Clinic Mangagement System - About");
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
-      AboutPage about = new AboutPage();
-      frame.getContentPane().add(about);
-      frame.pack();
-      frame.setVisible(true);
-      
-      JOptionPane.showMessageDialog(frame, "Click OK to proceed.");
-      frame.dispose();
-      
+      JFrame masterView = new MasterView();
+      masterView.setVisible(true);
 
       Readable input;
       if (args.length > 1) {

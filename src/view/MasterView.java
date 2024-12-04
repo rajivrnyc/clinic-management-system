@@ -9,6 +9,8 @@ import javax.swing.JPanel;
  * master view class to handle different panel displays.
  */
 public class MasterView extends JFrame implements MasterViewInterface {
+
+  private static final long serialVersionUID = 1L;
   private JPanel currentPanel;
   
   /**
@@ -38,5 +40,6 @@ public class MasterView extends JFrame implements MasterViewInterface {
     newPanel.setVisible(true);
     currentPanel = newPanel;
   }
+  
 
 }
