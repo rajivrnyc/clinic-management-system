@@ -14,6 +14,11 @@ public interface MasterViewInterface {
    */
   void switchPanel(JPanel newPanel);
   
-  void 
+  /**
+   * Accepts callbacks from the controller to attach to components in the view.
+   * 
+   * @param f the set of feature callbacks as a Features object
+   */
+  void setFeatures(Features f);
 
 }
