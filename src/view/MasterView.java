@@ -52,7 +52,7 @@ public class MasterView extends JFrame implements MasterViewInterface {
     this.add(aboutPage, BorderLayout.CENTER);
     currentPanel = aboutPage;
     
-    aboutPage.setVisible(true);
+    currentPanel.setVisible(true);
   }
   
   @Override

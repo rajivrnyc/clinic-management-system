@@ -24,34 +24,37 @@ public class ClinicDriver {
  * @param args Takes an argument from the command line.
  */
   public static void main(String[] args) {
-    
-    try {
-      Clinic2 clinic = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
-      System.out.println("Loaded File.");
-    
-      System.out.println("Clinic Name: " + clinic.getClinicName());
-      System.out.println("Number of Rooms: " + clinic.getNumRooms());
-      System.out.println("Number of Staff: " + clinic.getNumStaff());
-      System.out.println("Number of Patients: " + clinic.getNumPatients());
-      System.out.println();
-      
-      JFrame masterView = new MasterView();
-      masterView.setVisible(true);
+    if (args.length == 1) {
+      try {
+        String clinicFile = args[0];
+        ClinicStaffAndPatientInfo clinic = Clinic2.readFile(new FileReader(clinicFile));
+        System.out.println("Loaded File.");
+        System.out.println("Clinic Name: " + clinic.getClinicName());
+        System.out.println("Number of Rooms: " + clinic.getNumRooms());
+        System.out.println("Number of Staff: " + clinic.getNumStaff());
+        System.out.println("Number of Patients: " + clinic.getNumPatients());
+        System.out.println();
+   
 
-      Readable input;
-      if (args.length > 1) {
-        input = new FileReader(args[1]);
-      } else {
-        input = new InputStreamReader(System.in);
+        Readable input = new InputStreamReader(System.in);
+        Appendable output = System.out; 
+        ClinicControllerInterface controller = new ClinicController2(input, output, clinic);
+        controller.go();
+      } catch (IOException e) {
+        System.out.println("Error: " + e.getMessage());
+        return;
       }
-      Appendable output = System.out; 
-      ClinicControllerInterface controller = new ClinicController2(input, output, clinic);
-      controller.go();
-    } catch (IOException e) {
-      System.out.println("Error: " + e.getMessage());
-      return;
-    }
   
-  }
+    } else {
+      try {
+        ClinicStaffAndPatientInfo clinic = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
+        MasterViewInterface view = new MasterView();
+        
+      } catch (IOException e) {
+        System.out.println("Error: " + e.getMessage());
+        return;
+      }
+    }
 
+  }
 }
