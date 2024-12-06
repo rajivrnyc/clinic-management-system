@@ -5,6 +5,8 @@ import clinic.PatientInterface;
 import clinic.Room;
 import clinic.RoomInterface;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -31,33 +33,43 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
    * @param clinic the clinic model.
    */
   public ClinicLayoutPage(ClinicStaffAndPatientInfo clinic) {
+    this.setLayout(new BorderLayout());
     JLabel clinicNameLabel = new JLabel(clinic.getClinicName(), SwingConstants.CENTER);
     clinicNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
+    clinicNameLabel.setPreferredSize(new Dimension(800, 50));
     this.add(clinicNameLabel, BorderLayout.NORTH);
     
-    JPanel roomsPanel = new JPanel();
-    roomsPanel.setLayout(new BoxLayout(roomsPanel, BoxLayout.Y_AXIS));
+    JPanel roomPanelContainer = new JPanel();
+    roomPanelContainer.setLayout(new GridLayout(0, 3, 10, 10));
+    roomPanelContainer.setPreferredSize(new Dimension(800, 600));
     
     List<RoomInterface> rooms = clinic.getRooms();
     
     for (RoomInterface room : rooms) {
       JPanel roomPanel = new JPanel();
       roomPanel.setLayout(new BorderLayout());
-      roomPanel.setBorder(BorderFactory.createTitledBorder(room.getRoomName()));
+      roomPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+      
+      JLabel roomLabel = new JLabel("Room: " + room.getRoomName(), SwingConstants.CENTER);
+      roomLabel.setFont(new Font("Arial", Font.BOLD, 16));
+      roomPanel.add(roomLabel, BorderLayout.NORTH);
+      roomPanel.setPreferredSize(new Dimension(250, 150));
       
       List<PatientInterface> patients = room.getResidents();
       
-      DefaultListModel<String> patientListModel = new DefaultListModel<>();
+      JPanel patientPanel = new JPanel();
+      patientPanel.setLayout(new BoxLayout(patientPanel, BoxLayout.Y_AXIS));
       for (PatientInterface patient : patients) {
-        patientListModel.addElement(patient.getFirstName() + " " 
+        JLabel patientLabel = new JLabel(patient.getFirstName() + " "
             + patient.getLastName());
+        patientPanel.add(patientLabel);
       }
-      JList<String> patientList = new JList<>(patientListModel);
+      JScrollPane patientScroll = new JScrollPane(patientPanel);
       
-      roomPanel.add(new JScrollPane(patientList), BorderLayout.CENTER);
-      roomsPanel.add(roomPanel);
+      roomPanel.add(patientScroll, BorderLayout.CENTER);
+      roomPanelContainer.add(roomPanel);
     }
-    this.add(new JScrollPane(roomsPanel), BorderLayout.CENTER);
+    this.add(roomPanelContainer, BorderLayout.CENTER);
   }
   
   @Override
