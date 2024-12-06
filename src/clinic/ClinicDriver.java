@@ -53,6 +53,7 @@ public class ClinicDriver {
         ClinicStaffAndPatientInfo model = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
         MasterViewInterface view = new MasterView();
         ClinicControllerInterface controller = new ClinicControllerGui(input, output, model, view);
+        controller.go();
         
       } catch (IOException e) {
         System.out.println("Error: " + e.getMessage());
