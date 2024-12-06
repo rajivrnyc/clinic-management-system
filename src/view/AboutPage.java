@@ -56,22 +56,5 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
     info.setMaximumSize(new Dimension(240, 60));
     this.add(info);
   }
-  
-  @Override
-  public void makeVisible() {
-    this.setVisible(true);
-  }
-
-  @Override
-  public void addActionListener(ActionListener listener) {
-  }
-
-  @Override
-  public void showMessage(String message) {
-  }
-
-  @Override
-  public void clear() {
-  }
 
 }
