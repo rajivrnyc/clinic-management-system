@@ -20,5 +20,11 @@ public interface MasterViewInterface {
    * @param f the set of feature callbacks as a Features object
    */
   void setFeatures(Features f);
+  
+  
+  /**
+   * Makes the current view visible.
+   */
+  void makeVisible();
 
 }

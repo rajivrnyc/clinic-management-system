@@ -64,11 +64,20 @@ public class MasterView extends JFrame implements MasterViewInterface {
     this.add(newPanel, BorderLayout.CENTER);
     newPanel.setVisible(true);
     currentPanel = newPanel;
+    this.revalidate();
+    this.repaint();
   }
 
   @Override
   public void setFeatures(Features f) {
-    // TODO Auto-generated method stub
+    loadMenuItem.addActionListener(l -> f.loadClinicFile());
+    clearMenuItem.addActionListener(l -> f.clearAllRecords());
+    quitMenuItem.addActionListener(l -> f.exitProgram());
+  }
+  
+  @Override
+  public void makeVisible() {
+    this.setVisible(true);
   }
   
 

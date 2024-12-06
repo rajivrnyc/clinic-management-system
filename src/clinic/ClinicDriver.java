@@ -2,6 +2,7 @@ package clinic;
 
 import controller.ClinicController;
 import controller.ClinicController2;
+import controller.ClinicControllerGui;
 import controller.ClinicControllerInterface;
 import java.io.FileReader;
 import java.io.IOException;
@@ -47,8 +48,11 @@ public class ClinicDriver {
   
     } else {
       try {
-        ClinicStaffAndPatientInfo clinic = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
+        Appendable output = System.out;
+        Readable input = new InputStreamReader(System.in);
+        ClinicStaffAndPatientInfo model = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
         MasterViewInterface view = new MasterView();
+        ClinicControllerInterface controller = new ClinicControllerGui(input, output, model, view);
         
       } catch (IOException e) {
         System.out.println("Error: " + e.getMessage());

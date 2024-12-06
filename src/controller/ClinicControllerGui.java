@@ -66,5 +66,10 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public void sendPatientHome() {
     // TODO Auto-generated method stub
   }
+  
+  @Override
+  public void go() {
+    view.makeVisible();
+  }
 
 }
