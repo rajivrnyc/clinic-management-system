@@ -8,6 +8,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import clinic.ClinicStaffAndPatientInfo;
+
 /**
  * master view class to handle different panel displays.
  */
