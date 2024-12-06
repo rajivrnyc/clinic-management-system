@@ -65,6 +65,11 @@ public class MasterView extends JFrame implements MasterViewInterface {
     newPanel.setVisible(true);
     currentPanel = newPanel;
   }
+
+  @Override
+  public void setFeatures(Features f) {
+    // TODO Auto-generated method stub
+  }
   
 
 }

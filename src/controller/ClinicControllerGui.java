@@ -23,6 +23,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
          MasterViewInterface view) {
     super(in, out, model);
     this.view = view;
+    view.setFeatures(this);
     
   }
 
@@ -38,8 +39,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void exitProgram() {
-    // TODO Auto-generated method stub
-	
+    System.exit(0);
   }
 
   @Override
