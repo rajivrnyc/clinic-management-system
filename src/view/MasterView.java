@@ -36,6 +36,9 @@ public class MasterView extends JFrame implements MasterViewInterface {
     clearMenuItem = new JMenuItem("Clear All Records");
     quitMenuItem = new JMenuItem("Quit");
     
+    loadMenuItem.addActionListener(e -> controller.loadClinicFile());
+    
+    
     fileMenu.add(loadMenuItem);
     fileMenu.add(clearMenuItem);
     fileMenu.addSeparator();
