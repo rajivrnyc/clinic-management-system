@@ -1,6 +1,13 @@
 package controller;
 
+
+import clinic.Clinic2;
 import clinic.ClinicStaffAndPatientInfo;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import view.Features;
 import view.MasterViewInterface;
 
@@ -29,12 +36,21 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void loadClinicFile() {
-    // TODO Auto-generated method stub
+    try {
+      FileReader fileReader = new FileReader("res/clinicfile.txt");
+      ClinicStaffAndPatientInfo newModel = Clinic2.readFile(fileReader);
+      this.setModel(newModel);
+      
+      JOptionPane.showMessageDialog(null, "Clinic loaded successfully.");
+      
+    } catch (IOException e) {
+      JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
   }
 
   @Override
   public void clearAllRecords() {
-    // TODO Auto-generated method stub
+    
   }
 
   @Override
@@ -70,6 +86,11 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   @Override
   public void go() {
     view.makeVisible();
+  }
+  
+  private void setModel(ClinicStaffAndPatientInfo newModel) {
+    this.model = newModel;
+    view.refresh(newModel);
   }
 
 }

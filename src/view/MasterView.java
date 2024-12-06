@@ -80,5 +80,12 @@ public class MasterView extends JFrame implements MasterViewInterface {
     this.setVisible(true);
   }
   
+  @Override
+  public void refresh(ClinicStaffAndPatientInfo model) {
+    JPanel clinicLayout = new ClinicLayoutPage(model);
+    
+    this.switchPanel(clinicLayout);
+  }
+  
 
 }

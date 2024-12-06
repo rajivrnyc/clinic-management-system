@@ -1,6 +1,8 @@
 package view;
 
+import clinic.ClinicStaffAndPatientInfo;
 import javax.swing.JPanel;
+
 
 /**
  * Interface for the master view class to handle different panel displays.
@@ -26,5 +28,13 @@ public interface MasterViewInterface {
    * Makes the current view visible.
    */
   void makeVisible();
+  
+  /**
+   * Update view.
+   * 
+   * @param model the new model that the view should update with.
+   */
+  void refresh(ClinicStaffAndPatientInfo model);
+  
 
 }
