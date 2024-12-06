@@ -50,8 +50,8 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       roomPanel.setLayout(new BorderLayout());
       roomPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
       
-      JLabel roomLabel = new JLabel("Room: " + room.getRoomName(), SwingConstants.CENTER);
-      roomLabel.setFont(new Font("Arial", Font.BOLD, 16));
+      JLabel roomLabel = new JLabel(room.getRoomName(), SwingConstants.CENTER);
+      roomLabel.setFont(new Font("Arial", Font.BOLD, 20));
       roomPanel.add(roomLabel, BorderLayout.NORTH);
       roomPanel.setPreferredSize(new Dimension(250, 150));
       
@@ -62,6 +62,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       for (PatientInterface patient : patients) {
         JLabel patientLabel = new JLabel(patient.getFirstName() + " "
             + patient.getLastName());
+        patientLabel.setFont(new Font("Arial", Font.PLAIN, 24));
         patientPanel.add(patientLabel);
       }
       JScrollPane patientScroll = new JScrollPane(patientPanel);

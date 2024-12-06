@@ -8,7 +8,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-;
+import javax.swing.JScrollPane;
 
 /**
  * master view class to handle different panel displays.
@@ -51,7 +51,6 @@ public class MasterView extends JFrame implements MasterViewInterface {
     JPanel aboutPage = new AboutPage();
     
     this.setLayout(new BorderLayout());
-    
     this.add(aboutPage, BorderLayout.CENTER);
     currentPanel = aboutPage;
     
