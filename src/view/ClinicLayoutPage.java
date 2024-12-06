@@ -72,29 +72,5 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
     }
     this.add(roomPanelContainer, BorderLayout.CENTER);
   }
-  
-  @Override
-  public void makeVisible() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void addActionListener(ActionListener listener) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void showMessage(String message) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void clear() {
-    // TODO Auto-generated method stub
-
-  }
 
 }
