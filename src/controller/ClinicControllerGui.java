@@ -17,6 +17,7 @@ import view.MasterViewInterface;
  * Controller to support view implementation for the mvc.
  */
 public class ClinicControllerGui extends ClinicController2 implements Features {
+  private  ClinicInterface3 model;
   private final MasterViewInterface view;
   
   /**
@@ -31,6 +32,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public ClinicControllerGui(Readable in, Appendable out, ClinicInterface3 model, 
          MasterViewInterface view) {
     super(in, out, model);
+    this.model = model;
     this.view = view;
     view.setFeatures(this);
     
@@ -52,7 +54,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void clearAllRecords() {
-    
+    model.reset();
   }
 
   @Override
