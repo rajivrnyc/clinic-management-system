@@ -55,6 +55,10 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   @Override
   public void clearAllRecords() {
     model.reset();
+    this.setModel(model);
+    
+    JOptionPane.showMessageDialog(null, "Clinic records have been cleared.");
+    
   }
 
   @Override
