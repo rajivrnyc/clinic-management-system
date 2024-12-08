@@ -50,7 +50,7 @@ public class ClinicDriver {
       try {
         Appendable output = System.out;
         Readable input = new InputStreamReader(System.in);
-        ClinicStaffAndPatientInfo model = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
+        ClinicInterface3 model = Clinic3.readFile(new FileReader("res/clinicfile.txt"));
         MasterViewInterface view = new MasterView();
         ClinicControllerInterface controller = new ClinicControllerGui(input, output, model, view);
         controller.go();
