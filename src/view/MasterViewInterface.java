@@ -1,5 +1,6 @@
 package view;
 
+import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import javax.swing.JPanel;
 
@@ -34,7 +35,7 @@ public interface MasterViewInterface {
    * 
    * @param model the new model that the view should update with.
    */
-  void refresh(ClinicStaffAndPatientInfo model);
+  void refresh(ClinicInterface3 model);
   
 
 }

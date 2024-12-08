@@ -1,5 +1,6 @@
 package view;
 
+import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
@@ -82,7 +83,7 @@ public class MasterView extends JFrame implements MasterViewInterface {
   }
   
   @Override
-  public void refresh(ClinicStaffAndPatientInfo model) {
+  public void refresh(ClinicInterface3 model) {
     JPanel clinicLayout = new ClinicLayoutPage(model);
     this.switchPanel(clinicLayout);
   }

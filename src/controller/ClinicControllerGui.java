@@ -2,6 +2,8 @@ package controller;
 
 
 import clinic.Clinic2;
+import clinic.Clinic3;
+import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import java.io.File;
 import java.io.FileReader;
@@ -26,7 +28,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
    * @param model the model of the clinic
    * @param view the view of the clinic
    */
-  public ClinicControllerGui(Readable in, Appendable out, ClinicStaffAndPatientInfo model, 
+  public ClinicControllerGui(Readable in, Appendable out, ClinicInterface3 model, 
          MasterViewInterface view) {
     super(in, out, model);
     this.view = view;
@@ -38,7 +40,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public void loadClinicFile() {
     try {
       FileReader fileReader = new FileReader("res/clinicfile.txt");
-      ClinicStaffAndPatientInfo newModel = Clinic2.readFile(fileReader);
+      ClinicInterface3 newModel = Clinic3.readFile(fileReader);
       this.setModel(newModel);
       
       JOptionPane.showMessageDialog(null, "Clinic loaded successfully.");
@@ -88,7 +90,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     view.makeVisible();
   }
   
-  private void setModel(ClinicStaffAndPatientInfo newModel) {
+  private void setModel(ClinicInterface3 newModel) {
     this.model = newModel;
     view.refresh(newModel);
   }
