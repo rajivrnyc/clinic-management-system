@@ -47,7 +47,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
       FileReader fileReader = new FileReader("res/clinicfile.txt");
       ClinicInterface3 newModel = Clinic3.readFile(fileReader);
       this.setModel(newModel);
-      
+      view.setMenuItems(true);
       JOptionPane.showMessageDialog(null, "Clinic loaded successfully.");
       
     } catch (IOException e) {
@@ -59,7 +59,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public void clearAllRecords() {
     model.reset();
     this.setModel(model);
-    
+    view.setMenuItems(false);
     JOptionPane.showMessageDialog(null, "Clinic records have been cleared.");
     
   }
