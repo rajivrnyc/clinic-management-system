@@ -23,6 +23,12 @@ public class MasterView extends JFrame implements MasterViewInterface {
   private JMenuItem loadMenuItem;
   private JMenuItem clearMenuItem;
   private JMenuItem quitMenuItem;
+  private JMenuItem registerPatient;
+  private JMenuItem assignToRoom;
+  private JMenuItem assignStaff;
+  private JMenuItem displayPatientInfo;
+  private JMenuItem unassignStaff;
+  private JMenuItem sendHome;
   
   /**
    * Constructor for the master view frame.
@@ -46,6 +52,26 @@ public class MasterView extends JFrame implements MasterViewInterface {
     fileMenu.add(quitMenuItem);
     
     menuBar.add(fileMenu);
+    
+    
+    
+    registerPatient = new JMenuItem("Register a New Patient");
+    assignToRoom = new JMenuItem("Assign Patient to Room");
+    assignStaff = new JMenuItem("Assign Clinical Staff to Patient");
+    displayPatientInfo = new JMenuItem("Display Patient Info");
+    unassignStaff = new JMenuItem("Unassign Clinical Staff");
+    sendHome = new JMenuItem("Send Patient Home");
+    
+    JMenu featuresMenu = new JMenu("Features");
+    
+    featuresMenu.add(registerPatient);
+    featuresMenu.add(assignToRoom);
+    featuresMenu.add(assignStaff);
+    featuresMenu.add(displayPatientInfo);
+    featuresMenu.add(unassignStaff);
+    featuresMenu.add(sendHome);
+    
+    menuBar.add(featuresMenu);
     
     this.setJMenuBar(menuBar);
     
@@ -75,6 +101,12 @@ public class MasterView extends JFrame implements MasterViewInterface {
     loadMenuItem.addActionListener(l -> f.loadClinicFile());
     clearMenuItem.addActionListener(l -> f.clearAllRecords());
     quitMenuItem.addActionListener(l -> f.exitProgram());
+    registerPatient.addActionListener(l -> f.registerNewPatient());
+    assignToRoom.addActionListener(l -> f.());
+    assignStaff.addActionListener(l -> f.exitProgram());
+    displayPatientInfo.addActionListener(l -> f.exitProgram());
+    unassignStaff.addActionListener(l -> f.exitProgram());
+    sendHome.addActionListener(l -> f.exitProgram());
   }
   
   @Override

@@ -27,6 +27,12 @@ public interface Features {
   void registerNewPatient();
   
   /**
+   * Assign a Patient to a room which will supercede the room they were
+   * previously assigned to.
+   */
+  void assignPatientToRoom();
+  
+  /**
    * Assigns a clinical staff member to a patient.
    */
   void assignStafftoPatient();

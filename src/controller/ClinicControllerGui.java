@@ -70,6 +70,11 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public void registerNewPatient() {
     // TODO Auto-generated method stub
   }
+  
+  @Override
+  public void assignPatientToRoom() {
+    // TODO Auto-generated method stub
+  }
 
   @Override
   public void assignStafftoPatient() {
@@ -100,5 +105,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     this.model = newModel;
     view.refresh(newModel);
   }
+
+
 
 }
