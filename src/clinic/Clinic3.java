@@ -44,7 +44,7 @@ public class Clinic3 extends Clinic2 implements ClinicInterface3 {
 
   @Override
   public void reset() {
-    clinicName = "";
+    clinicName = null;
     numRooms = 0;
     numStaff = 0;
     numPatients = 0;
