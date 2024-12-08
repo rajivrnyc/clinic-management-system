@@ -31,7 +31,7 @@ import javax.swing.SwingConstants;
 public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
   private final Map<String, JButton> roomButtons;
-  private final Map<String, JButton> roomPatients;
+  private final Map<String, JPanel> roomPatients;
   
   /**
    * Creates the layout  of clinic.
@@ -65,16 +65,11 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       roomPanel.add(roomButton, BorderLayout.NORTH);
       roomButtons.put(room.getRoomName(), roomButton);
       
-      List<PatientInterface> patients = room.getResidents();
-      
       JPanel patientPanel = new JPanel();
       patientPanel.setLayout(new BoxLayout(patientPanel, BoxLayout.Y_AXIS));
-      for (PatientInterface patient : patients) {
-        JLabel patientLabel = new JLabel(patient.getFirstName() + " "
-            + patient.getLastName());
-        patientLabel.setFont(new Font("Arial", Font.PLAIN, 24));
-        patientPanel.add(patientLabel);
-      }
+      roomPatients.put(room.getRoomName(), patientPanel);
+      
+      updatePatientButtons(room, patientPanel);
       JScrollPane patientScroll = new JScrollPane(patientPanel);
       
       roomPanel.add(patientScroll, BorderLayout.CENTER);
@@ -82,6 +77,23 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
     }
     JScrollPane scrollableRoomPanelContainer = new JScrollPane(roomPanelContainer);
     this.add(scrollableRoomPanelContainer, BorderLayout.CENTER);
+  }
+  
+  private void updatePatientButtons(RoomInterface room, JPanel patientPanel) {
+    List<PatientInterface> patients = room.getResidents();
+    patientPanel.removeAll();
+  
+  
+    for (PatientInterface patient : patients) {
+    StringBuilder sb = new StringBuilder();
+    sb.append(patient.getFirstName() + " " + patient.getLastName());
+    JButton patientButton = new JButton(sb.toString());
+    patientButton.setFont(new Font("Arial", Font.PLAIN, 20));
+    patientButton.addActionListener(e -> onPatientSelected(patient));
+    patientPanel.add(patientButton);
+    }
+    patientPanel.revalidate();
+    patientPanel.repaint();
   }
   
   @Override 
