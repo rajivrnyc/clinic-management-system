@@ -1,5 +1,8 @@
 package clinic;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +52,44 @@ public class Clinic3 extends Clinic2 implements ClinicInterface3 {
     rooms.clear();
     employees.clear();
     patients.clear();
+  }
+  
+  /**
+   * Method to create a Clinic object from a text file.
+   * 
+   * @param fileName A file that contains information about the clinic.
+   * @return A clinic object with the information contained in the text file.
+   * @throws IOException If an error occurs during file reading such as 
+   *         an invalid file, a nonexistent file etc.
+   */
+  public static Clinic3 readFile(FileReader fileName) throws IOException {
+    try (BufferedReader br = new BufferedReader(fileName)) {
+      final String textClinicName = br.readLine();
+      int textNumRooms = Integer.parseInt(br.readLine());
+      List<RoomInterface> tempRooms = new ArrayList<>();
+      readRoom(br, textNumRooms, tempRooms);
+      RoomInterface textPrimaryWaitingRoom = tempRooms.get(0);
+      Clinic3 textClinic = new Clinic3(textClinicName, textNumRooms, 0, 0, textPrimaryWaitingRoom);
+      for (RoomInterface room : tempRooms) {
+        if (!room.equals(textPrimaryWaitingRoom)) {
+          textClinic.rooms.add(room);
+        }
+      }
+
+      int textNumStaff = Integer.parseInt(br.readLine());
+      readStaff(br, textNumStaff, textClinic);
+
+      int textNumPatients = Integer.parseInt(br.readLine());
+      readPatients(br, textNumPatients, textClinic);
+      textClinic.numStaff = textNumStaff;
+      textClinic.numPatients = textNumPatients;
+
+      return textClinic;
+    } catch (NumberFormatException e) {
+      throw new IllegalArgumentException("Number format is not valid.", e);
+    } catch (NullPointerException e) {
+      throw new IllegalArgumentException("Insufficient information to complete task.", e);
+    }
   }
 
 }
