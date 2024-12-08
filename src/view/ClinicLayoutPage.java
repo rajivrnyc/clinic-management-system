@@ -31,6 +31,7 @@ import javax.swing.SwingConstants;
 public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
   private final Map<String, JButton> roomButtons;
+  private final Map<String, JButton> roomPatients;
   
   /**
    * Creates the layout  of clinic.
@@ -39,6 +40,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   public ClinicLayoutPage(ClinicInterface3 clinic) {
     this.setLayout(new BorderLayout());
     roomButtons = new HashMap<>();
+    roomPatients = new HashMap<>();
     
     JLabel clinicNameLabel = new JLabel(clinic.getClinicName(), SwingConstants.CENTER);
     clinicNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
