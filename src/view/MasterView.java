@@ -102,11 +102,11 @@ public class MasterView extends JFrame implements MasterViewInterface {
     clearMenuItem.addActionListener(l -> f.clearAllRecords());
     quitMenuItem.addActionListener(l -> f.exitProgram());
     registerPatient.addActionListener(l -> f.registerNewPatient());
-    assignToRoom.addActionListener(l -> f.());
-    assignStaff.addActionListener(l -> f.exitProgram());
-    displayPatientInfo.addActionListener(l -> f.exitProgram());
-    unassignStaff.addActionListener(l -> f.exitProgram());
-    sendHome.addActionListener(l -> f.exitProgram());
+    assignToRoom.addActionListener(l -> f.assignPatientToRoom());
+    assignStaff.addActionListener(l -> f.assignStafftoPatient());
+    displayPatientInfo.addActionListener(l -> f.displayPatientInfo());
+    unassignStaff.addActionListener(l -> f.unassignStaffFromPatient());
+    sendHome.addActionListener(l -> f.sendPatientHome());
   }
   
   @Override

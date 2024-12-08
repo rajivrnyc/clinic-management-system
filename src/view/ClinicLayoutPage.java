@@ -1,5 +1,6 @@
 package view;
 
+import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import clinic.PatientInterface;
 import clinic.Room;
@@ -10,11 +11,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -27,13 +30,16 @@ import javax.swing.SwingConstants;
  */
 public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
+  private final Map<String, JButton> roomButtons;
   
   /**
    * Creates the layout  of clinic.
    * @param clinic the clinic model.
    */
-  public ClinicLayoutPage(ClinicStaffAndPatientInfo clinic) {
+  public ClinicLayoutPage(ClinicInterface3 clinic) {
     this.setLayout(new BorderLayout());
+    roomButtons = new HashMap<>();
+    
     JLabel clinicNameLabel = new JLabel(clinic.getClinicName(), SwingConstants.CENTER);
     clinicNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
     clinicNameLabel.setPreferredSize(new Dimension(800, 50));
@@ -50,11 +56,16 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       roomPanel.setLayout(new BorderLayout());
       roomPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
       
-      JLabel roomLabel = new JLabel(room.getRoomName(), SwingConstants.CENTER);
-      roomLabel.setFont(new Font("Arial", Font.BOLD, 20));
-      roomPanel.add(roomLabel, BorderLayout.NORTH);
-      roomPanel.setSize(new Dimension(250, 150));
-      
+      JButton roomButton = new JButton(room.getRoomName());
+      roomButton.setFont(new Font("Arial", Font.BOLD, 20));
+      roomButton.setEnabled(false);
+      roomPanel.add(roomButton, BorderLayout.NORTH);
+      roomButtons.put(room.getRoomName(), roomButton);
+		/*
+		 * JLabel roomLabel = new JLabel(room.getRoomName(), SwingConstants.CENTER);
+		 * roomLabel.setFont(new Font("Arial", Font.BOLD, 20)); roomPanel.add(roomLabel,
+		 * BorderLayout.NORTH); roomPanel.setSize(new Dimension(250, 150));
+		 */
       
       List<PatientInterface> patients = room.getResidents();
       
@@ -74,5 +85,25 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
     JScrollPane scrollableRoomPanelContainer = new JScrollPane(roomPanelContainer);
     this.add(scrollableRoomPanelContainer, BorderLayout.CENTER);
   }
+  
+  @Override 
+  public void enableRoomSelection(ActionListener onRoomSelected) {
+    for (Map.Entry<String, JButton> entry : roomButtons.entrySet()) {
+      JButton button = entry.getValue();
+      button.setEnabled(true);
+      button.addActionListener(onRoomSelected);
+    }
+  }
+
+  @Override
+  public void disableRoomSelection() {
+    for (JButton button : roomButtons.values()) {
+      button.setEnabled(false);
+      for (ActionListener listener : button.getActionListeners()) {
+        button.removeActionListener(listener);
+      }
+    }
+  }
+  
 
 }
