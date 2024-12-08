@@ -80,7 +80,7 @@ public class MasterView extends JFrame implements MasterViewInterface {
     this.setLayout(new BorderLayout());
     this.add(aboutPage, BorderLayout.CENTER);
     currentPanel = aboutPage;
-    
+    setMenuItems(false);
     currentPanel.setVisible(true);
   }
   
