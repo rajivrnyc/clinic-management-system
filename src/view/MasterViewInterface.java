@@ -24,6 +24,13 @@ public interface MasterViewInterface {
    */
   void setFeatures(Features f);
   
+  /**
+   * Enables features if a clinic is loaded and 
+   * disables them if not.
+   * @param isClinicLoaded a boolean to check if a clinic is loaded to the model.
+   */
+  void setMenuItems(boolean isClinicLoaded);
+  
   
   /**
    * Makes the current view visible.

@@ -114,10 +114,22 @@ public class MasterView extends JFrame implements MasterViewInterface {
     this.setVisible(true);
   }
   
+  
+  
   @Override
   public void refresh(ClinicInterface3 model) {
     JPanel clinicLayout = new ClinicLayoutPage(model);
     this.switchPanel(clinicLayout);
+  }
+
+  @Override
+  public void setMenuItems(boolean isClinicLoaded) {
+    registerPatient.setEnabled(isClinicLoaded);
+    assignToRoom.setEnabled(isClinicLoaded);
+    assignStaff.setEnabled(isClinicLoaded);
+    displayPatientInfo.setEnabled(isClinicLoaded);
+    unassignStaff.setEnabled(isClinicLoaded);
+    sendHome.setEnabled(isClinicLoaded);
   }
   
 
