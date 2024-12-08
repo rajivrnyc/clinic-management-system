@@ -58,14 +58,10 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       
       JButton roomButton = new JButton(room.getRoomName());
       roomButton.setFont(new Font("Arial", Font.BOLD, 20));
+      roomButton.setForeground(Color.BLACK);
       roomButton.setEnabled(false);
       roomPanel.add(roomButton, BorderLayout.NORTH);
       roomButtons.put(room.getRoomName(), roomButton);
-		/*
-		 * JLabel roomLabel = new JLabel(room.getRoomName(), SwingConstants.CENTER);
-		 * roomLabel.setFont(new Font("Arial", Font.BOLD, 20)); roomPanel.add(roomLabel,
-		 * BorderLayout.NORTH); roomPanel.setSize(new Dimension(250, 150));
-		 */
       
       List<PatientInterface> patients = room.getResidents();
       
