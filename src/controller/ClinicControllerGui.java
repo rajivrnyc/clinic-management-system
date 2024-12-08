@@ -5,6 +5,9 @@ import clinic.Clinic2;
 import clinic.Clinic3;
 import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
+import clinic.PatientInterface;
+import clinic.PatientInterface2;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -83,7 +86,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
       return;
     }
     
-    String birthdate = JOptionPane.showInputDialog(null, "Enter the patient's birthdate "
+    final String birthdate = JOptionPane.showInputDialog(null, "Enter the patient's birthdate "
         + "(dd/mm/yy):", "RegisterPatient",
         JOptionPane.PLAIN_MESSAGE);
     
@@ -105,8 +108,10 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
       return;
     }
     
+    double temp;
+    
     try {
-      double temp = Double.parseDouble(temperature.trim());
+      temp = Double.parseDouble(temperature.trim());
 
       if (temp < 0) {
         throw new NumberFormatException("Temperature cannot be negative.");
@@ -121,7 +126,13 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     }
     
     model.addNewPatient(patientFirstName, patientlastName, birthdate);
+    PatientInterface patient = model.getPatients().get(model.getPatients().size() - 1);
     
+    PatientInterface2 patientI = (PatientInterface2) patient;
+    patientI.addRecord(complaint, temp);
+    
+    this.setModel(model);
+    JOptionPane.showMessageDialog(null, "Patient successfully added to clinic.");
     
   }
   
