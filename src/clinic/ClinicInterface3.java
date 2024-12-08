@@ -10,4 +10,6 @@ public interface ClinicInterface3 extends ClinicStaffAndPatientInfo {
    * resets the fields of the model.
    */
   void reset();
+  
+
 }

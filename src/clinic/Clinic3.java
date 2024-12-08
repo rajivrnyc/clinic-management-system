@@ -54,6 +54,9 @@ public class Clinic3 extends Clinic2 implements ClinicInterface3 {
     patients.clear();
   }
   
+  
+  
+  
   /**
    * Method to create a Clinic object from a text file.
    * 
