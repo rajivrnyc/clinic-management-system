@@ -52,11 +52,16 @@ public interface ClinicViewInterface {
    */
   void enablePatientSelectionUnassignStaff(Features f);
   
+  /**
+   * Makes buttons to click on patients for selection purposes visible for send home.
+   * 
+   * @param f callback for when a patient is selected by a user.
+   */
+  void enablePatientSelectionSendHome(Features f);
+  
   
   /**
    * Makes buttons to click on patients for selection purposes invisible.
    */
   void disablePatientSelection();
-  
-
 }

@@ -209,7 +209,9 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void sendPatientHome() {
-    // TODO Auto-generated method stub
+    clinicLayoutPage = view.getLayoutPage();
+    JOptionPane.showMessageDialog(null, "Please select a patient to send home.");
+    clinicLayoutPage.enablePatientSelectionSendHome(this);
   }
   
   @Override
