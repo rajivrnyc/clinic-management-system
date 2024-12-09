@@ -3,6 +3,7 @@ package view;
 import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import clinic.PatientInterface;
+import clinic.PatientInterface2;
 import clinic.Room;
 import clinic.RoomInterface;
 import java.awt.BorderLayout;
@@ -92,14 +93,17 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
     UIManager.put("Button.disabledBackground", Color.LIGHT_GRAY);
     List<PatientInterface> patients = room.getResidents();
     for (PatientInterface patient : patients) {
-      StringBuilder patientName = new StringBuilder();
-      patientName.append(patient.getFirstName() + " " + patient.getLastName());
-      JButton patientButton = new JButton(patientName.toString());
-      patientButton.setFont(new Font("Arial", Font.PLAIN, 20));
-      patientButton.setEnabled(false);
+      PatientInterface2 patient2 = (PatientInterface2) patient;
+      if (patient2.isActive()) {
+        StringBuilder patientName = new StringBuilder();
+        patientName.append(patient.getFirstName() + " " + patient.getLastName());
+        JButton patientButton = new JButton(patientName.toString());
+        patientButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        patientButton.setEnabled(false);
       
-      patientPanel.add(patientButton);
-      patientButtons.put(patient, patientButton);
+        patientPanel.add(patientButton);
+        patientButtons.put(patient, patientButton);
+      }
     }
     patientPanel.revalidate();
     patientPanel.repaint();
