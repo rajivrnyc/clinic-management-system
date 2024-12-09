@@ -58,6 +58,11 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
     if (member == null || patient == null) {
       throw new IllegalArgumentException("This ClinicalStaff or Patient object is invalid");
     }
+    
+    if (patient.getAllocated().isEmpty()) {
+      throw new IllegalArgumentException("This patient has no clinical "
+        + "staff members assigned to them.");
+    }
     patient.removeClinicalStaffMember(member);
   }
 
