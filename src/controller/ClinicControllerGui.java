@@ -161,9 +161,11 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     List<ClinicalStaffInterface2> clin = getClinStaff();
     String[] staffNames = new String[clin.size()];
     for (int i = 0; i < clin.size(); i++) {
-      StringBuilder sb = new StringBuilder();
-      sb.append(clin.get(i).getFirstName()).append(" ").append(clin.get(i).getLastName());
-      staffNames[i] = sb.toString();
+      if (clin.get(i).getStatus()) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(clin.get(i).getFirstName()).append(" ").append(clin.get(i).getLastName());
+        staffNames[i] = sb.toString();
+      }
     }
     
     JComboBox<String> staffCombo = new JComboBox<>(staffNames);
@@ -171,7 +173,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     int result = JOptionPane.showConfirmDialog(null, staffCombo, "Select Clinical Staff",
         JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
     if (result == JOptionPane.OK_OPTION) {
-      selectedStaff = (ClinicalStaffInterface2)staffCombo.getSelectedItem();
+      selectedStaff = (ClinicalStaffInterface2) staffCombo.getSelectedItem();
     }
     this.clinicLayoutPage = view.getLayoutPage();
     JOptionPane.showMessageDialog(null, "Please select a patient.");
@@ -235,7 +237,14 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public void processPatientAssignStaff(PatientInterface patient) {
     clinicLayoutPage.disablePatientSelection();
     selectedPatient = patient;
-    model.assignStaff(selectedPatient, selectedStaff);
+    try {
+      model.assignStaff(selectedPatient, selectedStaff);
+      JOptionPane.showMessageDialog(null, "Staff assigned!");
+      setModel(model);
+    } catch (IllegalArgumentException e) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("Error: " + e.getMessage());
+    }
   }
   
   private List<ClinicalStaffInterface2> getClinStaff() {
