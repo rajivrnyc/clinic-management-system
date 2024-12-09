@@ -76,7 +76,7 @@ public interface Features {
    * retrieves a patient from a button press for
    * staff assignment.
    * 
-   * @param patient
+   * @param patient the patient selected from the button click.
    */
   void processPatientAssignStaff(PatientInterface patient);
   

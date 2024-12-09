@@ -11,17 +11,14 @@ import clinic.PatientInterface2;
 import clinic.RoomInterface;
 import clinic.Staff;
 import clinic.StaffClass;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
 import view.ClinicLayoutPage;
 import view.Features;
 import view.MasterViewInterface;
@@ -35,6 +32,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   private ClinicLayoutPage clinicLayoutPage;
   private PatientInterface selectedPatient;
   private RoomInterface room;
+  private ClinicalStaffInterface2 selectedStaff;
   
   
   /**
@@ -172,6 +170,12 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     
     int result = JOptionPane.showConfirmDialog(null, staffCombo, "Select Clinical Staff",
         JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    if (result == JOptionPane.OK_OPTION) {
+      selectedStaff = (ClinicalStaffInterface2)staffCombo.getSelectedItem();
+    }
+    this.clinicLayoutPage = view.getLayoutPage();
+    JOptionPane.showMessageDialog(null, "Please select a patient.");
+    clinicLayoutPage.enablePatientSelectionAssignStaff(this);
     
   }
 
@@ -225,6 +229,13 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
       sb.append("Error: ").append(e.getMessage());
       JOptionPane.showMessageDialog(null, sb.toString());
     }
+  }
+  
+  @Override
+  public void processPatientAssignStaff(PatientInterface patient) {
+    clinicLayoutPage.disablePatientSelection();
+    selectedPatient = patient;
+    model.assignStaff(selectedPatient, selectedStaff);
   }
   
   private List<ClinicalStaffInterface2> getClinStaff() {
