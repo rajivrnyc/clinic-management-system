@@ -37,5 +37,19 @@ public interface ClinicViewInterface {
    */
   void disablePatientSelection();
   
+  /**
+   * sets the patient selected by the button.
+   * 
+   * @param patient selected by button press.
+   */
+  void setPatient(PatientInterface patient);
+  
+  /**
+   * returns the patient selected by the button.
+   * 
+   * @return patient selected by button press.
+   */
+  PatientInterface getPatient();
+  
 
 }

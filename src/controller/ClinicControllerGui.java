@@ -149,11 +149,6 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     clinicLayoutPage = view.getLayoutPage();
     JOptionPane.showMessageDialog(null, "Please select a patient.");
     clinicLayoutPage.enablePatientSelection(this);
-    if (selectedPatient != null) {
-      clinicLayoutPage.disablePatientSelection();
-      JOptionPane.showMessageDialog(null, "Please select a room.");
-      clinicLayoutPage.enableRoomSelection(this);
-    }
   }
   
   @Override
@@ -189,6 +184,8 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   @Override
   public void processPatient(PatientInterface patient) {
     this.selectedPatient = patient;
+    clinicLayoutPage.disablePatientSelection();
+    JOptionPane.showMessageDialog(clinicLayoutPage, patient);
   }
 
   @Override

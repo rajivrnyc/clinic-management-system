@@ -34,6 +34,8 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   private final Map<RoomInterface, JButton> roomButtons;
   private final Map<String, JPanel> roomPatients;
   private final Map<PatientInterface, JButton> patientButtons;
+  private  PatientInterface patient;
+  private RoomInterface room;
   
   /**
    * Creates the layout  of clinic.
@@ -131,11 +133,18 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
       button.setEnabled(true);
-      button.addActionListener(l -> {
-        f.processPatient(patient);
-        this.disablePatientSelection();
-      });
+      button.addActionListener(l -> setPatient(patient));
     }
+  }
+  
+  @Override
+  public void setPatient(PatientInterface patientBut) {
+    this.patient = patientBut;
+  }
+  
+  @Override
+  public PatientInterface getPatient() {
+    return this.patient;
   }
 
   @Override

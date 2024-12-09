@@ -75,4 +75,13 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
   public void disablePatientSelection() {
   }
 
+  @Override
+    public void setPatient(PatientInterface patient) {
+  }
+
+  @Override
+  public PatientInterface getPatient() {
+    return null;
+  }
+
 }
