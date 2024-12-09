@@ -89,4 +89,12 @@ public interface Features {
   void processPatientDisplayPatient(PatientInterface patient);
   
   
+  /**
+   * retrieves a patient from a button press for unassign clinical staff.
+   * 
+   * @param patient the patient selected from the button click.
+   */
+  void processPatientUnassignStaff(PatientInterface patient);
+  
+  
 }

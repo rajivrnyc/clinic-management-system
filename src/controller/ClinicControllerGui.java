@@ -199,7 +199,9 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void unassignStaffFromPatient() {
-    // TODO Auto-generated method stub
+    clinicLayoutPage = view.getLayoutPage();
+    JOptionPane.showMessageDialog(null, "Please select a patient to unassign from");
+    clinicLayoutPage.enablePatientSelectionUnassignStaff(this);
   }
 
   @Override
