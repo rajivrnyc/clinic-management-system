@@ -131,7 +131,10 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
       button.setEnabled(true);
-      button.addActionListener(l -> f.processPatient(patient));
+      button.addActionListener(l -> {
+        f.processPatient(patient);
+        this.disablePatientSelection();
+      });
     }
   }
 

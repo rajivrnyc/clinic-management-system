@@ -14,6 +14,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import view.ClinicLayoutPage;
 import view.Features;
 import view.MasterViewInterface;
 
@@ -23,6 +25,10 @@ import view.MasterViewInterface;
 public class ClinicControllerGui extends ClinicController2 implements Features {
   private  ClinicInterface3 model;
   private final MasterViewInterface view;
+  private ClinicLayoutPage clinicLayoutPage;
+  private PatientInterface selectedPatient;
+  private RoomInterface room;
+  
   
   /**
    * Creates a gui controller for view implementation where it takes model and
@@ -39,6 +45,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     this.model = model;
     this.view = view;
     view.setFeatures(this);
+    
     
   }
 
@@ -139,9 +146,16 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   
   @Override
   public void assignPatientToRoom() {
-    
+    clinicLayoutPage = view.getLayoutPage();
+    JOptionPane.showMessageDialog(null, "Please select a patient.");
+    clinicLayoutPage.enablePatientSelection(this);
+    if (selectedPatient != null) {
+      clinicLayoutPage.disablePatientSelection();
+      JOptionPane.showMessageDialog(null, "Please select a room.");
+      clinicLayoutPage.enableRoomSelection(this);
+    }
   }
-
+  
   @Override
   public void assignStafftoPatient() {
     // TODO Auto-generated method stub
@@ -173,13 +187,13 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   }
 
   @Override
-  public PatientInterface processPatient(PatientInterface patient) {
-    return null;
+  public void processPatient(PatientInterface patient) {
+    this.selectedPatient = patient;
   }
 
   @Override
-  public RoomInterface processRoom(RoomInterface room) {
-    return null;
+  public void processRoom(RoomInterface room) {
+    this.room = room;
   }
   
 
