@@ -172,8 +172,17 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     
     int result = JOptionPane.showConfirmDialog(null, staffCombo, "Select Clinical Staff",
         JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    String selectedStaffName = "";
     if (result == JOptionPane.OK_OPTION) {
-      selectedStaff = (ClinicalStaffInterface2) staffCombo.getSelectedItem();
+      selectedStaffName = (String) staffCombo.getSelectedItem();
+    }
+    for (ClinicalStaffInterface2 c : clin) {
+      StringBuilder sb = new StringBuilder();
+      sb.append(c.getFirstName()).append(" ").append(c.getLastName());
+      String fullName = sb.toString();
+      if (fullName.equals(selectedStaffName)) {
+        selectedStaff = c;
+      }
     }
     this.clinicLayoutPage = view.getLayoutPage();
     JOptionPane.showMessageDialog(null, "Please select a patient.");
@@ -183,7 +192,9 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void displayPatientInfo() {
-    // TODO Auto-generated method stub
+    clinicLayoutPage = view.getLayoutPage();
+    JOptionPane.showMessageDialog(null, "Please select a patient to display.");
+    clinicLayoutPage.enablePatientSelectionDisplayPatient(this);
   }
 
   @Override
@@ -244,7 +255,15 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     } catch (IllegalArgumentException e) {
       StringBuilder sb = new StringBuilder();
       sb.append("Error: " + e.getMessage());
+      JOptionPane.showMessageDialog(null, sb.toString());
     }
+  }
+  
+  @Override
+  public void processPatientDisplayPatient(PatientInterface patient) {
+    clinicLayoutPage.disablePatientSelection();
+    selectedPatient = patient;
+    JOptionPane.showMessageDialog(null, patient.toString());
   }
   
   private List<ClinicalStaffInterface2> getClinStaff() {

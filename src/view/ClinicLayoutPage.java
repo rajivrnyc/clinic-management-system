@@ -136,6 +136,16 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       button.addActionListener(l -> f.processPatient(patient));
     }
   }
+  
+  @Override
+  public void enablePatientSelectionDisplayPatient(Features f) {
+    for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
+      JButton button = entry.getValue();
+      PatientInterface patient = entry.getKey();
+      button.setEnabled(true);
+      button.addActionListener(l -> f.processPatientDisplayPatient(patient));
+    }
+  }
 
   @Override
   public void disablePatientSelection() {
@@ -147,6 +157,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       }
     }
   }
+  
 
   @Override
   public void enablePatientSelectionAssignStaff(Features f) {
@@ -154,7 +165,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
       button.setEnabled(true);
-      button.addActionListener(l -> f.processPatient(patient));
+      button.addActionListener(l -> f.processPatientAssignStaff(patient));
     }
   }
 }

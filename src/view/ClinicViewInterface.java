@@ -38,6 +38,13 @@ public interface ClinicViewInterface {
    */
   void enablePatientSelectionAssignStaff(Features f);
   
+  /*
+   * Makes buttons to click on patients for selection purposes visible for display patient.
+   * 
+   * @param f callback for when a patient is selected by user.
+   */
+  void enablePatientSelectionDisplayPatient(Features f);
+  
   
   /**
    * Makes buttons to click on patients for selection purposes invisible.
