@@ -102,7 +102,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     }
     
     final String birthdate = JOptionPane.showInputDialog(null, "Enter the patient's birthdate "
-        + "(dd/mm/yy):", "RegisterPatient",
+        + "(dd/mm/yyyy):", "RegisterPatient",
         JOptionPane.PLAIN_MESSAGE);
     
     String complaint = JOptionPane.showInputDialog(null, "Enter the patient's chief complaint :",
@@ -347,6 +347,16 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
         selectedStaff = c;
       }
     }
+    try {
+      model.sendHome(selectedPatient, selectedStaff);
+      JOptionPane.showMessageDialog(null, "Patient sent home successfully.");
+      setModel(model);
+    } catch (IllegalArgumentException e) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("Error: ").append(e.getMessage());
+      JOptionPane.showMessageDialog(null, sb.toString());
+    }
+    
   }
   
   private List<ClinicalStaffInterface2> getClinStaff() {
