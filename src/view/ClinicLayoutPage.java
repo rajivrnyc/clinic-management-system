@@ -106,11 +106,11 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   
   
   @Override 
-  public void enableRoomSelection(ActionListener onRoomSelected) {
+  public void enableRoomSelection(Features f) {
     for (Map.Entry<String, JButton> entry : roomButtons.entrySet()) {
       JButton button = entry.getValue();
       button.setEnabled(true);
-      button.addActionListener(onRoomSelected);
+      button.addActionListener(l -> f.processRoom());
     }
   }
 
@@ -125,11 +125,11 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   }
 
   @Override
-  public void enablePatientSelection(ActionListener onPatientSelected) {
+  public void enablePatientSelection(Features f) {
     for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
       JButton button = entry.getValue();
       button.setEnabled(true);
-      button.addActionListener(onPatientSelected);
+      button.addActionListener(l -> f.processPatient());
     }
   }
 
@@ -143,18 +143,4 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       }
     }
   }
-
-  @Override
-  public PatientInterface getSelectedPatient(JButton selectedButton) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public RoomInterface getSelectedRoom(JButton selectedButton) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-  
-  
 }

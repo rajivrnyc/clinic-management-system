@@ -60,7 +60,7 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
   }
 
   @Override
-  public void enableRoomSelection(ActionListener onRoomSelected) {
+  public void enableRoomSelection(Features f) {
   }
 
   @Override
@@ -68,7 +68,7 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
   }
 
   @Override
-  public void enablePatientSelection(ActionListener onPatientSelected) {
+  public void enablePatientSelection(Features f) {
   }
 
   @Override

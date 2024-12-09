@@ -1,5 +1,8 @@
 package view;
 
+import clinic.PatientInterface;
+import clinic.RoomInterface;
+
 /**
  * The interface represents the features that this program offers.
  */
@@ -52,6 +55,18 @@ public interface Features {
    * Sends a patient home from the clinic.
    */
   void sendPatientHome();
+  
+  /**
+   *  retrieves a patient from a button press.
+   * @return PatientInterface the patient associated with the button.
+   */
+  PatientInterface processPatient();
+  
+  /**
+   *  retrieves a patient from a button press.
+   * @return PatientInterface the patient associated with the button.
+   */
+  RoomInterface processRoom();
   
   
 }
