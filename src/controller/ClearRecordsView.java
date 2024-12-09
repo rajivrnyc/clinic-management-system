@@ -19,7 +19,7 @@ public class ClearRecordsView implements ClinicCommand3 {
   }
   
   @Override
-  public void execute() throws IOException {
+  public void execute() {
     model.reset();
     this.setModel(model);
     view.setMenuItems(false);

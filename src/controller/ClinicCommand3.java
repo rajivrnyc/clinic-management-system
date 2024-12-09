@@ -14,7 +14,7 @@ public interface ClinicCommand3 {
 
   /**
    * Executes the command with the clinic model and the input scan.
-   * @throws IOException when there is an I/O error caused by running this command
+   * 
    */
-  void execute() throws IOException;
+  void execute();
 }

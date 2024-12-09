@@ -57,22 +57,22 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void loadClinicFile() {
-    LoadFileView loadCommand = new LoadFileView(this.model, this.view);
+    ClinicCommand3 loadCommand = new LoadFileView(this.model, this.view);
     loadCommand.execute();
+
   }
 
   @Override
   public void clearAllRecords() {
-    model.reset();
-    this.setModel(model);
-    view.setMenuItems(false);
-    JOptionPane.showMessageDialog(null, "Clinic records have been cleared.");
-    
+    ClinicCommand3 clearCommand = new ClearRecordsView(this.model, this.view);
+    clearCommand.execute();
+
   }
 
   @Override
   public void exitProgram() {
-    System.exit(0);
+    ClinicCommand3 exit = new ExitProgramView();
+    exit.execute();
   }
 
   @Override
