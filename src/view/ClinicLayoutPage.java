@@ -23,6 +23,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 
 /**
@@ -82,16 +83,19 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   }
   
   private void updatePatientButtons(RoomInterface room, JPanel patientPanel) {
-    List<PatientInterface> patients = room.getResidents();
+    
     patientPanel.removeAll();
-  
-  
+    
+    UIManager.put("Button.disabledText", Color.BLACK);
+    UIManager.put("Button.disabledBackground", Color.LIGHT_GRAY);
+    List<PatientInterface> patients = room.getResidents();
     for (PatientInterface patient : patients) {
       StringBuilder patientName = new StringBuilder();
       patientName.append(patient.getFirstName() + " " + patient.getLastName());
       JButton patientButton = new JButton(patientName.toString());
       patientButton.setFont(new Font("Arial", Font.PLAIN, 20));
       patientButton.setEnabled(false);
+      
       patientPanel.add(patientButton);
       patientButtons.put(patient, patientButton);
     }
