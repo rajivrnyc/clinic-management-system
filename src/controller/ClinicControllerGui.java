@@ -170,6 +170,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     this.model = newModel;
     view.refresh(newModel);
   }
+  
 
 
 

@@ -32,6 +32,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
   private final Map<String, JButton> roomButtons;
   private final Map<String, JPanel> roomPatients;
+  private final Map<PatientInterface, JButton> patientButtons;
   
   /**
    * Creates the layout  of clinic.
@@ -41,6 +42,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
     this.setLayout(new BorderLayout());
     roomButtons = new HashMap<>();
     roomPatients = new HashMap<>();
+    patientButtons = new HashMap<>();
     
     JLabel clinicNameLabel = new JLabel(clinic.getClinicName(), SwingConstants.CENTER);
     clinicNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -85,12 +87,13 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   
   
     for (PatientInterface patient : patients) {
-    StringBuilder sb = new StringBuilder();
-    sb.append(patient.getFirstName() + " " + patient.getLastName());
-    JButton patientButton = new JButton(sb.toString());
-    patientButton.setFont(new Font("Arial", Font.PLAIN, 20));
-    patientButton.addActionListener(e -> onPatientSelected(patient));
-    patientPanel.add(patientButton);
+      StringBuilder patientName = new StringBuilder();
+      patientName.append(patient.getFirstName() + " " + patient.getLastName());
+      JButton patientButton = new JButton(patientName.toString());
+      patientButton.setFont(new Font("Arial", Font.PLAIN, 20));
+      patientButton.setEnabled(false);
+      patientPanel.add(patientButton);
+      patientButtons.put(patient, patientButton);
     }
     patientPanel.revalidate();
     patientPanel.repaint();
@@ -114,6 +117,26 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       }
     }
   }
-  
 
+  @Override
+  public void enablePatientSelection(ActionListener onPatientSelected) {
+    for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
+      JButton button = entry.getValue();
+      button.setEnabled(true);
+      button.addActionListener(onPatientSelected);
+    }
+  }
+
+  @Override
+  public void disablePatientSelection() {
+    for (JButton button : patientButtons.values()) {
+      button.setEnabled(false);
+      
+      for (ActionListener listener : button.getActionListeners()) {
+        button.removeActionListener(listener);
+      }
+    }
+  }
+  
+  
 }
