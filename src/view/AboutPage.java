@@ -65,4 +65,12 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
   public void disableRoomSelection() {
   }
 
+  @Override
+  public void enablePatientSelection(ActionListener onPatientSelected) {
+  }
+
+  @Override
+  public void disablePatientSelection() {
+  }
+
 }
