@@ -44,5 +44,12 @@ public interface MasterViewInterface {
    */
   void refresh(ClinicInterface3 model);
   
+  /**
+   * returns the clinic layout page to the controller.
+   * 
+   * @return the clinic layout page
+   */
+  ClinicLayoutPage getLayoutPage();
+  
 
 }

@@ -114,6 +114,11 @@ public class MasterView extends JFrame implements MasterViewInterface {
     this.setVisible(true);
   }
   
+  @Override
+  public ClinicLayoutPage getLayoutPage() {
+    return (ClinicLayoutPage) currentPanel;
+  }
+  
   
   
   @Override

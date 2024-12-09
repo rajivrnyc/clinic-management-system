@@ -139,7 +139,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   
   @Override
   public void assignPatientToRoom() {
-    // TODO Auto-generated method stub
+    
   }
 
   @Override
