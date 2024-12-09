@@ -5,13 +5,20 @@ import clinic.Clinic2;
 import clinic.Clinic3;
 import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
+import clinic.ClinicalStaffInterface2;
 import clinic.PatientInterface;
 import clinic.PatientInterface2;
 import clinic.RoomInterface;
+import clinic.Staff;
+import clinic.StaffClass;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -153,7 +160,19 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   
   @Override
   public void assignStafftoPatient() {
-    // TODO Auto-generated method stub
+    List<ClinicalStaffInterface2> clin = getClinStaff();
+    String[] staffNames = new String[clin.size()];
+    for (int i = 0; i < clin.size(); i++) {
+      StringBuilder sb = new StringBuilder();
+      sb.append(clin.get(i).getFirstName()).append(" ").append(clin.get(i).getLastName());
+      staffNames[i] = sb.toString();
+    }
+    
+    JComboBox<String> staffCombo = new JComboBox<>(staffNames);
+    
+    int result = JOptionPane.showConfirmDialog(null, staffCombo, "Select Clinical Staff",
+        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    
   }
 
   @Override
@@ -198,13 +217,29 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
       JOptionPane.showMessageDialog(null, "Patient moved!");
       setModel(model);
     } catch (IllegalArgumentException e) {
-      JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+      StringBuilder sb = new StringBuilder();
+      sb.append("Error: " + e.getMessage());
+      JOptionPane.showMessageDialog(null, sb.toString());
     } catch (IllegalStateException e) {
-      JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+      StringBuilder sb = new StringBuilder();
+      sb.append("Error: ").append(e.getMessage());
+      JOptionPane.showMessageDialog(null, sb.toString());
     }
   }
   
-
-
+  private List<ClinicalStaffInterface2> getClinStaff() {
+    List<ClinicalStaffInterface2> clin = new ArrayList<>();
+    List<Staff> staff = model.getEmployees();
+    List<StaffClass> stfClass = new ArrayList<>();
+    for (Staff emp : staff) {
+      stfClass.add((StaffClass) emp);
+    }
+    for (StaffClass stf : stfClass) {
+      if (stf.isClinicalStaff()) {
+        clin.add((ClinicalStaffInterface2) stf);
+      }
+    }
+    return clin;
+  }
 
 }
