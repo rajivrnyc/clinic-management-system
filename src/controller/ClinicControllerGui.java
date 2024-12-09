@@ -317,6 +317,11 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     }
   }
   
+  @Override
+  public void processPatientSendHome(PatientInterface patient) {
+    
+  }
+  
   private List<ClinicalStaffInterface2> getClinStaff() {
     List<ClinicalStaffInterface2> clin = new ArrayList<>();
     List<Staff> staff = model.getEmployees();
