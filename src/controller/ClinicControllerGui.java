@@ -57,16 +57,8 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void loadClinicFile() {
-    try {
-      FileReader fileReader = new FileReader("res/clinicfile.txt");
-      ClinicInterface3 newModel = Clinic3.readFile(fileReader);
-      this.setModel(newModel);
-      view.setMenuItems(true);
-      JOptionPane.showMessageDialog(null, "Clinic loaded successfully.");
-      
-    } catch (IOException e) {
-      JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-    }
+    LoadFileView loadCommand = new LoadFileView(this.model, this.view);
+    loadCommand.execute();
   }
 
   @Override
