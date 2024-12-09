@@ -276,6 +276,10 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     clinicLayoutPage.disablePatientSelection();
     selectedPatient = patient;
     List<ClinicalStaffInterface> clin = selectedPatient.getAllocated();
+    if (clin.isEmpty()) {
+      JOptionPane.showMessageDialog(null, "This patient has no clinical staff members assigned");
+      return;
+    }
     String[] staffNames  = new String[clin.size()];
     for (int i = 0; i < clin.size(); i++) {
       if (clin.get(i).getStatus()) {

@@ -56,7 +56,8 @@ public class Clinic2 extends Clinic implements ClinicStaffAndPatientInfo {
   @Override
   public void unassignClinStaff(ClinicalStaffInterface member, PatientInterface patient) {
     if (member == null || patient == null) {
-      throw new IllegalArgumentException("This ClinicalStaff or Patient object is invalid");
+      throw new IllegalArgumentException("This ClinicalStaff or Patient object is invalid"
+           + " or no clinical staff member was selected");
     }
     
     if (patient.getAllocated().isEmpty()) {
