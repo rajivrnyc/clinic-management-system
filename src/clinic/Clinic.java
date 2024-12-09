@@ -179,7 +179,7 @@ public class Clinic implements ClinicInterface {
       throw new IllegalArgumentException("Patient is already in the target room.");
     }
     
-    if (!current.isWaitingRoom() && current != null) {
+    if (current != null) {
       current.removePatient(patient);
     }
     

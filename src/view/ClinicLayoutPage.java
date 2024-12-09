@@ -108,7 +108,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   
   
   @Override 
-  public void enableRoomSelection(Features f) {
+  public void enableRoomSelectionAssignRoom(Features f) {
     for (Map.Entry<RoomInterface, JButton> entry : roomButtons.entrySet()) {
       JButton button = entry.getValue();
       RoomInterface room = entry.getKey();
@@ -128,23 +128,13 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   }
 
   @Override
-  public void enablePatientSelection(Features f) {
+  public void enablePatientSelectionAssignRoom(Features f) {
     for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
       button.setEnabled(true);
-      button.addActionListener(l -> setPatient(patient));
+      button.addActionListener(l -> f.processPatient(patient));
     }
-  }
-  
-  @Override
-  public void setPatient(PatientInterface patientBut) {
-    this.patient = patientBut;
-  }
-  
-  @Override
-  public PatientInterface getPatient() {
-    return this.patient;
   }
 
   @Override

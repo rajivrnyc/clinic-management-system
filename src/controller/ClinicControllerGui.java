@@ -148,7 +148,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public void assignPatientToRoom() {
     clinicLayoutPage = view.getLayoutPage();
     JOptionPane.showMessageDialog(null, "Please select a patient.");
-    clinicLayoutPage.enablePatientSelection(this);
+    clinicLayoutPage.enablePatientSelectionAssignRoom(this);
   }
   
   @Override
@@ -185,12 +185,23 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   public void processPatient(PatientInterface patient) {
     this.selectedPatient = patient;
     clinicLayoutPage.disablePatientSelection();
-    JOptionPane.showMessageDialog(clinicLayoutPage, patient);
+    JOptionPane.showMessageDialog(null, "Please select a Room");
+    clinicLayoutPage.enableRoomSelectionAssignRoom(this);
   }
 
   @Override
   public void processRoom(RoomInterface room) {
     this.room = room;
+    clinicLayoutPage.disableRoomSelection();
+    try {
+      model.assignPatient(selectedPatient, this.room);
+      JOptionPane.showMessageDialog(null, "Patient moved!");
+      setModel(model);
+    } catch (IllegalArgumentException e) {
+      JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    } catch (IllegalStateException e) {
+      JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
   }
   
 
