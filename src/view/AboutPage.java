@@ -1,6 +1,8 @@
 package view;
 
 import clinic.ClinicStaffAndPatientInfo;
+import clinic.PatientInterface;
+import clinic.RoomInterface;
 import controller.ClinicControllerInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -71,6 +73,16 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
 
   @Override
   public void disablePatientSelection() {
+  }
+
+  @Override
+  public PatientInterface getSelectedPatient(JButton selectedButton) {
+    return null;
+  }
+
+  @Override
+  public RoomInterface getSelectedRoom(JButton selectedButton) {
+    return null;
   }
 
 }

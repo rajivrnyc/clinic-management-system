@@ -103,6 +103,8 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
     patientPanel.repaint();
   }
   
+  
+  
   @Override 
   public void enableRoomSelection(ActionListener onRoomSelected) {
     for (Map.Entry<String, JButton> entry : roomButtons.entrySet()) {
@@ -140,6 +142,18 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
         button.removeActionListener(listener);
       }
     }
+  }
+
+  @Override
+  public PatientInterface getSelectedPatient(JButton selectedButton) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public RoomInterface getSelectedRoom(JButton selectedButton) {
+    // TODO Auto-generated method stub
+    return null;
   }
   
   
