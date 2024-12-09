@@ -3,7 +3,7 @@ package view;
 import clinic.PatientInterface;
 import clinic.RoomInterface;
 import controller.Features;
-
+import controller.PatientToRoomView;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -19,7 +19,7 @@ public interface ClinicViewInterface {
    * 
    * @param f callback for when a room is selected by user.
    */
-  void enableRoomSelectionAssignRoom(Features f);
+  void enableRoomSelectionAssignRoom(PatientToRoomView f);
   
   /**
    * Makes buttons to click on rooms for selection purposes invisible.
@@ -31,7 +31,7 @@ public interface ClinicViewInterface {
    * 
    * @param f callback for when a patient is selected by user.
    */
-  void enablePatientSelectionAssignRoom(Features f);
+  void enablePatientSelectionAssignRoom(PatientToRoomView f);
   
   /**
    * Makes buttons to click on patients for selection purposes visible for Assign Staff.

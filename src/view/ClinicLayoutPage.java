@@ -7,7 +7,7 @@ import clinic.PatientInterface2;
 import clinic.Room;
 import clinic.RoomInterface;
 import controller.Features;
-
+import controller.PatientToRoomView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -114,7 +114,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   
   
   @Override 
-  public void enableRoomSelectionAssignRoom(Features f) {
+  public void enableRoomSelectionAssignRoom(PatientToRoomView f) {
     for (Map.Entry<RoomInterface, JButton> entry : roomButtons.entrySet()) {
       JButton button = entry.getValue();
       RoomInterface room = entry.getKey();
@@ -134,7 +134,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   }
 
   @Override
-  public void enablePatientSelectionAssignRoom(Features f) {
+  public void enablePatientSelectionAssignRoom(PatientToRoomView f) {
     for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
