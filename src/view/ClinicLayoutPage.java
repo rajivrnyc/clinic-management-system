@@ -147,4 +147,14 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       }
     }
   }
+
+  @Override
+  public void enablePatientSelectionAssignStaff(Features f) {
+    for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
+      JButton button = entry.getValue();
+      PatientInterface patient = entry.getKey();
+      button.setEnabled(true);
+      button.addActionListener(l -> f.processPatient(patient));
+    }
+  }
 }

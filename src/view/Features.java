@@ -72,5 +72,13 @@ public interface Features {
    */
   void processRoom(RoomInterface room);
   
+  /**
+   * retrieves a patient from a button press for
+   * staff assignment.
+   * 
+   * @param patient
+   */
+  void processPatientAssignStaff(PatientInterface patient);
+  
   
 }

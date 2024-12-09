@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 /**
  * Implementation of the displayed view for the clinic management system.
  */
-public class AboutPage extends JPanel implements ClinicViewInterface {
+public class AboutPage extends JPanel {
   private static final long serialVersionUID = 1L;
 
   /**
@@ -57,22 +57,6 @@ public class AboutPage extends JPanel implements ClinicViewInterface {
     info.setAlignmentX(Component.CENTER_ALIGNMENT);
     info.setMaximumSize(new Dimension(240, 60));
     this.add(info);
-  }
-
-  @Override
-  public void enableRoomSelectionAssignRoom(Features f) {
-  }
-
-  @Override
-  public void disableRoomSelection() {
-  }
-
-  @Override
-  public void enablePatientSelectionAssignRoom(Features f) {
-  }
-
-  @Override
-  public void disablePatientSelection() {
   }
 
 }
