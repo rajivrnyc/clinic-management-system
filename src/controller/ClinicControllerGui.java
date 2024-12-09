@@ -319,7 +319,9 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   
   @Override
   public void processPatientSendHome(PatientInterface patient) {
-    
+    clinicLayoutPage.disablePatientSelection();
+    selectedPatient = patient;
+    JOptionPane.showMessageDialog(null, "Please select the approving staff member.");
   }
   
   private List<ClinicalStaffInterface2> getClinStaff() {
