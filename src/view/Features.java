@@ -58,15 +58,19 @@ public interface Features {
   
   /**
    *  retrieves a patient from a button press.
+   *  
+   * @param patient the patient from the button click.
    * @return PatientInterface the patient associated with the button.
    */
-  PatientInterface processPatient();
+  PatientInterface processPatient(PatientInterface patient);
   
   /**
-   *  retrieves a patient from a button press.
+   *  retrieves a room from a button press.
+   *  
+   * @param room the room from the button click.
    * @return PatientInterface the patient associated with the button.
    */
-  RoomInterface processRoom();
+  RoomInterface processRoom(RoomInterface room);
   
   
 }

@@ -31,7 +31,7 @@ import javax.swing.UIManager;
  */
 public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   private static final long serialVersionUID = 1L;
-  private final Map<String, JButton> roomButtons;
+  private final Map<RoomInterface, JButton> roomButtons;
   private final Map<String, JPanel> roomPatients;
   private final Map<PatientInterface, JButton> patientButtons;
   
@@ -66,7 +66,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
       roomButton.setForeground(Color.BLACK);
       roomButton.setEnabled(false);
       roomPanel.add(roomButton, BorderLayout.NORTH);
-      roomButtons.put(room.getRoomName(), roomButton);
+      roomButtons.put(room, roomButton);
       
       JPanel patientPanel = new JPanel();
       patientPanel.setLayout(new BoxLayout(patientPanel, BoxLayout.Y_AXIS));
@@ -107,10 +107,11 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   
   @Override 
   public void enableRoomSelection(Features f) {
-    for (Map.Entry<String, JButton> entry : roomButtons.entrySet()) {
+    for (Map.Entry<RoomInterface, JButton> entry : roomButtons.entrySet()) {
       JButton button = entry.getValue();
+      RoomInterface room = entry.getKey();
       button.setEnabled(true);
-      button.addActionListener(l -> f.processRoom());
+      button.addActionListener(l -> f.processRoom(room));
     }
   }
 
@@ -128,8 +129,9 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   public void enablePatientSelection(Features f) {
     for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
       JButton button = entry.getValue();
+      PatientInterface patient = entry.getKey();
       button.setEnabled(true);
-      button.addActionListener(l -> f.processPatient());
+      button.addActionListener(l -> f.processPatient(patient));
     }
   }
 

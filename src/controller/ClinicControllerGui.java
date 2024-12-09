@@ -7,6 +7,7 @@ import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import clinic.PatientInterface;
 import clinic.PatientInterface2;
+import clinic.RoomInterface;
 
 import java.io.File;
 import java.io.FileReader;
@@ -169,6 +170,16 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   private void setModel(ClinicInterface3 newModel) {
     this.model = newModel;
     view.refresh(newModel);
+  }
+
+  @Override
+  public PatientInterface processPatient(PatientInterface patient) {
+    return null;
+  }
+
+  @Override
+  public RoomInterface processRoom(RoomInterface room) {
+    return null;
   }
   
 
