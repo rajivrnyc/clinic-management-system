@@ -6,6 +6,8 @@ import clinic.PatientInterface;
 import clinic.PatientInterface2;
 import clinic.Room;
 import clinic.RoomInterface;
+import controller.Features;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

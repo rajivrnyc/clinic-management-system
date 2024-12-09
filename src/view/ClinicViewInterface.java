@@ -2,6 +2,8 @@ package view;
 
 import clinic.PatientInterface;
 import clinic.RoomInterface;
+import controller.Features;
+
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
