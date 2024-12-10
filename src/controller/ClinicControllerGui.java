@@ -102,7 +102,8 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void displayPatientInfo() {
-    DisplayPatientInterface assignStaff = new DisplayPatientView(this.model, this.view);
+    DisplayPatientInterface displayPatient = new DisplayPatientView(this.model, this.view);
+    displayPatient.execute();
   }
 
   @Override
