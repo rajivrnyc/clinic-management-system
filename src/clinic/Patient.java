@@ -207,6 +207,10 @@ public class Patient implements PatientInterface2 {
     return sb.toString();
   }
   
+  public void activate() {
+    this.isActive = true;
+  }
+  
   /**
    * Method used to interpret the Patient portion of a text file passed in
    * to the model.

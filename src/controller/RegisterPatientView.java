@@ -38,6 +38,11 @@ public class RegisterPatientView implements ClinicCommand3 {
     
     PatientInterface existingPatient = model.findPatient(patientFirstName.trim(), 
              patientlastName.trim());
+    if (existingPatient != null) {
+      JOptionPane.showMessageDialog(null, "Patient Found!", 
+                "Patient Found", JOptionPane.PLAIN_MESSAGE);
+    }
+
     String birthdate = null;
     
     if (existingPatient == null) {
@@ -47,6 +52,7 @@ public class RegisterPatientView implements ClinicCommand3 {
       if (birthdate == null || birthdate.trim().isEmpty()) {
         JOptionPane.showMessageDialog(null, "Patient registration cancelled due to invalid input.",
             "Error", JOptionPane.ERROR_MESSAGE);
+        return;
       }
     }
 
@@ -84,7 +90,9 @@ public class RegisterPatientView implements ClinicCommand3 {
                   "Error", JOptionPane.ERROR_MESSAGE);
       return;
     }
+    if (existingPatient != null) {
       
+    }
     model.addNewPatient(patientFirstName, patientlastName, birthdate);
     PatientInterface patient = model.getPatients().get(model.getPatients().size() - 1);
       
