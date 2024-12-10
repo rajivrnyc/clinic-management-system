@@ -1,6 +1,7 @@
 package test;
 
 import clinic.ClinicInterface3;
+import controller.AssignStaffViewInterface;
 import controller.ClearRecordsView;
 import controller.ClinicCommand3;
 import controller.ClinicControllerGui;
@@ -52,6 +53,17 @@ public class TestClinicControllerGui extends ClinicControllerGui {
   public void assignPatientToRoom() {
     PatientToRoomView assignToRoom = new MockPatientToRoom(this.model, this.view);
     assignToRoom.execute();
+  }
+  
+  @Override
+  public void assignStafftoPatient() {
+    AssignStaffViewInterface assignStaff = new MockAssignStaffView(this.model, this.view);
+    assignStaff.execute();
+  }
+  
+  @Override
+  public void displayPatientInfo() {
+    
   }
 
   @Override

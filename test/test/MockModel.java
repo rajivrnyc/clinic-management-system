@@ -70,6 +70,7 @@ public class MockModel implements ClinicInterface3 {
 
   @Override
   public List<Staff> getEmployees() {
+    out.append("Got Employees.");
     return null;
   }
 

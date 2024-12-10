@@ -1292,4 +1292,30 @@ public class ClinicTest {
     assertEquals("assigned patient", out.toString());
   }
   
+  @Test
+  public void testFeatureAssignStafftoPatient() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.assignStafftoPatient();
+    assertTrue(mockView.refreshCalled);
+    assertFalse(mockView.setMenuItemsCalled);
+    assertEquals("Got Employees.", out.toString());
+  }
+  
+  @Test
+  public void testFeatureDisplayPatient() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.displayPatientInfo();
+    assertTrue(mockView.refreshCalled);
+    assertFalse(mockView.setMenuItemsCalled);
+    assertEquals("Got Employees.", out.toString());
+  }
+  
 }
