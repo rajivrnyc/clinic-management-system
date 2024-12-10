@@ -1183,4 +1183,13 @@ public class ClinicTest {
     mockcontroller.go();
     assertEquals("16\nq\n", out.toString());
   }
+  
+  @Test
+  public void testSendHomeOccupied() {
+    PatientInterface2 beth = clinic.findPatient("Beth", "Bunion");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    RoomInterface room = clinic.getRoomFromNumber(2);
+    clinic.sendHome(beth, amy);
+    assertEquals(false, room.isOccupied());
+  }
 }
