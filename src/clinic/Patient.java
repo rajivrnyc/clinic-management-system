@@ -10,7 +10,7 @@ import java.util.Objects;
  * Each patient has a first name, last name, date of birth, and 
  * can have a list of staff members assigned to their care.
  */
-public class Patient implements PatientInterface2 {
+public class Patient implements PatientInterface3 {
 
   private int roomNumber;
   private String firstName;
@@ -207,6 +207,7 @@ public class Patient implements PatientInterface2 {
     return sb.toString();
   }
   
+  @Override
   public void activate() {
     this.isActive = true;
   }
