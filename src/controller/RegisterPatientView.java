@@ -36,9 +36,20 @@ public class RegisterPatientView implements ClinicCommand3 {
       return;
     }
     
-    final String birthdate = JOptionPane.showInputDialog(null, "Enter the patient's birthdate "
-        + "(dd/mm/yyyy):", "RegisterPatient",
-        JOptionPane.PLAIN_MESSAGE);
+    PatientInterface existingPatient = model.findPatient(patientFirstName.trim(), 
+             patientlastName.trim());
+    String birthdate = null;
+    
+    if (existingPatient == null) {
+      birthdate = JOptionPane.showInputDialog(null, "Enter the patient's birthdate "
+                + "(dd/mm/yyyy):", "RegisterPatient",
+                JOptionPane.PLAIN_MESSAGE);
+      if (birthdate == null || birthdate.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Patient registration cancelled due to invalid input.",
+            "Error", JOptionPane.ERROR_MESSAGE);
+      }
+    }
+
     String complaint = JOptionPane.showInputDialog(null, "Enter the patient's chief complaint :",
             "Register Patient", JOptionPane.PLAIN_MESSAGE);
         
