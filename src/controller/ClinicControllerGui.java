@@ -62,7 +62,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
       model = Clinic3.readFile(fileReader);
       view.refresh(model);
       view.setMenuItems(true);
-      JOptionPane.showMessageDialog(null, "Clinic loaded successfully.");
+      showMessage("Clinic loaded successfully.");
        
     } catch (IOException e) {
       JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
@@ -122,5 +122,9 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   @Override
   public void go() {
     view.makeVisible();
+  }
+  
+  protected void showMessage(String message) {
+    JOptionPane.showMessageDialog(null, message);
   }
 }

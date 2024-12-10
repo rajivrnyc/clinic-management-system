@@ -29,6 +29,7 @@ import controller.ClinicController;
 import controller.ClinicControllerGui;
 import controller.ClinicControllerInterface;
 import controller.Features;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -1219,13 +1220,15 @@ public class ClinicTest {
   
   @Test
   public void testFeatureLoadClinic() {
-    ClinicInterface3 mockModel = new MockModel();
-    MasterViewInterface mockView = new MockView();
+    
+    MockView mockView = new MockView();
     StringBuilder out = new StringBuilder();
     Readable in = new InputStreamReader(System.in);
-    Features controller = new ClinicControllerGui(in, out, mockModel, mockView);
+    ClinicInterface3 mockModel = new MockModel(out);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
     controller.loadClinicFile();
-    assertTrue(mockView.refresh(mockModel))
+    assertTrue(mockView.refreshCalled);
+    assertTrue(mockView.setMenuItemsCalled);
   }
   
   @Test
@@ -1236,6 +1239,31 @@ public class ClinicTest {
     PatientInterface3 aandi1 = (PatientInterface3) aandi;
     aandi1.activate();
     assertTrue(aandi.isActive());
+  }
+  
+  @Test
+  public void testFeatureClearRecords() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.clearAllRecords();
+    assertTrue(mockView.refreshCalled);
+    assertTrue(mockView.setMenuItemsCalled);
+    assertEquals("Reset Called.", out.toString());
+  }
+  
+  @Test
+  public void testFeatureExitProgram() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.exitProgram();
+    assertFalse(mockView.refreshCalled);
+    assertFalse(mockView.setMenuItemsCalled);
   }
   
 }
