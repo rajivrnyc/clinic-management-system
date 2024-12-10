@@ -1357,4 +1357,16 @@ public class ClinicTest {
     assertFalse(aandi.getVisitRecord().isEmpty());
   }
   
+  @Test
+  public void testRegisterAfterSendHome() {
+    PatientInterface3 aandi = (PatientInterface3) clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.sendHome(aandi, amy);
+    aandi.activate();
+    aandi.addRecord("headache", 29);
+    assertFalse(aandi.getVisitRecord().isEmpty());
+  }
+  
+  
+  
 }
