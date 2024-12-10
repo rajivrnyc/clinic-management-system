@@ -6,7 +6,9 @@ import static org.junit.Assert.assertTrue;
 
 import clinic.Clinic;
 import clinic.Clinic2;
+import clinic.Clinic3;
 import clinic.ClinicInterface;
+import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import clinic.ClinicalStaff;
 import clinic.ClinicalStaffInterface;
@@ -23,9 +25,14 @@ import clinic.RoomType;
 import clinic.Staff;
 import clinic.StaffFactoryHelper;
 import controller.ClinicController;
+import controller.ClinicControllerGui;
 import controller.ClinicControllerInterface;
+import controller.Features;
+import view.MasterView;
+import view.MasterViewInterface;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
 import java.time.LocalDateTime;
@@ -39,10 +46,13 @@ import org.junit.Test;
  * JUnit Test Class for all classes within clinic package.
  */
 public class ClinicTest {
-  private ClinicStaffAndPatientInfo clinic;
+  private ClinicInterface3 clinic;
   private RoomInterface primaryWaitingRoom;
+  private Appendable outputN;
+  private Readable inputN;
   private Random random;
   private ClinicController controller;
+  private MasterViewInterface view;
   
   /**
    * Sets up testing Environment before conduction tests.
@@ -51,12 +61,15 @@ public class ClinicTest {
   public void setUp() throws IOException {
     random = new Random();
     primaryWaitingRoom = new Room(28, 0, 35, 5, RoomType.WAITING, "Front Waiting Room");
-    clinic = Clinic2.readFile(new FileReader("res/clinicfile.txt"));
+    clinic = Clinic3.readFile(new FileReader("res/clinicfile.txt"));
+    inputN  = new InputStreamReader(System.in);
+    outputN = System.out;
+    view = new MasterView();
   }
   
   @Test
   public void testClinic() {
-    assertEquals(clinic, new Clinic2("Cybernetic Implant Clinic", 
+    assertEquals(clinic, new Clinic3("Cybernetic Implant Clinic", 
         5, 6, 7, clinic.getRoomFromNumber(1)));
   }
   
@@ -1192,4 +1205,25 @@ public class ClinicTest {
     clinic.sendHome(beth, amy);
     assertEquals(false, room.isOccupied());
   }
+  
+  @Test
+  public void testReset() {  
+    ClinicInterface3 clin = new Clinic3("Cybernetic Implant Clinic", 
+            5, 6, 7, clinic.getRoomFromNumber(1));
+    clinic.reset();
+    clin.reset();
+    assertEquals(clin.toString(), clinic.toString());
+  }
+  
+  @Test
+  public void testFeatureLoadClinic() {
+
+    
+  }
+  
+  @Test
+  public void testFeatureClearAllRecords() {
+    
+  }
+  
 }
