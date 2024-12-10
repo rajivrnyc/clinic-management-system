@@ -78,14 +78,14 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void exitProgram() {
-    ClinicCommand3 exit = new ExitProgramView();
-    exit.execute(this.model, this.view);
+    ClinicCommand3 exit = new ExitProgramView(this.model, this.view);
+    exit.execute();
   }
 
   @Override
   public void registerNewPatient() {
-    ClinicCommand3 register = new RegisterPatientView();
-    register.execute(this.model, this.view);
+    ClinicCommand3 register = new RegisterPatientView(this.model, this.view);
+    register.execute();
   }
   
   @Override

@@ -15,6 +15,7 @@ public class ExitProgramView implements ClinicCommand3 {
     this.model = model;
     this.view = view;
   }
+  
   @Override
   public void execute() {
     System.exit(0);
