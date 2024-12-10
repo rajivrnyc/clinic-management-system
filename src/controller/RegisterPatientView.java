@@ -4,6 +4,7 @@ package controller;
 import clinic.ClinicInterface3;
 import clinic.PatientInterface;
 import clinic.PatientInterface2;
+import clinic.PatientInterface3;
 import javax.swing.JOptionPane;
 import view.MasterViewInterface;
 
@@ -91,16 +92,23 @@ public class RegisterPatientView implements ClinicCommand3 {
       return;
     }
     if (existingPatient != null) {
-      
+      PatientInterface3 existingPatientI = (PatientInterface3) existingPatient;
+      existingPatientI.activate();
+      existingPatientI.addRecord(complaint, temp);
+      JOptionPane.showMessageDialog(null, "A new record has been added for this patient.",
+          "Record Added", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+      model.addNewPatient(patientFirstName, patientlastName, birthdate);
+      PatientInterface patient = model.getPatients().get(model.getPatients().size() - 1);
+          
+      PatientInterface2 patientI = (PatientInterface2) patient;
+      patientI.addRecord(complaint, temp);
+      JOptionPane.showMessageDialog(null, "Patient successfully added to clinic.", "Patient Added",
+          JOptionPane.INFORMATION_MESSAGE);
     }
-    model.addNewPatient(patientFirstName, patientlastName, birthdate);
-    PatientInterface patient = model.getPatients().get(model.getPatients().size() - 1);
-      
-    PatientInterface2 patientI = (PatientInterface2) patient;
-    patientI.addRecord(complaint, temp);
-      
+    
     view.refresh(model);
-    JOptionPane.showMessageDialog(null, "Patient successfully added to clinic.");
+    
   }
   
 }
