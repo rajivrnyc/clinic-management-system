@@ -35,7 +35,7 @@ public class MockModel implements ClinicInterface3 {
 
   @Override
   public void unassignClinStaff(ClinicalStaffInterface member, PatientInterface patient) {
-
+    out.append("Clin staff unassigned");
   }
 
   @Override

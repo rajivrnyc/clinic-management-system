@@ -1318,16 +1318,16 @@ public class ClinicTest {
   }
   
   @Test
-  public void testFeatureAssignStafftoPatient() {
+  public void testFeatureUnassignStaff() {
     MockView mockView = new MockView();
     StringBuilder out = new StringBuilder();
     ClinicInterface3 mockModel = new MockModel(out);
     Readable in = new InputStreamReader(System.in);
     Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
-    controller.assignStafftoPatient();
+    controller.unassignStaffFromPatient();
     assertTrue(mockView.refreshCalled);
     assertFalse(mockView.setMenuItemsCalled);
-    assertEquals("Got Employees.", out.toString());
+    assertEquals("Clin staff unassigned", out.toString());
   }
   
 }
