@@ -10,6 +10,7 @@ import controller.AssignStaffViewInterface;
 import controller.DisplayPatientInterface;
 import controller.Features;
 import controller.PatientToRoomView;
+import controller.UnassignStaffViewInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -156,7 +157,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   }
   
   @Override
-  public void enablePatientSelectionUnassignStaff(Features f) {
+  public void enablePatientSelectionUnassignStaff(UnassignStaffViewInterface f) {
     for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
