@@ -3,6 +3,7 @@ package view;
 import clinic.PatientInterface;
 import clinic.RoomInterface;
 import controller.AssignStaffViewInterface;
+import controller.DisplayPatientInterface;
 import controller.Features;
 import controller.PatientToRoomView;
 import java.awt.event.ActionListener;

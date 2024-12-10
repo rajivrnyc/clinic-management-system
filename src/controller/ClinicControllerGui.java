@@ -102,9 +102,7 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void displayPatientInfo() {
-    clinicLayoutPage = view.getLayoutPage();
-    JOptionPane.showMessageDialog(null, "Please select a patient to display.");
-    clinicLayoutPage.enablePatientSelectionDisplayPatient(this);
+    DisplayPatientInterface assignStaff = new DisplayPatientView(this.model, this.view);
   }
 
   @Override
@@ -132,13 +130,6 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     view.refresh(newModel);
   }
   
-  
-  @Override
-  public void processPatientDisplayPatient(PatientInterface patient) {
-    clinicLayoutPage.disablePatientSelection();
-    selectedPatient = patient;
-    JOptionPane.showMessageDialog(null, patient.toString());
-  }
   
   @Override
   public void processPatientUnassignStaff(PatientInterface patient) {

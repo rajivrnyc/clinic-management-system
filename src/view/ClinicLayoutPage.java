@@ -7,6 +7,7 @@ import clinic.PatientInterface2;
 import clinic.Room;
 import clinic.RoomInterface;
 import controller.AssignStaffViewInterface;
+import controller.DisplayPatientInterface;
 import controller.Features;
 import controller.PatientToRoomView;
 import java.awt.BorderLayout;
