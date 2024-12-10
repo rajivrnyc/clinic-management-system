@@ -2,6 +2,7 @@ package view;
 
 import clinic.PatientInterface;
 import clinic.RoomInterface;
+import controller.AssignStaffViewInterface;
 import controller.Features;
 import controller.PatientToRoomView;
 import java.awt.event.ActionListener;
@@ -38,7 +39,7 @@ public interface ClinicViewInterface {
    * 
    * @param f callback for when a patient is selected by user.
    */
-  void enablePatientSelectionAssignStaff(Features f);
+  void enablePatientSelectionAssignStaff(AssignStaffViewInterface f);
   
   /*
    * Makes buttons to click on patients for selection purposes visible for display patient.

@@ -57,15 +57,6 @@ public interface Features {
   void sendPatientHome();
   
   /**
-   * retrieves a patient from a button press for
-   * staff assignment.
-   * 
-   * @param patient the patient selected from the button click.
-   */
-  void processPatientAssignStaff(PatientInterface patient);
-  
-  
-  /**
    * retrieves a patient from a button press for patient display.
    * 
    * @param patient  the patient selected from the button click.

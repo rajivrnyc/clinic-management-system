@@ -6,6 +6,7 @@ import clinic.PatientInterface;
 import clinic.PatientInterface2;
 import clinic.Room;
 import clinic.RoomInterface;
+import controller.AssignStaffViewInterface;
 import controller.Features;
 import controller.PatientToRoomView;
 import java.awt.BorderLayout;
@@ -186,7 +187,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   
 
   @Override
-  public void enablePatientSelectionAssignStaff(Features f) {
+  public void enablePatientSelectionAssignStaff(AssignStaffViewInterface f) {
     for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
