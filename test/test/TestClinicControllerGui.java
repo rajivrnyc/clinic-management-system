@@ -4,6 +4,7 @@ import clinic.ClinicInterface3;
 import controller.ClearRecordsView;
 import controller.ClinicCommand3;
 import controller.ClinicControllerGui;
+import controller.PatientToRoomView;
 import view.MasterViewInterface;
 
 /**
@@ -45,6 +46,12 @@ public class TestClinicControllerGui extends ClinicControllerGui {
   public void registerNewPatient() {
     ClinicCommand3 register = new MockRegisterPatientView(this.model, this.view);
     register.execute();
+  }
+  
+  @Override
+  public void assignPatientToRoom() {
+    PatientToRoomView assignToRoom = new MockPatientToRoom(this.model, this.view);
+    assignToRoom.execute();
   }
 
   @Override

@@ -106,7 +106,7 @@ public class MockModel implements ClinicInterface3 {
 
   @Override
   public void assignPatient(PatientInterface patient, RoomInterface room) {
-
+    out.append("assigned patient");
   }
 
   @Override

@@ -1289,7 +1289,7 @@ public class ClinicTest {
     controller.assignPatientToRoom();
     assertTrue(mockView.refreshCalled);
     assertFalse(mockView.setMenuItemsCalled);
-    assertEquals("First LastFirst Last dobgot patients", out.toString());
+    assertEquals("assigned patient", out.toString());
   }
   
 }
