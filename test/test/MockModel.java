@@ -98,6 +98,7 @@ public class MockModel implements ClinicInterface3 {
 
   @Override
   public void sendHome(PatientInterface patient, ClinicalStaffInterface member) {
+    out.append("Patient sent home.");
   }
 
   @Override

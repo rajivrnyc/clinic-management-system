@@ -1330,4 +1330,17 @@ public class ClinicTest {
     assertEquals("Clin staff unassigned", out.toString());
   }
   
+  @Test
+  public void testFeatureSendPatientHome() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.sendPatientHome();
+    assertTrue(mockView.refreshCalled);
+    assertFalse(mockView.setMenuItemsCalled);
+    assertEquals("Patient sent home.Got Employees.", out.toString());
+  }
+  
 }

@@ -7,6 +7,8 @@ import controller.ClinicCommand3;
 import controller.ClinicControllerGui;
 import controller.DisplayPatientInterface;
 import controller.PatientToRoomView;
+import controller.SendHomeView;
+import controller.SendHomeViewInterface;
 import controller.UnassignStaffViewInterface;
 import view.MasterViewInterface;
 
@@ -73,6 +75,12 @@ public class TestClinicControllerGui extends ClinicControllerGui {
   public void unassignStaffFromPatient() {
     UnassignStaffViewInterface unassignStaff = new MockUnassignStaff(this.model, this.view);
     unassignStaff.execute();
+  }
+  
+  @Override
+  public void sendPatientHome() {
+    SendHomeViewInterface sendHome = new MockSendHomeView(this.model, this.view);
+    sendHome.execute();
   }
 
   @Override
