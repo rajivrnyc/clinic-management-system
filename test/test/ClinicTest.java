@@ -1266,4 +1266,30 @@ public class ClinicTest {
     assertFalse(mockView.setMenuItemsCalled);
   }
   
+  @Test
+  public void testFeatureRegisterNewPatient() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.registerNewPatient();
+    assertTrue(mockView.refreshCalled);
+    assertFalse(mockView.setMenuItemsCalled);
+    assertEquals("First LastFirst Last dobgot patients", out.toString());
+  }
+  
+  @Test
+  public void testFeatureAssignPatientToRoom() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.assignPatientToRoom();
+    assertTrue(mockView.refreshCalled);
+    assertFalse(mockView.setMenuItemsCalled);
+    assertEquals("First LastFirst Last dobgot patients", out.toString());
+  }
+  
 }

@@ -75,12 +75,13 @@ public class MockModel implements ClinicInterface3 {
 
   @Override
   public List<PatientInterface> getPatients() {
+    out.append("got patients");
     return null;
   }
 
   @Override
   public void addNewPatient(String firstName, String lastName, String dateOfBirth) {
-
+    out.append(firstName).append(" ").append(lastName).append(" ").append(dateOfBirth);
   }
 
   @Override
@@ -115,7 +116,9 @@ public class MockModel implements ClinicInterface3 {
 
   @Override
   public PatientInterface2 findPatient(String firstName, String lastName) {
+    out.append(firstName).append(" ").append(lastName);
     return null;
+    
   }
 
   @Override

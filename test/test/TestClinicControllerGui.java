@@ -40,6 +40,12 @@ public class TestClinicControllerGui extends ClinicControllerGui {
     ClinicCommand3 exitCommand = new MockExitProgram(this.model, this.view);
     exitCommand.execute();
   }
+  
+  @Override
+  public void registerNewPatient() {
+    ClinicCommand3 register = new MockRegisterPatientView(this.model, this.view);
+    register.execute();
+  }
 
   @Override
   protected void showMessage(String message) {
