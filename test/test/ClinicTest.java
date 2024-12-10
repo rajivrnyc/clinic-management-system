@@ -1343,4 +1343,18 @@ public class ClinicTest {
     assertEquals("Patient sent home.Got Employees.", out.toString());
   }
   
+  @Test
+  public void testRegisterNewPatient() {
+    clinic.addNewPatient("Steve", "Jackson", "12/3/00");
+    PatientInterface2 patient = clinic.findPatient("Steve", "Jackson");
+    assertTrue(clinic.getPatients().contains(patient));
+  }
+  
+  @Test
+  public void testRegisterExistingPatient() {
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    aandi.addRecord("headache", 29.2);
+    assertFalse(aandi.getVisitRecord().isEmpty());
+  }
+  
 }
