@@ -71,8 +71,8 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void clearAllRecords() {
-    ClinicCommand3 clearCommand = new ClearRecordsView();
-    clearCommand.execute(this.model, this.view);
+    ClinicCommand3 clearCommand = new ClearRecordsView(this.model, this.view);
+    clearCommand.execute();
 
   }
 

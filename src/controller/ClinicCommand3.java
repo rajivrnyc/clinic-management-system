@@ -16,8 +16,6 @@ public interface ClinicCommand3 {
   /**
    * Executes the command with the clinic model and the input scan.
    * 
-   * @param model the model of the clinic
-   * @param view the view of the clinic
    */
-  void execute(ClinicInterface3 model, MasterViewInterface view);
+  void execute();
 }

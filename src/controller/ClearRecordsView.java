@@ -10,9 +10,16 @@ import view.MasterViewInterface;
  * command to clear all records from the clinic.
  */
 public class ClearRecordsView implements ClinicCommand3 {
+  private ClinicInterface3 model;
+  private MasterViewInterface view;
+  
+  public ClearRecordsView(ClinicInterface3 model, MasterViewInterface view) {
+    this.model = model;
+    this.view = view;
+  }
 
   @Override
-  public void execute(ClinicInterface3 model, MasterViewInterface view) {
+  public void execute() {
     model.reset();
     view.refresh(model);
     view.setMenuItems(false);
