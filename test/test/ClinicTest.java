@@ -18,6 +18,7 @@ import clinic.NonClinicalStaff;
 import clinic.Patient;
 import clinic.PatientInterface;
 import clinic.PatientInterface2;
+import clinic.PatientInterface3;
 import clinic.Record;
 import clinic.Room;
 import clinic.RoomInterface;
@@ -28,8 +29,6 @@ import controller.ClinicController;
 import controller.ClinicControllerGui;
 import controller.ClinicControllerInterface;
 import controller.Features;
-import view.MasterView;
-import view.MasterViewInterface;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,6 +40,9 @@ import java.util.List;
 import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
+import view.MasterView;
+import view.MasterViewInterface;
+
 
 /**
  * JUnit Test Class for all classes within clinic package.
@@ -1217,13 +1219,17 @@ public class ClinicTest {
   
   @Test
   public void testFeatureLoadClinic() {
-
     
   }
   
   @Test
-  public void testFeatureClearAllRecords() {
-    
+  public void testActivate() {
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    clinic.sendHome(aandi, amy);
+    PatientInterface3 aandi1 = (PatientInterface3) aandi;
+    aandi1.activate();
+    assertTrue(aandi.isActive());
   }
   
 }

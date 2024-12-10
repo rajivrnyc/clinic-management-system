@@ -147,6 +147,7 @@ public class Clinic implements ClinicInterface {
     patient.setApproval(member, true);
     if (patient.getApproval()) {
       patient.deactivate();
+      rooms.get(0).placePatient(patient);
     }
 
   }
