@@ -1313,6 +1313,18 @@ public class ClinicTest {
     Readable in = new InputStreamReader(System.in);
     Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
     controller.displayPatientInfo();
+    assertFalse(mockView.refreshCalled);
+    assertFalse(mockView.setMenuItemsCalled);
+  }
+  
+  @Test
+  public void testFeatureAssignStafftoPatient() {
+    MockView mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    ClinicInterface3 mockModel = new MockModel(out);
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new TestClinicControllerGui(in, out, mockModel, mockView);
+    controller.assignStafftoPatient();
     assertTrue(mockView.refreshCalled);
     assertFalse(mockView.setMenuItemsCalled);
     assertEquals("Got Employees.", out.toString());

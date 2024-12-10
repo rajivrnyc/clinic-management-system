@@ -5,6 +5,7 @@ import controller.AssignStaffViewInterface;
 import controller.ClearRecordsView;
 import controller.ClinicCommand3;
 import controller.ClinicControllerGui;
+import controller.DisplayPatientInterface;
 import controller.PatientToRoomView;
 import view.MasterViewInterface;
 
@@ -63,7 +64,8 @@ public class TestClinicControllerGui extends ClinicControllerGui {
   
   @Override
   public void displayPatientInfo() {
-    
+    DisplayPatientInterface displayPatient = new MockDisplayPatient(this.model, this.view);
+    displayPatient.execute();
   }
 
   @Override
