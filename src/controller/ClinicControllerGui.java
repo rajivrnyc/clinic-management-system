@@ -57,35 +57,41 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
 
   @Override
   public void loadClinicFile() {
-    ClinicCommand3 loadCommand = new LoadFileView(this.model, this.view);
-    loadCommand.execute();
-
+    try {
+      FileReader fileReader = new FileReader("res/clinicfile.txt");
+      model = Clinic3.readFile(fileReader);
+      view.refresh(model);
+      view.setMenuItems(true);
+      JOptionPane.showMessageDialog(null, "Clinic loaded successfully.");
+       
+    } catch (IOException e) {
+      JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
   }
 
   @Override
   public void clearAllRecords() {
-    ClinicCommand3 clearCommand = new ClearRecordsView(this.model, this.view);
-    clearCommand.execute();
+    ClinicCommand3 clearCommand = new ClearRecordsView();
+    clearCommand.execute(this.model, this.view);
 
   }
 
   @Override
   public void exitProgram() {
     ClinicCommand3 exit = new ExitProgramView();
-    exit.execute();
+    exit.execute(this.model, this.view);
   }
 
   @Override
   public void registerNewPatient() {
-    ClinicCommand3 register = new RegisterPatientView(this.model, this.view);
-    register.execute();
+    ClinicCommand3 register = new RegisterPatientView();
+    register.execute(this.model, this.view);
   }
   
   @Override
   public void assignPatientToRoom() {
-    clinicLayoutPage = view.getLayoutPage();
-    JOptionPane.showMessageDialog(null, "Please select a patient.");
-    clinicLayoutPage.enablePatientSelectionAssignRoom(this);
+    PatientToRoomView toRoom = new PatientToRoom(this.model, this.view);
+    toRoom.execute();
   }
   
   @Override
@@ -152,33 +158,6 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
   private void setModel(ClinicInterface3 newModel) {
     this.model = newModel;
     view.refresh(newModel);
-  }
-
-  @Override
-  public void processPatient(PatientInterface patient) {
-    this.selectedPatient = patient;
-    clinicLayoutPage.disablePatientSelection();
-    JOptionPane.showMessageDialog(null, "Please select a Room");
-    clinicLayoutPage.enableRoomSelectionAssignRoom(this);
-  }
-
-  @Override
-  public void processRoom(RoomInterface room) {
-    this.room = room;
-    clinicLayoutPage.disableRoomSelection();
-    try {
-      model.assignPatient(selectedPatient, this.room);
-      JOptionPane.showMessageDialog(null, "Patient moved!");
-      setModel(model);
-    } catch (IllegalArgumentException e) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("Error: " + e.getMessage());
-      JOptionPane.showMessageDialog(null, sb.toString());
-    } catch (IllegalStateException e) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("Error: ").append(e.getMessage());
-      JOptionPane.showMessageDialog(null, sb.toString());
-    }
   }
   
   @Override

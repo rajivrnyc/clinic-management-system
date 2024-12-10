@@ -11,16 +11,9 @@ import view.MasterViewInterface;
  * Command to Register patient into the view.
  */
 public class RegisterPatientView implements ClinicCommand3 {
-  private ClinicInterface3 model;
-  private MasterViewInterface view;
-  
-  public RegisterPatientView(ClinicInterface3 model, MasterViewInterface view) {
-    this.model = model;
-    this.view = view;
-  }
-  
+
   @Override
-  public void execute() {
+  public void execute(ClinicInterface3 model, MasterViewInterface view) {
     String patientFirstName = JOptionPane.showInputDialog(null, "Enter the patient's first name: ",
         "Register Patient", JOptionPane.PLAIN_MESSAGE);
     if (patientFirstName == null || patientFirstName.trim().isEmpty()) {
@@ -80,12 +73,8 @@ public class RegisterPatientView implements ClinicCommand3 {
     PatientInterface2 patientI = (PatientInterface2) patient;
     patientI.addRecord(complaint, temp);
       
-    this.setModel(model);
+    view.refresh(model);
     JOptionPane.showMessageDialog(null, "Patient successfully added to clinic.");
   }
   
-  private void setModel(ClinicInterface3 newModel) {
-    this.model = newModel;
-    view.refresh(newModel);
-  }
 }

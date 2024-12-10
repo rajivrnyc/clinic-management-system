@@ -14,6 +14,8 @@ public class PatientToRoom implements PatientToRoomView {
   private ClinicInterface3 model;
   private MasterViewInterface view;
   private ClinicLayoutPage clinicLayoutPage;
+  private PatientInterface selectedPatient;
+  private RoomInterface room;
   
   /**
    * Executes command to transfer patient to room.
@@ -30,19 +32,38 @@ public class PatientToRoom implements PatientToRoomView {
   @Override
   public void execute() {
     JOptionPane.showMessageDialog(null, "Please select a patient.");
-    
+    clinicLayoutPage.enablePatientSelectionAssignRoom(this);
   }
 
   @Override
   public void processPatient(PatientInterface patient) {
-    // TODO Auto-generated method stub
-
+    this.selectedPatient = patient;
+    clinicLayoutPage.disablePatientSelection();
+    JOptionPane.showMessageDialog(null, "Please select a Room");
+    clinicLayoutPage.enableRoomSelectionAssignRoom(this);
   }
 
   @Override
   public void processRoom(RoomInterface room) {
-    // TODO Auto-generated method stub
-
+    this.room = room;
+    clinicLayoutPage.disableRoomSelection();
+    try {
+      model.assignPatient(selectedPatient, this.room);
+      JOptionPane.showMessageDialog(null, "Patient moved!");
+      setModel(model);
+    } catch (IllegalArgumentException e) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("Error: " + e.getMessage());
+      JOptionPane.showMessageDialog(null, sb.toString());
+    } catch (IllegalStateException e) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("Error: ").append(e.getMessage());
+      JOptionPane.showMessageDialog(null, sb.toString());
+    }
   }
-
+  
+  private void setModel(ClinicInterface3 newModel) {
+    this.model = newModel;
+    view.refresh(newModel);
+  }
 }
