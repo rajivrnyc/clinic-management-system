@@ -6,6 +6,7 @@ import controller.AssignStaffViewInterface;
 import controller.DisplayPatientInterface;
 import controller.Features;
 import controller.PatientToRoomView;
+import controller.SendHomeViewInterface;
 import controller.UnassignStaffViewInterface;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -62,7 +63,7 @@ public interface ClinicViewInterface {
    * 
    * @param f callback for when a patient is selected by a user.
    */
-  void enablePatientSelectionSendHome(Features f);
+  void enablePatientSelectionSendHome(SendHomeViewInterface f);
   
   
   /**

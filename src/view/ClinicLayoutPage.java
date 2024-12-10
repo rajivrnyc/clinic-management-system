@@ -10,6 +10,7 @@ import controller.AssignStaffViewInterface;
 import controller.DisplayPatientInterface;
 import controller.Features;
 import controller.PatientToRoomView;
+import controller.SendHomeViewInterface;
 import controller.UnassignStaffViewInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -167,7 +168,7 @@ public class ClinicLayoutPage extends JPanel implements ClinicViewInterface {
   }
   
   @Override
-  public void enablePatientSelectionSendHome(Features f) {
+  public void enablePatientSelectionSendHome(SendHomeViewInterface f) {
     for (Map.Entry<PatientInterface, JButton> entry : patientButtons.entrySet()) {
       JButton button = entry.getValue();
       PatientInterface patient = entry.getKey();
