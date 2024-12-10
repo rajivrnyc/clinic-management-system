@@ -1219,7 +1219,13 @@ public class ClinicTest {
   
   @Test
   public void testFeatureLoadClinic() {
-    
+    ClinicInterface3 mockModel = new MockModel();
+    MasterViewInterface mockView = new MockView();
+    StringBuilder out = new StringBuilder();
+    Readable in = new InputStreamReader(System.in);
+    Features controller = new ClinicControllerGui(in, out, mockModel, mockView);
+    controller.loadClinicFile();
+    assertTrue(mockView.refresh(mockModel))
   }
   
   @Test

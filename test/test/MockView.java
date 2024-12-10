@@ -43,5 +43,13 @@ public class MockView implements MasterViewInterface {
   public ClinicLayoutPage getLayoutPage() {
     return null;
   }
+  
+  public boolean refreshCalled() {
+    return refreshCalled;
+  }
+  
+  public boolean setMenuItemsCalled() {
+    return setMenuItemsCalled;
+  }
 
 }
