@@ -19,7 +19,7 @@ import view.MasterViewInterface;
  */
 public class ClinicDriver {
   RoomInterface tempRoom;
-
+ 
   /**
  * Takes command line argument that we will use to from clinic objects.
  * @param args Takes an argument from the command line.
