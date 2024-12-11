@@ -1367,6 +1367,102 @@ public class ClinicTest {
     assertFalse(aandi.getVisitRecord().isEmpty());
   }
   
+  @Test(expected = IllegalStateException.class)
+  public void testDoubleAssign() {
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    RoomInterface room = clinic.getRoomFromNumber(2);
+    clinic.assignPatient(aandi, room);
+  }
+  
+  @Test
+  public void testAssignThenMove() {
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    RoomInterface room = clinic.getRoomFromNumber(3);
+    RoomInterface room2 = clinic.getRoomFromNumber(1);
+    clinic.assignPatient(aandi, room);
+    clinic.assignPatient(aandi, room2);
+    assertTrue(room2.getResidents().contains(aandi));
+  }
+  
+  @Test
+  public void testAssignMoveAssign() {
+    PatientInterface2 beth = clinic.findPatient("Beth", "Bunion");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    RoomInterface room = clinic.getRoomFromNumber(1);
+    RoomInterface room2 = clinic.getRoomFromNumber(2);
+    RoomInterface room3 = clinic.getRoomFromNumber(3);
+    clinic.assignPatient(beth, room);
+    clinic.assignPatient(aandi, room3);
+    clinic.assignPatient(beth, room2);
+    assertTrue(room2.getResidents().contains(beth));
+  }
+  
+  @Test
+  public void testOneToMany() {
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    PatientInterface2 beth = clinic.findPatient("Beth", "Bunion");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    clinic.assignStaff(aandi, amy);
+    clinic.assignStaff(beth, amy);
+    assertTrue(aandi.getAllocated().contains(amy));
+    assertTrue(beth.getAllocated().contains(amy));
+  }
+  
+  @Test
+  public void testManytoOne() {
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    ClinicalStaffInterface benny = (ClinicalStaffInterface) clinic.getEmployees().get(1);
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    clinic.assignStaff(aandi, amy);
+    clinic.assignStaff(aandi, benny);
+    assertTrue(aandi.getAllocated().contains(amy));
+    assertTrue(aandi.getAllocated().contains(benny));
+  }
+  
+  @Test
+  public void testUnassignStaff() {
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    clinic.assignStaff(aandi, amy);
+    clinic.unassignClinStaff(amy, aandi);
+    assertFalse(aandi.getAllocated().contains(amy));
+  }
+  
+  @Test
+  public void testUnassignSome() {
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    PatientInterface2 beth = clinic.findPatient("Beth", "Bunion");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    clinic.assignStaff(aandi, amy);
+    clinic.assignStaff(beth, amy);
+    clinic.unassignClinStaff(amy, aandi);
+    assertFalse(aandi.getAllocated().contains(amy));
+    assertTrue(beth.getAllocated().contains(amy));
+  }
+  
+  @Test
+  public void testUnassignAll() {
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    PatientInterface2 beth = clinic.findPatient("Beth", "Bunion");
+    PatientInterface2 aandi = clinic.findPatient("Aandi", "Acute");
+    clinic.assignStaff(aandi, amy);
+    clinic.assignStaff(beth, amy);
+    clinic.unassignClinStaff(amy, aandi);
+    clinic.unassignClinStaff(amy, beth);
+    assertFalse(aandi.getAllocated().contains(amy));
+    assertFalse(beth.getAllocated().contains(amy));
+  }
+  
+  @Test
+  public void stilInList() {
+    ClinicalStaffInterface amy = (ClinicalStaffInterface) clinic.getEmployees().get(0);
+    PatientInterface3 aandi = (PatientInterface3) clinic.findPatient("Aandi", "Acute");
+    clinic.assignStaff(aandi, amy);
+    clinic.sendHome(aandi, amy);
+    aandi.activate();
+    assertFalse(aandi.getAllocated().contains(amy));
+    
+  }
   
   
 }
