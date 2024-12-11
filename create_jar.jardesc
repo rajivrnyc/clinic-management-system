@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="milestone-1-rajivrny3/res/Milestone3.jar"/>
+    <jar path="milestone-1-rajivrny3/res/Milestone4.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/milestone-1-rajivrny3/create_jar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
@@ -11,9 +11,6 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <file path="/milestone-1-rajivrny3/.gitignore"/>
-        <file path="/milestone-1-rajivrny3/README.md"/>
-        <file path="/milestone-1-rajivrny3/create_jar.jardesc"/>
         <javaElement handleIdentifier="=milestone-1-rajivrny3/src"/>
     </selectedElements>
 </jardesc>
