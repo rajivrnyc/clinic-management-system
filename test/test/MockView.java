@@ -44,10 +44,20 @@ public class MockView implements MasterViewInterface {
     return null;
   }
   
+  /**
+   * A method to verify that refresh was called by the controller.
+   * 
+   * @return a boolean which tells if the controller called view.refresh()
+   */
   public boolean refreshCalled() {
     return refreshCalled;
   }
   
+  /**
+   * A method to verify that setMenuItems was called by the controller.
+   * 
+   * @return a boolean which tells if the controller called view.refresh()
+   */
   public boolean setMenuItemsCalled() {
     return setMenuItemsCalled;
   }

@@ -29,7 +29,6 @@ import controller.ClinicController;
 import controller.ClinicControllerGui;
 import controller.ClinicControllerInterface;
 import controller.Features;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

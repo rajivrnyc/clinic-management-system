@@ -124,6 +124,11 @@ public class ClinicControllerGui extends ClinicController2 implements Features {
     view.makeVisible();
   }
   
+  /**
+   * A function to display a JOptionPane message.
+   * 
+   * @param message the message to display
+   */
   protected void showMessage(String message) {
     JOptionPane.showMessageDialog(null, message);
   }

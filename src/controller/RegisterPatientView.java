@@ -15,6 +15,13 @@ public class RegisterPatientView implements ClinicCommand3 {
   private ClinicInterface3 model;
   private MasterViewInterface view;
   
+  /**
+   * Constructor for command to register a patient into the model which
+   * is reflected in the view.
+   * 
+   * @param model the model of the clinic
+   * @param view the view of the clinic
+   */
   public RegisterPatientView(ClinicInterface3 model, MasterViewInterface view) {
     this.model = model;
     this.view = view;

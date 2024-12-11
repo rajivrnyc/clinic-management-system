@@ -11,6 +11,13 @@ public class MockClearRecords implements ClinicCommand3 {
   private ClinicInterface3 model;
   private MasterViewInterface view;
   
+  /**
+   * A constructor for the mock for the command to clear all records 
+   * from the model which is reflected in the view.
+   * 
+   * @param model the mocked model of the clinic
+   * @param view the mocked view of the clinic.
+   */
   public MockClearRecords(ClinicInterface3 model, MasterViewInterface view) {
     this.model = model;
     this.view = view;

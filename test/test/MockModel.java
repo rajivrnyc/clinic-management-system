@@ -15,6 +15,12 @@ import java.util.List;
 public class MockModel implements ClinicInterface3 {
   private StringBuilder out;
   
+  /**
+   * A constructor for the mock model to check if the controller
+   * properly reaches the model and executes necessary commands.
+   * 
+   * @param out an appendable that stores information to validate method execution
+   */
   public MockModel(StringBuilder out) {
     this.out = out;
   }

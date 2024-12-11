@@ -13,6 +13,13 @@ public class ClearRecordsView implements ClinicCommand3 {
   private ClinicInterface3 model;
   private MasterViewInterface view;
   
+  /**
+   * Constructor for the command class to clear the records in the 
+   * model which will be reflected in the view.
+   * 
+   * @param model the model of the clinic
+   * @param view the view of the clinic
+   */
   public ClearRecordsView(ClinicInterface3 model, MasterViewInterface view) {
     this.model = model;
     this.view = view;

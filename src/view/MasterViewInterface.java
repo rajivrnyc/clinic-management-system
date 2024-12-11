@@ -3,7 +3,6 @@ package view;
 import clinic.ClinicInterface3;
 import clinic.ClinicStaffAndPatientInfo;
 import controller.Features;
-
 import javax.swing.JPanel;
 
 
