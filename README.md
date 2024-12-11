@@ -15,6 +15,7 @@ This repo represents the coursework for CS 5010!
 Give a general overview of the problem and how your program solve the problem
 - The goal is to create a model of a Clinic with different rooms, patients, and staff members and implement the functionality that involves registering and maintaining info on patients and employees while ensuring that there are not conflicts with rooms or patient to staff assignments.
 - My program solves this problem by conducting all the functions of the clinic through the main Clinic class itself while calling on Room, Patient and Staff classes to access unique attributes and functions of these classes.
+- The user interacts with the model through the view which sends information to the controller to perform actions on the model. Once the actions are completed in the model, the controller relays the visual representation of the changes made back to the user.
 
 ### List of Features
 
@@ -42,24 +43,30 @@ The current features of my program include:
 - Unassign a ClinicalStaff member from a patient
 - List clinicalstaff members and the number of patients that they have ever been assigned.
 - A controller which can perform the tasks listed above in an easy to access menu.
+- The ability to clear all records from the model.
+- A view which gives the user a visual representation of the clinic and allows them to perform the actions of the controller through the view.
+- Clickable buttons for visual and practical ease for patient, room and staff member selection.
 
 ### How to Run
 
 Describe how to run your program from the JAR file. Describe what arguments are needed (if any) and what they mean.
-- To run my program from a .jar file first make sure the .jar file is downloaded alongside clinicfile.txt
+- To run my program from a .jar file first make sure the .jar file is downloaded alongside clinicfile.txt (if you choose to use the text based controller).
 - Open a command prompt
 - Change diretory to where the repository is located.
-- Use the command "java -jar res/Milestone3.jar res/clinicfile.txt res/clinic_commandsMS3.txt" where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
-- The only arguments needed to accomplish this is clinicfile.txt and clinic_commandsMS3.txt which the jar reads and processes.
+- Use the command "java -jar res/Milestone4.jar" for the view based controller or "java -jar res/Milestone4.jar res/clinicfile.txt" for the text based controller where clinicfile.txt is the filepath to wherever clinicfile is located on your computer.
+- The only argument needed to accomplish this is clinicfile.txt.
 
 
 ### How to Use the Program
 
 Provide instructions on how to use the functionality in your program. If it is interactive, describe how to interact with your program. Pay particular attention to the parts that are not part of the example runs that you provide.
-- If the user passes in a clinic text file they will be able to enter user input interactively to work with the clinic model or pass in a text file with a list of appropriate commands to interact with the model.
-- The console will prompt the user with possible commands and request necessary input from the user in order to accomplish the numbered tasks on the menu.
+- If the user passes in a clinic text file they will be able to enter user input interactively to work with the clinic model. Either through text-based commands or by mouse interactions with the view-based design.
+- For the text-based controller, the console will prompt the user with possible commands and request necessary input from the user in order to accomplish the numbered tasks on the menu.
 - The user may quit to the menu after having selected a command with "q" at any time if they wish to do so.
 - You may quit out of the proram by pressing "q" when prompted for a menu option.
+- For the view based controller, a window will open displaying a welcome screen with an intreactable menus in the top left to perform actions such as loading the clinic, clearing its records, or quitting the program.
+- Once the clinic is loaded, a menu of features will become available for the user to then interact with the clinic model directly through the view.
+- The design is intuitive and will prompt for user input when necessary.
 
 
 ### Example Runs
@@ -68,7 +75,8 @@ List any example runs that you have in res/ directory and provide a description 
 - I have an example run testing a clinic file where I inputted a text file which was then read into my driver class. The goal of this class was to pass in a clinic file.
 - My test run goes through each command that the controller is capable of operating to demonstrate its function. 
 - My test run shows that my example runs correctly when passed in information and exists the program once completed through a quit command.
-- My test run now shows this functionality with newly implemented commands to the controller. 
+- My test run now shows this functionality with newly implemented commands to the controller.
+- My test run for the view based design is a pdf document located within res titled Example Run.pdf which shows all the features of the view based design and how they are reflected in the view.
 
 
 ### Design/Model Changes
@@ -109,6 +117,18 @@ v3.3
 - Added a command to generate a visual representation of clinic map as a buffered image.
 v3.4
 - Added a command to list clinical staff members along with the number of patients that they have ever been assigned.
+v4.0
+- Added necessary reset() command to the model which allows for clearing of all of the records stored in the model.
+- Added a new controller which inherits from controller v3.0 to implement a command design pattern for the functions of the view specifically.
+v4.1
+- Created the a MasterView which served as a JFrame which housed a space for JPanels that would represent the AboutPage as well as the view of the clinic.
+- The Master view has function to switch JPanel when showing a different parts of the view. Added rollback design to demonstrate transfer of control to controller once user input is detected.
+v4.2
+- Created the ClinicLayoutPage which is the visual representatioon of the view provided as a JPanel that is stored within the MasterView JFrame and accessed by MasterView via the switchPanel method within the masterview.
+v4.3
+- Added command design pattern for the controller so that the handling of the controllers functions is isolated in seperate single purpose classes.
+v4.4
+- Implemented the duties of each command class.
 
 
 ### Assumptions
@@ -121,6 +141,7 @@ List any assumptions that you made during program development and implementation
 - I assume that the patient can have any possible chief complaint and still be admitted to the hospital.
 - I assume that there are no restrictions on what constitutes a patient or staff member's name other than that they are Strings.
 - I assume that a waiting room can have an unlimited number of people at any given time.
+- I assume that alphabetical order is not a concern when presenting patients within a room.
 
 
 ### Limitations
@@ -129,7 +150,8 @@ What limitations exist in your program. This should include any requirements tha
 - Currently I do not have functionality to add a new room to the clinic.
 - I do not have any methods that might describe the beahvior of non clinical staff members.
 - I do not have room number as an attribute of the Room object itself.
-- If there are to many patients in a respective waiting room my map will not cleanly reflect this do to the limitations provided by the size of my output and the font size of the text.
+- If there are too many patients in a respective waiting room my map will not cleanly reflect this do to the limitations provided by the size of my output and the font size of the text.
+- Similar to the last point, my view will not cleanly reflect too many patients in a given waiting room if an excess are to be added. 
 
 
 ### Citations
