@@ -47,6 +47,12 @@ The current features of my program include:
 - A view which gives the user a visual representation of the clinic and allows them to perform the actions of the controller through the view.
 - Clickable buttons for visual and practical ease for patient, room and staff member selection.
 
+### Changes made to refactor model for text based controller
+I didn't have to change my model much to refactor it to the text-based controller as it was already decoupled from the controller.
+The controller's command classes manage the work of calling the methods on the clinic object from the model methods. The Controller
+just prints the retrieved values after this is done. In order to test the text-based controller I refactored the model. to do this, I inherited
+from the same clinic interface and then made the mock's appendable record the controller's ability to reach each command in the model.
+
 ### How to Run
 
 Describe how to run your program from the JAR file. Describe what arguments are needed (if any) and what they mean.
