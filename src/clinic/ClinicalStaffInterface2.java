@@ -23,4 +23,3 @@ public interface ClinicalStaffInterface2 extends ClinicalStaffInterface {
    */
   int getNumAssigned();
 }
- 
