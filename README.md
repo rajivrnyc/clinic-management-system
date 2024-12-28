@@ -1,14 +1,6 @@
-# CS 5010 Semester Project
-
-This repo represents the coursework for CS 5010!
+# Clinic Management System
 
 **Name:** Rajiv Ragavan
-
-**Email:** ragavan.r@northeastern.edu
-
-**Preferred Name:** Rajiv
-
-
 
 ### About/Overview
 
